@@ -135,6 +135,9 @@ def walk(obj):
 def extract(body, url, provider, cfg, fetched):
     page = Page()
     page.feed(body)
+    # A live page can advertise an old campaign. Explicit ended notices override headings.
+    if re.search(r'(?i)\b(?:deals?|sale|promotion|offer|campaign)s?\s+(?:(?:has|have)\s+)?(?:ended|expired|is over|are over)\b',page.text):
+        return []
     # Accept a short promotional heading, never an arbitrary currency elsewhere in the page.
     vps = r'(?i)\bvps\b|virtual private|cloud[- ]servers?|\bdroplets?\b'
     scoped_page = bool(re.search(vps,urlsplit(url).path))

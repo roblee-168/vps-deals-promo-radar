@@ -49,6 +49,7 @@ class PipelineTests(unittest.TestCase):
         for body,url in [('<h1>Save Time While We Do the Heavy Lifting</h1>',self.p['source']),
                          ('<h1>Domain sale</h1><h2>VPS Hosting</h2>','https://example.com/promos/'),
                          ('<h1>VPS sale ended</h1>',self.p['source']),
+                         ('<h1>Managed VPS deals</h1><p>Black Friday hosting deals ended on December 5, 2025.</p>',self.p['source']),
                          ('<h1>Do you offer VPS discounts?</h1>',self.p['source'])]:
             self.assertEqual(extract(body,url,self.p,self.cfg,self.now.isoformat()),[])
     def test_config_removes_provider_from_built_site(self):
