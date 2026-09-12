@@ -2,7 +2,7 @@
 
 Official VPS promotions and trials, with the source always one click away.
 
-Live site: **[vps-deals](https://vps-deals-promo-radar-1j1.pages.dev/)**. Public repository: [roblee-168/vps-deals-promo-radar](https://github.com/roblee-168/vps-deals-promo-radar). Cloudflare Pages Git integration is enabled on `main`; build command `python build.py`, output `site`.
+Live site: **[vps-deals](https://perkmingle.com/)**. Public repository: [roblee-168/vps-deals-promo-radar](https://github.com/roblee-168/vps-deals-promo-radar). Cloudflare Pages Git integration is enabled on `main`; build command `python build.py`, output `site`.
 
 ## What runs
 

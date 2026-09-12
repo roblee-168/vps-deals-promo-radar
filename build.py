@@ -3,6 +3,7 @@
 # ::RULE{过期或陈旧数据下架 缺字段不编造 HTML转义}
 # ::BOUNDARY{never:捏造价格日期排名或已部署状态}
 import json
+import re
 import shutil
 from datetime import datetime, timezone, timedelta
 from html import escape
@@ -42,6 +43,8 @@ def build():
     providers = {p['id']:p for p in cfg['providers']}
     offers = [o for o in data['offers'] if o['provider_id'] in providers and active(o,cfg,now)]
     base = cfg['domain'].rstrip('/')
+    def origin_links(html):
+        return re.sub(r'(\b(?:href|src)=["\'])/(?!/)', lambda m: m[1]+escape(base,quote=True)+'/', html)
     dest = ROOT/'site'
     # Fixed generated directory only; clear stale detail pages after a provider is removed.
     if dest.is_symlink():
@@ -65,7 +68,7 @@ def build():
             html = html.replace('</head>',social+'</head>').replace('content="summary"','content="summary_large_image"')
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
         output.parent.mkdir(parents=True,exist_ok=True)
-        output.write_text(html,encoding='utf-8')
+        output.write_text(origin_links(html),encoding='utf-8')
         if not noindex:
             pages.append((canonical,lastmod))
     def detail_path(o):
@@ -120,7 +123,7 @@ def build():
             SubElement(el,'lastmod').text = modified
     ElementTree(sitemap).write(dest/'sitemap.xml',encoding='utf-8',xml_declaration=True)
     (dest/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n',encoding='utf-8')
-    (dest/'404.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Offer unavailable</title><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></html>',encoding='utf-8')
+    (dest/'404.html').write_text(origin_links('<!doctype html><html lang="en"><meta charset="utf-8"><title>Offer unavailable</title><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></html>'),encoding='utf-8')
     (dest/'_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Cache-Control: public, max-age=300\n',encoding='utf-8')
     print(f'Built {len(pages)} indexable pages; {len(offers)} fresh offers; {len(providers)} configured providers')
 

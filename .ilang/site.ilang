@@ -1,6 +1,6 @@
 ::ILANG
 [TYPE:config][PROJECT:vps-deals][LANG:zh]
-::STATE{@SITE, brand:vps-deals, niche:VPS hosting, domain:https://vps-deals-promo-radar-1j1.pages.dev, locale:en-US}
+::STATE{@SITE, brand:vps-deals, niche:VPS hosting, domain:https://perkmingle.com, locale:en-US}
 ::MODULE{PROVIDERS|title:抓哪几家 这里改了站就变}
 Hostinger | https://www.hostinger.com | https://www.hostinger.com/black-friday-vps-deals | 
 IONOS | https://www.ionos.com | https://www.ionos.com/servers/free-vps | 
