@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T03:35:58+00:00",
+  "generated_at": "2026-09-12T03:38:46+00:00",
   "offers": [
     {
       "id": "hostinger-b097069767",
@@ -7,7 +7,7 @@
       "title": "Best VPS hosting deals",
       "offer_url": "https://www.hostinger.com/black-friday-vps-deals",
       "source_url": "https://www.hostinger.com/black-friday-vps-deals",
-      "fetched_at": "2026-09-12T03:35:56+00:00",
+      "fetched_at": "2026-09-12T03:38:45+00:00",
       "kind": "promotion",
       "evidence": "Best VPS hosting deals"
     },
@@ -17,7 +17,7 @@
       "title": "Free VPS Trial",
       "offer_url": "https://www.ionos.com/servers/free-vps",
       "source_url": "https://www.ionos.com/servers/free-vps",
-      "fetched_at": "2026-09-12T03:35:58+00:00",
+      "fetched_at": "2026-09-12T03:38:46+00:00",
       "kind": "money-back guarantee",
       "evidence": "Free VPS Trial"
     }
@@ -25,21 +25,21 @@
   "sources": [
     {
       "provider_id": "hostinger",
-      "attempted_at": "2026-09-12T03:35:55+00:00",
+      "attempted_at": "2026-09-12T03:38:44+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-12T03:35:56+00:00"
+      "checked_at": "2026-09-12T03:38:45+00:00"
     },
     {
       "provider_id": "ionos",
-      "attempted_at": "2026-09-12T03:35:56+00:00",
+      "attempted_at": "2026-09-12T03:38:45+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-12T03:35:58+00:00"
+      "checked_at": "2026-09-12T03:38:46+00:00"
     },
     {
       "provider_id": "akamai",
-      "attempted_at": "2026-09-12T03:35:58+00:00",
+      "attempted_at": "2026-09-12T03:38:46+00:00",
       "status": "unavailable",
       "error": "ValueError: robots unavailable: HTTP 403"
     }
