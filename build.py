@@ -85,11 +85,27 @@ def build():
     def crumbs(name,path):
         return {'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':base+'/'},{'@type':'ListItem','position':2,'name':name,'item':base+path}]}
     statuses = {s['provider_id']:s for s in data['sources']}
+    def coverage(provider_id):
+        status = statuses.get(provider_id,{})
+        if status.get('status') == 'unavailable':
+            error = status.get('error','')
+            reason = 'Source could not be fetched'
+            if 'robots' in error.lower():
+                reason = 'Source unavailable under robots.txt rules'
+            elif 'HTTP' in error:
+                reason = 'Official source returned an HTTP error'
+            return 'Not verified: '+reason+'.'
+        if status.get('status') == 'no_match':
+            return 'Not verified: no qualifying VPS promotion found on the official source.'
+        if status.get('status') == 'ok':
+            return 'Official source checked; only fresh qualifying promotions are listed.'
+        return 'Not verified: source has not been checked.'
     rows = ''
     for p in cfg['providers']:
         s = statuses.get(p['id'],{})
         count = sum(o['provider_id']==p['id'] for o in offers)
         label = f'{count} official promotion'+('s' if count!=1 else '') if count else 'No fresh offer verified'
+        label += '<br><small>'+escape(coverage(p['id']))+'</small>'
         rows += f'<tr><td><a href="/providers/{p["id"]}/">{escape(p["name"])}</a></td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(p["source"],quote=True)}" rel="noopener">Official source ↗</a></td></tr>'
     lastmod = max((o['fetched_at'] for o in offers),default=None)
     home = render('index.html',count=len(offers),provider_count=len(providers),cards=cards(offers),source_rows=rows,update_hours=cfg['update_hours'])
@@ -103,6 +119,7 @@ def build():
             schema['offers'] = {'@type':'AggregateOffer','lowPrice':min(float(o['price']) for o in priced),'highPrice':max(float(o['price']) for o in priced),'priceCurrency':priced[0]['currency'],'offerCount':len(priced),'offers':[offer_schema(o) for o in priced]}
         path = '/providers/'+p['id']+'/'
         content = render('provider.html',name=escape(p['name']),cards=cards(items),source=escape(p['source'],quote=True))
+        content += '<p class="note">'+escape(coverage(p['id']))+'</p>'
         write(path,f'{p["name"]} VPS promotions — {month}',f'{len(items)} freshly checked {p["name"]} promotions. Review eligibility and official terms.',content,[schema,crumbs(p['name'],path)],max((o['fetched_at'] for o in items),default=None),not items)
     for o in offers:
         p = providers[o['provider_id']]

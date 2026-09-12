@@ -136,14 +136,20 @@ def extract(body, url, provider, cfg, fetched):
     page = Page()
     page.feed(body)
     # Accept a short promotional heading, never an arbitrary currency elsewhere in the page.
-    candidates = [h for h in page.headings if 5 <= len(h) <= 160 and re.search(cfg['promotion_pattern'],h)]
+    vps = r'(?i)\bvps\b|virtual private|cloud[- ]servers?|\bdroplets?\b'
+    scoped_page = bool(re.search(vps,urlsplit(url).path))
+    trial_page = bool(re.search(r'(?i)free[-/]?(?:trial|credit)',urlsplit(url).path) and re.search(vps,page.text))
+    candidates = [h for h in page.headings if 5 <= len(h) <= 160
+                  and re.search(cfg['promotion_pattern'],h)
+                  and not re.search(r'(?i)\?|\b(?:expired|ended|over|coming soon|contact sales)\b',h)
+                  and (scoped_page or re.search(vps,h) or (trial_page and re.search(r'(?i)trial|credit',h)))]
     if not candidates:
         return []
     title = candidates[0]
     record = dict(id=provider['id']+'-'+hashlib.sha256(url.encode()).hexdigest()[:10], provider_id=provider['id'], title=title, offer_url=url, source_url=url, fetched_at=fetched, kind='promotion', evidence=title)
     if re.search(r'(?i)credit|trial|money.back',title):
         record['kind'] = 'trial / credit' if 'money' not in title.lower() else 'money-back guarantee'
-    if re.search(r'(?i)trial',title) and re.search(r'(?i)money.back guarantee',page.text):
+    if not trial_page and re.search(r'(?i)trial',title) and re.search(r'(?i)money.back guarantee',page.text):
         record['kind'] = 'money-back guarantee'
     # Price and validity require the SAME named structured Offer; no page-wide price guessing.
     for obj in walk(page.ld):

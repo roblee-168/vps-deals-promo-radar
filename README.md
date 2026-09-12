@@ -16,7 +16,7 @@ python build.py
 python -m http.server 8000 --directory site
 ```
 
-Defaults: brand `vps-deals`, niche VPS hosting, locale `en-US`. Seeds: Hostinger, IONOS, Akamai. Only official public sources. Unavailable sources remain visible as coverage gaps; no invented offers, prices or expiry dates. The initial implementation extracts promotional page headings, not a complete per-plan price catalogue. Price extraction requires a matching named structured Offer.
+Defaults: brand `vps-deals`, niche VPS hosting, locale `en-US`. Coverage: 14 providers configured in `.ilang/site.ilang`: Hostinger, IONOS, Akamai, DigitalOcean, Vultr, OVHcloud, Kamatera, UpCloud, RackNerd, RamNode, Namecheap, InMotion Hosting, DreamHost and Liquid Web. Each source is an official public promotion, trial or promotional VPS pricing page. No third-party coupon feeds or affiliate parameters are used. Unavailable sources and sources with no qualifying VPS promotion remain visible with an explicit verification status; no invented offers, prices or expiry dates. The extractor accepts promotional headings scoped to VPS or cloud-server trials, excluding unrelated products, questions and ordinary marketing such as “save time”. This is not a complete per-plan price catalogue. Price extraction requires a matching named structured Offer.
 
 ## I-Lang is executable configuration
 

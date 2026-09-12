@@ -41,6 +41,16 @@ class PipelineTests(unittest.TestCase):
         with patch.object(f,'raw',return_value='User-agent: *\nDisallow: /'):
             with self.assertRaisesRegex(ValueError,'Disallowed'):
                 f.get(self.p['source'])
+    def test_trial_not_relabelled_by_upgrade_guarantee(self):
+        body = '<h1>Free trial</h1><p>Test cloud servers.</p><h2>Upgrading</h2><p>First payment has a money-back guarantee.</p>'
+        result = extract(body,'https://example.com/free-trial/',self.p,self.cfg,self.now.isoformat())
+        self.assertEqual(result[0]['kind'],'trial / credit')
+    def test_non_offer_and_mixed_catalog_are_not_vps_deals(self):
+        for body,url in [('<h1>Save Time While We Do the Heavy Lifting</h1>',self.p['source']),
+                         ('<h1>Domain sale</h1><h2>VPS Hosting</h2>','https://example.com/promos/'),
+                         ('<h1>VPS sale ended</h1>',self.p['source']),
+                         ('<h1>Do you offer VPS discounts?</h1>',self.p['source'])]:
+            self.assertEqual(extract(body,url,self.p,self.cfg,self.now.isoformat()),[])
     def test_config_removes_provider_from_built_site(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

@@ -5,6 +5,17 @@
 Hostinger | https://www.hostinger.com | https://www.hostinger.com/black-friday-vps-deals | 
 IONOS | https://www.ionos.com | https://www.ionos.com/servers/free-vps | 
 Akamai | https://www.akamai.com | https://www.akamai.com/lp/free-credit-100 | 
+DigitalOcean | https://www.digitalocean.com | https://try.digitalocean.com/freetrialoffer/ |
+Vultr | https://www.vultr.com | https://discover.vultr.com/offers |
+OVHcloud | https://www.ovhcloud.com | https://us.ovhcloud.com/deals/ |
+Kamatera | https://www.kamatera.com | https://www.kamatera.com/free-trial/ |
+UpCloud | https://upcloud.com | https://upcloud.com/docs/getting-started/free-trial/ |
+RackNerd | https://www.racknerd.com | https://www.racknerd.com/specials/ |
+RamNode | https://ramnode.com | https://clientarea.ramnode.com/promo.php |
+Namecheap | https://www.namecheap.com | https://www.namecheap.com/promos/ |
+InMotion Hosting | https://www.inmotionhosting.com | https://www.inmotionhosting.com/vps-hosting |
+DreamHost | https://www.dreamhost.com | https://www.dreamhost.com/hosting/vps/ |
+Liquid Web | https://www.liquidweb.com | https://www.liquidweb.com/black-friday-web-hosting-deals/ |
 ::MODULE{FIELDS|title:每条优惠提取什么}
 title price currency offer_url valid_until source_url fetched_at
 ::MODULE{RUNTIME|title:确定性抓取和渲染}
@@ -15,7 +26,7 @@ timeout_seconds: 20
 max_bytes: 5000000
 max_pages_per_provider: 3
 user_agent: VPSDealsBot/1.0
-promotion_pattern: (?i)deal|discount|sale|credit|trial|save|money.back
+promotion_pattern: (?i)\b(?:deals?|discounts?|sale|credits?|trials?|money.back)\b|\bsave\s+(?:up to\s+)?[\d$€£]
 template_index: index.html
 template_provider: provider.html
 template_deal: deal.html
