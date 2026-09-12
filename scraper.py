@@ -143,6 +143,8 @@ def extract(body, url, provider, cfg, fetched):
     record = dict(id=provider['id']+'-'+hashlib.sha256(url.encode()).hexdigest()[:10], provider_id=provider['id'], title=title, offer_url=url, source_url=url, fetched_at=fetched, kind='promotion', evidence=title)
     if re.search(r'(?i)credit|trial|money.back',title):
         record['kind'] = 'trial / credit' if 'money' not in title.lower() else 'money-back guarantee'
+    if re.search(r'(?i)trial',title) and re.search(r'(?i)money.back guarantee',page.text):
+        record['kind'] = 'money-back guarantee'
     # Price and validity require the SAME named structured Offer; no page-wide price guessing.
     for obj in walk(page.ld):
         types = obj.get('@type',[])

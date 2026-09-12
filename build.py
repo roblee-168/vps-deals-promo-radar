@@ -53,6 +53,9 @@ def build():
     pages = []
     month = now.strftime('%B %Y')
     def render(template_name, **values):
+        template_name = cfg.get('template_'+template_name.removesuffix('.html'),template_name)
+        if '/' in template_name or '\\' in template_name or not template_name.endswith('.html'):
+            raise ValueError('Template must be a local HTML filename')
         return Template((ROOT/'templates'/template_name).read_text(encoding='utf-8')).substitute(values)
     def write(path,title,description,content,schemas=(),lastmod=None,noindex=False):
         canonical = base+path
