@@ -1,0 +1,24 @@
+::ILANG
+[TYPE:config][PROJECT:vps-deals][LANG:zh]
+::STATE{@SITE, brand:vps-deals, niche:VPS hosting, domain:https://vps-deals-promo-radar.pages.dev, locale:en-US}
+::MODULE{PROVIDERS|title:抓哪几家 这里改了站就变}
+Hostinger | https://www.hostinger.com | https://www.hostinger.com/black-friday-vps-deals | 
+IONOS | https://www.ionos.com | https://www.ionos.com/servers/free-vps | 
+Akamai | https://www.akamai.com | https://www.akamai.com/lp/free-credit-100 | 
+::MODULE{FIELDS|title:每条优惠提取什么}
+title price currency offer_url valid_until source_url fetched_at
+::MODULE{RUNTIME|title:确定性抓取和渲染}
+update_hours: 6
+cron: 17 */6 * * *
+max_age_hours: 24
+timeout_seconds: 20
+max_bytes: 5000000
+max_pages_per_provider: 3
+user_agent: VPSDealsBot/1.0
+promotion_pattern: (?i)deal|discount|sale|credit|trial|save|money.back
+render: index provider deal compare
+::RULE{抓不到 price⇒这条不写 price 字段 也不写进结构化数据 不许拿估的填}
+::RULE{valid_until 已过⇒下架 不许留着冒充有效}
+::RULE{抓取失败⇒记录失败并撤下该来源优惠 不伪造成功时间}
+::RULE{试用赠金不是售价 不把 credit 写进 price}
+::BOUNDARY{never:编优惠 编价格 编佣金 绕反爬 刷量|scope:permanent}
