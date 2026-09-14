@@ -147,6 +147,9 @@ def build():
             SubElement(el,'lastmod').text = modified
     ElementTree(sitemap).write(dest/'sitemap.xml',encoding='utf-8',xml_declaration=True)
     (dest/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n',encoding='utf-8')
+    # Retired empty provider pages lead to the current source table, not cached shells.
+    retired = [p for p in cfg['providers'] if not any(o['provider_id']==p['id'] for o in offers)]
+    (dest/'_redirects').write_text(''.join(f'/providers/{p["id"]}/ / 302\n/providers/{p["id"]} / 302\n' for p in retired),encoding='utf-8')
     (dest/'404.html').write_text(origin_links('<!doctype html><html lang="en"><meta charset="utf-8"><title>Offer unavailable</title><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></html>'),encoding='utf-8')
     (dest/'_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Cache-Control: public, max-age=300\n',encoding='utf-8')
     print(f'Built {len(pages)} indexable pages; {len(offers)} fresh offers; {len(providers)} configured providers')
