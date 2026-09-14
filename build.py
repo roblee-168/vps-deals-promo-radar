@@ -53,6 +53,8 @@ def build():
         shutil.rmtree(dest)
     dest.mkdir()
     shutil.copytree(ROOT/'assets',dest/'assets')
+    # The legacy social card carries the retired brand; do not publish it.
+    (dest/'assets/og.png').unlink(missing_ok=True)
     pages = []
     month = now.strftime('%B %Y')
     def render(template_name, **values):
@@ -63,9 +65,6 @@ def build():
     def write(path,title,description,content,schemas=(),lastmod=None,noindex=False):
         canonical = base+path
         html = render('base.html', brand=escape(cfg['brand']),title=escape(title), description=escape(description), canonical=escape(canonical,quote=True), content=content, locale=escape(cfg['locale']), robots='noindex,follow' if noindex else 'index,follow', schema=json.dumps({'@context':'https://schema.org','@graph':list(schemas)},ensure_ascii=False).replace('<','\\u003c'))
-        if not path.startswith('/deals/'):
-            social = f'<meta property="og:image" content="{escape(base,quote=True)}/assets/og.png"><meta name="twitter:image" content="{escape(base,quote=True)}/assets/og.png">'
-            html = html.replace('</head>',social+'</head>').replace('content="summary"','content="summary_large_image"')
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
         output.parent.mkdir(parents=True,exist_ok=True)
         output.write_text(origin_links(html),encoding='utf-8')
@@ -106,12 +105,15 @@ def build():
         count = sum(o['provider_id']==p['id'] for o in offers)
         label = f'{count} official promotion'+('s' if count!=1 else '') if count else 'No fresh offer verified'
         label += '<br><small>'+escape(coverage(p['id']))+'</small>'
-        rows += f'<tr><td><a href="/providers/{p["id"]}/">{escape(p["name"])}</a></td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(p["source"],quote=True)}" rel="noopener">Official source ↗</a></td></tr>'
+        provider_link = f'<a href="/providers/{p["id"]}/">{escape(p["name"])}</a>' if count else escape(p['name'])
+        rows += f'<tr><td>{provider_link}</td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(p["source"],quote=True)}" rel="noopener">Official source ↗</a></td></tr>'
     lastmod = max((o['fetched_at'] for o in offers),default=None)
     home = render('index.html',count=len(offers),provider_count=len(providers),cards=cards(offers),source_rows=rows,update_hours=cfg['update_hours'])
     write('/',f'VPS deals & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS promotions from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
+        if not items:
+            continue
         schema = {'@type':'Service','name':p['name']+' VPS hosting','provider':{'@type':'Organization','name':p['name'],'url':p['home']},'offers':[offer_schema(o) for o in items]}
         # Only aggregate comparable actual prices in the same currency, never trial credits.
         priced = [o for o in items if 'price' in o and 'currency' in o]
@@ -132,6 +134,8 @@ def build():
     compare_rows = ''.join(f'<tr><td>{escape(providers[o["provider_id"]]["name"])}</td><td><a href="{detail_path(o)}">{escape(o["title"])}</a></td><td>{escape(o["kind"])}</td><td>{escape(o.get("currency","")+" "+str(o["price"])) if "price" in o else "Not extracted"}</td><td>{escape(o.get("valid_until","Not specified"))}</td></tr>' for o in offers)
     write('/compare/',f'Compare VPS promotions — {month}',f'Compare {len(offers)} official VPS promotions, offer types and published expiry dates.',render('compare.html',rows=compare_rows),[itemlist(offers),crumbs('Compare','/compare/')],lastmod)
     write('/about/',f'How we verify offers | {cfg["brand"]}','Our sources, verification limits and affiliate disclosure.',render('about.html',hours=cfg['update_hours'],age=cfg['max_age_hours']),[crumbs('About','/about/')])
+    write('/privacy/',f'Privacy policy | {cfg["brand"]}','Privacy, hosting information and planned third-party advertising.',render('privacy.html'),[crumbs('Privacy policy','/privacy/')])
+    write('/contact/',f'Contact | {cfg["brand"]}','Contact PerkMingle, operated by Jiawei Li, for corrections and privacy questions.',render('contact.html'),[crumbs('Contact','/contact/')])
     sitemap = Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for url,modified in pages:
         el = SubElement(sitemap,'url')
