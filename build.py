@@ -3,6 +3,7 @@
 # ::RULE{过期或陈旧数据下架 缺字段不编造 HTML转义}
 # ::BOUNDARY{never:捏造价格日期排名或已部署状态}
 import json
+import hashlib
 import re
 import shutil
 from datetime import datetime, timezone, timedelta
@@ -56,6 +57,7 @@ def build():
     # The legacy social card carries the retired brand; do not publish it.
     (dest/'assets/og.png').unlink(missing_ok=True)
     pages = []
+    style_version = hashlib.sha256((ROOT/'assets/style.css').read_bytes()).hexdigest()[:12]
     month = now.strftime('%B %Y')
     def render(template_name, **values):
         template_name = cfg.get('template_'+template_name.removesuffix('.html'),template_name)
@@ -65,6 +67,7 @@ def build():
     def write(path,title,description,content,schemas=(),lastmod=None,noindex=False):
         canonical = base+path
         html = render('base.html', brand=escape(cfg['brand']),title=escape(title), description=escape(description), canonical=escape(canonical,quote=True), content=content, locale=escape(cfg['locale']), robots='noindex,follow' if noindex else 'index,follow', schema=json.dumps({'@context':'https://schema.org','@graph':list(schemas)},ensure_ascii=False).replace('<','\\u003c'))
+        html = html.replace('/assets/style.css"',f'/assets/style.css?v={style_version}"')
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
         output.parent.mkdir(parents=True,exist_ok=True)
         output.write_text(origin_links(html),encoding='utf-8')
