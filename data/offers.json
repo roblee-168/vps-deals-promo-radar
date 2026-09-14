@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T08:42:16+00:00",
+  "generated_at": "2026-09-14T09:15:00+00:00",
   "offers": [
     {
       "id": "hostinger-b097069767",
@@ -7,7 +7,7 @@
       "title": "Best VPS hosting deals",
       "offer_url": "https://www.hostinger.com/black-friday-vps-deals",
       "source_url": "https://www.hostinger.com/black-friday-vps-deals",
-      "fetched_at": "2026-09-14T08:41:57+00:00",
+      "fetched_at": "2026-09-14T09:14:43+00:00",
       "kind": "promotion",
       "evidence": "Best VPS hosting deals"
     },
@@ -17,7 +17,7 @@
       "title": "Free VPS Trial",
       "offer_url": "https://www.ionos.com/servers/free-vps",
       "source_url": "https://www.ionos.com/servers/free-vps",
-      "fetched_at": "2026-09-14T08:41:59+00:00",
+      "fetched_at": "2026-09-14T09:14:44+00:00",
       "kind": "money-back guarantee",
       "evidence": "Free VPS Trial"
     },
@@ -27,7 +27,7 @@
       "title": "30-Day Free Trial",
       "offer_url": "https://www.kamatera.com/free-trial/",
       "source_url": "https://www.kamatera.com/free-trial/",
-      "fetched_at": "2026-09-14T08:42:06+00:00",
+      "fetched_at": "2026-09-14T09:14:50+00:00",
       "kind": "trial / credit",
       "evidence": "30-Day Free Trial"
     },
@@ -37,7 +37,7 @@
       "title": "Free trial",
       "offer_url": "https://upcloud.com/docs/getting-started/free-trial/",
       "source_url": "https://upcloud.com/docs/getting-started/free-trial/",
-      "fetched_at": "2026-09-14T08:42:08+00:00",
+      "fetched_at": "2026-09-14T09:14:52+00:00",
       "kind": "trial / credit",
       "evidence": "Free trial"
     },
@@ -47,7 +47,7 @@
       "title": "Pick Your VPS Deal",
       "offer_url": "https://www.racknerd.com/specials/",
       "source_url": "https://www.racknerd.com/specials/",
-      "fetched_at": "2026-09-14T08:42:09+00:00",
+      "fetched_at": "2026-09-14T09:14:53+00:00",
       "kind": "promotion",
       "evidence": "Pick Your VPS Deal"
     }
@@ -55,99 +55,99 @@
   "sources": [
     {
       "provider_id": "hostinger",
-      "attempted_at": "2026-09-14T08:41:56+00:00",
+      "attempted_at": "2026-09-14T09:14:41+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-14T08:41:57+00:00"
+      "checked_at": "2026-09-14T09:14:43+00:00"
     },
     {
       "provider_id": "ionos",
-      "attempted_at": "2026-09-14T08:41:57+00:00",
+      "attempted_at": "2026-09-14T09:14:43+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-14T08:41:59+00:00"
+      "checked_at": "2026-09-14T09:14:44+00:00"
     },
     {
       "provider_id": "akamai",
-      "attempted_at": "2026-09-14T08:41:59+00:00",
+      "attempted_at": "2026-09-14T09:14:44+00:00",
       "status": "unavailable",
       "error": "ValueError: robots unavailable: HTTP 403"
     },
     {
       "provider_id": "digitalocean",
-      "attempted_at": "2026-09-14T08:41:59+00:00",
+      "attempted_at": "2026-09-14T09:14:44+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-14T08:42:01+00:00"
+      "checked_at": "2026-09-14T09:14:46+00:00"
     },
     {
       "provider_id": "vultr",
-      "attempted_at": "2026-09-14T08:42:01+00:00",
+      "attempted_at": "2026-09-14T09:14:46+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-14T08:42:03+00:00"
+      "checked_at": "2026-09-14T09:14:48+00:00"
     },
     {
       "provider_id": "ovhcloud",
-      "attempted_at": "2026-09-14T08:42:03+00:00",
+      "attempted_at": "2026-09-14T09:14:48+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-14T08:42:05+00:00"
+      "checked_at": "2026-09-14T09:14:49+00:00"
     },
     {
       "provider_id": "kamatera",
-      "attempted_at": "2026-09-14T08:42:05+00:00",
+      "attempted_at": "2026-09-14T09:14:49+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-14T08:42:06+00:00"
+      "checked_at": "2026-09-14T09:14:50+00:00"
     },
     {
       "provider_id": "upcloud",
-      "attempted_at": "2026-09-14T08:42:06+00:00",
+      "attempted_at": "2026-09-14T09:14:50+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-14T08:42:08+00:00"
+      "checked_at": "2026-09-14T09:14:52+00:00"
     },
     {
       "provider_id": "racknerd",
-      "attempted_at": "2026-09-14T08:42:08+00:00",
+      "attempted_at": "2026-09-14T09:14:52+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-14T08:42:09+00:00"
+      "checked_at": "2026-09-14T09:14:53+00:00"
     },
     {
       "provider_id": "ramnode",
-      "attempted_at": "2026-09-14T08:42:09+00:00",
+      "attempted_at": "2026-09-14T09:14:53+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-14T08:42:11+00:00"
+      "checked_at": "2026-09-14T09:14:55+00:00"
     },
     {
       "provider_id": "namecheap",
-      "attempted_at": "2026-09-14T08:42:11+00:00",
+      "attempted_at": "2026-09-14T09:14:55+00:00",
       "status": "unavailable",
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
       "provider_id": "inmotion-hosting",
-      "attempted_at": "2026-09-14T08:42:12+00:00",
+      "attempted_at": "2026-09-14T09:14:56+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-14T08:42:14+00:00"
+      "checked_at": "2026-09-14T09:14:57+00:00"
     },
     {
       "provider_id": "dreamhost",
-      "attempted_at": "2026-09-14T08:42:14+00:00",
+      "attempted_at": "2026-09-14T09:14:57+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-14T08:42:15+00:00"
+      "checked_at": "2026-09-14T09:14:59+00:00"
     },
     {
       "provider_id": "liquid-web",
-      "attempted_at": "2026-09-14T08:42:15+00:00",
+      "attempted_at": "2026-09-14T09:14:59+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-14T08:42:16+00:00"
+      "checked_at": "2026-09-14T09:15:00+00:00"
     }
   ]
 }
