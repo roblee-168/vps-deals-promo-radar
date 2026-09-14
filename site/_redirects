@@ -1,3 +1,5 @@
+/deals/:id/ /plans/:id/ 301
+/deals/:id /plans/:id/ 301
 /providers/akamai/ / 302
 /providers/akamai / 302
 /providers/digitalocean/ / 302

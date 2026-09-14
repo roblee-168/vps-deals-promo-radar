@@ -37,6 +37,22 @@ def offer_schema(o):
         result['availability'] = o['availability']
     return result
 
+def neutral_metadata(text):
+    # Only metadata is rewritten; source evidence and visible body stay intact.
+    text = re.sub(r"(?i)\b(\d+(?:\.\d+)?)\s*%\s*off\b", r"price reduction of \1 percent", text)
+    for pattern, replacement in [
+        (r"\bdiscounts?\b", "price reductions"),
+        (r"\bcoupons?\b", "codes"),
+        (r"\b(?:offers?|promotions?|promos?)\b", "plans and terms"),
+        (r"\bcashback\b", "rebates"),
+        (r"\bdeals\b", "plans"),
+        (r"\bdeal\b", "plan"),
+        (r"%\s*off\b", "percent price reduction"),
+    ]:
+        text = re.sub(pattern, replacement, text, flags=re.I)
+    return text
+
+
 def build():
     cfg = load_config()
     data = json.loads((ROOT/'data/offers.json').read_text(encoding='utf-8'))
@@ -65,6 +81,7 @@ def build():
             raise ValueError('Template must be a local HTML filename')
         return Template((ROOT/'templates'/template_name).read_text(encoding='utf-8')).substitute(values)
     def write(path,title,description,content,schemas=(),lastmod=None,noindex=False):
+        title, description = neutral_metadata(title), neutral_metadata(description)
         canonical = base+path
         html = render('base.html', brand=escape(cfg['brand']),title=escape(title), description=escape(description), canonical=escape(canonical,quote=True), content=content, locale=escape(cfg['locale']), robots='noindex,follow' if noindex else 'index,follow', schema=json.dumps({'@context':'https://schema.org','@graph':list(schemas)},ensure_ascii=False).replace('<','\\u003c'))
         html = html.replace('/assets/style.css"',f'/assets/style.css?v={style_version}"')
@@ -74,7 +91,7 @@ def build():
         if not noindex:
             pages.append((canonical,lastmod))
     def detail_path(o):
-        return '/deals/'+o['id']+'/'
+        return '/plans/'+o['id']+'/'
     def cards(items):
         result = ''
         for o in items:
@@ -112,7 +129,7 @@ def build():
         rows += f'<tr><td>{provider_link}</td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(p["source"],quote=True)}" rel="noopener">Official source ↗</a></td></tr>'
     lastmod = max((o['fetched_at'] for o in offers),default=None)
     home = render('index.html',count=len(offers),provider_count=len(providers),cards=cards(offers),source_rows=rows,update_hours=cfg['update_hours'])
-    write('/',f'VPS deals & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS promotions from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
+    write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
         if not items:
@@ -125,7 +142,7 @@ def build():
         path = '/providers/'+p['id']+'/'
         content = render('provider.html',name=escape(p['name']),cards=cards(items),source=escape(p['source'],quote=True))
         content += '<p class="note">'+escape(coverage(p['id']))+'</p>'
-        write(path,f'{p["name"]} VPS promotions — {month}',f'{len(items)} freshly checked {p["name"]} promotions. Review eligibility and official terms.',content,[schema,crumbs(p['name'],path)],max((o['fetched_at'] for o in items),default=None),not items)
+        write(path,f'{p["name"]} VPS plans and terms — {month}',f'{len(items)} freshly checked {p["name"]} plans and terms. Review eligibility and official terms.',content,[schema,crumbs(p['name'],path)],max((o['fetched_at'] for o in items),default=None),not items)
     for o in offers:
         p = providers[o['provider_id']]
         target = p['affiliate'] or o['offer_url']
@@ -135,8 +152,8 @@ def build():
         content = render('deal.html',name=escape(p['name']),provider_id=p['id'],title=escape(o['title']),kind=escape(o['kind']),price=price,valid_until=escape(o.get('valid_until','Not published in the extracted data')),fetched=escape(o['fetched_at']),source=escape(o['source_url'],quote=True),target=escape(target,quote=True),rel=relation,disclosure=disclosure)
         write(detail_path(o),f'{p["name"]}: {o["title"]} — {month}',f'{o["title"]}. Official source checked {o["fetched_at"][:10]}. Review terms and eligibility before purchase.',content,[offer_schema(o),crumbs(o['title'],detail_path(o))],o['fetched_at'])
     compare_rows = ''.join(f'<tr><td>{escape(providers[o["provider_id"]]["name"])}</td><td><a href="{detail_path(o)}">{escape(o["title"])}</a></td><td>{escape(o["kind"])}</td><td>{escape(o.get("currency","")+" "+str(o["price"])) if "price" in o else "Not extracted"}</td><td>{escape(o.get("valid_until","Not specified"))}</td></tr>' for o in offers)
-    write('/compare/',f'Compare VPS promotions — {month}',f'Compare {len(offers)} official VPS promotions, offer types and published expiry dates.',render('compare.html',rows=compare_rows),[itemlist(offers),crumbs('Compare','/compare/')],lastmod)
-    write('/about/',f'How we verify offers | {cfg["brand"]}','Our sources, verification limits and affiliate disclosure.',render('about.html',hours=cfg['update_hours'],age=cfg['max_age_hours']),[crumbs('About','/about/')])
+    write('/compare/',f'Compare VPS plans and terms — {month}',f'Compare {len(offers)} official VPS plans, plan types and published expiry dates.',render('compare.html',rows=compare_rows),[itemlist(offers),crumbs('Compare','/compare/')],lastmod)
+    write('/about/',f'How we verify plan information | {cfg["brand"]}','Our sources, verification limits and affiliate disclosure.',render('about.html',hours=cfg['update_hours'],age=cfg['max_age_hours']),[crumbs('About','/about/')])
     write('/privacy/',f'Privacy policy | {cfg["brand"]}','Privacy, hosting information and planned third-party advertising.',render('privacy.html'),[crumbs('Privacy policy','/privacy/')])
     write('/contact/',f'Contact | {cfg["brand"]}','Contact PerkMingle, operated by Jiawei Li, for corrections and privacy questions.',render('contact.html'),[crumbs('Contact','/contact/')])
     sitemap = Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
@@ -149,8 +166,8 @@ def build():
     (dest/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n',encoding='utf-8')
     # Retired empty provider pages lead to the current source table, not cached shells.
     retired = [p for p in cfg['providers'] if not any(o['provider_id']==p['id'] for o in offers)]
-    (dest/'_redirects').write_text(''.join(f'/providers/{p["id"]}/ / 302\n/providers/{p["id"]} / 302\n' for p in retired),encoding='utf-8')
-    (dest/'404.html').write_text(origin_links('<!doctype html><html lang="en"><meta charset="utf-8"><title>Offer unavailable</title><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></html>'),encoding='utf-8')
+    (dest/'_redirects').write_text('/deals/:id/ /plans/:id/ 301\n/deals/:id /plans/:id/ 301\n'+''.join(f'/providers/{p["id"]}/ / 302\n/providers/{p["id"]} / 302\n' for p in retired),encoding='utf-8')
+    (dest/'404.html').write_text(origin_links('<!doctype html><html lang="en"><meta charset="utf-8"><title>Plan unavailable</title><meta name="description" content="This plan is no longer listed or could not be verified."><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></html>'),encoding='utf-8')
     (dest/'_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Cache-Control: public, max-age=300\n',encoding='utf-8')
     print(f'Built {len(pages)} indexable pages; {len(offers)} fresh offers; {len(providers)} configured providers')
 
