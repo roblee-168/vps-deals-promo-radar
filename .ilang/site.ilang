@@ -31,6 +31,7 @@ template_index: index.html
 template_provider: provider.html
 template_deal: deal.html
 template_compare: compare.html
+racknerd_plans: [{"memory":"1 GB RAM","annual":"$21.99/Year","pid":"952","specs":"1x vCPU Core; 20 GB SSD; 3 TB Bandwidth","url":"https://my.racknerd.com/aff.php?aff=21233&pid=952"},{"memory":"2 GB RAM","annual":"$35.99/Year","pid":"953","specs":"2x vCPU Cores; 35 GB SSD; 5 TB Bandwidth","url":"https://my.racknerd.com/aff.php?aff=21233&pid=953"},{"memory":"4 GB RAM","annual":"$59.99/Year","pid":"954","specs":"3x vCPU Cores; 60 GB SSD; 7 TB Bandwidth","url":"https://my.racknerd.com/aff.php?aff=21233&pid=954"},{"memory":"6 GB RAM","annual":"$89.99/Year","pid":"955","specs":"6x vCPU Cores; 100 GB SSD; 12 TB Bandwidth","url":"https://my.racknerd.com/aff.php?aff=21233&pid=955"},{"memory":"8 GB RAM","annual":"$119.99/Year","pid":"956","specs":"7x vCPU Cores; 150 GB SSD; 20 TB Bandwidth","url":"https://my.racknerd.com/aff.php?aff=21233&pid=956"}]
 ::RULE{抓不到 price⇒这条不写 price 字段 也不写进结构化数据 不许拿估的填}
 ::RULE{valid_until 已过⇒下架 不许留着冒充有效}
 ::RULE{抓取失败⇒记录失败并撤下该来源优惠 不伪造成功时间}
