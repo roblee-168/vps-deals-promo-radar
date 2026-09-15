@@ -85,6 +85,28 @@ def build():
         canonical = base+path
         html = render('base.html', brand=escape(cfg['brand']),title=escape(title), description=escape(description), canonical=escape(canonical,quote=True), content=content, locale=escape(cfg['locale']), robots='noindex,follow' if noindex else 'index,follow', schema=json.dumps({'@context':'https://schema.org','@graph':list(schemas)},ensure_ascii=False).replace('<','\\u003c'))
         html = html.replace('/assets/style.css"',f'/assets/style.css?v={style_version}"')
+        # Replace configured provider exits only; preserve source evidence and copy.
+        from urllib.parse import urlsplit
+        def affiliate_exit(match):
+            attrs = match[0]
+            href = re.search(r'href="([^"]+)"', attrs)
+            if not href:
+                return attrs
+            host = urlsplit(href[1]).hostname or ''
+            for provider in cfg['providers']:
+                domain = urlsplit(provider['home']).hostname.removeprefix('www.')
+                if provider['affiliate'] and (host == domain or host.endswith('.'+domain)):
+                    attrs = attrs.replace(href[0], 'href="'+escape(provider['affiliate'],quote=True)+'"')
+                    rel = re.search(r'rel="([^"]*)"', attrs)
+                    if rel:
+                        tokens = list(dict.fromkeys(rel[1].split()+['sponsored','noopener']))
+                        attrs = attrs.replace(rel[0], 'rel="'+' '.join(tokens)+'"')
+                    else:
+                        attrs = attrs[:-1]+' rel="sponsored noopener">'
+                    break
+            return attrs
+        html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
+
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
         output.parent.mkdir(parents=True,exist_ok=True)
         output.write_text(origin_links(html),encoding='utf-8')
