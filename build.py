@@ -60,6 +60,9 @@ def build():
     providers = {p['id']:p for p in cfg['providers']}
     offers = [o for o in data['offers'] if o['provider_id'] in providers and active(o,cfg,now)]
     base = cfg['domain'].rstrip('/')
+    # Manually transcribed official affiliate-center cards, separate from scraped evidence.
+    racknerd_plans = json.loads(cfg.get('racknerd_plans', '[]'))
+    racknerd_urls = {safe_url(plan['url']) for plan in racknerd_plans}
     def origin_links(html):
         return re.sub(r'(\b(?:href|src)=["\'])/(?!/)', lambda m: m[1]+escape(base,quote=True)+'/', html)
     dest = ROOT/'site'
@@ -91,6 +94,9 @@ def build():
             attrs = match[0]
             href = re.search(r'href="([^"]+)"', attrs)
             if not href:
+                return attrs
+            from html import unescape
+            if unescape(href[1]) in racknerd_urls:
                 return attrs
             host = urlsplit(href[1]).hostname or ''
             for provider in cfg['providers']:
@@ -148,7 +154,11 @@ def build():
         label = f'{count} official promotion'+('s' if count!=1 else '') if count else 'No fresh offer verified'
         label += '<br><small>'+escape(coverage(p['id']))+'</small>'
         provider_link = f'<a href="/providers/{p["id"]}/">{escape(p["name"])}</a>' if count else escape(p['name'])
-        rows += f'<tr><td>{provider_link}</td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(p["source"],quote=True)}" rel="noopener">Official source ↗</a></td></tr>'
+        source_target, source_label = p['source'], 'Official source ↗'
+        if p['id'] == 'racknerd' and racknerd_plans and count:
+            source_target = detail_path(next(o for o in offers if o['provider_id']=='racknerd'))
+            source_label = 'View five plans and terms ↗'
+        rows += f'<tr><td>{provider_link}</td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(source_target,quote=True)}" rel="noopener">{source_label}</a></td></tr>'
     lastmod = max((o['fetched_at'] for o in offers),default=None)
     home = render('index.html',count=len(offers),provider_count=len(providers),cards=cards(offers),source_rows=rows,update_hours=cfg['update_hours'])
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
@@ -163,6 +173,8 @@ def build():
             schema['offers'] = {'@type':'AggregateOffer','lowPrice':min(float(o['price']) for o in priced),'highPrice':max(float(o['price']) for o in priced),'priceCurrency':priced[0]['currency'],'offerCount':len(priced),'offers':[offer_schema(o) for o in priced]}
         path = '/providers/'+p['id']+'/'
         content = render('provider.html',name=escape(p['name']),cards=cards(items),source=escape(p['source'],quote=True))
+        if p['id'] == 'racknerd' and racknerd_plans:
+            content = content.replace(escape(p['source'],quote=True),detail_path(items[0])).replace('Check the source ↗','View five plans and terms ↗')
         content += '<p class="note">'+escape(coverage(p['id']))+'</p>'
         write(path,f'{p["name"]} VPS plans and terms — {month}',f'{len(items)} freshly checked {p["name"]} plans and terms. Review eligibility and official terms.',content,[schema,crumbs(p['name'],path)],max((o['fetched_at'] for o in items),default=None),not items)
     for o in offers:
@@ -172,6 +184,11 @@ def build():
         disclosure = 'This is an affiliate link. We may earn a commission if you purchase through it.' if p['affiliate'] else 'This is a direct official link. No affiliate tracking link is configured for this offer.'
         price = escape(o['currency']+' '+str(o['price'])) if 'price' in o else 'Not independently extracted — confirm with provider'
         content = render('deal.html',name=escape(p['name']),provider_id=p['id'],title=escape(o['title']),kind=escape(o['kind']),price=price,valid_until=escape(o.get('valid_until','Not published in the extracted data')),fetched=escape(o['fetched_at']),source=escape(o['source_url'],quote=True),target=escape(target,quote=True),rel=relation,disclosure=disclosure)
+        if p['id'] == 'racknerd' and racknerd_plans:
+            content = content.replace(escape(o['source_url'],quote=True),'#racknerd-plans').replace(escape(target,quote=True),'#racknerd-plans')
+            content = content.replace('View the original source ↗','View five plans and terms ↓').replace('View official offer ↗','Choose a plan below ↓').replace(price,'See annual prices below')
+            plan_rows = ''.join('<tr><td>'+escape(plan['memory'])+'</td><td>'+escape(plan['annual'])+'</td><td>'+escape(plan['pid'])+'</td><td>'+escape(plan['specs'])+'</td><td><a class="button" href="'+escape(plan['url'],quote=True)+'" rel="sponsored noopener">View '+escape(plan['memory'])+' plan ↗</a></td></tr>' for plan in racknerd_plans)
+            content += '<section id="racknerd-plans"><h2>Five KVM VPS plans and terms</h2><p>Annual prices and specifications listed in RackNerd’s affiliate center. Renewal prices and billing cycles are subject to the official product page.</p><div class="table-wrap"><table><thead><tr><th>Memory</th><th>Annual price</th><th>Product ID</th><th>Configuration</th><th>Plan link</th></tr></thead><tbody>'+plan_rows+'</tbody></table></div><p class="small">This is an affiliate link. We may earn a commission if you purchase through it.</p></section>'
         write(detail_path(o),f'{p["name"]}: {o["title"]} — {month}',f'{o["title"]}. Official source checked {o["fetched_at"][:10]}. Review terms and eligibility before purchase.',content,[offer_schema(o),crumbs(o['title'],detail_path(o))],o['fetched_at'])
     compare_rows = ''.join(f'<tr><td>{escape(providers[o["provider_id"]]["name"])}</td><td><a href="{detail_path(o)}">{escape(o["title"])}</a></td><td>{escape(o["kind"])}</td><td>{escape(o.get("currency","")+" "+str(o["price"])) if "price" in o else "Not extracted"}</td><td>{escape(o.get("valid_until","Not specified"))}</td></tr>' for o in offers)
     write('/compare/',f'Compare VPS plans and terms — {month}',f'Compare {len(offers)} official VPS plans, plan types and published expiry dates.',render('compare.html',rows=compare_rows),[itemlist(offers),crumbs('Compare','/compare/')],lastmod)
