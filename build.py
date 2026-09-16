@@ -66,6 +66,21 @@ def build():
     def origin_links(html):
         return re.sub(r'(\b(?:href|src)=["\'])/(?!/)', lambda m: m[1]+escape(base,quote=True)+'/', html)
     dest = ROOT/'site'
+    preserved_pages = {}
+    preserve_file = ROOT/'data/coverage-preserve.json'
+    if preserve_file.exists():
+        baseline = json.loads(preserve_file.read_text(encoding='utf-8'))
+        unchanged = {p['provider_id'] for p in baseline['providers']
+                     if p['offers']==[o for o in offers if o['provider_id']==p['provider_id']]}
+        for path,item in baseline['pages'].items():
+            provider = next((o['provider_id'] for o in offers if path=='/plans/'+o['id']+'/'),None)
+            if path.startswith('/providers/'):
+                provider=path.split('/')[2]
+            cached=dest/item['path']
+            if provider in unchanged and cached.is_file():
+                raw=cached.read_bytes()
+                if hashlib.sha256(raw).hexdigest()==item['sha256']:
+                    preserved_pages[path]=raw
     # Fixed generated directory only; clear stale detail pages after a provider is removed.
     if dest.is_symlink():
         raise ValueError('Refusing symlink output')
@@ -115,7 +130,10 @@ def build():
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
         output.parent.mkdir(parents=True,exist_ok=True)
-        output.write_text(origin_links(html),encoding='utf-8')
+        if path in preserved_pages:
+            output.write_bytes(preserved_pages[path])
+        else:
+            output.write_text(origin_links(html),encoding='utf-8')
         if not noindex:
             pages.append((canonical,lastmod))
     def detail_path(o):
@@ -124,7 +142,7 @@ def build():
         result = ''
         for o in items:
             p = providers[o['provider_id']]
-            price = escape(o['currency']+' '+str(o['price'])) if 'price' in o else 'See official terms'
+            price = escape(o['currency']+' '+str(o['price'])+o.get('price_unit','')) if 'price' in o else 'See official terms'
             result += f'<article class="deal"><div class="eyebrow">{escape(p["name"])} <span>{escape(o["kind"])}</span></div><h3><a href="{detail_path(o)}">{escape(o["title"])}</a></h3><p class="price">{price}</p><p class="muted">Source checked {escape(o["fetched_at"].replace("T"," ")[:16])} UTC</p><a class="arrow" href="{detail_path(o)}">View offer details <span aria-hidden="true">↗</span></a></article>'
         return result or '<div class="empty">No freshly verified promotions right now. Check the official provider pages below.</div>'
     def itemlist(items):
@@ -137,8 +155,10 @@ def build():
         if status.get('status') == 'unavailable':
             error = status.get('error','')
             reason = 'Source could not be fetched'
-            if 'robots' in error.lower():
-                reason = 'Source unavailable under robots.txt rules'
+            if 'Disallowed by robots.txt' in error:
+                reason = 'Explicitly disallowed by robots.txt'
+            elif 'robots' in error.lower():
+                reason = 'robots.txt could not be retrieved; crawling stopped'
             elif 'HTTP' in error:
                 reason = 'Official source returned an HTTP error'
             return 'Not verified: '+reason+'.'
@@ -182,15 +202,21 @@ def build():
         target = p['affiliate'] or o['offer_url']
         relation = 'sponsored noopener' if p['affiliate'] else 'noopener'
         disclosure = 'This is an affiliate link. We may earn a commission if you purchase through it.' if p['affiliate'] else 'This is a direct official link. No affiliate tracking link is configured for this offer.'
-        price = escape(o['currency']+' '+str(o['price'])) if 'price' in o else 'Not independently extracted — confirm with provider'
+        price = escape(o['currency']+' '+str(o['price'])+o.get('price_unit','')) if 'price' in o else 'Not independently extracted — confirm with provider'
         content = render('deal.html',name=escape(p['name']),provider_id=p['id'],title=escape(o['title']),kind=escape(o['kind']),price=price,valid_until=escape(o.get('valid_until','Not published in the extracted data')),fetched=escape(o['fetched_at']),source=escape(o['source_url'],quote=True),target=escape(target,quote=True),rel=relation,disclosure=disclosure)
+        if 'initial_term' in o:
+            content=content.replace('<dt>Price</dt>','<dt>Initial price</dt>')
+            detail_fields=''.join('<dt>'+label+'</dt><dd>'+escape(o.get(key,'Not specified'))+'</dd>' for label,key in [('Initial period','initial_term'),('Renewal price','renewal_price'),('Specifications','specifications'),('Terms','terms')])
+            content=content.replace('<dt>Published expiry</dt>',detail_fields+'<dt>Published expiry</dt>')
+            if o['kind']=='cloud credit bonus':
+                content=content.replace(price,'Not specified — this is a credit bonus, not a hosting price')
         if p['id'] == 'racknerd' and racknerd_plans:
             content = content.replace(escape(o['source_url'],quote=True),'#racknerd-plans').replace(escape(target,quote=True),'#racknerd-plans')
             content = content.replace('View the original source ↗','View five plans and terms ↓').replace('View official offer ↗','Choose a plan below ↓').replace(price,'See annual prices below')
             plan_rows = ''.join('<tr><td>'+escape(plan['memory'])+'</td><td>'+escape(plan['annual'])+'</td><td>'+escape(plan['pid'])+'</td><td>'+escape(plan['specs'])+'</td><td><a class="button" href="'+escape(plan['url'],quote=True)+'" rel="sponsored noopener">View '+escape(plan['memory'])+' plan ↗</a></td></tr>' for plan in racknerd_plans)
             content += '<section id="racknerd-plans"><h2>Five KVM VPS plans and terms</h2><p>Annual prices and specifications listed in RackNerd’s affiliate center. Renewal prices and billing cycles are subject to the official product page.</p><div class="table-wrap"><table><thead><tr><th>Memory</th><th>Annual price</th><th>Product ID</th><th>Configuration</th><th>Plan link</th></tr></thead><tbody>'+plan_rows+'</tbody></table></div><p class="small">This is an affiliate link. We may earn a commission if you purchase through it.</p></section>'
         write(detail_path(o),f'{p["name"]}: {o["title"]} — {month}',f'{o["title"]}. Official source checked {o["fetched_at"][:10]}. Review terms and eligibility before purchase.',content,[offer_schema(o),crumbs(o['title'],detail_path(o))],o['fetched_at'])
-    compare_rows = ''.join(f'<tr><td>{escape(providers[o["provider_id"]]["name"])}</td><td><a href="{detail_path(o)}">{escape(o["title"])}</a></td><td>{escape(o["kind"])}</td><td>{escape(o.get("currency","")+" "+str(o["price"])) if "price" in o else "Not extracted"}</td><td>{escape(o.get("valid_until","Not specified"))}</td></tr>' for o in offers)
+    compare_rows = ''.join(f'<tr><td>{escape(providers[o["provider_id"]]["name"])}</td><td><a href="{detail_path(o)}">{escape(o["title"])}</a></td><td>{escape(o["kind"])}</td><td>{escape(o.get("currency","")+" "+str(o["price"])+o.get("price_unit","")) if "price" in o else "Not extracted"}</td><td>{escape(o.get("valid_until","Not specified"))}</td></tr>' for o in offers)
     write('/compare/',f'Compare VPS plans and terms — {month}',f'Compare {len(offers)} official VPS plans, plan types and published expiry dates.',render('compare.html',rows=compare_rows),[itemlist(offers),crumbs('Compare','/compare/')],lastmod)
     write('/about/',f'How we verify plan information | {cfg["brand"]}','Our sources, verification limits and affiliate disclosure.',render('about.html',hours=cfg['update_hours'],age=cfg['max_age_hours']),[crumbs('About','/about/')])
     write('/privacy/',f'Privacy policy | {cfg["brand"]}','Privacy, hosting information and planned third-party advertising.',render('privacy.html'),[crumbs('Privacy policy','/privacy/')])

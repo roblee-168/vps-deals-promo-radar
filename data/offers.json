@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T12:34:52+00:00",
+  "generated_at": "2026-09-16T12:46:30+00:00",
   "offers": [
     {
       "id": "hostinger-b097069767",
@@ -50,6 +50,156 @@
       "fetched_at": "2026-09-16T12:34:45+00:00",
       "kind": "promotion",
       "evidence": "Pick Your VPS Deal"
+    },
+    {
+      "id": "ramnode-e7cdbc8c25",
+      "provider_id": "ramnode",
+      "title": "Get an extra 25% Cloud Credit!",
+      "offer_url": "https://clientarea.ramnode.com/promo.php",
+      "source_url": "https://clientarea.ramnode.com/promo.php",
+      "fetched_at": "2026-09-16T12:46:25+00:00",
+      "kind": "cloud credit bonus",
+      "evidence": "Get an extra 25% Cloud Credit! Promo code CLOUD25 . How does it work? Sign up , add at least $5 in Cloud Credit , and we will match it by 25%! In other words, add $10 and we will give you $2.50 in credit. Add $20 and we give you $5. Add $100, you get $25, etc. If you already have an account, add credit and open a ticket with subject CLOUD25. Notes: Matching credit will be added within 24 hours. Limited to one use per customer. Does not apply for moving general account credit to cloud. Only for Cloud (KVM, VDS) service. Does not apply for OpenVZ VPS.",
+      "terms": "Get an extra 25% Cloud Credit! Promo code CLOUD25 . How does it work? Sign up , add at least $5 in Cloud Credit , and we will match it by 25%! In other words, add $10 and we will give you $2.50 in credit. Add $20 and we give you $5. Add $100, you get $25, etc. If you already have an account, add credit and open a ticket with subject CLOUD25. Notes: Matching credit will be added within 24 hours. Limited to one use per customer. Does not apply for moving general account credit to cloud. Only for Cloud (KVM, VDS) service. Does not apply for OpenVZ VPS.",
+      "initial_term": "Not specified (cloud credit bonus, not a hosting purchase price)",
+      "renewal_price": "Not specified",
+      "specifications": "Cloud (KVM, VDS); excludes OpenVZ VPS"
+    },
+    {
+      "id": "inmotion-hosting-3aae39db18",
+      "provider_id": "inmotion-hosting",
+      "title": "VPS 4 vCPU",
+      "offer_url": "https://www.inmotionhosting.com/vps-hosting",
+      "source_url": "https://www.inmotionhosting.com/vps-hosting",
+      "fetched_at": "2026-09-16T12:46:28+00:00",
+      "kind": "promotion",
+      "price": "13.99",
+      "currency": "USD",
+      "price_unit": "/month",
+      "initial_term": "For 24 month term",
+      "renewal_price": "USD 26.99/month",
+      "specifications": "4 vCPU Cores 8GB RAM 160GB NVMe SSD 5TB Bandwidth 2 Dedicated IPs Launch Assist Onboarding and Server Setup ($199 one-time value)",
+      "terms": "Displayed default billing option; confirm total and options on the official page.",
+      "evidence": "VPS 4 vCPU; You Save 48% $13.99 /mo For 24 month term Renews at $26.99 /mo Select"
+    },
+    {
+      "id": "inmotion-hosting-152a89856b",
+      "provider_id": "inmotion-hosting",
+      "title": "VPS 8 vCPU",
+      "offer_url": "https://www.inmotionhosting.com/vps-hosting",
+      "source_url": "https://www.inmotionhosting.com/vps-hosting",
+      "fetched_at": "2026-09-16T12:46:28+00:00",
+      "kind": "promotion",
+      "price": "21.99",
+      "currency": "USD",
+      "price_unit": "/month",
+      "initial_term": "For 24 month term",
+      "renewal_price": "USD 56.99/month",
+      "specifications": "8 vCPU Cores 16GB RAM 260GB NVMe SSD Unlimited Bandwidth 3 Dedicated IPs Launch Assist Onboarding and Server Setup ($199 one-time value)",
+      "terms": "Displayed default billing option; confirm total and options on the official page.",
+      "evidence": "VPS 8 vCPU; You Save 61% $21.99 /mo For 24 month term Renews at $56.99 /mo Select"
+    },
+    {
+      "id": "inmotion-hosting-1e0af50c07",
+      "provider_id": "inmotion-hosting",
+      "title": "VPS 12 vCPU",
+      "offer_url": "https://www.inmotionhosting.com/vps-hosting",
+      "source_url": "https://www.inmotionhosting.com/vps-hosting",
+      "fetched_at": "2026-09-16T12:46:28+00:00",
+      "kind": "promotion",
+      "price": "32.99",
+      "currency": "USD",
+      "price_unit": "/month",
+      "initial_term": "For 24 month term",
+      "renewal_price": "USD 86.99/month",
+      "specifications": "12 vCPU Cores 24GB RAM 360GB NVMe SSD Unlimited Bandwidth 5 Dedicated IPs Launch Assist Onboarding and Server Setup ($199 one-time value)",
+      "terms": "Displayed default billing option; confirm total and options on the official page.",
+      "evidence": "VPS 12 vCPU; You Save 62% $32.99 /mo For 24 month term Renews at $86.99 /mo Select"
+    },
+    {
+      "id": "inmotion-hosting-bbfc52435d",
+      "provider_id": "inmotion-hosting",
+      "title": "VPS 16 vCPU",
+      "offer_url": "https://www.inmotionhosting.com/vps-hosting",
+      "source_url": "https://www.inmotionhosting.com/vps-hosting",
+      "fetched_at": "2026-09-16T12:46:28+00:00",
+      "kind": "promotion",
+      "price": "44.99",
+      "currency": "USD",
+      "price_unit": "/month",
+      "initial_term": "For 24 month term",
+      "renewal_price": "USD 121.99/month",
+      "specifications": "16 vCPU Cores 32GB RAM 460GB NVMe SSD Unlimited Bandwidth 10 Dedicated IPs Docker Compatible Launch Assist Onboarding and Server Setup ($199 one-time value)",
+      "terms": "Displayed default billing option; confirm total and options on the official page.",
+      "evidence": "VPS 16 vCPU; You Save 63% $44.99 /mo For 24 month term Renews at $121.99 /mo Select"
+    },
+    {
+      "id": "dreamhost-a7274bfefe",
+      "provider_id": "dreamhost",
+      "title": "Stack 4 VPS",
+      "offer_url": "https://www.dreamhost.com/hosting/vps/",
+      "source_url": "https://www.dreamhost.com/hosting/vps/",
+      "fetched_at": "2026-09-16T12:46:30+00:00",
+      "kind": "promotion",
+      "price": "8.99",
+      "currency": "USD",
+      "price_unit": "/month",
+      "initial_term": "First 3 months",
+      "renewal_price": "USD 15.99/month after 3 months",
+      "specifications": "2 vCPU AMD EPYC 4 GB RAM 75 GB NVMe SSD Unmetered Bandwidth",
+      "terms": "The full term plus taxes are charged at checkout.",
+      "evidence": "Stack 4; First 3 months at $8.99 /mo; Auto-renews at $15.99 /mo after 3 months."
+    },
+    {
+      "id": "dreamhost-dedfcb1ff0",
+      "provider_id": "dreamhost",
+      "title": "Stack 8 VPS",
+      "offer_url": "https://www.dreamhost.com/hosting/vps/",
+      "source_url": "https://www.dreamhost.com/hosting/vps/",
+      "fetched_at": "2026-09-16T12:46:30+00:00",
+      "kind": "promotion",
+      "price": "13.99",
+      "currency": "USD",
+      "price_unit": "/month",
+      "initial_term": "First 3 months",
+      "renewal_price": "USD 21.99/month after 3 months",
+      "specifications": "2 vCPU AMD EPYC 8 GB RAM 150 GB NVMe SSD Unmetered Bandwidth",
+      "terms": "The full term plus taxes are charged at checkout.",
+      "evidence": "Stack 8; First 3 months at $13.99 /mo; Auto-renews at $21.99 /mo after 3 months."
+    },
+    {
+      "id": "dreamhost-ea8d883eb7",
+      "provider_id": "dreamhost",
+      "title": "Stack 16 VPS",
+      "offer_url": "https://www.dreamhost.com/hosting/vps/",
+      "source_url": "https://www.dreamhost.com/hosting/vps/",
+      "fetched_at": "2026-09-16T12:46:30+00:00",
+      "kind": "promotion",
+      "price": "22.99",
+      "currency": "USD",
+      "price_unit": "/month",
+      "initial_term": "First 3 months",
+      "renewal_price": "USD 34.99/month after 3 months",
+      "specifications": "4 vCPU AMD EPYC 16 GB RAM 250 GB NVMe SSD Unmetered Bandwidth",
+      "terms": "The full term plus taxes are charged at checkout.",
+      "evidence": "Stack 16; First 3 months at $22.99 /mo; Auto-renews at $34.99 /mo after 3 months."
+    },
+    {
+      "id": "dreamhost-4448e71759",
+      "provider_id": "dreamhost",
+      "title": "Stack 32 VPS",
+      "offer_url": "https://www.dreamhost.com/hosting/vps/",
+      "source_url": "https://www.dreamhost.com/hosting/vps/",
+      "fetched_at": "2026-09-16T12:46:30+00:00",
+      "kind": "promotion",
+      "price": "45.99",
+      "currency": "USD",
+      "price_unit": "/month",
+      "initial_term": "First 3 months",
+      "renewal_price": "USD 59.99/month after 3 months",
+      "specifications": "8 vCPU AMD EPYC 32 GB RAM 450 GB NVMe SSD Unmetered Bandwidth",
+      "terms": "The full term plus taxes are charged at checkout.",
+      "evidence": "Stack 32; First 3 months at $45.99 /mo; Auto-renews at $59.99 /mo after 3 months."
     }
   ],
   "sources": [
@@ -69,30 +219,30 @@
     },
     {
       "provider_id": "akamai",
-      "attempted_at": "2026-09-16T12:34:36+00:00",
+      "attempted_at": "2026-09-16T12:46:15+00:00",
       "status": "unavailable",
       "error": "ValueError: robots unavailable: HTTP 403"
     },
     {
       "provider_id": "digitalocean",
-      "attempted_at": "2026-09-16T12:34:36+00:00",
+      "attempted_at": "2026-09-16T12:46:15+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-16T12:34:38+00:00"
+      "checked_at": "2026-09-16T12:46:17+00:00"
     },
     {
       "provider_id": "vultr",
-      "attempted_at": "2026-09-16T12:34:38+00:00",
+      "attempted_at": "2026-09-16T12:46:17+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-16T12:34:40+00:00"
+      "checked_at": "2026-09-16T12:46:20+00:00"
     },
     {
       "provider_id": "ovhcloud",
-      "attempted_at": "2026-09-16T12:34:40+00:00",
+      "attempted_at": "2026-09-16T12:46:20+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-16T12:34:41+00:00"
+      "checked_at": "2026-09-16T12:46:22+00:00"
     },
     {
       "provider_id": "kamatera",
@@ -117,37 +267,36 @@
     },
     {
       "provider_id": "ramnode",
-      "attempted_at": "2026-09-16T12:34:45+00:00",
-      "status": "no_match",
-      "count": 0,
-      "checked_at": "2026-09-16T12:34:47+00:00"
+      "attempted_at": "2026-09-16T12:46:22+00:00",
+      "status": "ok",
+      "count": 1,
+      "checked_at": "2026-09-16T12:46:25+00:00"
     },
     {
       "provider_id": "namecheap",
-      "attempted_at": "2026-09-16T12:34:47+00:00",
+      "attempted_at": "2026-09-16T12:46:25+00:00",
       "status": "unavailable",
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
       "provider_id": "inmotion-hosting",
-      "attempted_at": "2026-09-16T12:34:48+00:00",
-      "status": "no_match",
-      "count": 0,
-      "checked_at": "2026-09-16T12:34:49+00:00"
+      "attempted_at": "2026-09-16T12:46:26+00:00",
+      "status": "ok",
+      "count": 4,
+      "checked_at": "2026-09-16T12:46:28+00:00"
     },
     {
       "provider_id": "dreamhost",
-      "attempted_at": "2026-09-16T12:34:49+00:00",
-      "status": "no_match",
-      "count": 0,
-      "checked_at": "2026-09-16T12:34:50+00:00"
+      "attempted_at": "2026-09-16T12:46:28+00:00",
+      "status": "ok",
+      "count": 4,
+      "checked_at": "2026-09-16T12:46:30+00:00"
     },
     {
       "provider_id": "liquid-web",
-      "attempted_at": "2026-09-16T12:34:50+00:00",
-      "status": "no_match",
-      "count": 0,
-      "checked_at": "2026-09-16T12:34:52+00:00"
+      "attempted_at": "2026-09-16T12:46:30+00:00",
+      "status": "unavailable",
+      "error": "ValueError: robots unavailable: HTTP 403"
     }
   ]
 }

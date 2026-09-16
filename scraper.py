@@ -3,6 +3,9 @@
 # ::RULE{遵守robots TLS验证 有界请求 失败撤下}
 # ::BOUNDARY{never:编价格 编日期 绕反爬 把赠金当价格}
 import hashlib
+import gzip
+import io
+import os
 import ipaddress
 import json
 import re
@@ -85,6 +88,10 @@ class Fetcher:
             body = r.read(self.cfg['max_bytes'] + 1)
             if len(body) > self.cfg['max_bytes']:
                 raise ValueError('Response exceeds size limit')
+            if body.startswith(b'\x1f\x8b'):
+                body = gzip.GzipFile(fileobj=io.BytesIO(body)).read(self.cfg['max_bytes'] + 1)
+                if len(body) > self.cfg['max_bytes']:
+                    raise ValueError('Decompressed response exceeds size limit')
             return body.decode(r.headers.get_content_charset() or 'utf-8','replace')
     def allowed(self, url):
         u = urlsplit(url)
@@ -138,6 +145,9 @@ def extract(body, url, provider, cfg, fetched):
     # A live page can advertise an old campaign. Explicit ended notices override headings.
     if re.search(r'(?i)\b(?:deals?|sale|promotion|offer|campaign)s?\s+(?:(?:has|have)\s+)?(?:ended|expired|is over|are over)\b',page.text):
         return []
+    card_records = extract_plan_cards(body, url, provider, fetched)
+    if card_records is not None:
+        return card_records
     # Accept a short promotional heading, never an arbitrary currency elsewhere in the page.
     vps = r'(?i)\bvps\b|virtual private|cloud[- ]servers?|\bdroplets?\b'
     scoped_page = bool(re.search(vps,urlsplit(url).path))
@@ -174,11 +184,74 @@ def extract(body, url, provider, cfg, fetched):
     allowed = set(cfg['fields']) | {'id','provider_id','kind','evidence','availability'}
     return [{k:v for k,v in record.items() if k in allowed}]
 
+def extract_plan_cards(body, url, provider, fetched):
+    """Known public card layouts only; require initial and renewal evidence together."""
+    def text(fragment):
+        p = Page(); p.feed(fragment); return p.text
+    def record(title, key, **fields):
+        return dict(id=provider['id']+'-'+hashlib.sha256((url+'#'+key).encode()).hexdigest()[:10],
+                    provider_id=provider['id'],title=title,offer_url=url,source_url=url,
+                    fetched_at=fetched,kind='promotion',**fields)
+    if provider['id']=='dreamhost' and urlsplit(url).path=='/hosting/vps/':
+        results=[]
+        pattern=r'(Stack (?:4|8|16|32))</span>(.*?)(?=Stack (?:4|8|16|32)</span>|Other VPS hosts meter)'
+        for name,fragment in re.findall(pattern,body,re.S):
+            card=text(fragment)
+            price=re.search(r'First (\d+) months at \$(\d+\.\d{2})\s*/mo',card)
+            renew=re.search(r'Auto-renews at \$(\d+\.\d{2})\s*/mo after (\d+) months\.',card)
+            specs=re.search(r'(\d+ vCPU AMD EPYC \d+ GB RAM \d+ GB NVMe SSD Unmetered Bandwidth)',card)
+            if price and renew and specs and price[1]==renew[2] and 'On Sale' in card:
+                results.append(record(name+' VPS',name,price=price[2],currency='USD',price_unit='/month',
+                    initial_term='First '+price[1]+' months',renewal_price='USD '+renew[1]+'/month after '+renew[2]+' months',
+                    specifications=specs[1],terms='The full term plus taxes are charged at checkout.' if 'The full term plus taxes are charged at checkout.' in text(body) else 'Not specified',
+                    evidence=name+'; '+price[0]+'; '+renew[0]))
+        return results
+    if provider['id']=='inmotion-hosting' and urlsplit(url).path.rstrip('/')=='/vps-hosting':
+        results=[]
+        for name,fragment in re.findall(r'<h3[^>]*>(VPS \d+ vCPU)</h3>(.*?)(?=<h3[^>]*>VPS|Included In All Plans:)',body,re.S):
+            selected=re.search(r"<div class=['\"] active imh-switcher['\"]>(.*?)</a></div>",fragment,re.S)
+            if not selected: continue
+            card=text(selected[1])
+            prices=re.search(r'You Save \d+% \$(\d+\.\d{2})\s*/mo For (\d+) month term Renews at \$(\d+\.\d{2})\s*/mo',card)
+            checkout_term=re.search(r'data-term="(\d+)"',selected[1])
+            specs=re.search(r'<ul class="imh-rostrum-details-list">(.*?)</ul>',fragment,re.S)
+            if prices and checkout_term and prices[2]==checkout_term[1] and specs:
+                results.append(record(name,name,price=prices[1],currency='USD',price_unit='/month',
+                    initial_term='For '+prices[2]+' month term',renewal_price='USD '+prices[3]+'/month',
+                    specifications=text(specs[1]),terms='Displayed default billing option; confirm total and options on the official page.',
+                    evidence=name+'; '+card))
+        return results
+    if provider['id']=='ramnode' and urlsplit(url).path=='/promo.php':
+        block=re.search(r'<div class="whmcspage">(.*?)</div>',body,re.S)
+        if not block:return []
+        content=text(block[1])
+        title=re.search(r'Get an extra (\d+)% Cloud Credit!',content)
+        minimum=re.search(r'add at least \$(\d+(?:\.\d+)?) in Cloud Credit',content)
+        code=re.search(r'Promo code ([A-Z0-9]+)',content)
+        if not (title and minimum and code and 'Only for Cloud (KVM, VDS) service.' in content):return []
+        r=record(title[0],'cloud-credit',evidence=content,terms=content,
+                 initial_term='Not specified (cloud credit bonus, not a hosting purchase price)',
+                 renewal_price='Not specified',specifications='Cloud (KVM, VDS); excludes OpenVZ VPS')
+        r['kind']='cloud credit bonus';return [r]
+    return None
+
 def run():
     cfg = load_config()
     fetcher = Fetcher(cfg)
     offers, statuses = [], []
+    # A code deployment must not refresh unrelated verified records. Scheduled runs still refresh all sources.
+    preserve = {}
+    manifest = ROOT/'data/coverage-preserve.json'
+    if os.environ.get('GITHUB_EVENT_NAME') == 'push' and manifest.exists():
+        from build import active
+        baseline=json.loads(manifest.read_text(encoding='utf-8'))
+        for item in baseline['providers']:
+            if all(active(o,cfg,datetime.now(timezone.utc)) for o in item['offers']):
+                preserve[item['provider_id']]=item
     for p in cfg['providers']:
+        if p['id'] in preserve:
+            item=preserve[p['id']];offers.extend(item['offers']);statuses.append(item['status'])
+            print(p['name'],'preserved existing verified record');continue
         status = dict(provider_id=p['id'], attempted_at=utcnow())
         try:
             body, final = fetcher.get(p['source'])

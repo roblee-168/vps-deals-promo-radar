@@ -1,0 +1,157 @@
+{
+  "baseline_commit": "baa52711d4523f60c5b5100b71fc0e0a01931bcc",
+  "providers": [
+    {
+      "provider_id": "hostinger",
+      "offers": [
+        {
+          "id": "hostinger-b097069767",
+          "provider_id": "hostinger",
+          "title": "Best VPS hosting deals",
+          "offer_url": "https://www.hostinger.com/black-friday-vps-deals",
+          "source_url": "https://www.hostinger.com/black-friday-vps-deals",
+          "fetched_at": "2026-09-16T12:34:34+00:00",
+          "kind": "promotion",
+          "evidence": "Best VPS hosting deals"
+        }
+      ],
+      "status": {
+        "provider_id": "hostinger",
+        "attempted_at": "2026-09-16T12:34:33+00:00",
+        "status": "ok",
+        "count": 1,
+        "checked_at": "2026-09-16T12:34:34+00:00"
+      }
+    },
+    {
+      "provider_id": "ionos",
+      "offers": [
+        {
+          "id": "ionos-75c297ba0b",
+          "provider_id": "ionos",
+          "title": "Free VPS Trial",
+          "offer_url": "https://www.ionos.com/servers/free-vps",
+          "source_url": "https://www.ionos.com/servers/free-vps",
+          "fetched_at": "2026-09-16T12:34:36+00:00",
+          "kind": "money-back guarantee",
+          "evidence": "Free VPS Trial"
+        }
+      ],
+      "status": {
+        "provider_id": "ionos",
+        "attempted_at": "2026-09-16T12:34:34+00:00",
+        "status": "ok",
+        "count": 1,
+        "checked_at": "2026-09-16T12:34:36+00:00"
+      }
+    },
+    {
+      "provider_id": "kamatera",
+      "offers": [
+        {
+          "id": "kamatera-412ce05293",
+          "provider_id": "kamatera",
+          "title": "30-Day Free Trial",
+          "offer_url": "https://www.kamatera.com/free-trial/",
+          "source_url": "https://www.kamatera.com/free-trial/",
+          "fetched_at": "2026-09-16T12:34:42+00:00",
+          "kind": "trial / credit",
+          "evidence": "30-Day Free Trial"
+        }
+      ],
+      "status": {
+        "provider_id": "kamatera",
+        "attempted_at": "2026-09-16T12:34:41+00:00",
+        "status": "ok",
+        "count": 1,
+        "checked_at": "2026-09-16T12:34:42+00:00"
+      }
+    },
+    {
+      "provider_id": "racknerd",
+      "offers": [
+        {
+          "id": "racknerd-99aba3e2e3",
+          "provider_id": "racknerd",
+          "title": "Pick Your VPS Deal",
+          "offer_url": "https://www.racknerd.com/specials/",
+          "source_url": "https://www.racknerd.com/specials/",
+          "fetched_at": "2026-09-16T12:34:45+00:00",
+          "kind": "promotion",
+          "evidence": "Pick Your VPS Deal"
+        }
+      ],
+      "status": {
+        "provider_id": "racknerd",
+        "attempted_at": "2026-09-16T12:34:44+00:00",
+        "status": "ok",
+        "count": 1,
+        "checked_at": "2026-09-16T12:34:45+00:00"
+      }
+    },
+    {
+      "provider_id": "upcloud",
+      "offers": [
+        {
+          "id": "upcloud-e5e827504d",
+          "provider_id": "upcloud",
+          "title": "Free trial",
+          "offer_url": "https://upcloud.com/docs/getting-started/free-trial/",
+          "source_url": "https://upcloud.com/docs/getting-started/free-trial/",
+          "fetched_at": "2026-09-16T12:34:44+00:00",
+          "kind": "trial / credit",
+          "evidence": "Free trial"
+        }
+      ],
+      "status": {
+        "provider_id": "upcloud",
+        "attempted_at": "2026-09-16T12:34:42+00:00",
+        "status": "ok",
+        "count": 1,
+        "checked_at": "2026-09-16T12:34:44+00:00"
+      }
+    }
+  ],
+  "pages": {
+    "/providers/hostinger/": {
+      "path": "providers/hostinger/index.html",
+      "sha256": "4b49b02d8549a8b9fbbb0105b100b155edf7c8fcebbf00e80efd5ed50c0e09bf"
+    },
+    "/providers/ionos/": {
+      "path": "providers/ionos/index.html",
+      "sha256": "256fb01c5c955235cad7a3fbe04a9f3cf83dc47712b2eb7e626f333567c7f140"
+    },
+    "/providers/kamatera/": {
+      "path": "providers/kamatera/index.html",
+      "sha256": "7155271e282404e84468d9c412f99f5d602705ea6477d5092db60c886b1fb09f"
+    },
+    "/providers/upcloud/": {
+      "path": "providers/upcloud/index.html",
+      "sha256": "18d35d59e698ed55c37cd8796e384547b8c69195f60e907d0f64530f2493b321"
+    },
+    "/providers/racknerd/": {
+      "path": "providers/racknerd/index.html",
+      "sha256": "1c87a6b65d37ffe7e0a4999d87d5ff84225196d0eaf706e5060f51d437fc4960"
+    },
+    "/plans/hostinger-b097069767/": {
+      "path": "plans/hostinger-b097069767/index.html",
+      "sha256": "928278b5251cf59cd4eccccfa524ea8639f1d99a0e66b24abd7707d9bfd6bcb0"
+    },
+    "/plans/ionos-75c297ba0b/": {
+      "path": "plans/ionos-75c297ba0b/index.html",
+      "sha256": "22582c1d175ffd00df9a626f00eb763ff3cb9993c95491ccb1b3eb9b843f60bb"
+    },
+    "/plans/kamatera-412ce05293/": {
+      "path": "plans/kamatera-412ce05293/index.html",
+      "sha256": "78d611e7987a1baa36194d20dca7b3dd40ad89835d32c94bd665c7e033a1810a"
+    },
+    "/plans/upcloud-e5e827504d/": {
+      "path": "plans/upcloud-e5e827504d/index.html",
+      "sha256": "ec29fc3d00de56b9c0af0c4ed4c0679e8401104ff3a69e1f83b67966e33d9107"
+    },
+    "/plans/racknerd-99aba3e2e3/": {
+      "path": "plans/racknerd-99aba3e2e3/index.html",
+      "sha256": "661e5ccae9fc68d9ddb19778e9c1bc16fbb093d626c552df9f89576ebe92224a"
+    }
+  }
+}
