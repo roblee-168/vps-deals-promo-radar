@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T18:31:31+00:00",
+  "generated_at": "2026-09-17T02:33:30+00:00",
   "offers": [
     {
       "id": "hostinger-b097069767",
@@ -7,7 +7,7 @@
       "title": "Best VPS hosting deals",
       "offer_url": "https://www.hostinger.com/black-friday-vps-deals",
       "source_url": "https://www.hostinger.com/black-friday-vps-deals",
-      "fetched_at": "2026-09-16T18:31:10+00:00",
+      "fetched_at": "2026-09-16T12:34:34+00:00",
       "kind": "promotion",
       "evidence": "Best VPS hosting deals"
     },
@@ -17,7 +17,7 @@
       "title": "Free VPS Trial",
       "offer_url": "https://www.ionos.com/servers/free-vps",
       "source_url": "https://www.ionos.com/servers/free-vps",
-      "fetched_at": "2026-09-16T18:31:12+00:00",
+      "fetched_at": "2026-09-16T12:34:36+00:00",
       "kind": "money-back guarantee",
       "evidence": "Free VPS Trial"
     },
@@ -27,7 +27,7 @@
       "title": "30-Day Free Trial",
       "offer_url": "https://www.kamatera.com/free-trial/",
       "source_url": "https://www.kamatera.com/free-trial/",
-      "fetched_at": "2026-09-16T18:31:19+00:00",
+      "fetched_at": "2026-09-16T12:34:42+00:00",
       "kind": "trial / credit",
       "evidence": "30-Day Free Trial"
     },
@@ -37,7 +37,7 @@
       "title": "Free trial",
       "offer_url": "https://upcloud.com/docs/getting-started/free-trial/",
       "source_url": "https://upcloud.com/docs/getting-started/free-trial/",
-      "fetched_at": "2026-09-16T18:31:21+00:00",
+      "fetched_at": "2026-09-16T12:34:44+00:00",
       "kind": "trial / credit",
       "evidence": "Free trial"
     },
@@ -47,7 +47,7 @@
       "title": "Pick Your VPS Deal",
       "offer_url": "https://www.racknerd.com/specials/",
       "source_url": "https://www.racknerd.com/specials/",
-      "fetched_at": "2026-09-16T18:31:22+00:00",
+      "fetched_at": "2026-09-16T12:34:45+00:00",
       "kind": "promotion",
       "evidence": "Pick Your VPS Deal"
     },
@@ -57,7 +57,7 @@
       "title": "Get an extra 25% Cloud Credit!",
       "offer_url": "https://clientarea.ramnode.com/promo.php",
       "source_url": "https://clientarea.ramnode.com/promo.php",
-      "fetched_at": "2026-09-16T18:31:24+00:00",
+      "fetched_at": "2026-09-17T02:33:25+00:00",
       "kind": "cloud credit bonus",
       "evidence": "Get an extra 25% Cloud Credit! Promo code CLOUD25 . How does it work? Sign up , add at least $5 in Cloud Credit , and we will match it by 25%! In other words, add $10 and we will give you $2.50 in credit. Add $20 and we give you $5. Add $100, you get $25, etc. If you already have an account, add credit and open a ticket with subject CLOUD25. Notes: Matching credit will be added within 24 hours. Limited to one use per customer. Does not apply for moving general account credit to cloud. Only for Cloud (KVM, VDS) service. Does not apply for OpenVZ VPS.",
       "terms": "Get an extra 25% Cloud Credit! Promo code CLOUD25 . How does it work? Sign up , add at least $5 in Cloud Credit , and we will match it by 25%! In other words, add $10 and we will give you $2.50 in credit. Add $20 and we give you $5. Add $100, you get $25, etc. If you already have an account, add credit and open a ticket with subject CLOUD25. Notes: Matching credit will be added within 24 hours. Limited to one use per customer. Does not apply for moving general account credit to cloud. Only for Cloud (KVM, VDS) service. Does not apply for OpenVZ VPS.",
@@ -71,7 +71,7 @@
       "title": "VPS 4 vCPU",
       "offer_url": "https://www.inmotionhosting.com/vps-hosting",
       "source_url": "https://www.inmotionhosting.com/vps-hosting",
-      "fetched_at": "2026-09-16T18:31:26+00:00",
+      "fetched_at": "2026-09-17T02:33:28+00:00",
       "kind": "promotion",
       "price": "13.99",
       "currency": "USD",
@@ -88,7 +88,7 @@
       "title": "VPS 8 vCPU",
       "offer_url": "https://www.inmotionhosting.com/vps-hosting",
       "source_url": "https://www.inmotionhosting.com/vps-hosting",
-      "fetched_at": "2026-09-16T18:31:26+00:00",
+      "fetched_at": "2026-09-17T02:33:28+00:00",
       "kind": "promotion",
       "price": "21.99",
       "currency": "USD",
@@ -105,7 +105,7 @@
       "title": "VPS 12 vCPU",
       "offer_url": "https://www.inmotionhosting.com/vps-hosting",
       "source_url": "https://www.inmotionhosting.com/vps-hosting",
-      "fetched_at": "2026-09-16T18:31:26+00:00",
+      "fetched_at": "2026-09-17T02:33:28+00:00",
       "kind": "promotion",
       "price": "32.99",
       "currency": "USD",
@@ -122,7 +122,7 @@
       "title": "VPS 16 vCPU",
       "offer_url": "https://www.inmotionhosting.com/vps-hosting",
       "source_url": "https://www.inmotionhosting.com/vps-hosting",
-      "fetched_at": "2026-09-16T18:31:26+00:00",
+      "fetched_at": "2026-09-17T02:33:28+00:00",
       "kind": "promotion",
       "price": "44.99",
       "currency": "USD",
@@ -139,7 +139,7 @@
       "title": "Stack 4 VPS",
       "offer_url": "https://www.dreamhost.com/hosting/vps/",
       "source_url": "https://www.dreamhost.com/hosting/vps/",
-      "fetched_at": "2026-09-16T18:31:28+00:00",
+      "fetched_at": "2026-09-17T02:33:29+00:00",
       "kind": "promotion",
       "price": "8.99",
       "currency": "USD",
@@ -156,7 +156,7 @@
       "title": "Stack 8 VPS",
       "offer_url": "https://www.dreamhost.com/hosting/vps/",
       "source_url": "https://www.dreamhost.com/hosting/vps/",
-      "fetched_at": "2026-09-16T18:31:28+00:00",
+      "fetched_at": "2026-09-17T02:33:29+00:00",
       "kind": "promotion",
       "price": "13.99",
       "currency": "USD",
@@ -173,7 +173,7 @@
       "title": "Stack 16 VPS",
       "offer_url": "https://www.dreamhost.com/hosting/vps/",
       "source_url": "https://www.dreamhost.com/hosting/vps/",
-      "fetched_at": "2026-09-16T18:31:28+00:00",
+      "fetched_at": "2026-09-17T02:33:29+00:00",
       "kind": "promotion",
       "price": "22.99",
       "currency": "USD",
@@ -190,7 +190,7 @@
       "title": "Stack 32 VPS",
       "offer_url": "https://www.dreamhost.com/hosting/vps/",
       "source_url": "https://www.dreamhost.com/hosting/vps/",
-      "fetched_at": "2026-09-16T18:31:28+00:00",
+      "fetched_at": "2026-09-17T02:33:29+00:00",
       "kind": "promotion",
       "price": "45.99",
       "currency": "USD",
@@ -205,99 +205,99 @@
   "sources": [
     {
       "provider_id": "hostinger",
-      "attempted_at": "2026-09-16T18:31:09+00:00",
+      "attempted_at": "2026-09-16T12:34:33+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-16T18:31:10+00:00"
+      "checked_at": "2026-09-16T12:34:34+00:00"
     },
     {
       "provider_id": "ionos",
-      "attempted_at": "2026-09-16T18:31:10+00:00",
+      "attempted_at": "2026-09-16T12:34:34+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-16T18:31:12+00:00"
+      "checked_at": "2026-09-16T12:34:36+00:00"
     },
     {
       "provider_id": "akamai",
-      "attempted_at": "2026-09-16T18:31:12+00:00",
+      "attempted_at": "2026-09-17T02:33:16+00:00",
       "status": "unavailable",
       "error": "ValueError: robots unavailable: HTTP 403"
     },
     {
       "provider_id": "digitalocean",
-      "attempted_at": "2026-09-16T18:31:12+00:00",
+      "attempted_at": "2026-09-17T02:33:16+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-16T18:31:14+00:00"
+      "checked_at": "2026-09-17T02:33:19+00:00"
     },
     {
       "provider_id": "vultr",
-      "attempted_at": "2026-09-16T18:31:14+00:00",
+      "attempted_at": "2026-09-17T02:33:19+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-16T18:31:16+00:00"
+      "checked_at": "2026-09-17T02:33:21+00:00"
     },
     {
       "provider_id": "ovhcloud",
-      "attempted_at": "2026-09-16T18:31:16+00:00",
+      "attempted_at": "2026-09-17T02:33:21+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-16T18:31:18+00:00"
+      "checked_at": "2026-09-17T02:33:22+00:00"
     },
     {
       "provider_id": "kamatera",
-      "attempted_at": "2026-09-16T18:31:18+00:00",
+      "attempted_at": "2026-09-16T12:34:41+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-16T18:31:19+00:00"
+      "checked_at": "2026-09-16T12:34:42+00:00"
     },
     {
       "provider_id": "upcloud",
-      "attempted_at": "2026-09-16T18:31:19+00:00",
+      "attempted_at": "2026-09-16T12:34:42+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-16T18:31:21+00:00"
+      "checked_at": "2026-09-16T12:34:44+00:00"
     },
     {
       "provider_id": "racknerd",
-      "attempted_at": "2026-09-16T18:31:21+00:00",
+      "attempted_at": "2026-09-16T12:34:44+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-16T18:31:22+00:00"
+      "checked_at": "2026-09-16T12:34:45+00:00"
     },
     {
       "provider_id": "ramnode",
-      "attempted_at": "2026-09-16T18:31:22+00:00",
+      "attempted_at": "2026-09-17T02:33:22+00:00",
       "status": "ok",
       "count": 1,
-      "checked_at": "2026-09-16T18:31:24+00:00"
+      "checked_at": "2026-09-17T02:33:25+00:00"
     },
     {
       "provider_id": "namecheap",
-      "attempted_at": "2026-09-16T18:31:24+00:00",
+      "attempted_at": "2026-09-17T02:33:25+00:00",
       "status": "unavailable",
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
       "provider_id": "inmotion-hosting",
-      "attempted_at": "2026-09-16T18:31:25+00:00",
+      "attempted_at": "2026-09-17T02:33:26+00:00",
       "status": "ok",
       "count": 4,
-      "checked_at": "2026-09-16T18:31:26+00:00"
+      "checked_at": "2026-09-17T02:33:28+00:00"
     },
     {
       "provider_id": "dreamhost",
-      "attempted_at": "2026-09-16T18:31:26+00:00",
+      "attempted_at": "2026-09-17T02:33:28+00:00",
       "status": "ok",
       "count": 4,
-      "checked_at": "2026-09-16T18:31:28+00:00"
+      "checked_at": "2026-09-17T02:33:29+00:00"
     },
     {
       "provider_id": "liquid-web",
-      "attempted_at": "2026-09-16T18:31:28+00:00",
+      "attempted_at": "2026-09-17T02:33:29+00:00",
       "status": "no_match",
       "count": 0,
-      "checked_at": "2026-09-16T18:31:31+00:00"
+      "checked_at": "2026-09-17T02:33:30+00:00"
     }
   ]
 }
