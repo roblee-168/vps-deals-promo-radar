@@ -98,8 +98,9 @@ def build():
         if '/' in template_name or '\\' in template_name or not template_name.endswith('.html'):
             raise ValueError('Template must be a local HTML filename')
         return Template((ROOT/'templates'/template_name).read_text(encoding='utf-8')).substitute(values)
-    def write(path,title,description,content,schemas=(),lastmod=None,noindex=False):
-        title, description = neutral_metadata(title), neutral_metadata(description)
+    def write(path,title,description,content,schemas=(),lastmod=None,noindex=False,keep_metadata=False):
+        if not keep_metadata:
+            title, description = neutral_metadata(title), neutral_metadata(description)
         canonical = base+path
         html = render('base.html', brand=escape(cfg['brand']),title=escape(title), description=escape(description), canonical=escape(canonical,quote=True), content=content, locale=escape(cfg['locale']), robots='noindex,follow' if noindex else 'index,follow', schema=json.dumps({'@context':'https://schema.org','@graph':list(schemas)},ensure_ascii=False).replace('<','\\u003c'))
         html = html.replace('/assets/style.css"',f'/assets/style.css?v={style_version}"')
@@ -126,7 +127,8 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
+        if path != '/hostinger-coupon-code/':
+            html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
         output.parent.mkdir(parents=True,exist_ok=True)
@@ -181,6 +183,8 @@ def build():
         rows += f'<tr><td>{provider_link}</td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(source_target,quote=True)}" rel="noopener">{source_label}</a></td></tr>'
     lastmod = max((o['fetched_at'] for o in offers),default=None)
     home = render('index.html',count=len(offers),provider_count=len(providers),cards=cards(offers),source_rows=rows,update_hours=cfg['update_hours'])
+    if 'hostinger' in providers:
+        home += '<section><h2>Buying guides</h2><p><a href="/hostinger-coupon-code/">Hostinger coupon code: official evidence and VPS terms</a></p></section>'
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
@@ -221,6 +225,12 @@ def build():
     write('/about/',f'How we verify plan information | {cfg["brand"]}','Our sources, verification limits and affiliate disclosure.',render('about.html',hours=cfg['update_hours'],age=cfg['max_age_hours']),[crumbs('About','/about/')])
     write('/privacy/',f'Privacy policy | {cfg["brand"]}','Privacy, hosting information and planned third-party advertising.',render('privacy.html'),[crumbs('Privacy policy','/privacy/')])
     write('/contact/',f'Contact | {cfg["brand"]}','Contact PerkMingle, operated by Jiawei Li, for corrections and privacy questions.',render('contact.html'),[crumbs('Contact','/contact/')])
+    if 'hostinger' in providers:
+        guide = json.loads((ROOT/'data/hostinger-guide.json').read_text(encoding='utf-8'))
+        guide_rows = ''.join('<tr><td>'+escape(row['offer'])+'</td><td>'+escape(row['conditions'])+'</td><td><a rel="noopener" href="'+escape(row['source'],quote=True)+'">'+escape(row['label'])+'</a></td><td>'+escape(guide['checked'])+'</td></tr>' for row in guide['facts'])
+        faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
+        faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
+        write('/hostinger-coupon-code/','Hostinger coupon code: official evidence and VPS terms | '+cfg['brand'],'Is there an official Hostinger coupon code? Check the published code, VPS pricing and refund conditions with dated official sources.',render('hostinger-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
     sitemap = Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for url,modified in pages:
         el = SubElement(sitemap,'url')
