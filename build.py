@@ -111,7 +111,7 @@ def build():
             if not href:
                 return attrs
             from html import unescape
-            if unescape(href[1]) in racknerd_urls:
+            if unescape(href[1]) in {'https://my.racknerd.com/aff.php?aff=21233', 'https://www.racknerd.com/privacy-policy', 'https://www.racknerd.com/affiliates-terms-of-service'} or unescape(href[1]) in racknerd_urls:
                 return attrs
             host = urlsplit(href[1]).hostname or ''
             for provider in cfg['providers']:

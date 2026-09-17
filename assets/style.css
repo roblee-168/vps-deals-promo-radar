@@ -2,3 +2,5 @@
 
 /* Readable content and usable touch targets on narrow screens. */
 main,header,footer{min-width:0}img,video{max-width:100%;height:auto}.prose,main h1,main h2,main h3{overflow-wrap:anywhere}nav{flex-wrap:wrap}nav a,footer>a{display:inline-flex;align-items:center;min-height:44px} .deal .eyebrow{flex-wrap:wrap}.table-wrap{max-width:100%} @media(max-width:720px){nav{gap:4px 20px}.arrow{min-height:44px}footer>a{display:flex}}
+
+.affiliate-banner{margin:0 0 36px;padding:20px;background:#e7eddf;border:1px solid var(--line)}.affiliate-banner img{display:block;max-width:100%;height:auto}.affiliate-banner p{margin:0 0 12px}
