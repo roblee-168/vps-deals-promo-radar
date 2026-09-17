@@ -7,3 +7,6 @@ No placement instruction was shown.
 ```
 
 Home placement: after introduction, before listings. The published anchor adds only rel="sponsored noopener"; image URL, dimensions and affiliate URL are unchanged. No pid is supplied for this general banner. No automatic affiliate navigation.
+
+
+Live verification found the remote image blocked (HTTP 403 challenge). The original GIF was exported from the authenticated backend and is served unchanged at /assets/racknerd-300x250.gif. Only the image source is changed; the affiliate destination remains exact.
