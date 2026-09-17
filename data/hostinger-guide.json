@@ -1,0 +1,17 @@
+{
+  "checked": "2026-09-17",
+  "facts": [
+    {"offer":"COUPONSPAGE is displayed on Premium web hosting","conditions":"Not verified for VPS. Premium shows $2.84/month for 48 months ($136.32 upfront), renewing at $10.99/month. No code expiry date was found in the reviewed page.","source":"https://www.hostinger.com/coupons","label":"Official coupons"},
+    {"offer":"KVM 1: $6.49/month advertised","conditions":"Renews at $11.99/month for two years. Initial term not stated in the extracted card; confirm the cart. Plans are paid upfront; the monthly figure is an equivalent rate.","source":"https://www.hostinger.com/vps-hosting","label":"VPS pricing"},
+    {"offer":"KVM 2: $8.99/month advertised","conditions":"Renews at $14.99/month for two years. Confirm initial term and total in the cart.","source":"https://www.hostinger.com/vps-hosting","label":"VPS pricing"},
+    {"offer":"KVM 4: $12.99/month advertised","conditions":"Renews at $28.99/month for two years. Confirm initial term and total in the cart.","source":"https://www.hostinger.com/vps-hosting","label":"VPS pricing"},
+    {"offer":"KVM 8: $25.99/month advertised","conditions":"Renews at $49.99/month for two years. Confirm initial term and total in the cart.","source":"https://www.hostinger.com/vps-hosting","label":"VPS pricing"},
+    {"offer":"Existing-customer renewal discounts","conditions":"The coupon FAQ directs customers to hPanel, including VPS renewals. It does not specify an account-specific amount.","source":"https://www.hostinger.com/coupons","label":"Official coupon FAQ"},
+    {"offer":"VPS refund window","conditions":"Request within 30 days of the transaction; more than 180 days must have passed since initiation of any previous VPS refund. KVM upgrades and VPS licenses are excluded. Other policy conditions apply.","source":"https://www.hostinger.com/legal/refund-policy","label":"Refund policy"}
+  ],
+  "faq": [
+    {"question":"Can I combine codes?","answer":"Hostinger limits coupons to one per order.","source":"https://www.hostinger.com/coupons"},
+    {"question":"Can an existing customer use a code?","answer":"The official FAQ permits codes when buying new hosting plans; renewal discounts are accessed in hPanel.","source":"https://www.hostinger.com/coupons"},
+    {"question":"Does canceling guarantee a refund?","answer":"No. Cancellation and refund eligibility are separate. The VPS refund window and exclusions in the table apply; read the full policy before purchase.","source":"https://www.hostinger.com/legal/refund-policy"}
+  ]
+}
