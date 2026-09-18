@@ -14,12 +14,6 @@
       "label": "Official VPS plans"
     },
     {
-      "offer": "Discount Domain Club membership",
-      "conditions": "Paid membership provides domain registration, transfer and renewal pricing. This is a domain program, not a verified VPS code. Our visit resolved to the Korean regional page; no US membership price is asserted here.",
-      "source": "https://kr.godaddy.com/domains/discount-domain-club",
-      "label": "Official membership page (Korea)"
-    },
-    {
       "offer": "Refund terms, not a free trial",
       "conditions": "Standard annual-plan window: 30 days; monthly: 48 hours. Product exceptions apply: performed Hosting Services and Cloud Servers are excluded; used Discount Domain Club memberships are non-refundable. Ask support about your exact order before relying on a refund.",
       "source": "https://www.godaddy.com/en/legal/agreements/refund-policy",
