@@ -1,0 +1,40 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {
+      "offer": "Automatic coupon application",
+      "conditions": "Select a qualifying plan through the official coupon page; it says coupons apply at checkout. Its June 2026 heading remains, so current amounts and availability are not confirmed here.",
+      "source": "https://www.liquidweb.com/hosting-coupons/",
+      "label": "Official coupon page"
+    },
+    {
+      "offer": "Eligibility and restrictions",
+      "conditions": "The terms specify new hosting customers. Existing customers should contact their representative; the FAQ also mentions new plans. Coupons cannot stack or apply to later purchases or renewals; duration is limited. Confirm eligibility with sales.",
+      "source": "https://www.liquidweb.com/hosting-coupons/",
+      "label": "Coupon terms and FAQ"
+    },
+    {
+      "offer": "Refund baseline, not a promotion",
+      "conditions": "The terms say services are non-cancellable and fees non-refundable except where otherwise provided. Check any product-specific exception before ordering; no universal money-back guarantee is claimed here.",
+      "source": "https://www.liquidweb.com/policies/terms-of-service/",
+      "label": "Terms of Service"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is there a verified code to copy?",
+      "answer": "No public code string was verified. The official page describes automatic application at checkout.",
+      "source": "https://www.liquidweb.com/hosting-coupons/"
+    },
+    {
+      "question": "Are the displayed campaign amounts confirmed current?",
+      "answer": "No. The official page still labels its campaign June 2026. Ask Liquid Web to confirm the offer before ordering.",
+      "source": "https://www.liquidweb.com/hosting-coupons/"
+    },
+    {
+      "question": "Can I assume every plan is refundable?",
+      "answer": "No. The general terms make refunds subject to exceptions rather than a universal guarantee.",
+      "source": "https://www.liquidweb.com/policies/terms-of-service/"
+    }
+  ]
+}
