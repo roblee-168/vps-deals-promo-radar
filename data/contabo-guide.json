@@ -1,0 +1,35 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {
+      "offer": "Purchase revocation: possible refund within 14 days",
+      "conditions": "Private accounts only; domains excluded. Contact Customer Support within 14 days. A formal revocation does not require a separate cancellation.",
+      "source": "https://help.contabo.com/en/support/solutions/articles/103000327514-can-i-get-a-refund-",
+      "label": "Official refund eligibility"
+    },
+    {
+      "offer": "Recent renewal payment: refund request",
+      "conditions": "Contact support about a renewal payment made within the last 72 hours. Retroactive cancellation requires manual support handling, not the Customer Control Panel.",
+      "source": "https://help.contabo.com/en/support/solutions/articles/103000327514-can-i-get-a-refund-",
+      "label": "Official renewal refund guidance"
+    },
+    {
+      "offer": "Refund method and limits",
+      "conditions": "Refunds go to the original payment method. Requests outside the stated conditions may not qualify. For an accidental recent order, contact support as soon as possible.",
+      "source": "https://help.contabo.com/en/support/solutions/articles/103000327514-can-i-get-a-refund-",
+      "label": "Official refund method and limits"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is there a verified Contabo promo code here?",
+      "answer": "No. We could not verify a current public code or offer because the product page returned HTTP 403 during this review. No price or discount amount is published here.",
+      "source": "https://contabo.com/en/vps/"
+    },
+    {
+      "question": "Is a refund automatic for every purchase?",
+      "answer": "No. The support page lists eligibility conditions and instructs customers to contact support.",
+      "source": "https://help.contabo.com/en/support/solutions/articles/103000327514-can-i-get-a-refund-"
+    }
+  ]
+}
