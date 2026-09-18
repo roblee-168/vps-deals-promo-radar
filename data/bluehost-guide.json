@@ -1,0 +1,63 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {
+      "offer": "VPS: 1 vCPU, 2 GB DDR5 RAM, 50 GB NVMe; USD $4.69/mo",
+      "conditions": "24-month term; $112.56 due today. Renews at $5.69/mo. VAT/GST excluded. Published price, not a verified code.",
+      "source": "https://www.bluehost.com/vps-hosting",
+      "label": "Official VPS plans"
+    },
+    {
+      "offer": "VPS NVMe 4: USD $9.49/mo",
+      "conditions": "2 vCPU, 4 GB DDR5 RAM, 100 GB NVMe. 24-month term; $227.76 due today. Renews at $11.99/mo. VAT/GST excluded.",
+      "source": "https://www.bluehost.com/vps-hosting",
+      "label": "Official VPS plans"
+    },
+    {
+      "offer": "Starter web hosting: USD $3.99/mo",
+      "conditions": "36-month term; renews at $9.99/mo. VAT/GST excluded. This is the homepage Starter pricing card, not VPS.",
+      "source": "https://www.bluehost.com/",
+      "label": "Official homepage pricing"
+    },
+    {
+      "offer": "One domain free for the first year",
+      "conditions": "Eligible web hosting purchase with a 12- or 36-month term; redeem within 90 days. Only listed extensions and eligible registrations/transfers; premium domains excluded. Review renewal pricing separately.",
+      "source": "https://www.bluehost.com/",
+      "label": "Official Free Domain Policy"
+    },
+    {
+      "offer": "Introductory pricing",
+      "conditions": "Applies to the first term only. Plans renew at regular rates; no recurring member discount is asserted here.",
+      "source": "https://www.bluehost.com/modals/_money-back.mas",
+      "label": "Official introductory-offer terms"
+    },
+    {
+      "offer": "30-day hosting money-back guarantee",
+      "conditions": "Certain Shared, VPS and Dedicated hosting fees for new signups. Excludes monthly terms, Cloud Hosting, domains, AI products/services, setup and additional service fees. Eligible refunds deduct domain fees and applicable taxes. See the full policy before paying.",
+      "source": "https://www.bluehost.com/help/article/refundpolicy",
+      "label": "Official refund policy"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is there a verified Bluehost promo code on this page?",
+      "answer": "No. We did not find a public code in the official pages reviewed. The prices above are published plan prices, not proof that a separate code will work.",
+      "source": "https://www.bluehost.com/vps-hosting"
+    },
+    {
+      "question": "How do I get the listed introductory price?",
+      "answer": "Follow the official plan link, choose the matching product and billing term, then review the full charge and renewal rate before purchasing. We did not test checkout.",
+      "source": "https://www.bluehost.com/modals/_money-back.mas"
+    },
+    {
+      "question": "Does the free domain offer cover every domain?",
+      "answer": "No. It applies only to the eligible extensions and purchases in the official policy; premium domains are excluded.",
+      "source": "https://www.bluehost.com/"
+    },
+    {
+      "question": "Is monthly VPS hosting covered by the guarantee?",
+      "answer": "The official refund policy excludes services with a monthly term. Check the policy and your exact order before relying on a refund.",
+      "source": "https://www.bluehost.com/help/article/refundpolicy"
+    }
+  ]
+}
