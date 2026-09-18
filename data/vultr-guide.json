@@ -1,0 +1,40 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {
+      "offer": "Redeeming a valid promotional code",
+      "conditions": "Use the Gift Code section of the Vultr Console. A valid credit card or PayPal account must be linked. This instruction does not establish that a particular code is currently available.",
+      "source": "https://docs.vultr.com/support/platform/billing/how-can-i-add-a-promotional-code",
+      "label": "Official code redemption guide"
+    },
+    {
+      "offer": "Promotion restrictions",
+      "conditions": "One promotional code per user. Promotional credits expire and cannot be transferred. Check the individual promotion terms; no universal credit amount or expiry period is verified here.",
+      "source": "https://docs.vultr.com/support/platform/billing/how-can-i-add-a-promotional-code",
+      "label": "Official eligibility and limits"
+    },
+    {
+      "offer": "Refund policy",
+      "conditions": "Vultr does not refund services. Payments are final and credits are non-refundable. Raise billing concerns through a Console support ticket.",
+      "source": "https://docs.vultr.com/support/platform/billing/what-is-vultrs-refund-policy",
+      "label": "Official refund policy"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is there a verified public Vultr promo code here?",
+      "answer": "No. The official coupons page returned HTTP 403 during this review. We cannot confirm a current public code or credit amount.",
+      "source": "https://www.vultr.com/coupons/"
+    },
+    {
+      "question": "Where do I apply a valid code?",
+      "answer": "Use Gift Code in the Vultr Console, with a valid credit card or PayPal account linked.",
+      "source": "https://docs.vultr.com/support/platform/billing/how-can-i-add-a-promotional-code"
+    },
+    {
+      "question": "Can promotional credits be refunded?",
+      "answer": "No. The official refund policy says credits are non-refundable.",
+      "source": "https://docs.vultr.com/support/platform/billing/what-is-vultrs-refund-policy"
+    }
+  ]
+}

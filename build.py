@@ -127,7 +127,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/'}:
+        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -183,6 +183,8 @@ def build():
         rows += f'<tr><td>{provider_link}</td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(source_target,quote=True)}" rel="noopener">{source_label}</a></td></tr>'
     lastmod = max((o['fetched_at'] for o in offers),default=None)
     home = render('index.html',count=len(offers),provider_count=len(providers),cards=cards(offers),source_rows=rows,update_hours=cfg['update_hours'])
+    if (ROOT/'data/vultr-guide.json').exists():
+        home += '<section><h2>Vultr buying guide</h2><p><a href="/vultr-promo-code/">Vultr promo code: official redemption and terms</a></p></section>'
     if (ROOT/'data/liquid-web-guide.json').exists():
         home += '<section><h2>Liquid Web buying guide</h2><p><a href="/liquid-web-promo-code/">Liquid Web promo code: official redemption and terms</a></p></section>'
     if (ROOT/'data/contabo-guide.json').exists():
@@ -303,6 +305,12 @@ def build():
         faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
         faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
         write('/liquid-web-promo-code/','Liquid Web promo code: official verification and VPS terms | '+cfg['brand'],'Check whether a Liquid Web promo code was verified, with official VPS conditions, refund rules and dated sources.',render('liquid-web-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
+    if (ROOT/'data/vultr-guide.json').exists():
+        guide = json.loads((ROOT/'data/vultr-guide.json').read_text(encoding='utf-8'))
+        guide_rows = ''.join('<tr><td>'+escape(row['offer'])+'</td><td>'+escape(row['conditions'])+'</td><td><a rel="noopener" href="'+escape(row['source'],quote=True)+'">'+escape(row['label'])+'</a></td><td>'+escape(guide['checked'])+'</td></tr>' for row in guide['facts'])
+        faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
+        faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
+        write('/vultr-promo-code/','Vultr promo code: official verification and VPS terms | '+cfg['brand'],'Check whether a Vultr promo code was verified, with official VPS conditions, refund rules and dated sources.',render('vultr-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
     # Keep established URLs when verification fails; never count history as fresh.
     known = {o['id']:o for o in data.get('historical_offers',[]) + data['offers'] if o['provider_id'] in providers}
     archived = [o for oid,o in known.items() if oid not in {x['id'] for x in offers}]
