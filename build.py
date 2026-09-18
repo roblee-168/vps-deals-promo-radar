@@ -1,6 +1,6 @@
 # ::ILANG
 # ::STATE{@SELF, role:从I-Lang和真实数据生成静态站}
-# ::RULE{过期或陈旧数据下架 缺字段不编造 HTML转义}
+# ::RULE{过期或陈旧数据退出最新列表 历史页面保留 缺字段不编造 HTML转义}
 # ::BOUNDARY{never:捏造价格日期排名或已部署状态}
 import json
 import hashlib

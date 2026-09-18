@@ -68,6 +68,28 @@ class PipelineTests(unittest.TestCase):
                 build.build()
             self.assertFalse((root/'site/providers'/self.p['id']).exists())
             self.assertNotIn(self.p['name'],(root/'site/index.html').read_text(encoding='utf-8'))
+    def test_failed_source_keeps_historical_urls_without_active_offer(self):
+        import shutil
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            shutil.copytree(ROOT/'templates',root/'templates')
+            shutil.copytree(ROOT/'assets',root/'assets')
+            (root/'data').mkdir()
+            provider = next(p for p in self.cfg['providers'] if p['id']=='upcloud')
+            record = self.record(provider_id='upcloud', evidence='Previously verified trial')
+            cfg = dict(self.cfg, providers=[provider])
+            (root/'data/offers.json').write_text(json.dumps({'offers':[], 'historical_offers':[record], 'sources':[{'provider_id':'upcloud','status':'unavailable','error':'robots unavailable'}]}),encoding='utf-8')
+            with patch.object(build,'ROOT',root),patch.object(build,'load_config',return_value=cfg):
+                build.build()
+            plan = (root/'site/plans/test/index.html').read_text(encoding='utf-8')
+            self.assertIn('Current availability could not be verified',plan)
+            self.assertIn(record['fetched_at'],plan)
+            self.assertNotIn('"@type": "Offer"',plan)
+            sitemap = (root/'site/sitemap.xml').read_text(encoding='utf-8')
+            self.assertIn('/plans/test/',sitemap)
+            self.assertIn('/providers/upcloud/',sitemap)
+            self.assertNotIn('/providers/upcloud/',(root/'site/_redirects').read_text(encoding='utf-8'))
+
     def test_schedule_matches_config(self):
         self.assertIn(self.cfg['cron'],workflow())
 

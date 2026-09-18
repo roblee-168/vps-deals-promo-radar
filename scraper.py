@@ -1,6 +1,6 @@
 # ::ILANG
 # ::STATE{@SELF, role:按I-Lang抓取官方公开优惠并记录证据}
-# ::RULE{遵守robots TLS验证 有界请求 失败撤下}
+# ::RULE{遵守robots TLS验证 有界请求 失败保留历史并退出最新列表}
 # ::BOUNDARY{never:编价格 编日期 绕反爬 把赠金当价格}
 import hashlib
 import gzip
