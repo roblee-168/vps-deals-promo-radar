@@ -1,0 +1,16 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {"offer":"WORKMODEDOM: selected domain registrations and transfers","conditions":"Official September code, valid September 1–30, 2026, or while supplies last. First-year transactions only; premium and aftermarket domains excluded. .COM registration: $11.08 plus $0.20 ICANN fee. Not a verified VPS code.","source":"https://www.namecheap.com/promos/coupons/","label":"Monthly coupons"},
+    {"offer":"New-customer .COM price: $6.79 for the first year","conditions":"The promotions index labels this for new customers. Follow its individual offer for eligibility; do not combine this price with WORKMODEDOM or assume the same code applies.","source":"https://www.namecheap.com/promos/","label":"Current promotions"},
+    {"offer":"Spark VPS: $3.88/month, billed yearly","conditions":"Initial annual payment $46.56; renewal $58.56/year. The reviewed card does not name a promo code. Check optional extras and your final cart total.","source":"https://www.namecheap.com/hosting/vps/","label":"VPS pricing"},
+    {"offer":"Quasar VPS: $12.88/month, billed yearly","conditions":"Initial annual payment $154.56; renewal $190.56/year. This is a published plan price, not a verified coupon result.","source":"https://www.namecheap.com/hosting/vps/","label":"VPS pricing"},
+    {"offer":"Hosting renewal code restriction","conditions":"Namecheap's renewal guide says hosting renews at the regular price and a promotion code cannot be applied. Do not treat an introductory price as a renewal promise.","source":"https://www.namecheap.com/support/knowledgebase/article.aspx/9164/22/how-to-renew-your-hosting-account/","label":"Hosting renewal guide"},
+    {"offer":"Refund eligibility is conditional","conditions":"The legal policy limits the hosting 30-day guarantee to first-time accounts, excludes paid extras, and lists services bought on promotion or at a reduced fee as non-refundable. Do not assume discounted VPS purchases qualify; ask Namecheap Billing before paying.","source":"https://www.namecheap.com/legal/general/refund-policy/","label":"Legal refund policy"}
+  ],
+  "faq": [
+    {"question":"Is WORKMODEDOM a VPS promo code?","answer":"The official monthly page assigns it to domain registrations and transfers. We did not verify a VPS code in the monthly coupon page or VPS plan cards reviewed.","source":"https://www.namecheap.com/promos/coupons/"},
+    {"question":"Does a newsletter subscription unlock a verified discount?","answer":"The promotions page advertises a monthly deals newsletter. It does not state a guaranteed sign-up discount there.","source":"https://www.namecheap.com/promos/"},
+    {"question":"How do I request a hosting refund?","answer":"Namecheap's help article instructs customers to cancel hosting and contact Billing/Sales through Live Chat or billing@namecheap.com. The legal policy's exclusions still need to be checked for your purchase.","source":"https://www.namecheap.com/support/knowledgebase/article.aspx/134/22/what-is-your-moneyback-policy/"}
+  ]
+}
