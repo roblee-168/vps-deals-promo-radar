@@ -9,8 +9,8 @@
     },
     {
       "offer": "Recent renewal payment: refund request",
-      "conditions": "Contact support about a renewal payment made within the last 72 hours. Retroactive cancellation requires manual support handling, not the Customer Control Panel.",
-      "source": "https://help.contabo.com/en/support/solutions/articles/103000327514-can-i-get-a-refund-",
+      "conditions": "If your service automatically renewed less than 72 hours ago, you may request a refund through Customer Support. This option is not available for customers in Germany.",
+      "source": "https://help.contabo.com/en/support/solutions/articles/103000285149-can-i-get-a-refund-",
       "label": "Official renewal refund guidance"
     },
     {
