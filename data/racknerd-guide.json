@@ -1,0 +1,64 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {
+      "offer": "Dedicated-server code: 15OFFDEDI",
+      "conditions": "Official banner advertises 15% off for life on all dedicated servers. It does not state VPS eligibility. Expiry and stacking rules are not stated in that banner; checkout was not tested.",
+      "source": "https://www.racknerd.com/dedicated-servers",
+      "label": "Dedicated-server promotion"
+    },
+    {
+      "offer": "1 GB KVM VPS: $21.99/year",
+      "conditions": "1 vCPU; 20 GB SSD; 3 TB monthly transfer. Listed annual price; separate renewal price and code requirement are not stated on this page.",
+      "source": "https://www.racknerd.com/specials/",
+      "label": "Official VPS specials"
+    },
+    {
+      "offer": "2 GB KVM VPS: $35.99/year",
+      "conditions": "2 vCPU; 35 GB SSD; 5 TB monthly transfer. Listed annual price; separate renewal price and code requirement are not stated on this page.",
+      "source": "https://www.racknerd.com/specials/",
+      "label": "Official VPS specials"
+    },
+    {
+      "offer": "4 GB KVM VPS: $59.99/year",
+      "conditions": "3 vCPU; 60 GB SSD; 7 TB monthly transfer. Listed annual price; separate renewal price and code requirement are not stated on this page.",
+      "source": "https://www.racknerd.com/specials/",
+      "label": "Official VPS specials"
+    },
+    {
+      "offer": "6 GB KVM VPS: $89.99/year",
+      "conditions": "6 vCPU; 100 GB SSD; 12 TB monthly transfer. Listed annual price; separate renewal price and code requirement are not stated on this page.",
+      "source": "https://www.racknerd.com/specials/",
+      "label": "Official VPS specials"
+    },
+    {
+      "offer": "8 GB KVM VPS: $119.99/year",
+      "conditions": "7 vCPU; 150 GB SSD; 20 TB monthly transfer. Listed annual price; separate renewal price and code requirement are not stated on this page.",
+      "source": "https://www.racknerd.com/specials/",
+      "label": "Official VPS specials"
+    },
+    {
+      "offer": "Refund policy",
+      "conditions": "RackNerd says it does not offer refunds or a money-back guarantee. Review the service before committing to an annual plan.",
+      "source": "https://my.racknerd.com/index.php?rp=/knowledgebase/9/Do-you-have-money-back-guarantee-Or-offer-refunds.html",
+      "label": "Official refund article"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is there a verified RackNerd promo code?",
+      "answer": "Yes: 15OFFDEDI is displayed by RackNerd for dedicated servers. No VPS code was verified on the reviewed specials page.",
+      "source": "https://www.racknerd.com/dedicated-servers"
+    },
+    {
+      "question": "How do I find the VPS prices?",
+      "answer": "Open the official specials page and choose a listed plan. Confirm the final amount and renewal terms before paying.",
+      "source": "https://www.racknerd.com/specials/"
+    },
+    {
+      "question": "Is there a money-back guarantee?",
+      "answer": "No. RackNerd states that it does not offer refunds or a money-back guarantee.",
+      "source": "https://my.racknerd.com/index.php?rp=/knowledgebase/9/Do-you-have-money-back-guarantee-Or-offer-refunds.html"
+    }
+  ]
+}
