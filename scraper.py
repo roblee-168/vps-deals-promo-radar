@@ -239,6 +239,9 @@ def run():
     cfg = load_config()
     fetcher = Fetcher(cfg)
     offers, statuses = [], []
+    previous_path = ROOT/'data/offers.json'
+    previous = json.loads(previous_path.read_text(encoding='utf-8')) if previous_path.exists() else {}
+    history = {o['id']:o for o in previous.get('historical_offers',[]) + previous.get('offers',[])}
     # A code deployment must not refresh unrelated verified records. Scheduled runs still refresh all sources.
     preserve = {}
     manifest = ROOT/'data/coverage-preserve.json'
@@ -274,7 +277,8 @@ def run():
             status.update(status='unavailable', error=f'{type(e).__name__}: {e}'[:240])
         statuses.append(status)
         print(p['name'],status['status'],status.get('error',''))
-    output = dict(generated_at=utcnow(),offers=list({o['id']:o for o in offers}.values()),sources=statuses)
+    history.update({o['id']:o for o in offers})
+    output = dict(historical_offers=list(history.values()),generated_at=utcnow(),offers=list({o['id']:o for o in offers}.values()),sources=statuses)
     path = ROOT/'data/offers.json'
     path.parent.mkdir(exist_ok=True)
     temp = path.with_suffix('.tmp')

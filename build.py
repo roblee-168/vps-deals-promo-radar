@@ -303,6 +303,18 @@ def build():
         faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
         faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
         write('/liquid-web-promo-code/','Liquid Web promo code: official verification and VPS terms | '+cfg['brand'],'Check whether a Liquid Web promo code was verified, with official VPS conditions, refund rules and dated sources.',render('liquid-web-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
+    # Keep established URLs when verification fails; never count history as fresh.
+    known = {o['id']:o for o in data.get('historical_offers',[]) + data['offers'] if o['provider_id'] in providers}
+    archived = [o for oid,o in known.items() if oid not in {x['id'] for x in offers}]
+    for pid in {o['provider_id'] for o in archived}:
+        p = providers[pid]
+        items = [o for o in archived if o['provider_id']==pid]
+        if not any(o['provider_id']==pid for o in offers):
+            content = '<article class="prose"><h1>'+escape(p['name'])+' VPS plans and terms</h1><p>Current availability could not be verified. Historical records remain available below; they are not current verified offers.</p>'+''.join('<p><a href="'+detail_path(o)+'">'+escape(o['title'])+'</a></p>' for o in items)+'<p><a href="'+escape(p['source'],quote=True)+'">Official source</a></p></article>'
+            write('/providers/'+pid+'/',p['name']+' VPS plans and terms','Historical source records and current verification limits.',content)
+    for o in archived:
+        content = '<article class="prose"><h1>'+escape(providers[o['provider_id']]['name']+': '+o['title'])+'</h1><p>Current availability could not be verified. This historical record is not a current verified offer.</p><p>Last successful source check: '+escape(o['fetched_at'])+'</p><p>Previously recorded: '+escape(o['evidence'])+'</p><p><a href="'+escape(o['source_url'],quote=True)+'">Official source</a></p><p><a href="/providers/'+o['provider_id']+'/">Provider details</a></p></article>'
+        write(detail_path(o),providers[o['provider_id']]['name']+': '+o['title'],'Historical source record; current availability unverified.',content,lastmod=o['fetched_at'])
     sitemap = Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for url,modified in pages:
         el = SubElement(sitemap,'url')
@@ -312,7 +324,7 @@ def build():
     ElementTree(sitemap).write(dest/'sitemap.xml',encoding='utf-8',xml_declaration=True)
     (dest/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n',encoding='utf-8')
     # Retired empty provider pages lead to the current source table, not cached shells.
-    retired = [p for p in cfg['providers'] if not any(o['provider_id']==p['id'] for o in offers)]
+    retired = [p for p in cfg['providers'] if not any(o['provider_id']==p['id'] for o in known.values())]
     (dest/'_redirects').write_text('/deals/:id/ /plans/:id/ 301\n/deals/:id /plans/:id/ 301\n'+''.join(f'/providers/{p["id"]}/ / 302\n/providers/{p["id"]} / 302\n' for p in retired),encoding='utf-8')
     (dest/'404.html').write_text(origin_links('<!doctype html><html lang="en"><meta charset="utf-8"><title>Plan unavailable</title><meta name="description" content="This plan is no longer listed or could not be verified."><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></html>'),encoding='utf-8')
     (dest/'_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Cache-Control: public, max-age=300\n',encoding='utf-8')
