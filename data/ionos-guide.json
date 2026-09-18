@@ -2,14 +2,8 @@
   "checked": "2026-09-18",
   "facts": [
     {
-      "offer": "VPS S+: $2/month for the first 3 months",
-      "conditions": "1-year term. 1 vCore, 2 GB RAM, 60 GB NVMe. State and local taxes apply. The card also displays $6/month; confirm the subsequent charge and renewal terms before ordering.",
-      "source": "https://www.ionos.com/servers/vps",
-      "label": "US VPS pricing"
-    },
-    {
-      "offer": "VPS M+: $5/month for the first 3 months",
-      "conditions": "1-year term. 2 vCores, 4 GB RAM, 120 GB NVMe. Taxes apply. The card also displays $14/month; confirm subsequent charges and renewal terms before ordering.",
+      "offer": "Introductory pricing for the first three months",
+      "conditions": "The official US VPS page currently displays introductory pricing for the first three months with a one-year contract. State and local taxes apply. Refer to the cards shown when you open the official page for the specific plans and amounts.",
       "source": "https://www.ionos.com/servers/vps",
       "label": "US VPS pricing"
     },
