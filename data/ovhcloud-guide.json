@@ -1,0 +1,15 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {"offer":"USD $200 Public Cloud credit; no code required","conditions":"First Public Cloud project; no previous Public Cloud purchase. US datacenter services only; purchase at least $0.99. Subject to availability. Credit is not cash or a VPS price.","source":"https://us.ovhcloud.com/public-cloud/free-trial/","label":"US Public Cloud trial terms"},
+    {"offer":"Additional USD $100 credit","conditions":"First Managed Databases purchase for Public Cloud under the same eligibility terms; up to $300 total. Credits applied within 30 days of qualifying payment and valid for 90 days after application. Unused credits expire; continuing use is billed after exhaustion or expiry.","source":"https://us.ovhcloud.com/public-cloud/free-trial/","label":"US Public Cloud trial terms"},
+    {"offer":"Savings Plan: 15% for 12 months; 30% for 36 months","conditions":"Eligible B3, C3 and R3 instances and Managed Kubernetes nodes. Local Zones and Windows licenses excluded. Usage beyond the commitment is billed at regular hourly rates.","source":"https://us.ovhcloud.com/public-cloud/savings-plan/","label":"US Savings Plan pricing"},
+    {"offer":"Savings Plan renewal conditions","conditions":"Auto-renewal is disabled by default. If enabled, renewal uses the same duration and the advertised price at renewal. This is commitment pricing, not a coupon.","source":"https://us.ovhcloud.com/public-cloud/savings-plan/","label":"US Savings Plan FAQ"},
+    {"offer":"Refund and cancellation terms","conditions":"Fees are non-cancelable and non-refundable except where the agreement or applicable law provides otherwise. Credits and cancellation are not a money-back guarantee.","source":"https://us.ovhcloud.com/legal/terms-of-service/","label":"US Terms of Service"}
+  ],
+  "faq": [
+    {"question":"Is an OVHcloud promo code listed here?","answer":"No public code was verified. The US Public Cloud credit terms explicitly say no code is required. Follow the official trial page to review eligibility before creating a project.","source":"https://us.ovhcloud.com/public-cloud/free-trial/"},
+    {"question":"Can I use these credits for a VPS subscription?","answer":"The verified offer covers Public Cloud services. We have not verified eligibility for a separate VPS subscription.","source":"https://us.ovhcloud.com/public-cloud/free-trial/"},
+    {"question":"Is a Savings Plan a one-time coupon?","answer":"No. It is a resource commitment. Excess usage is charged separately, and unused committed capacity does not remove the commitment charge.","source":"https://us.ovhcloud.com/public-cloud/savings-plan/"}
+  ]
+}
