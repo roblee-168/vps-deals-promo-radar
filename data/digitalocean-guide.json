@@ -1,0 +1,13 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {"offer":"Credit redemption rules; not a currently verified offer","conditions":"A valid account is required. Redeem a code or follow DigitalOcean's instructions. Each code is redeemable once on one account; eligibility and expiry depend on the specific offer.","source":"https://www.digitalocean.com/legal/promotional-credit-discount-terms","label":"Promotional credit terms"},
+    {"offer":"Eligible charges and usage beyond credit","conditions":"Only designated services qualify. Marketplace, Support, upfront payments and taxes are excluded. Usage exceeding available credit is billed; combining incentives requires authorization.","source":"https://www.digitalocean.com/legal/promotional-credit-discount-terms","label":"Credit exclusions and billing"},
+    {"offer":"Refund policy","conditions":"DigitalOcean says it does not offer refunds. Contact support about extenuating circumstances; this is not a refund guarantee.","source":"https://docs.digitalocean.com/support/can-i-have-a-refund/","label":"Official refund policy"}
+  ],
+  "faq":[
+    {"question":"Is there a verified DigitalOcean promo code here?","answer":"No public code was verified in the official pages reviewed. General credit terms do not establish a currently available offer or a particular credit amount.","source":"https://www.digitalocean.com/legal/promotional-credit-discount-terms"},
+    {"question":"How would I redeem an official credit?","answer":"Follow the instructions supplied by DigitalOcean for the particular offer, and check its eligibility and expiry before using resources.","source":"https://www.digitalocean.com/legal/promotional-credit-discount-terms"},
+    {"question":"Can I get a refund?","answer":"The official support page says refunds are not offered and directs customers with extenuating circumstances to support.","source":"https://docs.digitalocean.com/support/can-i-have-a-refund/"}
+  ]
+}
