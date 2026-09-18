@@ -1,0 +1,57 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {
+      "offer": "Official code: SNAPPY",
+      "conditions": "Advertised as up to 70% off web hosting, with the Baby plan on a 36-month term footnote. New signups only; one coupon per signup. Not valid for existing services or renewals. VPS eligibility is not verified.",
+      "source": "https://www.hostgator.com/coupons",
+      "label": "Official coupons page"
+    },
+    {
+      "offer": "VPS NVMe 2 with n8n: USD $2.09/mo",
+      "conditions": "Displayed starting configuration: 1 vCPU, 2 GB DDR5 RAM, 50 GB NVMe. 24-month term; renews at $4.68/mo. VAT excluded. Separate plan price, not a verified SNAPPY discount.",
+      "source": "https://www.hostgator.com/vps-hosting",
+      "label": "Official VPS selector"
+    },
+    {
+      "offer": "First-year domain registration",
+      "conditions": "Eligible 12-, 24- or 36-month Shared, WordPress or Cloud plan; available domains at signup only. Not offered on other plans or combined with other offers. Renews at regular rate after the first year.",
+      "source": "https://www.hostgator.com/",
+      "label": "Official Free Domain Registration terms"
+    },
+    {
+      "offer": "30-day money-back guarantee",
+      "conditions": "Eligible basic shared, VPS, dedicated and reseller hosting in the initial term. Excludes monthly services, domain registration, administrative/setup fees and additional services. Request through billing or live chat; no refunds after 30 calendar days.",
+      "source": "https://www.hostgator.com/tos",
+      "label": "Official terms, section 13"
+    },
+    {
+      "offer": "Initial-purchase coupon restriction",
+      "conditions": "First-time accounts or customers only. No renewal or recurring-price discount. Domain registration is excluded unless otherwise specified.",
+      "source": "https://www.hostgator.com/tos",
+      "label": "Official terms, section 25"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is SNAPPY a real HostGator promo code?",
+      "answer": "Yes. HostGator publishes SNAPPY on its official coupons page, with a Baby-plan, 36-month footnote. This is source verification, not a completed checkout test.",
+      "source": "https://www.hostgator.com/coupons"
+    },
+    {
+      "question": "How do I use the code?",
+      "answer": "Open the official coupons page and follow Redeem. If checkout has another code, replace it with your chosen code and select Validate. Review the recalculated total and eligibility before paying.",
+      "source": "https://www.hostgator.com/coupons"
+    },
+    {
+      "question": "Can I use SNAPPY for VPS or a renewal?",
+      "answer": "We have not verified VPS eligibility. The official coupon rules exclude renewals and existing services; use the separate VPS page to inspect its published pricing.",
+      "source": "https://www.hostgator.com/coupons"
+    },
+    {
+      "question": "Is a monthly plan covered by the refund guarantee?",
+      "answer": "No. Section 13 excludes services with a monthly term, as well as the other fees listed in its refund conditions.",
+      "source": "https://www.hostgator.com/tos"
+    }
+  ]
+}

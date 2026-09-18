@@ -127,7 +127,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/'}:
+        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -191,6 +191,8 @@ def build():
         home += '<section><h2>GoDaddy buying guide</h2><p><a href="/godaddy-promo-code/">GoDaddy promo code: official evidence and VPS terms</a></p></section>'
     if (ROOT/'data/bluehost-guide.json').exists():
         home += '<section><h2>Bluehost buying guide</h2><p><a href="/bluehost-promo-code/">Bluehost promo code: official evidence and VPS terms</a></p></section>'
+    if (ROOT/'data/hostgator-guide.json').exists():
+        home += '<section><h2>HostGator buying guide</h2><p><a href="/hostgator-promo-code/">HostGator promo code: official evidence and VPS terms</a></p></section>'
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
@@ -255,6 +257,12 @@ def build():
         faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
         faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
         write('/bluehost-promo-code/','Bluehost promo code: official evidence and VPS terms | '+cfg['brand'],'Is there an official Bluehost promo code? Review verification limits, VPS pricing and refund conditions with dated official sources.',render('bluehost-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
+    if (ROOT/'data/hostgator-guide.json').exists():
+        guide = json.loads((ROOT/'data/hostgator-guide.json').read_text(encoding='utf-8'))
+        guide_rows = ''.join('<tr><td>'+escape(row['offer'])+'</td><td>'+escape(row['conditions'])+'</td><td><a rel="noopener" href="'+escape(row['source'],quote=True)+'">'+escape(row['label'])+'</a></td><td>'+escape(guide['checked'])+'</td></tr>' for row in guide['facts'])
+        faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
+        faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
+        write('/hostgator-promo-code/','HostGator promo code: official evidence and VPS terms | '+cfg['brand'],'Is there an official HostGator promo code? Review verification limits, VPS pricing and refund conditions with dated official sources.',render('hostgator-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
     sitemap = Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for url,modified in pages:
         el = SubElement(sitemap,'url')
