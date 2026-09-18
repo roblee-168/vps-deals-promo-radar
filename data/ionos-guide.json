@@ -1,0 +1,40 @@
+{
+  "checked": "2026-09-18",
+  "facts": [
+    {
+      "offer": "VPS S+: $2/month for the first 3 months",
+      "conditions": "1-year term. 1 vCore, 2 GB RAM, 60 GB NVMe. State and local taxes apply. The card also displays $6/month; confirm the subsequent charge and renewal terms before ordering.",
+      "source": "https://www.ionos.com/servers/vps",
+      "label": "US VPS pricing"
+    },
+    {
+      "offer": "VPS M+: $5/month for the first 3 months",
+      "conditions": "1-year term. 2 vCores, 4 GB RAM, 120 GB NVMe. Taxes apply. The card also displays $14/month; confirm subsequent charges and renewal terms before ordering.",
+      "source": "https://www.ionos.com/servers/vps",
+      "label": "US VPS pricing"
+    },
+    {
+      "offer": "30-day money-back guarantee",
+      "conditions": "The official VPS trial page offers a refund if dissatisfied within 30 days. This is a money-back arrangement, not a claim that no payment is required.",
+      "source": "https://www.ionos.com/servers/free-vps",
+      "label": "VPS trial and refund explanation"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is there a verified IONOS promo code?",
+      "answer": "No public code was verified on the official pages reviewed. The VPS product page displays introductory prices and Add to cart links. Choose the plan there and confirm the order price.",
+      "source": "https://www.ionos.com/servers/vps"
+    },
+    {
+      "question": "Does the introductory price last for the whole contract?",
+      "answer": "No. The listed introductory period is three months with a one-year term. Confirm subsequent billing and renewal charges in the order details.",
+      "source": "https://www.ionos.com/servers/vps"
+    },
+    {
+      "question": "Is the VPS trial permanently free?",
+      "answer": "No. IONOS describes a 30-day money-back guarantee on its VPS trial page.",
+      "source": "https://www.ionos.com/servers/free-vps"
+    }
+  ]
+}
