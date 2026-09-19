@@ -127,7 +127,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-promo-code/'}:
+        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -186,7 +186,7 @@ def build():
     if (ROOT/'data/vultr-guide.json').exists():
         home += '<section><h2>Vultr buying guide</h2><p><a href="/vultr-promo-code/">Vultr promo code: official redemption and terms</a></p></section>'
     if (ROOT/'data/racknerd-guide.json').exists():
-        home += '<section><h2>RackNerd buying guide</h2><p><a href="/racknerd-promo-code/">RackNerd promo code: official plans and terms</a></p></section>'
+        home += '<section><h2>RackNerd buying guide</h2><p><a href="/racknerd-vps-plans/">RackNerd VPS plans and pricing terms</a></p></section>'
     if (ROOT/'data/liquid-web-guide.json').exists():
         home += '<section><h2>Liquid Web buying guide</h2><p><a href="/liquid-web-promo-code/">Liquid Web promo code: official redemption and terms</a></p></section>'
     if (ROOT/'data/contabo-guide.json').exists():
@@ -318,7 +318,7 @@ def build():
         guide_rows = ''.join('<tr><td>'+escape(row['offer'])+'</td><td>'+escape(row['conditions'])+'</td><td><a rel="noopener" href="'+escape(row['source'],quote=True)+'">'+escape(row['label'])+'</a></td><td>'+escape(guide['checked'])+'</td></tr>' for row in guide['facts'])
         faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
         faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
-        write('/racknerd-promo-code/','RackNerd promo code: official verification and VPS terms | '+cfg['brand'],'Check whether a RackNerd promo code was verified, with official VPS conditions, refund rules and dated sources.',render('racknerd-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
+        write('/racknerd-vps-plans/','RackNerd VPS plans and pricing terms | '+cfg['brand'],'Review RackNerd VPS annual prices and dedicated-server terms, with official sources, review dates and refund guidance.',render('racknerd-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
     # Keep established URLs when verification fails; never count history as fresh.
     known = {o['id']:o for o in data.get('historical_offers',[]) + data['offers'] if o['provider_id'] in providers}
     archived = [o for oid,o in known.items() if oid not in {x['id'] for x in offers}]
@@ -341,7 +341,7 @@ def build():
     (dest/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n',encoding='utf-8')
     # Retired empty provider pages lead to the current source table, not cached shells.
     retired = [p for p in cfg['providers'] if not any(o['provider_id']==p['id'] for o in known.values())]
-    (dest/'_redirects').write_text('/deals/:id/ /plans/:id/ 301\n/deals/:id /plans/:id/ 301\n'+''.join(f'/providers/{p["id"]}/ / 302\n/providers/{p["id"]} / 302\n' for p in retired),encoding='utf-8')
+    (dest/'_redirects').write_text('/racknerd-promo-code/ /racknerd-vps-plans/ 301\n/racknerd-promo-code /racknerd-vps-plans/ 301\n/deals/:id/ /plans/:id/ 301\n/deals/:id /plans/:id/ 301\n'+''.join(f'/providers/{p["id"]}/ / 302\n/providers/{p["id"]} / 302\n' for p in retired),encoding='utf-8')
     (dest/'404.html').write_text(origin_links('<!doctype html><html lang="en"><meta charset="utf-8"><title>Plan unavailable</title><meta name="description" content="This plan is no longer listed or could not be verified."><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></html>'),encoding='utf-8')
     (dest/'_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Cache-Control: public, max-age=300\n',encoding='utf-8')
     print(f'Built {len(pages)} indexable pages; {len(offers)} fresh offers; {len(providers)} configured providers')
