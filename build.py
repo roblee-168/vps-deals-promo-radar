@@ -127,7 +127,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/'}:
+        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/hetzner-promo-code/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -185,6 +185,8 @@ def build():
     home = render('index.html',count=len(offers),provider_count=len(providers),cards=cards(offers),source_rows=rows,update_hours=cfg['update_hours'])
     if (ROOT/'data/vultr-guide.json').exists():
         home += '<section><h2>Vultr buying guide</h2><p><a href="/vultr-promo-code/">Vultr promo code: official redemption and terms</a></p></section>'
+    if (ROOT/'data/hetzner-guide.json').exists():
+        home += '<section><h2>Hetzner buying guide</h2><p><a href="/hetzner-promo-code/">Hetzner promo code and Cloud billing terms</a></p></section>'
     if (ROOT/'data/racknerd-guide.json').exists():
         home += '<section><h2>RackNerd buying guide</h2><p><a href="/racknerd-vps-plans/">RackNerd VPS plans and pricing terms</a></p></section>'
     if (ROOT/'data/liquid-web-guide.json').exists():
@@ -313,6 +315,12 @@ def build():
         faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
         faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
         write('/vultr-promo-code/','Vultr promo code: official verification and VPS terms | '+cfg['brand'],'Check whether a Vultr promo code was verified, with official VPS conditions, refund rules and dated sources.',render('vultr-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
+    if (ROOT/'data/hetzner-guide.json').exists():
+        guide = json.loads((ROOT/'data/hetzner-guide.json').read_text(encoding='utf-8'))
+        guide_rows = ''.join('<tr><td>'+escape(row['offer'])+'</td><td>'+escape(row['conditions'])+'</td><td><a rel="noopener" href="'+escape(row['source'],quote=True)+'">'+escape(row['label'])+'</a></td><td>'+escape(guide['checked'])+'</td></tr>' for row in guide['facts'])
+        faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
+        faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
+        write('/hetzner-promo-code/','Hetzner promo code: official status and Cloud billing terms | '+cfg['brand'],'Check whether a Hetzner promo code was verified, with official referral status, billing conditions, cancellation terms and dated sources.',render('hetzner-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
     if (ROOT/'data/racknerd-guide.json').exists():
         guide = json.loads((ROOT/'data/racknerd-guide.json').read_text(encoding='utf-8'))
         guide_rows = ''.join('<tr><td>'+escape(row['offer'])+'</td><td>'+escape(row['conditions'])+'</td><td><a rel="noopener" href="'+escape(row['source'],quote=True)+'">'+escape(row['label'])+'</a></td><td>'+escape(guide['checked'])+'</td></tr>' for row in guide['facts'])

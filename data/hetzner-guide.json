@@ -1,0 +1,57 @@
+{
+  "checked": "2026-09-22",
+  "facts": [
+    {
+      "offer": "Referral credit program discontinued",
+      "conditions": "The official FAQ says participation is no longer possible, including through old referral links.",
+      "source": "https://docs.hetzner.com/cloud/general/faq/",
+      "label": "Cloud FAQ: referral credit"
+    },
+    {
+      "offer": "Hourly Cloud billing with a monthly cap",
+      "conditions": "Partial hours round up. A server continues to incur charges while it exists, even when switched off; deleting it ends server billing. This is paid usage, not a discount or free trial.",
+      "source": "https://docs.hetzner.com/cloud/billing/faq/",
+      "label": "Cloud billing FAQ"
+    },
+    {
+      "offer": "Primary IP charges are separate",
+      "conditions": "Primary IPv4 is billed separately, including unassigned addresses, until deleted. Primary IPv6 is free.",
+      "source": "https://docs.hetzner.com/cloud/billing/faq/",
+      "label": "Cloud billing FAQ: Primary IPs"
+    },
+    {
+      "offer": "No pre-purchase trial",
+      "conditions": "The billing documentation says products cannot be tried before purchase; most products use hourly billing.",
+      "source": "https://docs.hetzner.com/general/billing-and-account-management/billing-at-hetzner/billing-system-hetzner/",
+      "label": "Billing system: trial question"
+    },
+    {
+      "offer": "Cancellation and refund terms",
+      "conditions": "General Terms section 12 provides cancellation within 14 days of contracting by clear notice. Refunds are due within 14 days of receipt of that notice; services already started are charged pro rata. The same page includes additional US terms that take precedence where they conflict. This is not a promise of cost-free usage.",
+      "source": "https://www.hetzner.com/legal/terms-and-conditions/",
+      "label": "Terms: section 12 and US special terms"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is there a verified Hetzner promo code here?",
+      "answer": "No public, usable promo code was verified in the official pages reviewed for this guide. No code is published here.",
+      "source": "https://www.hetzner.com/cloud/"
+    },
+    {
+      "question": "Can I still use an old referral credit link?",
+      "answer": "The official FAQ says the referral program has ended and old links no longer allow participation.",
+      "source": "https://docs.hetzner.com/cloud/general/faq/"
+    },
+    {
+      "question": "Does switching off a Cloud server stop billing?",
+      "answer": "No. Charges continue while the server exists. Deleting a server does not remove separately billed resources such as Primary IPv4 addresses.",
+      "source": "https://docs.hetzner.com/cloud/billing/faq/"
+    },
+    {
+      "question": "Is the cancellation policy a free trial?",
+      "answer": "No. The general cancellation terms charge proportionally for services already started; check the applicable general and US special terms before ordering.",
+      "source": "https://www.hetzner.com/legal/terms-and-conditions/"
+    }
+  ]
+}
