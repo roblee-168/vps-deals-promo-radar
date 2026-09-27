@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 510" role="img" aria-labelledby="title desc">
+  <title id="title">Three checks before paying for a RackNerd VPS</title>
+  <desc id="desc">Match the product to the public source, record the final checkout total, then read billing and refund terms.</desc>
+  <rect width="680" height="510" rx="18" fill="#e7eddf"/>
+  <g font-family="system-ui, sans-serif" fill="#203c33">
+    <text x="34" y="49" font-size="27" font-weight="700">Before you pay</text>
+    <text x="34" y="78" font-size="17">A buyer-led evidence check</text>
+    <g transform="translate(28 105)">
+      <rect width="624" height="107" rx="12" fill="#fffef9" stroke="#d6dbcf"/>
+      <circle cx="51" cy="53" r="25" fill="#203c33"/>
+      <text x="43" y="62" font-size="24" font-weight="700" fill="#d4f19c">1</text>
+      <text x="94" y="45" font-size="23" font-weight="700">Match the product</text>
+      <text x="94" y="75" font-size="17">VPS and dedicated servers are separate.</text>
+    </g>
+    <g transform="translate(28 226)">
+      <rect width="624" height="107" rx="12" fill="#fffef9" stroke="#d6dbcf"/>
+      <circle cx="51" cy="53" r="25" fill="#203c33"/>
+      <text x="43" y="62" font-size="24" font-weight="700" fill="#d4f19c">2</text>
+      <text x="94" y="45" font-size="23" font-weight="700">Read the order summary</text>
+      <text x="94" y="75" font-size="17">Record cycle, options and due-today total.</text>
+    </g>
+    <g transform="translate(28 347)">
+      <rect width="624" height="107" rx="12" fill="#fffef9" stroke="#d6dbcf"/>
+      <circle cx="51" cy="53" r="25" fill="#203c33"/>
+      <text x="43" y="62" font-size="24" font-weight="700" fill="#d4f19c">3</text>
+      <text x="94" y="45" font-size="23" font-weight="700">Check the terms</text>
+      <text x="94" y="75" font-size="17">Confirm renewal and refund conditions.</text>
+    </g>
+  </g>
+</svg>
