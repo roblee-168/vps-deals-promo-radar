@@ -127,7 +127,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/hetzner-promo-code/'}:
+        if path not in {'/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/hetzner-promo-code/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -189,6 +189,7 @@ def build():
         home += '<section><h2>Hetzner buying guide</h2><p><a href="/hetzner-promo-code/">Hetzner promo code and Cloud billing terms</a></p></section>'
     if (ROOT/'data/racknerd-guide.json').exists():
         home += '<section><h2>RackNerd buying guide</h2><p><a href="/racknerd-vps-plans/">RackNerd VPS plans and pricing terms</a></p></section>'
+        home += '<section><h2>RackNerd buyer worksheet</h2><p><a href="/racknerd-checkout-worksheet/">Check product eligibility and checkout terms</a></p></section>'
     if (ROOT/'data/liquid-web-guide.json').exists():
         home += '<section><h2>Liquid Web buying guide</h2><p><a href="/liquid-web-promo-code/">Liquid Web promo code: official redemption and terms</a></p></section>'
     if (ROOT/'data/contabo-guide.json').exists():
@@ -327,6 +328,12 @@ def build():
         faq_html = ''.join('<h3>'+escape(q['question'])+'</h3><p>'+escape(q['answer'])+' <a href="'+escape(q['source'],quote=True)+'" rel="noopener">Official source</a> · Checked '+escape(guide['checked'])+'</p>' for q in guide['faq'])
         faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':q['question'],'acceptedAnswer':{'@type':'Answer','text':q['answer']}} for q in guide['faq']]}
         write('/racknerd-vps-plans/','RackNerd VPS plans and pricing terms | '+cfg['brand'],'Review RackNerd VPS annual prices and dedicated-server terms, with official sources, review dates and refund guidance.',render('racknerd-guide.html',rows=guide_rows,faq=faq_html,checked=guide['checked']),[faq_schema],guide['checked'],keep_metadata=True)
+        worksheet_faq = {'@type':'FAQPage','mainEntity':[
+            {'@type':'Question','name':'Does the public code apply to the annual VPS specials?','acceptedAnswer':{'@type':'Answer','text':'The official banner describes 15OFFDEDI for dedicated servers. The VPS list does not state that it applies to the annual specials.'}},
+            {'@type':'Question','name':'Does a visible code box mean my VPS qualifies?','acceptedAnswer':{'@type':'Answer','text':'No eligibility claim follows from the box alone. Check the actual response and final total for the product you selected.'}},
+            {'@type':'Question','name':'Can I get a refund if the plan is unsuitable?','acceptedAnswer':{'@type':'Answer','text':'RackNerd says it does not offer refunds or a money-back guarantee.'}},
+        ]}
+        write('/racknerd-checkout-worksheet/','RackNerd VPS checkout worksheet | '+cfg['brand'],'Check RackNerd VPS product eligibility, billing cycle, final total and refund terms against official sources before paying.',render('racknerd-checkout-worksheet.html'),[worksheet_faq],'2026-09-27',keep_metadata=True)
     # Keep established URLs when verification fails; never count history as fresh.
     known = {o['id']:o for o in data.get('historical_offers',[]) + data['offers'] if o['provider_id'] in providers}
     archived = [o for oid,o in known.items() if oid not in {x['id'] for x in offers}]
