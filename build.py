@@ -147,7 +147,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in {'/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/hetzner-promo-code/'}:
+        if path not in {'/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/hetzner-promo-code/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -223,7 +223,12 @@ def build():
     if 'hostinger' in providers:
         home += '<section><h2>Buying guides</h2><p><a href="/hostinger-coupon-code/">Hostinger coupon code: official evidence and VPS terms</a></p></section>'
     if 'namecheap' in providers and (ROOT/'data/namecheap-guide.json').exists():
-        home += '<section><h2>Namecheap buying guide</h2><p><a href="/namecheap-promo-code/">Namecheap promo code: official evidence and VPS terms</a></p></section>'
+        home += '<section><h2>Namecheap buying guide</h2><p><a href="/namecheap-promo-code/">Namecheap promo code: official evidence and VPS terms</a> · <a href="/namecheap-renewal-promo-code/">Namecheap renewal promo code: community claims and verification</a></p></section>'
+    namecheap_renewal_faq = {'@type':'FAQPage','mainEntity':[
+        {'@type':'Question','name':'Does absence from the official coupon page mean COUPONFCNC does not exist?','acceptedAnswer':{'@type':'Answer','text':'No. It establishes only that we did not find it on the reviewed page, not that it is unavailable everywhere.'}},
+        {'@type':'Question','name':'Is there a verified Namecheap promo code for renewal on this page?','acceptedAnswer':{'@type':'Answer','text':'No. COUPONFCNC is included only as a reader-supplied community report; we have no current renewal-cart result.'}}
+    ]}
+    write('/namecheap-renewal-promo-code/', 'Namecheap renewal promo code: is COUPONFCNC verified? | '+cfg['brand'], 'Separate community COUPONFCNC reports from official renewal evidence, understand cart claims, and check unexpected renewal notices safely.', render('namecheap-renewal-guide.html', checked='2026-09-27'), [namecheap_renewal_faq], '2026-09-27', keep_metadata=True)
     if (ROOT/'data/godaddy-guide.json').exists():
         home += '<section><h2>GoDaddy buying guide</h2><p><a href="/godaddy-promo-code/">GoDaddy promo code: official evidence and VPS terms</a> · <a href="/godaddy-renewal-promo-code/">GoDaddy renewal promo code: eligibility and cost worksheet</a></p></section>'
     if (ROOT/'data/bluehost-guide.json').exists():
