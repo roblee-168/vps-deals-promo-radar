@@ -19,6 +19,7 @@ Liquid Web | https://www.liquidweb.com | https://www.liquidweb.com/black-friday-
 ::MODULE{FIELDS|title:每条优惠提取什么}
 title price currency offer_url valid_until source_url fetched_at
 ::MODULE{RUNTIME|title:确定性抓取和渲染}
+ga4_measurement_id: G-FZXVC5HNVT
 update_hours: 6
 cron: 17 */6 * * *
 max_age_hours: 24

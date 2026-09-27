@@ -55,6 +55,25 @@ def neutral_metadata(text):
 
 def build():
     cfg = load_config()
+    ga4_id = cfg.get('ga4_measurement_id', '')
+    if not re.fullmatch(r'G-[A-Z0-9]+', ga4_id):
+        raise ValueError('Invalid GA4 measurement ID')
+    analytics_tag = (
+        '<!-- Google tag (gtag.js) -->'
+        f'<script async src="https://www.googletagmanager.com/gtag/js?id={ga4_id}"></script>'
+        '<script>window.dataLayer = window.dataLayer || [];'
+        'function gtag(){dataLayer.push(arguments);}'
+        "gtag('js', new Date());"
+        f"gtag('config', '{ga4_id}');</script>"
+    )
+    def with_analytics(page):
+        if analytics_tag in page:
+            return page
+        if 'googletagmanager.com/gtag/js?id=' in page:
+            raise ValueError('Conflicting Google tag in preserved page')
+        if '<head>' not in page:
+            raise ValueError('Cannot add analytics to HTML without head')
+        return page.replace('<head>', '<head>'+analytics_tag, 1)
     data = json.loads((ROOT/'data/offers.json').read_text(encoding='utf-8'))
     now = datetime.now(timezone.utc)
     providers = {p['id']:p for p in cfg['providers']}
@@ -79,7 +98,8 @@ def build():
             cached=dest/item['path']
             if provider in unchanged and cached.is_file():
                 raw=cached.read_bytes()
-                if hashlib.sha256(raw).hexdigest()==item['sha256']:
+                baseline_raw = raw.replace(analytics_tag.encode('utf-8'), b'', 1)
+                if hashlib.sha256(baseline_raw).hexdigest()==item['sha256']:
                     preserved_pages[path]=raw
     # Fixed generated directory only; clear stale detail pages after a provider is removed.
     if dest.is_symlink():
@@ -102,7 +122,7 @@ def build():
         if not keep_metadata:
             title, description = neutral_metadata(title), neutral_metadata(description)
         canonical = base+path
-        html = render('base.html', brand=escape(cfg['brand']),title=escape(title), description=escape(description), canonical=escape(canonical,quote=True), content=content, locale=escape(cfg['locale']), robots='noindex,follow' if noindex else 'index,follow', schema=json.dumps({'@context':'https://schema.org','@graph':list(schemas)},ensure_ascii=False).replace('<','\\u003c'))
+        html = render('base.html', brand=escape(cfg['brand']),title=escape(title), description=escape(description), canonical=escape(canonical,quote=True), content=content, locale=escape(cfg['locale']), robots='noindex,follow' if noindex else 'index,follow', schema=json.dumps({'@context':'https://schema.org','@graph':list(schemas)},ensure_ascii=False).replace('<','\\u003c'), analytics_tag=analytics_tag)
         html = html.replace('/assets/style.css"',f'/assets/style.css?v={style_version}"')
         # Replace configured provider exits only; preserve source evidence and copy.
         from urllib.parse import urlsplit
@@ -133,7 +153,7 @@ def build():
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
         output.parent.mkdir(parents=True,exist_ok=True)
         if path in preserved_pages:
-            output.write_bytes(preserved_pages[path])
+            output.write_text(with_analytics(preserved_pages[path].decode('utf-8')),encoding='utf-8')
         else:
             output.write_text(origin_links(html),encoding='utf-8')
         if not noindex:
@@ -357,7 +377,8 @@ def build():
     # Retired empty provider pages lead to the current source table, not cached shells.
     retired = [p for p in cfg['providers'] if not any(o['provider_id']==p['id'] for o in known.values())]
     (dest/'_redirects').write_text('/racknerd-promo-code/ /racknerd-vps-plans/ 301\n/racknerd-promo-code /racknerd-vps-plans/ 301\n/deals/:id/ /plans/:id/ 301\n/deals/:id /plans/:id/ 301\n'+''.join(f'/providers/{p["id"]}/ / 302\n/providers/{p["id"]} / 302\n' for p in retired),encoding='utf-8')
-    (dest/'404.html').write_text(origin_links('<!doctype html><html lang="en"><meta charset="utf-8"><title>Plan unavailable</title><meta name="description" content="This plan is no longer listed or could not be verified."><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></html>'),encoding='utf-8')
+    not_found = '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Plan unavailable</title><meta name="description" content="This plan is no longer listed or could not be verified."></head><body><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></body></html>'
+    (dest/'404.html').write_text(origin_links(with_analytics(not_found)),encoding='utf-8')
     (dest/'_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Cache-Control: public, max-age=300\n',encoding='utf-8')
     print(f'Built {len(pages)} indexable pages; {len(offers)} fresh offers; {len(providers)} configured providers')
 
