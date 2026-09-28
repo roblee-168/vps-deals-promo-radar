@@ -111,7 +111,7 @@ def build():
     # The legacy social card carries the retired brand; do not publish it.
     (dest/'assets/og.png').unlink(missing_ok=True)
     pages = []
-    style_version = hashlib.sha256((ROOT/'assets/style.css').read_bytes()).hexdigest()[:12]
+    style_version = hashlib.sha256((ROOT/'assets/style.css').read_bytes().replace(b'\r\n', b'\n')).hexdigest()[:12]
     month = now.strftime('%B %Y')
     def render(template_name, **values):
         template_name = cfg.get('template_'+template_name.removesuffix('.html'),template_name)
@@ -147,7 +147,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in {'/hostinger-domain-coupon-code/', '/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/hetzner-promo-code/'}:
+        if path not in store_paths and path not in {'/hostinger-domain-coupon-code/', '/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/hetzner-promo-code/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -224,6 +224,8 @@ def build():
         home += '<section><h2>Buying guides</h2><p><a href="/hostinger-coupon-code/">Hostinger coupon code: official evidence and VPS terms</a> · <a href="/hostinger-domain-coupon-code/">Hostinger domain coupon code: eligibility and terms</a></p></section>'
     if 'namecheap' in providers and (ROOT/'data/namecheap-guide.json').exists():
         home += '<section><h2>Namecheap buying guide</h2><p><a href="/namecheap-promo-code/">Namecheap promo code: official evidence and VPS terms</a> · <a href="/namecheap-renewal-promo-code/">Namecheap renewal promo code: community claims and verification</a></p></section>'
+    store_guides = json.loads((ROOT/'data/store-guides.json').read_text(encoding='utf-8')) if (ROOT/'data/store-guides.json').exists() else []
+    store_paths = {'/'+guide['slug']+'/' for guide in store_guides}
     domain_faq = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':'Is COUPONSPAGE a verified domain coupon?','acceptedAnswer':{'@type':'Answer','text':'No. We observed it on hosting cards, not as proof of standalone domain eligibility.'}},{'@type':'Question','name':'Is the included domain free forever?','acceptedAnswer':{'@type':'Answer','text':'No. The included registration is for one year; standard renewal pricing follows.'}}]}
     write('/hostinger-domain-coupon-code/', 'Hostinger domain coupon code: eligibility and terms | '+cfg['brand'], 'Check whether a standalone Hostinger domain code is verified, with official free-domain conditions, renewal limits and refund sources.', render('hostinger-domain-guide.html', checked='2026-09-28'), [domain_faq], '2026-09-28', keep_metadata=True)
     namecheap_renewal_faq = {'@type':'FAQPage','mainEntity':[
@@ -237,6 +239,19 @@ def build():
         home += '<section><h2>Bluehost buying guide</h2><p><a href="/bluehost-promo-code/">Bluehost promo code: official evidence and VPS terms</a></p></section>'
     if (ROOT/'data/hostgator-guide.json').exists():
         home += '<section><h2>HostGator buying guide</h2><p><a href="/hostgator-promo-code/">HostGator promo code: official evidence and VPS terms</a></p></section>'
+    if store_guides:
+        home += '<section id="more-stores"><h2>More stores</h2><ul>'+''.join('<li><a href="/'+escape(g['slug'],quote=True)+'/">'+escape(g['title'])+'</a></li>' for g in store_guides)+'</ul></section>'
+    for guide in store_guides:
+        guide_rows = ''
+        for row in guide['rows']:
+            quote = '<br><q>'+escape(row['quote'])+'</q>' if row.get('quote') else ''
+            guide_rows += '<tr><td>'+escape(row['offer'])+quote+'</td><td>'+escape(row['conditions'])+'</td><td><a href="'+escape(safe_url(row['source']),quote=True)+'" rel="noopener">Official source</a></td><td>'+escape(guide['checked'])+'</td></tr>'
+        faq_html = ''.join('<h3>'+escape(f['question'])+'</h3><p>'+escape(f['answer'])+' <a href="'+escape(safe_url(f['source']),quote=True)+'">Official source</a> · Reviewed '+escape(guide['checked'])+'.</p>' for f in guide['faq'])
+        faq_schema = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':f['question'],'acceptedAnswer':{'@type':'Answer','text':f['answer']}} for f in guide['faq']]}
+        lead = escape(guide['lead'])+' <a href="'+escape(safe_url(guide['rows'][0]['source']),quote=True)+'">Official evidence</a>'
+        variant = '<p>'+escape(guide['variant'])+'</p>' if guide['variant'] else ''
+        content = render('store-guide.html',heading=escape(guide['title']),lead=lead,checked=escape(guide['checked']),variant=variant,rows=guide_rows,faq=faq_html,advice=escape(guide['advice']))
+        write('/'+guide['slug']+'/',guide['title']+' | '+cfg['brand'],guide['lead'],content,[faq_schema],guide['checked'],keep_metadata=True)
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
