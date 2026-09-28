@@ -147,7 +147,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in {'/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/hetzner-promo-code/'}:
+        if path not in {'/hostinger-domain-coupon-code/', '/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/hetzner-promo-code/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -221,9 +221,11 @@ def build():
     if (ROOT/'data/ovhcloud-guide.json').exists():
         home += '<section><h2>OVHcloud buying guide</h2><p><a href="/ovhcloud-promo-code/">OVHcloud promo code: official US offers and terms</a></p></section>'
     if 'hostinger' in providers:
-        home += '<section><h2>Buying guides</h2><p><a href="/hostinger-coupon-code/">Hostinger coupon code: official evidence and VPS terms</a></p></section>'
+        home += '<section><h2>Buying guides</h2><p><a href="/hostinger-coupon-code/">Hostinger coupon code: official evidence and VPS terms</a> · <a href="/hostinger-domain-coupon-code/">Hostinger domain coupon code: eligibility and terms</a></p></section>'
     if 'namecheap' in providers and (ROOT/'data/namecheap-guide.json').exists():
         home += '<section><h2>Namecheap buying guide</h2><p><a href="/namecheap-promo-code/">Namecheap promo code: official evidence and VPS terms</a> · <a href="/namecheap-renewal-promo-code/">Namecheap renewal promo code: community claims and verification</a></p></section>'
+    domain_faq = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':'Is COUPONSPAGE a verified domain coupon?','acceptedAnswer':{'@type':'Answer','text':'No. We observed it on hosting cards, not as proof of standalone domain eligibility.'}},{'@type':'Question','name':'Is the included domain free forever?','acceptedAnswer':{'@type':'Answer','text':'No. The included registration is for one year; standard renewal pricing follows.'}}]}
+    write('/hostinger-domain-coupon-code/', 'Hostinger domain coupon code: eligibility and terms | '+cfg['brand'], 'Check whether a standalone Hostinger domain code is verified, with official free-domain conditions, renewal limits and refund sources.', render('hostinger-domain-guide.html', checked='2026-09-28'), [domain_faq], '2026-09-28', keep_metadata=True)
     namecheap_renewal_faq = {'@type':'FAQPage','mainEntity':[
         {'@type':'Question','name':'Does absence from the official coupon page mean COUPONFCNC does not exist?','acceptedAnswer':{'@type':'Answer','text':'No. It establishes only that we did not find it on the reviewed page, not that it is unavailable everywhere.'}},
         {'@type':'Question','name':'Is there a verified Namecheap promo code for renewal on this page?','acceptedAnswer':{'@type':'Answer','text':'No. COUPONFCNC is included only as a reader-supplied community report; we have no current renewal-cart result.'}}
