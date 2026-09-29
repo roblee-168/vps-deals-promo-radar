@@ -1,0 +1,26 @@
+# Publication audit: vps vs shared hosting
+
+Reviewed 2026-09-29. Target volume: US monthly 210, supplied by the user, not independently measured here. User opened Chrome search; google.com.hk, personalized results and Shanghai IP location were visible. User explicitly accepted this sample. This is NOT a verified US-location ranking. First nine primary organic results came from the initial page; pagination repeated GoDaddy, which was deduplicated, then supplied HostGator. Ads, video and question blocks excluded. Order below is observed unique-result order, not a claim of a universal ranking.
+
+| Order / page | Body coverage observed | Overlap excluded / contribution checked |
+|---|---|---|
+| 1 [Reddit](https://www.reddit.com/r/webhosting/comments/1f48cic/whats_the_difference_between_shared_hosting_and/) | Main post and discussion: resource allocation, isolation, CPU qualifications, administration and cost | CPU qualification and general purchasing criteria excluded. No requirement-row document/trial verdict procedure observed in the read discussion. |
+| 2 [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/525/48/what-is-the-difference-between-shared-hosting-and-vps/) | Complete short article: resource and software control | Customization comparison excluded; no evidence-verdict record observed. |
+| 3 [VPS.DO](https://vps.do/vps-vs-shared-hosting-3/) | Full article read in Chrome: technical models, workload audit, managed choice, feature checklist | Workload diagnosis, CPU nuance and checklist excluded; no separate supported/contradicted/unconfirmed and trial-state record observed. |
+| 4 [MilesWeb](https://www.milesweb.in/hosting/vps-vs-shared) | Product cards, comparisons, upgrade signals and final FAQs read | Feature and migration claims excluded; no requirement-evidence conflict procedure observed. |
+| 5 [DreamHost](https://www.dreamhost.com/blog/shared-vs-vps-hosting/) | Full article read in Chrome: seven differences, management, root on self-managed products, decision questions and upgrade signals | Root/management qualifications and decision advice excluded; no row-level document verdict separated from trial verdict observed. |
+| 6 [Hostinger](https://www.hostinger.com/ph/tutorials/shared-hosting-vs-vps-hosting/) | Article through final upgrade section read in web extraction | Security, maintenance, control, scaling and stay/upgrade advice excluded; no evidence conflict record observed. |
+| 7 [ServerAvatar public Facebook post](https://www.facebook.com/serveravatar/posts/a-managed-vps-isnt-automatically-faster-and-shared-hosting-isnt-always-a-bad-cho/1534594818684749/) | Entire visible post text read; linked image/comment expansion not audited | Workload-based choice and speed caveat excluded. No verdict procedure in visible post text; no claim about inaccessible comments or image-only text. |
+| 8 [InMotion](https://www.inmotionhosting.com/blog/difference-between-shared-vps-dedicated-hosting/) | Full article and decision framework read in Chrome DOM | Role-based decision framework, email, staging and migration considerations excluded; no document/trial dual-verdict ledger observed. |
+| 9 [GoDaddy](https://www.godaddy.com/resources/uk/smallbusiness/hosting-differences-understanding-shared-vps-and-dedicated-options) | Full article through conclusion read | Managed/unmanaged and resource tradeoffs excluded; no requirement-evidence verdict procedure observed. |
+| 10 [HostGator](https://www.hostgator.com/blog/web-hosting-vps-vs-shared/) | Full article read in Chrome | Pros/cons, budget and upgrade need excluded; no document/trial evidence procedure observed. |
+
+## Counting method and limits
+
+Only the complete `section#evidence-verdict` counts in the numerator. Its contribution is an explicit requirement record with supported/contradicted/Unconfirmed document states, separate trial states, non-compensable mandatory requirements, treatment of cross-product answers, and a challengeable dated decision record. The preceding upgrade ticket, factual examples, ordinary comparison topics, lead and FAQs all count zero in the numerator. This is an editorial comparison of the accessible bodies above, not an automatic plagiarism score, proof of global exclusivity, or a claim about unread material.
+
+HTMLParser extracts visible text from the article template, including all headings, table cells, dates and source labels. Regex `[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*` counts tokens. Numerator 513 / denominator 1605 × 100 = 31.96%. The numerator is the novel procedure as a whole; ordinary technical claims have not been counted as new evidence.
+
+Official product evidence retains its actual 2026-09-28 review date. Publication date is 2026-09-29. No price, performance measurement or new promotion was invented. Hypothetical requirements are explicitly identified as illustrative, and the worksheet is labelled editorial rather than vendor policy.
+
+No existing page with this exact intent was found in the current generated sitemap or templates. Build adds one canonical route, one homepage link and one sitemap entry. Existing pages remain. Tests: 13 passed; complete build: 53 indexable pages. Live verification to be recorded after deployment.

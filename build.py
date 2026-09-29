@@ -252,6 +252,13 @@ def build():
         variant = '<p>'+escape(guide['variant'])+'</p>' if guide['variant'] else ''
         content = render('store-guide.html',heading=escape(guide['title']),lead=lead,checked=escape(guide['checked']),variant=variant,rows=guide_rows,faq=faq_html,advice=escape(guide['advice']))
         write('/'+guide['slug']+'/',guide['title']+' | '+cfg['brand'],guide['lead'],content,[faq_schema],guide['checked'],keep_metadata=True)
+    hosting_faq = {'@type':'FAQPage','mainEntity':[
+        {'@type':'Question','name':'Does VPS always mean root access?','acceptedAnswer':{'@type':'Answer','text':"No. DreamHost's Managed VPS is a documented counterexample. Check the particular product instead of generalizing from the label."}},
+        {'@type':'Question','name':'Does VPS always mean dedicated CPU?','acceptedAnswer':{'@type':'Answer','text':'No. DigitalOcean documents shared-CPU and dedicated-CPU Droplets. Check the allocation model of the selected plan.'}},
+        {'@type':'Question','name':'What traffic number means I must upgrade?','acceptedAnswer':{'@type':'Answer','text':'This page does not set one. Our worksheet asks you to identify a specific limitation and an acceptance check; it does not turn visitor count into a universal hosting requirement.'}}
+    ]}
+    write('/vps-vs-shared-hosting/', 'VPS vs shared hosting: check what an upgrade actually changes | '+cfg['brand'], 'Compare shared hosting and VPS using documented permissions, CPU allocation and a requirement-by-requirement upgrade worksheet.', render('vps-vs-shared-hosting.html'), [hosting_faq], '2026-09-29', keep_metadata=True)
+    home += '<section><h2>Hosting decisions</h2><p><a href="/vps-vs-shared-hosting/">VPS vs shared hosting: check what an upgrade actually changes</a></p></section>'
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
