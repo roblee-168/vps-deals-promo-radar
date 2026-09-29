@@ -4,6 +4,10 @@ User-authorized replacement of the previous research focus. Fixed keyword: `vps 
 
 Schedule: daily at 09:00 Asia/Shanghai. New cycle starts 2026-09-28; first reporting boundary 2026-10-26. Automation id remains `racknerd` to avoid duplicate daily jobs; its visible name and instructions now refer to VPS deals.
 
+## Current status — 2026-09-29
+
+The user removed the requirement to complete ten articles per comparator as a publication prerequisite. Earlier incomplete-reading and no-publication notes below are historical, not the current gate. The first article is now published: https://perkmingle.com/vps-vs-shared-hosting/ . Exact target vps vs shared hosting; user-supplied US monthly volume 210. Comparison and counted contribution are in docs/vps-vs-shared-hosting-audit-2026-09-29.md. Do not create another page for this same question or count this publication twice.
+
 ## Research status
 
 ### Continuation evidence — 2026-09-28

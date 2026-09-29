@@ -18,3 +18,5 @@ Cycle starts 2026-09-28. Fixed comparison sites: lowendbox.com, comparevps.com, 
 - Exclusive procedure section: 513 / 1605 article tokens = 31.96%, bounded to accessible comparison text. Generic claims and earlier worksheet excluded.
 - Chrome live DOM returned the complete new article after deployment. Shell HTTP checks received 403 and were not bypassed. After tool reconnection Chrome was unavailable; in-app sitemap navigation returned ERR_BLOCKED_BY_CLIENT and web extraction failed. Live sitemap, canonical and mobile verification remain unconfirmed; generated sitemap includes the route. Do not report those live checks passed.
 - Tests: 13 passed; full build succeeded. Daily automation updated to remove the superseded thirty-article prerequisite and retain the actual exclusivity comparison requirement.
+
+- Follow-up live check: in-app browser successfully reopened the complete article and read exactly one canonical, https://perkmingle.com/vps-vs-shared-hosting/. Sitemap browser navigation remained ERR_BLOCKED_BY_CLIENT; do not claim live sitemap verification. This remains one publication today, not a second article.
