@@ -111,7 +111,12 @@ def build():
     # The legacy social card carries the retired brand; do not publish it.
     (dest/'assets/og.png').unlink(missing_ok=True)
     pages = []
-    style_version = hashlib.sha256((ROOT/'assets/style.css').read_bytes().replace(b'\r\n', b'\n')).hexdigest()[:12]
+    style_bytes = (ROOT/'assets/style.css').read_bytes()
+    style_version = hashlib.sha256(style_bytes.replace(b'\r\n', b'\n')).hexdigest()[:12]
+    style_asset = f'style.{style_version}.css'
+    # Cloudflare may keep the stable asset URL cached across deployments. A
+    # content-addressed filename guarantees that updated HTML fetches updated CSS.
+    (dest/'assets'/style_asset).write_bytes(style_bytes)
     month = now.strftime('%B %Y')
     def render(template_name, **values):
         template_name = cfg.get('template_'+template_name.removesuffix('.html'),template_name)
@@ -123,7 +128,7 @@ def build():
             title, description = neutral_metadata(title), neutral_metadata(description)
         canonical = base+path
         html = render('base.html', brand=escape(cfg['brand']),title=escape(title), description=escape(description), canonical=escape(canonical,quote=True), content=content, locale=escape(cfg['locale']), robots='noindex,follow' if noindex else 'index,follow', schema=json.dumps({'@context':'https://schema.org','@graph':list(schemas)},ensure_ascii=False).replace('<','\\u003c'), analytics_tag=analytics_tag)
-        html = html.replace('/assets/style.css"',f'/assets/style.css?v={style_version}"')
+        html = html.replace('/assets/style.css"',f'/assets/{style_asset}"')
         # Replace configured provider exits only; preserve source evidence and copy.
         from urllib.parse import urlsplit
         def affiliate_exit(match):
