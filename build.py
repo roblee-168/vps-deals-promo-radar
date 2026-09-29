@@ -264,6 +264,7 @@ def build():
     ]}
     write('/vps-vs-shared-hosting/', 'VPS vs shared hosting: check what an upgrade actually changes | '+cfg['brand'], 'Compare shared hosting and VPS using documented permissions, CPU allocation and a requirement-by-requirement upgrade worksheet.', render('vps-vs-shared-hosting.html'), [hosting_faq], '2026-09-29', keep_metadata=True)
     home += '<section><h2>Hosting decisions</h2><p><a href="/vps-vs-shared-hosting/">VPS vs shared hosting: check what an upgrade actually changes</a></p></section>'
+    write('/vps-price/', 'VPS Price: Calculate the First Usable Cycle, Not the Smallest Number | '+cfg['brand'], 'Calculate a VPS first usable-cycle cost from the invoice, required extras, migration overlap, residual resources and recovery work.', render('vps-price.html'), [], '2026-09-29', keep_metadata=True)
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
