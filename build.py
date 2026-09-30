@@ -152,7 +152,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in store_paths and path not in {'/hostinger-domain-coupon-code/', '/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/hetzner-promo-code/'}:
+        if path not in store_paths and path not in {'/hostinger-domain-coupon-code/', '/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/racknerd-black-friday/', '/hetzner-promo-code/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -272,6 +272,13 @@ def build():
     ]}
     write('/vps-black-friday/', 'VPS Black Friday: verify the campaign year before buying | '+cfg['brand'], 'Check a VPS Black Friday page by separating its campaign year, availability window, checkout state and renewal evidence.', render('vps-black-friday.html'), [black_friday_faq], '2026-09-30', keep_metadata=True)
     home += '<section><h2>Seasonal VPS verification</h2><p><a href="/vps-black-friday/">VPS Black Friday: verify the campaign year before buying</a></p></section>'
+    racknerd_season_faq = {'@type':'FAQPage','mainEntity':[
+        {'@type':'Question','name':'Is there a verified RackNerd Black Friday VPS code?','acceptedAnswer':{'@type':'Answer','text':'No VPS code was verified on the official Black Friday 2025 listing reviewed on 2026-09-30. This does not establish that no code exists elsewhere.'}},
+        {'@type':'Question','name':'Are these Black Friday 2026 prices?','acceptedAnswer':{'@type':'Answer','text':'No. The reviewed page names Black Friday 2025. A 2026 campaign remains Unconfirmed.'}},
+        {'@type':'Question','name':'Can I buy one of the five listed VPS plans now?','acceptedAnswer':{'@type':'Answer','text':'All five cards showed 0 Available on 2026-09-30. Checkout and fulfillment were not tested.'}}
+    ]}
+    write('/racknerd-black-friday/', 'RackNerd Black Friday: listed plans and availability | '+cfg['brand'], 'Review the official RackNerd seasonal listing, its 2025 heading, VPS stock, annual billing and dedicated-server code scope.', render('racknerd-black-friday.html'), [racknerd_season_faq], '2026-09-30', keep_metadata=True)
+    home += '<section><h2>RackNerd seasonal listing</h2><p><a href="/racknerd-black-friday/">RackNerd Black Friday: listed plans and availability</a></p></section>'
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]

@@ -18,3 +18,12 @@ Before another page, compare its question with this log and the current sitemap.
 - Follow-up question retained: what official year, stock status and product scope must be distinguished before discussing a seasonal listing? Reconsider when current official campaign evidence is available.
 - Parallel tracks: retain existing design and checkout diagram; comparison trio unchanged; add the question above to the research queue. Draft answer: an old listing alone does not verify a current campaign. Diagram/video concept: listing year -> displayed availability -> current official terms, pending sufficient source material. No video uploaded or account action performed.
 - No production page, source review date, canonical or sitemap changed by this run. Cycle reporting is not due. Documentation-only update; no code/template changes or build required.
+
+## 2026-09-30 — RackNerd seasonal listing
+- Target: racknerd black friday (user supplied US volume 260; not re-estimated).
+- URL: https://perkmingle.com/racknerd-black-friday/
+- Official source directly read in browser after user opened it: https://my.racknerd.com/index.php?rp=/store/blackfriday2025
+- Observed: Black Friday 2025 heading; five KVM VPS cards with 0 Available; annual USD card values 10.60, 18.66, 29.98, 44.98, 62.49. Banner code 15OFFDEDI explicitly scoped to dedicated servers. No VPS code or 2026 campaign verified. No checkout performed.
+- Refund help directly read: https://my.racknerd.com/index.php?rp=/knowledgebase/9/Do-you-have-money-back-guarantee-Or-offer-refunds.html ; no refunds/money-back guarantee, monthly trial recommendation and looking glass guidance.
+- Review date: 2026-09-30. Historical year and zero stock retained in page; no Offer schema or affiliate tracking on sources.
+- Build: 13 tests passed; canonical, English, JSON-LD, sitemap and internal link checks passed. Online verification pending below.
