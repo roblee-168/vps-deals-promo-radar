@@ -20,3 +20,10 @@ Cycle starts 2026-09-28. Fixed comparison sites: lowendbox.com, comparevps.com, 
 - Tests: 13 passed; full build succeeded. Daily automation updated to remove the superseded thirty-article prerequisite and retain the actual exclusivity comparison requirement.
 
 - Follow-up live check: in-app browser successfully reopened the complete article and read exactly one canonical, https://perkmingle.com/vps-vs-shared-hosting/. Sitemap browser navigation remained ERR_BLOCKED_BY_CLIENT; do not claim live sitemap verification. This remains one publication today, not a second article.
+
+## 2026-09-30
+
+- Target: `vps black friday`; user-supplied US monthly volume 110. No existing page targeted this seasonal verification intent.
+- Search review: ten returned result bodies were opened and recorded in `docs/vps-black-friday-audit-2026-09-30.md`. The observed search engine order is not claimed to be a logged-in Google US ranking.
+- Official evidence: https://www.hostinger.com/black-friday-vps-deals, reviewed 2026-09-30. Its heading said 2026 and displayed plan cards, while its FAQ retained 2025 availability dates. The page also said the reduction was automatic and the monthly display was derived from an upfront term total. The article marks the 2026 campaign window Unconfirmed rather than choosing which official field is stale.
+- Publication: `VPS Black Friday: verify the campaign year before buying`, https://perkmingle.com/vps-black-friday/ . Original-analysis count: 519 words inside `#evidence-ledger` / 1,157 words in the article template = 44.86%. This measures the original verification method against the full article body; it is not a claim of global exclusivity. Online verification is appended after deployment.

@@ -265,6 +265,13 @@ def build():
     write('/vps-vs-shared-hosting/', 'VPS vs shared hosting: check what an upgrade actually changes | '+cfg['brand'], 'Compare shared hosting and VPS using documented permissions, CPU allocation and a requirement-by-requirement upgrade worksheet.', render('vps-vs-shared-hosting.html'), [hosting_faq], '2026-09-29', keep_metadata=True)
     home += '<section><h2>Hosting decisions</h2><p><a href="/vps-vs-shared-hosting/">VPS vs shared hosting: check what an upgrade actually changes</a></p></section>'
     write('/vps-price/', 'VPS Price: Calculate the First Usable Cycle, Not the Smallest Number | '+cfg['brand'], 'Calculate a VPS first usable-cycle cost from the invoice, required extras, migration overlap, residual resources and recovery work.', render('vps-price.html'), [], '2026-09-29', keep_metadata=True)
+    black_friday_faq = {'@type':'FAQPage','mainEntity':[
+        {'@type':'Question','name':'Is a 2026 heading enough to prove the 2026 VPS Black Friday campaign is live?','acceptedAnswer':{'@type':'Answer','text':'No. The reviewed Hostinger page had a 2026 heading but retained 2025 availability dates in its FAQ, so the 2026 campaign window remained unconfirmed.'}},
+        {'@type':'Question','name':'Is a separate Hostinger coupon code required on the reviewed page?','acceptedAnswer':{'@type':'Answer','text':'The official FAQ says the reduction is automatically included and no additional coupon code is needed.'}},
+        {'@type':'Question','name':'Does the displayed monthly figure establish cash due today?','acceptedAnswer':{'@type':'Answer','text':'No. The official page says plans are paid upfront and the monthly rate is the term total divided by its number of months.'}}
+    ]}
+    write('/vps-black-friday/', 'VPS Black Friday: verify the campaign year before buying | '+cfg['brand'], 'Check a VPS Black Friday page by separating its campaign year, availability window, checkout state and renewal evidence.', render('vps-black-friday.html'), [black_friday_faq], '2026-09-30', keep_metadata=True)
+    home += '<section><h2>Seasonal VPS verification</h2><p><a href="/vps-black-friday/">VPS Black Friday: verify the campaign year before buying</a></p></section>'
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
