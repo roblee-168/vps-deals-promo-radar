@@ -27,3 +27,4 @@ Before another page, compare its question with this log and the current sitemap.
 - Refund help directly read: https://my.racknerd.com/index.php?rp=/knowledgebase/9/Do-you-have-money-back-guarantee-Or-offer-refunds.html ; no refunds/money-back guarantee, monthly trial recommendation and looking glass guidance.
 - Review date: 2026-09-30. Historical year and zero stock retained in page; no Offer schema or affiliate tracking on sources.
 - Build: 13 tests passed; canonical, English, JSON-LD, sitemap and internal link checks passed. Online verification pending below.
+- Online verification after deployment: new URL returned HTTP 200; browser read back full content and a single correct canonical; live sitemap entry has lastmod 2026-09-30. At requested 390 and 320 widths, document scrollWidth equaled clientWidth (375 and 305 respectively); answer paragraph begins within first screen. Main publication commit de649a5.
