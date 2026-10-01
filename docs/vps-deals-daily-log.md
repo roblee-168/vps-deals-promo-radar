@@ -29,3 +29,11 @@ Cycle starts 2026-09-28. Fixed comparison sites: lowendbox.com, comparevps.com, 
 - Publication: `VPS Black Friday: verify the campaign year before buying`, https://perkmingle.com/vps-black-friday/ . Original-analysis count: 519 words inside `#evidence-ledger` / 1,157 words in the article template = 44.86%. This measures the original verification method against the full article body; it is not a claim of global exclusivity. Online verification is appended after deployment.
 
 - Online verification after deployment: HTTP 200; title correct; exactly one canonical points to https://perkmingle.com/vps-black-friday/; 390 px and 320 px viewport tests had document scroll width equal to client width; live sitemap contains the URL with lastmod 2026-09-30. Publication commit 310e381.
+
+## 2026-10-01
+
+- Target remains `vps deals`; no new search-volume value was estimated. The requested Google query used `hl=en&gl=us&pws=0`, but the browser resolved to `google.com.hk` and the footer reported `Unknown — Can't determine location`; no US ranking is claimed. The ten observed result titles and which bodies were read are recorded in `docs/vps-deals-search-audit-2026-10-01.md`.
+- Comparator surface review: LowEndBox's submission policy generally excludes limited-stock offers, CompareVPS's current visible table has no stock column, and VPSFilter exposes Yes/No/Unknown stock choices. Do not claim that availability labeling is absent across comparators.
+- No candidate page was drafted or published. The existing homepage serves the broad VPS-offer-directory intent, and no distinct subtopic was established that could be shown to clear the 30% original-content comparison; unread result bodies were not counted as absent. Blocker is the per-article originality criterion. Existing pages, sitemap, canonicals, and review dates were left unchanged.
+- RackNerd seasonal listing was read once today. The heading, stock text, banner, and listed prices matched the successful 2026-09-30 record; per the monitor rule, no page, date, review record, or deployment was changed.
+- Documentation only; `git diff --check` passed. No GSC or GA4 values were read.
