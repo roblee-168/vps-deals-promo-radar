@@ -8,6 +8,7 @@ import re
 import shutil
 from datetime import datetime, timezone, timedelta
 from html import escape
+from html.parser import HTMLParser
 from string import Template
 from xml.etree.ElementTree import Element, SubElement, ElementTree
 from config import ROOT, load_config, safe_url
@@ -52,6 +53,58 @@ def neutral_metadata(text):
         text = re.sub(pattern, replacement, text, flags=re.I)
     return text
 
+
+
+def guide_library(markup):
+    """Present existing guide links as an editorial feature and grouped directory."""
+    class GuideParser(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.groups = []
+            self.tag = None
+            self.text = []
+            self.href = ''
+        def handle_starttag(self, tag, attrs):
+            if tag in ('h2', 'a'):
+                self.tag, self.text = tag, []
+                if tag == 'a':
+                    self.href = dict(attrs).get('href', '')
+        def handle_data(self, text):
+            if self.tag:
+                self.text.append(text)
+        def handle_endtag(self, tag):
+            if tag != self.tag:
+                return
+            text = ''.join(self.text)
+            if tag == 'h2':
+                self.groups.append([text, []])
+            elif self.groups:
+                self.groups[-1][1].append((self.href, text))
+            self.tag = None
+    parser = GuideParser()
+    parser.feed(markup)
+    featured = {
+        '/vps-vs-shared-hosting/': ('HOSTING DECISIONS', 'Permissions, CPU allocation and the upgrade checklist.'),
+        '/racknerd-black-friday/': ('LISTING CHECK', 'Campaign year, availability and price terms.'),
+        '/vps-black-friday/': ('BEFORE YOU BUY', 'Read the campaign dates before comparing prices.'),
+    }
+    links = dict(link for _, group in parser.groups for link in group)
+    features = []
+    for href, (label, description) in featured.items():
+        if href not in links:
+            continue
+        features.append('<a class="reading-feature" href="'+escape(href, quote=True)+'"><span class="eyebrow">'+label+'</span><h3>'+escape(links[href])+'</h3><p>'+description+'</p><span class="reading-action">Read the guide <span aria-hidden="true">↗</span></span></a>')
+    cards = []
+    for heading, group in parser.groups:
+        group = [(href, title) for href, title in group if href not in featured]
+        if not group:
+            continue
+        groups = [(re.split(r' (?:coupon|promo) code', title.split(':')[0])[0], [(href, title)]) for href, title in group] if heading == 'More stores' else [(heading, group)]
+        for label, items in groups:
+            label = label.replace(' buying guide', '').replace('Buying guides', 'Hostinger').replace('RackNerd buyer worksheet', 'RackNerd worksheet')
+            body = ''.join('<a href="'+escape(href, quote=True)+'"><span>'+escape(title)+'</span><span aria-hidden="true">↗</span></a>' for href, title in items)
+            cards.append('<article class="guide-group"><h3>'+escape(label)+'</h3>'+body+'</article>')
+    return '<section class="reading-room" aria-labelledby="reading-title"><div class="reading-heading"><div><p class="eyebrow">THE PERKMINGLE LIBRARY</p><h2 id="reading-title">A little reading.<br><em>A clearer decision.</em></h2></div><p>Plan comparisons, buying guides and the terms worth checking before you choose.</p></div><div class="reading-features">'+''.join(features)+'</div><div class="guide-directory-heading" id="more-stores"><h3>Browse the guide library</h3><span>Find your provider. Read the details.</span></div><div class="guide-directory">'+''.join(cards)+'</div></section>'
 
 def build():
     cfg = load_config()
@@ -208,27 +261,28 @@ def build():
         rows += f'<tr><td>{provider_link}</td><td>{label}</td><td>{escape(s.get("checked_at",s.get("attempted_at","Not checked"))[:16].replace("T"," "))}</td><td><a href="{escape(source_target,quote=True)}" rel="noopener">{source_label}</a></td></tr>'
     lastmod = max((o['fetched_at'] for o in offers),default=None)
     home = render('index.html',count=len(offers),provider_count=len(providers),cards=cards(offers),source_rows=rows,update_hours=cfg['update_hours'])
+    guide_sections = ''
     if (ROOT/'data/vultr-guide.json').exists():
-        home += '<section><h2>Vultr buying guide</h2><p><a href="/vultr-promo-code/">Vultr promo code: official redemption and terms</a></p></section>'
+        guide_sections += '<section><h2>Vultr buying guide</h2><p><a href="/vultr-promo-code/">Vultr promo code: official redemption and terms</a></p></section>'
     if (ROOT/'data/hetzner-guide.json').exists():
-        home += '<section><h2>Hetzner buying guide</h2><p><a href="/hetzner-promo-code/">Hetzner promo code and Cloud billing terms</a></p></section>'
+        guide_sections += '<section><h2>Hetzner buying guide</h2><p><a href="/hetzner-promo-code/">Hetzner promo code and Cloud billing terms</a></p></section>'
     if (ROOT/'data/racknerd-guide.json').exists():
-        home += '<section><h2>RackNerd buying guide</h2><p><a href="/racknerd-vps-plans/">RackNerd VPS plans and pricing terms</a></p></section>'
-        home += '<section><h2>RackNerd buyer worksheet</h2><p><a href="/racknerd-checkout-worksheet/">Check product eligibility and checkout terms</a></p></section>'
+        guide_sections += '<section><h2>RackNerd buying guide</h2><p><a href="/racknerd-vps-plans/">RackNerd VPS plans and pricing terms</a></p></section>'
+        guide_sections += '<section><h2>RackNerd buyer worksheet</h2><p><a href="/racknerd-checkout-worksheet/">Check product eligibility and checkout terms</a></p></section>'
     if (ROOT/'data/liquid-web-guide.json').exists():
-        home += '<section><h2>Liquid Web buying guide</h2><p><a href="/liquid-web-promo-code/">Liquid Web promo code: official redemption and terms</a></p></section>'
+        guide_sections += '<section><h2>Liquid Web buying guide</h2><p><a href="/liquid-web-promo-code/">Liquid Web promo code: official redemption and terms</a></p></section>'
     if (ROOT/'data/contabo-guide.json').exists():
-        home += '<section><h2>Contabo buying guide</h2><p><a href="/contabo-promo-code/">Contabo promo code: verification status and refund terms</a></p></section>'
+        guide_sections += '<section><h2>Contabo buying guide</h2><p><a href="/contabo-promo-code/">Contabo promo code: verification status and refund terms</a></p></section>'
     if (ROOT/'data/ionos-guide.json').exists():
-        home += '<section><h2>IONOS buying guide</h2><p><a href="/ionos-promo-code/">IONOS promo code: official VPS prices and terms</a></p></section>'
+        guide_sections += '<section><h2>IONOS buying guide</h2><p><a href="/ionos-promo-code/">IONOS promo code: official VPS prices and terms</a></p></section>'
     if (ROOT/'data/digitalocean-guide.json').exists():
-        home += '<section><h2>DigitalOcean buying guide</h2><p><a href="/digitalocean-promo-code/">DigitalOcean promo code: official verification and credit terms</a></p></section>'
+        guide_sections += '<section><h2>DigitalOcean buying guide</h2><p><a href="/digitalocean-promo-code/">DigitalOcean promo code: official verification and credit terms</a></p></section>'
     if (ROOT/'data/ovhcloud-guide.json').exists():
-        home += '<section><h2>OVHcloud buying guide</h2><p><a href="/ovhcloud-promo-code/">OVHcloud promo code: official US offers and terms</a></p></section>'
+        guide_sections += '<section><h2>OVHcloud buying guide</h2><p><a href="/ovhcloud-promo-code/">OVHcloud promo code: official US offers and terms</a></p></section>'
     if 'hostinger' in providers:
-        home += '<section><h2>Buying guides</h2><p><a href="/hostinger-coupon-code/">Hostinger coupon code: official evidence and VPS terms</a> · <a href="/hostinger-domain-coupon-code/">Hostinger domain coupon code: eligibility and terms</a></p></section>'
+        guide_sections += '<section><h2>Buying guides</h2><p><a href="/hostinger-coupon-code/">Hostinger coupon code: official evidence and VPS terms</a> · <a href="/hostinger-domain-coupon-code/">Hostinger domain coupon code: eligibility and terms</a></p></section>'
     if 'namecheap' in providers and (ROOT/'data/namecheap-guide.json').exists():
-        home += '<section><h2>Namecheap buying guide</h2><p><a href="/namecheap-promo-code/">Namecheap promo code: official evidence and VPS terms</a> · <a href="/namecheap-renewal-promo-code/">Namecheap renewal promo code: community claims and verification</a></p></section>'
+        guide_sections += '<section><h2>Namecheap buying guide</h2><p><a href="/namecheap-promo-code/">Namecheap promo code: official evidence and VPS terms</a> · <a href="/namecheap-renewal-promo-code/">Namecheap renewal promo code: community claims and verification</a></p></section>'
     store_guides = json.loads((ROOT/'data/store-guides.json').read_text(encoding='utf-8')) if (ROOT/'data/store-guides.json').exists() else []
     store_paths = {'/'+guide['slug']+'/' for guide in store_guides}
     domain_faq = {'@type':'FAQPage','mainEntity':[{'@type':'Question','name':'Is COUPONSPAGE a verified domain coupon?','acceptedAnswer':{'@type':'Answer','text':'No. We observed it on hosting cards, not as proof of standalone domain eligibility.'}},{'@type':'Question','name':'Is the included domain free forever?','acceptedAnswer':{'@type':'Answer','text':'No. The included registration is for one year; standard renewal pricing follows.'}}]}
@@ -239,13 +293,13 @@ def build():
     ]}
     write('/namecheap-renewal-promo-code/', 'Namecheap renewal promo code: is COUPONFCNC verified? | '+cfg['brand'], 'Separate community COUPONFCNC reports from official renewal evidence, understand cart claims, and check unexpected renewal notices safely.', render('namecheap-renewal-guide.html', checked='2026-09-27'), [namecheap_renewal_faq], '2026-09-27', keep_metadata=True)
     if (ROOT/'data/godaddy-guide.json').exists():
-        home += '<section><h2>GoDaddy buying guide</h2><p><a href="/godaddy-promo-code/">GoDaddy promo code: official evidence and VPS terms</a> · <a href="/godaddy-renewal-promo-code/">GoDaddy renewal promo code: eligibility and cost worksheet</a></p></section>'
+        guide_sections += '<section><h2>GoDaddy buying guide</h2><p><a href="/godaddy-promo-code/">GoDaddy promo code: official evidence and VPS terms</a> · <a href="/godaddy-renewal-promo-code/">GoDaddy renewal promo code: eligibility and cost worksheet</a></p></section>'
     if (ROOT/'data/bluehost-guide.json').exists():
-        home += '<section><h2>Bluehost buying guide</h2><p><a href="/bluehost-promo-code/">Bluehost promo code: official evidence and VPS terms</a></p></section>'
+        guide_sections += '<section><h2>Bluehost buying guide</h2><p><a href="/bluehost-promo-code/">Bluehost promo code: official evidence and VPS terms</a></p></section>'
     if (ROOT/'data/hostgator-guide.json').exists():
-        home += '<section><h2>HostGator buying guide</h2><p><a href="/hostgator-promo-code/">HostGator promo code: official evidence and VPS terms</a></p></section>'
+        guide_sections += '<section><h2>HostGator buying guide</h2><p><a href="/hostgator-promo-code/">HostGator promo code: official evidence and VPS terms</a></p></section>'
     if store_guides:
-        home += '<section id="more-stores"><h2>More stores</h2><ul>'+''.join('<li><a href="/'+escape(g['slug'],quote=True)+'/">'+escape(g['title'])+'</a></li>' for g in store_guides)+'</ul></section>'
+        guide_sections += '<section id="more-stores"><h2>More stores</h2><ul>'+''.join('<li><a href="/'+escape(g['slug'],quote=True)+'/">'+escape(g['title'])+'</a></li>' for g in store_guides)+'</ul></section>'
     for guide in store_guides:
         guide_rows = ''
         for row in guide['rows']:
@@ -263,7 +317,7 @@ def build():
         {'@type':'Question','name':'What traffic number means I must upgrade?','acceptedAnswer':{'@type':'Answer','text':'This page does not set one. Our worksheet asks you to identify a specific limitation and an acceptance check; it does not turn visitor count into a universal hosting requirement.'}}
     ]}
     write('/vps-vs-shared-hosting/', 'VPS vs shared hosting: check what an upgrade actually changes | '+cfg['brand'], 'Compare shared hosting and VPS using documented permissions, CPU allocation and a requirement-by-requirement upgrade worksheet.', render('vps-vs-shared-hosting.html'), [hosting_faq], '2026-09-29', keep_metadata=True)
-    home += '<section><h2>Hosting decisions</h2><p><a href="/vps-vs-shared-hosting/">VPS vs shared hosting: check what an upgrade actually changes</a></p></section>'
+    guide_sections += '<section><h2>Hosting decisions</h2><p><a href="/vps-vs-shared-hosting/">VPS vs shared hosting: check what an upgrade actually changes</a></p></section>'
     write('/vps-price/', 'VPS Price: Calculate the First Usable Cycle, Not the Smallest Number | '+cfg['brand'], 'Calculate a VPS first usable-cycle cost from the invoice, required extras, migration overlap, residual resources and recovery work.', render('vps-price.html'), [], '2026-09-29', keep_metadata=True)
     black_friday_faq = {'@type':'FAQPage','mainEntity':[
         {'@type':'Question','name':'Is a 2026 heading enough to prove the 2026 VPS Black Friday campaign is live?','acceptedAnswer':{'@type':'Answer','text':'No. The reviewed Hostinger page had a 2026 heading but retained 2025 availability dates in its FAQ, so the 2026 campaign window remained unconfirmed.'}},
@@ -271,14 +325,15 @@ def build():
         {'@type':'Question','name':'Does the displayed monthly figure establish cash due today?','acceptedAnswer':{'@type':'Answer','text':'No. The official page says plans are paid upfront and the monthly rate is the term total divided by its number of months.'}}
     ]}
     write('/vps-black-friday/', 'VPS Black Friday: verify the campaign year before buying | '+cfg['brand'], 'Check a VPS Black Friday page by separating its campaign year, availability window, checkout state and renewal evidence.', render('vps-black-friday.html'), [black_friday_faq], '2026-09-30', keep_metadata=True)
-    home += '<section><h2>Seasonal VPS verification</h2><p><a href="/vps-black-friday/">VPS Black Friday: verify the campaign year before buying</a></p></section>'
+    guide_sections += '<section><h2>Seasonal VPS verification</h2><p><a href="/vps-black-friday/">VPS Black Friday: verify the campaign year before buying</a></p></section>'
     racknerd_season_faq = {'@type':'FAQPage','mainEntity':[
         {'@type':'Question','name':'Is there a verified RackNerd Black Friday VPS code?','acceptedAnswer':{'@type':'Answer','text':'No VPS code was verified on the official Black Friday 2025 listing reviewed on 2026-09-30. This does not establish that no code exists elsewhere.'}},
         {'@type':'Question','name':'Are these Black Friday 2026 prices?','acceptedAnswer':{'@type':'Answer','text':'No. The reviewed page names Black Friday 2025. A 2026 campaign remains Unconfirmed.'}},
         {'@type':'Question','name':'Can I buy one of the five listed VPS plans now?','acceptedAnswer':{'@type':'Answer','text':'All five cards showed 0 Available on 2026-09-30. Checkout and fulfillment were not tested.'}}
     ]}
     write('/racknerd-black-friday/', 'RackNerd Black Friday: listed plans and availability | '+cfg['brand'], 'Review the official RackNerd seasonal listing, its 2025 heading, VPS stock, annual billing and dedicated-server code scope.', render('racknerd-black-friday.html'), [racknerd_season_faq], '2026-09-30', keep_metadata=True)
-    home += '<section><h2>RackNerd seasonal listing</h2><p><a href="/racknerd-black-friday/">RackNerd Black Friday: listed plans and availability</a></p></section>'
+    guide_sections += '<section><h2>RackNerd seasonal listing</h2><p><a href="/racknerd-black-friday/">RackNerd Black Friday: listed plans and availability</a></p></section>'
+    home += guide_library(guide_sections)
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
