@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">A practical VPS shortlist</title>
+  <desc id="desc">Describe the workload, match evidence to the exact plan, record a verdict, and test what documentation cannot prove.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17372f"/>
+      <stop offset="1" stop-color="#24483d"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 8 4.5 0 9" fill="none" stroke="#879273" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="360" rx="24" fill="#f4f5ee"/>
+  <g fill="none" stroke="#879273" stroke-width="2" marker-end="url(#arrow)">
+    <path d="M286 180h18"/><path d="M580 180h18"/><path d="M874 180h18"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g transform="translate(28 48)">
+      <rect width="258" height="264" rx="18" fill="url(#panel)"/>
+      <circle cx="34" cy="38" r="17" fill="#d9f17f"/><text x="34" y="44" text-anchor="middle" font-size="15" font-weight="700" fill="#17372f">1</text>
+      <text x="24" y="100" font-size="13" font-weight="700" letter-spacing="1.3" fill="#d9f17f">START WITH THE JOB</text>
+      <text x="24" y="146" font-size="24" font-weight="700" fill="#fffefa">Describe the</text>
+      <text x="24" y="177" font-size="24" font-weight="700" fill="#fffefa">workload</text>
+      <text x="24" y="224" font-size="14" fill="#d2ddd2">Write one observable outcome.</text>
+    </g>
+    <g transform="translate(322 48)">
+      <rect width="258" height="264" rx="18" fill="#fffefa" stroke="#d9ddd1"/>
+      <circle cx="34" cy="38" r="17" fill="#e5ebd8"/><text x="34" y="44" text-anchor="middle" font-size="15" font-weight="700" fill="#28493d">2</text>
+      <text x="24" y="100" font-size="13" font-weight="700" letter-spacing="1.3" fill="#687754">CHECK THE PLAN</text>
+      <text x="24" y="146" font-size="24" font-weight="700" fill="#17372f">Match exact</text>
+      <text x="24" y="177" font-size="24" font-weight="700" fill="#17372f">plan evidence</text>
+      <text x="24" y="224" font-size="14" fill="#68716a">Save the source and wording.</text>
+    </g>
+    <g transform="translate(616 48)">
+      <rect width="258" height="264" rx="18" fill="#fffefa" stroke="#d9ddd1"/>
+      <circle cx="34" cy="38" r="17" fill="#e5ebd8"/><text x="34" y="44" text-anchor="middle" font-size="15" font-weight="700" fill="#28493d">3</text>
+      <text x="24" y="100" font-size="13" font-weight="700" letter-spacing="1.3" fill="#687754">KEEP THE DISTINCTION</text>
+      <text x="24" y="146" font-size="24" font-weight="700" fill="#17372f">Pass · Fail ·</text>
+      <text x="24" y="177" font-size="24" font-weight="700" fill="#17372f">Unconfirmed</text>
+      <text x="24" y="224" font-size="14" fill="#68716a">An unknown is not a pass.</text>
+    </g>
+    <g transform="translate(910 48)">
+      <rect width="258" height="264" rx="18" fill="#e5ebd8"/>
+      <circle cx="34" cy="38" r="17" fill="#fffefa"/><text x="34" y="44" text-anchor="middle" font-size="15" font-weight="700" fill="#28493d">4</text>
+      <text x="24" y="100" font-size="13" font-weight="700" letter-spacing="1.3" fill="#526344">TEST WHAT IS UNKNOWN</text>
+      <text x="24" y="146" font-size="24" font-weight="700" fill="#17372f">Run a reversible</text>
+      <text x="24" y="177" font-size="24" font-weight="700" fill="#17372f">acceptance check</text>
+      <text x="24" y="224" font-size="14" fill="#53604d">Documentation is not a benchmark.</text>
+    </g>
+  </g>
+</svg>

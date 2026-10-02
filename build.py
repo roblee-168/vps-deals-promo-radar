@@ -86,14 +86,15 @@ def guide_library(markup):
     featured = {
         '/vps-vs-shared-hosting/': ('HOSTING DECISIONS', 'Permissions, CPU allocation and the upgrade checklist.'),
         '/racknerd-black-friday/': ('LISTING CHECK', 'Campaign year, availability and price terms.'),
-        '/vps-black-friday/': ('BEFORE YOU BUY', 'Read the campaign dates before comparing prices.'),
+        '/vps-deals-shortlist/': ('SHORTLIST METHOD', 'Workload fit, exact-plan evidence and explicit unknowns.'),
     }
     links = dict(link for _, group in parser.groups for link in group)
     features = []
     for href, (label, description) in featured.items():
         if href not in links:
             continue
-        features.append('<a class="reading-feature" href="'+escape(href, quote=True)+'"><span class="eyebrow">'+label+'</span><h3>'+escape(links[href])+'</h3><p>'+description+'</p><span class="reading-action">Read the guide <span aria-hidden="true">↗</span></span></a>')
+        rail = '<span class="reading-rail" aria-label="Shortlist sequence"><span>Workload</span><span>Evidence</span><span>Verdict</span></span>' if href == '/vps-deals-shortlist/' else ''
+        features.append('<a class="reading-feature" href="'+escape(href, quote=True)+'"><span class="eyebrow">'+label+'</span><h3>'+escape(links[href])+'</h3><p>'+description+'</p>'+rail+'<span class="reading-action">Read the guide <span aria-hidden="true">↗</span></span></a>')
     cards = []
     for heading, group in parser.groups:
         group = [(href, title) for href, title in group if href not in featured]
@@ -323,7 +324,8 @@ def build():
         {'@type':'Question','name':'Should I choose the lowest displayed monthly price?','acceptedAnswer':{'@type':'Answer','text':'Not before the candidate passes the hard requirements. Record the actual plan, billing term, amount due, required extras and renewal terms first.'}},
         {'@type':'Question','name':'Does a VPS label tell me whether CPU time is dedicated?','acceptedAnswer':{'@type':'Answer','text':'No universal conclusion follows from the VPS label. Check the allocation model documented for the exact product.'}},
         {'@type':'Question','name':'If the documentation does not mention a requirement, should I assume it passes?','acceptedAnswer':{'@type':'Answer','text':'No. Keep the row Unconfirmed and ask the provider about the exact product.'}},
-        {'@type':'Question','name':'Does stopping a Vultr server stop its charges?','acceptedAnswer':{'@type':'Answer','text':'Vultr says stopped servers continue to incur hourly charges until they are destroyed. Check another provider’s own billing terms separately.'}}
+        {'@type':'Question','name':'Does stopping a Vultr server stop its charges?','acceptedAnswer':{'@type':'Answer','text':'Vultr says stopped servers continue to incur hourly charges until they are destroyed. Check another provider’s own billing terms separately.'}},
+        {'@type':'Question','name':'Does a 200 OK response prove that a VPS plan is in stock?','acceptedAnswer':{'@type':'Answer','text':'No. RFC 9110 says 200 OK means the request succeeded; for GET, the response represents the requested resource. A successful homepage response does not establish a separate plan’s current inventory or orderability. Check the exact provider product and order flow.'}}
     ]}
     write('/vps-deals-shortlist/', 'VPS Deals: Turn a Plan List into a Workload Shortlist | '+cfg['brand'], 'Screen VPS deals against workload requirements, official plan evidence, billing behavior and explicit unknowns before comparing price.', render('vps-deals-shortlist.html'), [shortlist_faq,crumbs('VPS deals shortlist','/vps-deals-shortlist/')], '2026-10-02', keep_metadata=True)
     guide_sections += '<section><h2>VPS comparison method</h2><p><a href="/vps-deals-shortlist/">Turn a VPS plan list into a workload shortlist</a></p></section>'
