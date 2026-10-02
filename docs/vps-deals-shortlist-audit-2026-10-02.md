@@ -33,7 +33,9 @@ No price, coupon, expiry, stock, performance measurement, or universal host beha
 - Generator: `build.py`; generates one canonical at `/vps-deals-shortlist/`, an FAQPage and BreadcrumbList graph, homepage-library link, and sitemap entry with `lastmod` 2026-10-02.
 - Mobile preview: no horizontal overflow at 390 px or 320 px; the evidence and worksheet tables collapse into the existing mobile table treatment.
 - Verification: `python -m unittest discover -s tests` passed (13 tests); `python build.py` completed and generated 57 indexable pages; `git diff --check` passed.
-- Deployment and live verification are recorded in the daily log after Cloudflare serves the pushed commit.
+- Published commit `35fd891` to `main`; Cloudflare page returned HTTP 200. Live browser readback confirmed the title, article, official links, and exactly one canonical pointing at the new URL.
+- Live 390 px viewport: document client width and scroll width both 375 CSS px. Live 320 px viewport: both 305 CSS px. No horizontal overflow at either tested viewport.
+- The locally generated sitemap contains one matching URL with `lastmod` 2026-10-02 and was pushed in the same commit. Live sitemap readback is unconfirmed: browser navigation returned `ERR_BLOCKED_BY_CLIENT` and direct HTTP fetch returned 403.
 
 ## Prepared for the next shift
 

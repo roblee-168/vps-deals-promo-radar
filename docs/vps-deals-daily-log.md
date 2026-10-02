@@ -1,6 +1,6 @@
 # VPS deals daily log
 
-Cycle starts 2026-09-28. Fixed comparison sites: lowendbox.com, comparevps.com, vpsfilter.com. Earlier RackNerd cycle remains in its own log.
+Cycle starts 2026-09-28. The user replaced the initial comparator lock on 2026-10-02 with lowendbox.com, cheapvpslist.com, and techradar.com. Earlier RackNerd cycle remains in its own log; previous comparator notes remain historical.
 
 ## 2026-09-29
 
@@ -37,3 +37,14 @@ Cycle starts 2026-09-28. Fixed comparison sites: lowendbox.com, comparevps.com, 
 - No candidate page was drafted or published. The existing homepage serves the broad VPS-offer-directory intent, and no distinct subtopic was established that could be shown to clear the 30% original-content comparison; unread result bodies were not counted as absent. Blocker is the per-article originality criterion. Existing pages, sitemap, canonicals, and review dates were left unchanged.
 - RackNerd seasonal listing was read once today. The heading, stock text, banner, and listed prices matched the successful 2026-09-30 record; per the monitor rule, no page, date, review record, or deployment was changed.
 - Documentation only; `git diff --check` passed. No GSC or GA4 values were read.
+
+## 2026-10-02 — user material and publication
+
+- The full user-provided competitor-intelligence block was preserved verbatim in the desktop `roster.md`. The first two command results were not included in the pasted block; roster marks them missing instead of filling them in.
+- Today's page uses the table-first directory observation as the editorial prompt for a workload-fit shortlist method. It does not repeat user-supplied DR, traffic, ranking, or causal claims.
+- Target: `vps deals`; US monthly volume 90 is user-provided. Page: **VPS Deals: Turn a Plan List into a Workload Shortlist**, https://perkmingle.com/vps-deals-shortlist/ . Official DigitalOcean and Vultr documentation was reviewed 2026-10-02 and linked at the exact claims.
+- Original-analysis accounting: `#shortlist-method` 494 / 1,136 visible article words = 43.49% (editorial ratio only; not proof of global or SERP-wide exclusivity). Details: `docs/vps-deals-shortlist-audit-2026-10-02.md`.
+- Published commit `35fd891` to `main`; Cloudflare page returned HTTP 200. Browser readback confirmed title, body, source links, and one canonical pointing to the page. At 390 px the document widths were 375/375; at 320 px they were 305/305, with no horizontal overflow.
+- The sitemap entry and `lastmod` 2026-10-02 are present in the generated sitemap committed with the page. Live sitemap readback remains unconfirmed: browser navigation returned `ERR_BLOCKED_BY_CLIENT`, and direct fetch returned HTTP 403. Do not report the live sitemap as independently verified.
+- Tomorrow's prepared question, appended to the desktop roster: does an HTTP 200 response from a VPS listing prove that a named plan is in stock or orderable? Verify HTTP semantics and the exact official product/order state before publishing.
+- Q&A is included in today's page. No separate visual asset or video was created in this task. No GSC or GA4 values were read.
