@@ -1,6 +1,6 @@
 # VPS deals cycle — 2026-09-28
 
-User-authorized replacement of the previous research focus. Fixed keyword: `vps deals`. Fixed comparison sites: lowendbox.com, comparevps.com, vpsfilter.com. This selection is user-supplied, not a newly measured search ranking. Preserve the previous RackNerd log; do not compare different keyword cycles as if they were identical.
+User-authorized replacement of the previous research focus. Fixed keyword: `vps deals`. The initial comparison sites were lowendbox.com, comparevps.com, and vpsfilter.com. On 2026-10-02 the user locked the current comparator set to lowendbox.com, cheapvpslist.com, and techradar.com. That selection is user-supplied, not a newly measured search ranking. Earlier comparison notes below are historical and remain unchanged. Preserve the previous RackNerd log; do not compare different keyword cycles as if they were identical.
 
 Schedule: daily at 09:00 Asia/Shanghai. New cycle starts 2026-09-28; first reporting boundary 2026-10-26. Automation id remains `racknerd` to avoid duplicate daily jobs; its visible name and instructions now refer to VPS deals.
 

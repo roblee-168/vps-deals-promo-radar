@@ -205,7 +205,7 @@ def build():
                         attrs = attrs[:-1]+' rel="sponsored noopener">'
                     break
             return attrs
-        if path not in store_paths and path not in {'/hostinger-domain-coupon-code/', '/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/racknerd-black-friday/', '/hetzner-promo-code/'}:
+        if path not in store_paths and path not in {'/hostinger-domain-coupon-code/', '/namecheap-renewal-promo-code/', '/godaddy-renewal-promo-code/', '/hostinger-coupon-code/', '/namecheap-promo-code/', '/godaddy-promo-code/', '/bluehost-promo-code/', '/hostgator-promo-code/', '/ovhcloud-promo-code/', '/digitalocean-promo-code/', '/ionos-promo-code/', '/contabo-promo-code/', '/liquid-web-promo-code/', '/vultr-promo-code/', '/racknerd-vps-plans/', '/racknerd-checkout-worksheet/', '/racknerd-black-friday/', '/hetzner-promo-code/', '/vps-deals-shortlist/'}:
             html = re.sub(r'<a\b[^>]*>', affiliate_exit, html)
 
         output = dest / ('index.html' if path=='/' else path.lstrip('/')+'index.html')
@@ -319,6 +319,14 @@ def build():
     write('/vps-vs-shared-hosting/', 'VPS vs shared hosting: check what an upgrade actually changes | '+cfg['brand'], 'Compare shared hosting and VPS using documented permissions, CPU allocation and a requirement-by-requirement upgrade worksheet.', render('vps-vs-shared-hosting.html'), [hosting_faq], '2026-09-29', keep_metadata=True)
     guide_sections += '<section><h2>Hosting decisions</h2><p><a href="/vps-vs-shared-hosting/">VPS vs shared hosting: check what an upgrade actually changes</a></p></section>'
     write('/vps-price/', 'VPS Price: Calculate the First Usable Cycle, Not the Smallest Number | '+cfg['brand'], 'Calculate a VPS first usable-cycle cost from the invoice, required extras, migration overlap, residual resources and recovery work.', render('vps-price.html'), [], '2026-09-29', keep_metadata=True)
+    shortlist_faq = {'@type':'FAQPage','mainEntity':[
+        {'@type':'Question','name':'Should I choose the lowest displayed monthly price?','acceptedAnswer':{'@type':'Answer','text':'Not before the candidate passes the hard requirements. Record the actual plan, billing term, amount due, required extras and renewal terms first.'}},
+        {'@type':'Question','name':'Does a VPS label tell me whether CPU time is dedicated?','acceptedAnswer':{'@type':'Answer','text':'No universal conclusion follows from the VPS label. Check the allocation model documented for the exact product.'}},
+        {'@type':'Question','name':'If the documentation does not mention a requirement, should I assume it passes?','acceptedAnswer':{'@type':'Answer','text':'No. Keep the row Unconfirmed and ask the provider about the exact product.'}},
+        {'@type':'Question','name':'Does stopping a Vultr server stop its charges?','acceptedAnswer':{'@type':'Answer','text':'Vultr says stopped servers continue to incur hourly charges until they are destroyed. Check another provider’s own billing terms separately.'}}
+    ]}
+    write('/vps-deals-shortlist/', 'VPS Deals: Turn a Plan List into a Workload Shortlist | '+cfg['brand'], 'Screen VPS deals against workload requirements, official plan evidence, billing behavior and explicit unknowns before comparing price.', render('vps-deals-shortlist.html'), [shortlist_faq,crumbs('VPS deals shortlist','/vps-deals-shortlist/')], '2026-10-02', keep_metadata=True)
+    guide_sections += '<section><h2>VPS comparison method</h2><p><a href="/vps-deals-shortlist/">Turn a VPS plan list into a workload shortlist</a></p></section>'
     black_friday_faq = {'@type':'FAQPage','mainEntity':[
         {'@type':'Question','name':'Is a 2026 heading enough to prove the 2026 VPS Black Friday campaign is live?','acceptedAnswer':{'@type':'Answer','text':'No. The reviewed Hostinger page had a 2026 heading but retained 2025 availability dates in its FAQ, so the 2026 campaign window remained unconfirmed.'}},
         {'@type':'Question','name':'Is a separate Hostinger coupon code required on the reviewed page?','acceptedAnswer':{'@type':'Answer','text':'The official FAQ says the reduction is automatically included and no additional coupon code is needed.'}},
