@@ -78,6 +78,15 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
     if data.get('locale') != localized['locale'] or data.get('currency') != 'JPY':
         raise ValueError('Japanese data must use ja-JP and JPY')
     checked = data['checked']
+    extra_pages = []
+    if localized.get('additional_data'):
+        extra = json.loads((ROOT/'data'/localized['additional_data']).read_text(encoding='utf-8'))
+        if extra.get('locale') != localized['locale'] or extra.get('currency') != 'JPY':
+            raise ValueError('Additional Japanese data must use ja-JP and JPY')
+        extra_pages = extra['pages']
+        all_slugs = [p['slug'] for p in data['pages'] + extra_pages]
+        if len(all_slugs) != len(set(all_slugs)) or any(not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', s) for s in all_slugs):
+            raise ValueError('Duplicate or invalid Japanese provider slug')
     datetime.strptime(checked, '%Y-%m-%d')
     prefix = localized['prefix']
     template = Template((ROOT/'templates'/localized['template']).read_text(encoding='utf-8'))
@@ -103,7 +112,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
                 '<th>確認できた内容</th><th>利用条件</th><th>公式情報</th><th>確認日</th>'
                 '</tr></thead><tbody>'+''.join(rows)+'</tbody></table></div>')
 
-    def render(path, title, description, content, schema, alternates):
+    def render(path, title, description, content, schema, alternates, provider_name=None):
         canonical = base + path
         alternate_tags = ''.join(
             f'<link rel="alternate" hreflang="{escape(item["lang"], quote=True)}" href="{escape(base+item["path"], quote=True)}">'
@@ -117,6 +126,8 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
             content=content, schema=json.dumps({'@context':'https://schema.org','@graph':schema}, ensure_ascii=False).replace('<','\\u003c'),
         )
         output = dest / (path.lstrip('/')+'index.html')
+        if provider_name:
+            html = html.replace('日本向けの公式情報を確認し、条件と確認日を掲載しています。', escape(provider_name)+'の公式情報を確認し、条件と確認日を掲載しています。')
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(html, encoding='utf-8')
         pages.append((canonical, checked))
@@ -155,7 +166,10 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
     render(prefix, home['title']+' | PerkMingle', home['description'], home_content, home_schema,
            [{'lang':'ja-JP','path':prefix},{'lang':'en','path':'/'},{'lang':'x-default','path':'/'}])
 
-    for page in data['pages']:
+    for page in data['pages'] + extra_pages:
+        checked = page.get('checked', data['checked'])
+        datetime.strptime(checked, '%Y-%m-%d')
+        checked_ja = f'{checked[:4]}年{int(checked[5:7])}月{int(checked[8:10])}日'
         path = prefix + 'providers/' + page['slug'] + '/'
         facts = fact_table(page['facts'])
         faq_html = ''.join(
@@ -184,7 +198,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
             {'@type':'ListItem','position':2,'name':page['name'],'item':base+path},
         ]}
         render(path, page['title']+' | PerkMingle', page['description'], content, [faq_schema,breadcrumb],
-               [{'lang':'ja-JP','path':path}])
+               [{'lang':'ja-JP','path':path}], page['name'] if page in extra_pages else None)
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')

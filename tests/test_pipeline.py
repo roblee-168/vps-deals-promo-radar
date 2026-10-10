@@ -80,6 +80,7 @@ class PipelineTests(unittest.TestCase):
             (root/'data').mkdir()
             import shutil
             shutil.copy(ROOT/'data/ja-site.json',root/'data/ja-site.json')
+            shutil.copy(ROOT/'data/ja-provider-batch.json',root/'data/ja-provider-batch.json')
             (root/'data/offers.json').write_text(json.dumps({'offers':[self.record()],'sources':[]}),encoding='utf-8')
             config_file = root/'site.ilang'
             original = (ROOT/'.ilang/site.ilang').read_text(encoding='utf-8')
@@ -97,6 +98,20 @@ class PipelineTests(unittest.TestCase):
             self.assertIn('643円/月',ja_detail)
             self.assertIn('vps.sakura.ad.jp/specification/',ja_detail)
             self.assertEqual(ja_detail.count('rel="canonical"'),1)
+            batch=json.loads((ROOT/'data/ja-provider-batch.json').read_text(encoding='utf-8'))
+            for page in batch['pages']:
+                detail=(root/'site/ja/providers'/page['slug']/'index.html').read_text(encoding='utf-8')
+                self.assertIn(page['answer'],detail)
+                self.assertEqual(detail.count('rel="canonical"'),1)
+                self.assertIn(page['name'],detail.split('<footer',1)[1])
+            saved_home=(root/'site/ja/index.html').read_bytes()
+            saved_detail=(root/'site/ja/providers/sakura-vps/index.html').read_bytes()
+            without_batch=dict(changed,localized=dict(changed['localized']))
+            without_batch['localized'].pop('additional_data')
+            with patch.object(build,'ROOT',root),patch.object(build,'load_config',return_value=without_batch):
+                build.build()
+            self.assertEqual(saved_home,(root/'site/ja/index.html').read_bytes())
+            self.assertEqual(saved_detail,(root/'site/ja/providers/sakura-vps/index.html').read_bytes())
             en_home=(root/'site/index.html').read_text(encoding='utf-8')
             self.assertEqual(en_home.count('hreflang="ja-JP"'),1)
             self.assertEqual(en_home.count('hreflang="x-default"'),1)
@@ -108,6 +123,7 @@ class PipelineTests(unittest.TestCase):
             shutil.copytree(ROOT/'assets',root/'assets')
             (root/'data').mkdir()
             shutil.copy(ROOT/'data/ja-site.json',root/'data/ja-site.json')
+            shutil.copy(ROOT/'data/ja-provider-batch.json',root/'data/ja-provider-batch.json')
             provider = next(p for p in self.cfg['providers'] if p['id']=='upcloud')
             record = self.record(provider_id='upcloud', evidence='Previously verified trial')
             cfg = dict(self.cfg, providers=[provider])

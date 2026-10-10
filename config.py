@@ -57,7 +57,7 @@ def load_config(path=None):
             raise ValueError('Localized configuration is incomplete')
         if cfg['localized']['locale'] != 'ja-JP' or cfg['localized']['prefix'] != '/ja/':
             raise ValueError('Only the configured Japanese /ja/ section is supported')
-        for key in ('data', 'template', 'stylesheet'):
+        for key in ('data', 'template', 'stylesheet', *(['additional_data'] if 'additional_data' in cfg['localized'] else [])):
             if '/' in cfg['localized'][key] or '\\' in cfg['localized'][key] or '..' in cfg['localized'][key]:
                 raise ValueError(f'Localized {key} must be a local filename')
     ids = [p['id'] for p in cfg['providers']]

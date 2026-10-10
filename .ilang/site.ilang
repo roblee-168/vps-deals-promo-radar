@@ -42,5 +42,6 @@ racknerd_plans: [{"memory":"1 GB RAM","annual":"$21.99/Year","pid":"952","specs"
 locale: ja-JP
 prefix: /ja/
 data: ja-site.json
+additional_data: ja-provider-batch.json
 template: ja-base.html
 stylesheet: ja.css
