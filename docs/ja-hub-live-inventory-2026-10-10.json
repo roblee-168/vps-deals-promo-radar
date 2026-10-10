@@ -1,0 +1,90 @@
+[
+  {
+    "name": "さくらのVPS",
+    "slug": "sakura-vps",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "さくらのVPSの料金と無料お試し条件",
+    "group": "VPS"
+  },
+  {
+    "name": "ConoHa for Windows Server",
+    "slug": "conoha-windows-vps",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "ConoHa for Windows Serverのキャンペーンと料金",
+    "group": "VPS"
+  },
+  {
+    "name": "XServer VPS クラウド",
+    "slug": "xserver-vps-cloud",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "XServer VPS クラウドの料金と3ヶ月延長特典",
+    "group": "VPS"
+  },
+  {
+    "name": "ロリポップ！",
+    "slug": "lolipop",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "ロリポップ！の料金と10日間無料お試し条件",
+    "group": "レンタルサーバー"
+  },
+  {
+    "name": "mixhost",
+    "slug": "mixhost",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "mixhostの料金と30日間返金保証の条件",
+    "group": "レンタルサーバー"
+  },
+  {
+    "name": "カラフルボックス",
+    "slug": "colorfulbox",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "カラフルボックスの料金と30日間無料お試し条件",
+    "group": "レンタルサーバー"
+  },
+  {
+    "name": "CORESERVER",
+    "slug": "coreserver",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "CORESERVERの料金と30日間無料お試し条件",
+    "group": "レンタルサーバー"
+  },
+  {
+    "name": "ABLENET",
+    "slug": "ablenet",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "ABLENETレンタルサーバーの料金と返金条件",
+    "group": "レンタルサーバー"
+  },
+  {
+    "name": "KAGOYA",
+    "slug": "kagoya",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "KAGOYAレンタルサーバーの料金と初月無料条件",
+    "group": "レンタルサーバー"
+  },
+  {
+    "name": "お名前.com レンタルサーバー",
+    "slug": "onamae",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "お名前.comレンタルサーバーの料金と初月無料条件",
+    "group": "レンタルサーバー"
+  },
+  {
+    "name": "ヘテムル",
+    "slug": "heteml",
+    "status": 200,
+    "date": "2026年10月10日",
+    "title": "ヘテムルの料金と無料SSLの条件",
+    "group": "レンタルサーバー"
+  }
+]

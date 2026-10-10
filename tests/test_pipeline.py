@@ -110,7 +110,9 @@ class PipelineTests(unittest.TestCase):
             without_batch['localized'].pop('additional_data')
             with patch.object(build,'ROOT',root),patch.object(build,'load_config',return_value=without_batch):
                 build.build()
-            self.assertEqual(saved_home,(root/'site/ja/index.html').read_bytes())
+            self.assertIn('掲載中の11社',saved_home.decode('utf-8'))
+            self.assertIn('/ja/providers/lolipop/',saved_home.decode('utf-8'))
+            self.assertIn('掲載中の3社',(root/'site/ja/index.html').read_text(encoding='utf-8'))
             self.assertEqual(saved_detail,(root/'site/ja/providers/sakura-vps/index.html').read_bytes())
             en_home=(root/'site/index.html').read_text(encoding='utf-8')
             self.assertEqual(en_home.count('hreflang="ja-JP"'),1)

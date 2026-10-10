@@ -3,9 +3,13 @@
   "currency": "JPY",
   "checked": "2026-10-10",
   "home": {
-    "title": "日本のVPSを比較",
-    "lead": "日本向け公式ページで確認した3社のVPSを比較します。入力式クーポンコードの記載は確認できず、特典は各社の申込条件に沿って適用されます。",
-    "description": "日本向けVPSの公式料金とキャンペーンを比較。さくらのVPS、ConoHa、XServer VPS クラウドの条件・公式出典・確認日を掲載します。"
+    "title": "日本のVPS・レンタルサーバーの料金と条件を比較",
+    "lead": "掲載中の{count}社をVPSとレンタルサーバーに分けて比較できます。各社の条件ページで料金・特典・公式出典・確認日をご確認ください。",
+    "description": "日本向けVPS・レンタルサーバーの提供会社を製品別に掲載。各社の料金・特典・利用条件を公式出典と確認日付きで確認できます。",
+    "groups": {
+      "VPS": ["sakura-vps", "conoha-windows-vps", "xserver-vps-cloud"],
+      "レンタルサーバー": ["lolipop", "mixhost", "colorfulbox", "coreserver", "ablenet", "kagoya", "onamae", "heteml"]
+    }
   },
   "pages": [
     {

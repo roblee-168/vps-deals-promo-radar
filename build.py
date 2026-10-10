@@ -125,6 +125,8 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
             localized_stylesheet='/assets/'+stylesheet_name, alternate_links=alternate_tags,
             content=content, schema=json.dumps({'@context':'https://schema.org','@graph':schema}, ensure_ascii=False).replace('<','\\u003c'),
         )
+        if path == prefix:
+            html = html.replace('>VPSを比較</a>', '>サーバーを比較</a>')
         output = dest / (path.lstrip('/')+'index.html')
         if provider_name:
             html = html.replace('日本向けの公式情報を確認し、条件と確認日を掲載しています。', escape(provider_name)+'の公式情報を確認し、条件と確認日を掲載しています。')
@@ -133,28 +135,34 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         pages.append((canonical, checked))
 
     home = data['home']
-    entries, list_items = [], []
-    for position, page in enumerate(data['pages'], 1):
+    all_pages = data['pages'] + extra_pages
+    groups = home.get('groups', {})
+    entries, list_items = {}, []
+    for position, page in enumerate(all_pages, 1):
+        category = next((label for label, slugs in groups.items() if page['slug'] in slugs), '分類未確認')
+        entries.setdefault(category, [])
         path = prefix + 'providers/' + page['slug'] + '/'
         source = safe_url(page['facts'][0]['source'])
-        entries.append(
-            '<article class="ja-provider-card"><p class="ja-eyebrow">VPS · 公式情報</p>'
-            f'<h2><a href="{escape(path, quote=True)}">{escape(page["name"])}</a></h2>'
+        page_checked = page.get('checked', data['checked'])
+        page_checked_ja = f'{page_checked[:4]}年{int(page_checked[5:7])}月{int(page_checked[8:10])}日'
+        entries[category].append(
+            '<article class="ja-provider-card"><p class="ja-eyebrow">'+escape(category)+' · 公式情報</p>'
+            f'<h2>{escape(page["name"])}</h2>'
             f'<p>{escape(page["summary"])}</p>'
-            f'<p class="ja-source-line"><a rel="noopener" href="{escape(source, quote=True)}">{escape(page["facts"][0]["source_label"])} ↗</a>・確認日 {escape(checked_ja)}</p>'
+            f'<p class="ja-source-line"><a rel="noopener" href="{escape(source, quote=True)}">{escape(page["facts"][0]["source_label"])} ↗</a>・確認日 {escape(page_checked_ja)}</p>'
             f'<a class="ja-card-link" href="{escape(path, quote=True)}">条件と料金を見る →</a></article>'
         )
         list_items.append({'@type':'ListItem','position':position,'name':page['name'],'url':base+path})
     home_content = (
         '<main id="main" class="ja-main"><section class="ja-hero">'
         '<p class="ja-eyebrow">日本向け VPS・レンタルサーバー比較</p>'
-        f'<h1>{escape(home["title"])}</h1><p class="ja-lead">{escape(home["lead"])}</p>'
-        '<div class="ja-answer"><strong>クーポンコード：確認した公式ページには記載を確認できず</strong>'
+        f'<h1>{escape(home["title"])}</h1><p class="ja-lead">{escape(home["lead"].format(count=len(all_pages)))}</p>'
+        '<div class="ja-answer"><strong>クーポンコード・特典の確認結果は各社の条件ページに掲載</strong>'
         '<span>特典・料金は、適用条件、公式リンク、確認日とあわせて掲載しています。</span></div>'
         '<a class="ja-primary" href="#providers">公式情報を比較する ↓</a></section>'
         '<section id="providers" class="ja-section"><div class="ja-section-heading">'
         '<p class="ja-eyebrow">確認済みの公式情報</p><h2>特典と料金を条件ごとに比較</h2></div>'
-        '<div class="ja-provider-grid">'+''.join(entries)+'</div>'
+        + ''.join('<section class="ja-section"><h3>'+escape(category)+'</h3><div class="ja-provider-grid">'+''.join(cards)+'</div></section>' for category, cards in entries.items()) +
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
