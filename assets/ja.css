@@ -376,3 +376,14 @@
     padding: 10px;
   }
 }
+
+/* Keep narrow-screen tables inside their own horizontal scroll container. */
+.ja-table-wrap { min-width: 0; max-width: 100%; overflow-x: auto; }
+@media (max-width: 640px) {
+ .ja-table-wrap .ja-facts { display: table; min-width: 760px; width: 100%; }
+ .ja-table-wrap .ja-facts thead { display: table-header-group; position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; white-space: normal; }
+ .ja-table-wrap .ja-facts tbody { display: table-row-group; }
+ .ja-table-wrap .ja-facts tr { display: table-row; margin: 0; border: 0; border-radius: 0; }
+ .ja-table-wrap .ja-facts td { display: table-cell; }
+ .ja-table-wrap .ja-facts td::before { display: none; }
+}

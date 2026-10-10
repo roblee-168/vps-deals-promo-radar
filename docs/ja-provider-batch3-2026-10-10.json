@@ -1,0 +1,320 @@
+{
+  "checked": "2026-10-10",
+  "pages": [
+    {
+      "slug": "stepserver",
+      "name": "ステップサーバー",
+      "home": "https://stepserver.jp/",
+      "promotion": "https://stepserver.jp/merit/freetrial.html",
+      "checked": "2026-10-10",
+      "title": "ステップサーバーの料金と利用条件",
+      "description": "ステップサーバーの公式料金とお試し・返金条件を出典と確認日付きで確認。",
+      "answer": "10日間の無料お試しを利用できます。スタンダードの12ヶ月契約は月額250円（税込）、初期費用600円（税込）です。試用では独自ドメイン設定とメールサービスを利用できません。",
+      "summary": "10日間の無料お試しを利用できます。スタンダードの12ヶ月契約は月額250円（税込）、初期費用600円（税込）です。試用では独自ドメイン設定とメールサービスを利用できません。",
+      "code_status": "入力式クーポンコードの適用：今回の公式確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "10日間無料お試し",
+          "conditions": "契約前に試用できます。試用の容量は50MBで、メールサービスと独自ドメイン設定は利用できません。",
+          "source": "https://stepserver.jp/merit/freetrial.html",
+          "source_label": "無料お試し"
+        },
+        {
+          "offer": "スタンダード：250円/月（税込）",
+          "conditions": "12ヶ月契約の月額表示。初期費用600円（税込）。1ヶ月契約はありません。",
+          "source": "https://stepserver.jp/price/",
+          "source_label": "料金表"
+        }
+      ],
+      "faq": [
+        {
+          "question": "料金と特典はどこで確認できますか？",
+          "answer": "10日間の無料お試しを利用できます。スタンダードの12ヶ月契約は月額250円（税込）、初期費用600円（税込）です。試用では独自ドメイン設定とメールサービスを利用できません。",
+          "source": "https://stepserver.jp/merit/freetrial.html"
+        },
+        {
+          "question": "未確認の条件はありますか？",
+          "answer": "公式出典で確認できない追加条件やクーポンの適用は未確認です。申込前に公式ページで契約期間と支払額をご確認ください。",
+          "source": "https://stepserver.jp/merit/freetrial.html"
+        }
+      ]
+    },
+    {
+      "slug": "smileserver",
+      "name": "スマイルサーバ",
+      "home": "https://smileserver.ne.jp/",
+      "promotion": "https://smileserver.ne.jp/trial/",
+      "checked": "2026-10-10",
+      "title": "スマイルサーバの料金と利用条件",
+      "description": "スマイルサーバの公式料金とお試し・返金条件を出典と確認日付きで確認。",
+      "answer": "2週間の無料検証環境を申し込めます。ベーシックの月額料金は4,290円（税込）、初期費用は0円です。検証環境は本契約へ引き継げません。",
+      "summary": "2週間の無料検証環境を申し込めます。ベーシックの月額料金は4,290円（税込）、初期費用は0円です。検証環境は本契約へ引き継げません。",
+      "code_status": "入力式クーポンコードの適用：今回の公式確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "2週間の無料検証環境",
+          "conditions": "専用申込書による申込。ベーシックプラン、提供ドメインで検証。SSLなどのオプションは対象外。本契約への環境引継ぎはできません。",
+          "source": "https://smileserver.ne.jp/trial/",
+          "source_label": "無料検証環境"
+        },
+        {
+          "offer": "ベーシック：4,290円/月（税込）",
+          "conditions": "初期費用0円。SSLセットの表示料金は別です。",
+          "source": "https://smileserver.ne.jp/plan/",
+          "source_label": "サービスプラン"
+        }
+      ],
+      "faq": [
+        {
+          "question": "料金と特典はどこで確認できますか？",
+          "answer": "2週間の無料検証環境を申し込めます。ベーシックの月額料金は4,290円（税込）、初期費用は0円です。検証環境は本契約へ引き継げません。",
+          "source": "https://smileserver.ne.jp/trial/"
+        },
+        {
+          "question": "未確認の条件はありますか？",
+          "answer": "公式出典で確認できない追加条件やクーポンの適用は未確認です。申込前に公式ページで契約期間と支払額をご確認ください。",
+          "source": "https://smileserver.ne.jp/trial/"
+        }
+      ]
+    },
+    {
+      "slug": "spacecloud",
+      "name": "スペースクラウド",
+      "home": "https://spacecloud.jp/",
+      "promotion": "https://spacecloud.jp/vps",
+      "checked": "2026-10-10",
+      "title": "スペースクラウドの料金と利用条件",
+      "description": "スペースクラウドの公式料金とお試し・返金条件を出典と確認日付きで確認。",
+      "answer": "VPSの最大2週間無料お試しが案内されています。料金表の最小列は1ヶ月契約500円（税抜）、12ヶ月契約の月額表示450円（税抜）です。試用対象プランは料金表で確認してください。",
+      "summary": "VPSの最大2週間無料お試しが案内されています。料金表の最小列は1ヶ月契約500円（税抜）、12ヶ月契約の月額表示450円（税抜）です。試用対象プランは料金表で確認してください。",
+      "code_status": "入力式クーポンコードの適用：今回の公式確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "VPS：最大2週間無料お試し",
+          "conditions": "料金表のお試し欄に対象の記載があるプランで確認。すべてのプランが対象とはしていません。",
+          "source": "https://spacecloud.jp/vps",
+          "source_label": "VPS・お試し"
+        },
+        {
+          "offer": "1ヶ月契約500円／12ヶ月契約450円（月額・税抜）",
+          "conditions": "料金表の最小列の表示。初期費用無料。1ヶ月契約はクレジットカードのみ。",
+          "source": "https://spacecloud.jp/vps/price",
+          "source_label": "VPS料金表"
+        }
+      ],
+      "faq": [
+        {
+          "question": "料金と特典はどこで確認できますか？",
+          "answer": "VPSの最大2週間無料お試しが案内されています。料金表の最小列は1ヶ月契約500円（税抜）、12ヶ月契約の月額表示450円（税抜）です。試用対象プランは料金表で確認してください。",
+          "source": "https://spacecloud.jp/vps"
+        },
+        {
+          "question": "未確認の条件はありますか？",
+          "answer": "公式出典で確認できない追加条件やクーポンの適用は未確認です。申込前に公式ページで契約期間と支払額をご確認ください。",
+          "source": "https://spacecloud.jp/vps"
+        }
+      ]
+    },
+    {
+      "slug": "soho-server",
+      "name": "SOHO SERVER",
+      "home": "https://sohoserver.jp/",
+      "promotion": "https://sohoserver.jp/server_rental.htm",
+      "checked": "2026-10-10",
+      "title": "SOHO SERVERの料金と利用条件",
+      "description": "SOHO SERVERの公式料金とお試し・返金条件を出典と確認日付きで確認。",
+      "answer": "最大10日間のお試しが案内されています。共用サーバーの年間契約は年額7,200円（税別）から、公式の月額換算は600円です。30日返金保証には控除条件があります。",
+      "summary": "最大10日間のお試しが案内されています。共用サーバーの年間契約は年額7,200円（税別）から、公式の月額換算は600円です。30日返金保証には控除条件があります。",
+      "code_status": "入力式クーポンコードの適用：今回の公式確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "最大10日間のお試し",
+          "conditions": "設定完了通知から10日以内に料金を支払う流れです。",
+          "source": "https://sohoserver.jp/server_rental.htm",
+          "source_label": "共用サーバー・お試し"
+        },
+        {
+          "offer": "年額7,200円（税別）から",
+          "conditions": "年間契約の起点表示。公式掲載の月額換算は600円で、月払い料金ではありません。",
+          "source": "https://sohoserver.jp/server_rental.htm",
+          "source_label": "共用サーバー料金"
+        },
+        {
+          "offer": "申込から30日間の返金保証",
+          "conditions": "初期費用相当額を控除。ドメイン無料特典を利用した場合はドメイン費用も控除されます。",
+          "source": "https://sohoserver.jp/",
+          "source_label": "返金保証案内"
+        }
+      ],
+      "faq": [
+        {
+          "question": "料金と特典はどこで確認できますか？",
+          "answer": "最大10日間のお試しが案内されています。共用サーバーの年間契約は年額7,200円（税別）から、公式の月額換算は600円です。30日返金保証には控除条件があります。",
+          "source": "https://sohoserver.jp/server_rental.htm"
+        },
+        {
+          "question": "未確認の条件はありますか？",
+          "answer": "公式出典で確認できない追加条件やクーポンの適用は未確認です。申込前に公式ページで契約期間と支払額をご確認ください。",
+          "source": "https://sohoserver.jp/server_rental.htm"
+        }
+      ]
+    },
+    {
+      "slug": "inetd",
+      "name": "アイネットディー",
+      "home": "https://www.inetd.co.jp/",
+      "promotion": "https://www.inetd.co.jp/?page_id=35",
+      "checked": "2026-10-10",
+      "title": "アイネットディーの料金と利用条件",
+      "description": "アイネットディーの公式料金とお試し・返金条件を出典と確認日付きで確認。",
+      "answer": "設定完了から最大2週間の無料お試しを利用できます。激安プランの1ヶ月料金は341円（税込）、初期設定費用は1,100円（税込）です。試用期限までに入金しなければ自動キャンセルとなります。",
+      "summary": "設定完了から最大2週間の無料お試しを利用できます。激安プランの1ヶ月料金は341円（税込）、初期設定費用は1,100円（税込）です。試用期限までに入金しなければ自動キャンセルとなります。",
+      "code_status": "入力式クーポンコードの適用：今回の公式確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "最大2週間無料お試し",
+          "conditions": "設定完了から試用。期限までに入金しなければ自動キャンセル。入金して正式利用を開始した後はキャンセルできないとの記載があります。",
+          "source": "https://www.inetd.co.jp/?page_id=35",
+          "source_label": "無料お試し案内"
+        },
+        {
+          "offer": "激安プラン：1ヶ月341円（税込）",
+          "conditions": "1ヶ月契約の表示料金。初期設定費用1,100円（税込）は別です。",
+          "source": "https://www.inetd.co.jp/?page_id=2",
+          "source_label": "料金・機能表"
+        }
+      ],
+      "faq": [
+        {
+          "question": "料金と特典はどこで確認できますか？",
+          "answer": "設定完了から最大2週間の無料お試しを利用できます。激安プランの1ヶ月料金は341円（税込）、初期設定費用は1,100円（税込）です。試用期限までに入金しなければ自動キャンセルとなります。",
+          "source": "https://www.inetd.co.jp/?page_id=35"
+        },
+        {
+          "question": "未確認の条件はありますか？",
+          "answer": "公式出典で確認できない追加条件やクーポンの適用は未確認です。申込前に公式ページで契約期間と支払額をご確認ください。",
+          "source": "https://www.inetd.co.jp/?page_id=35"
+        }
+      ]
+    },
+    {
+      "slug": "minim",
+      "name": "ミニム",
+      "home": "https://www.minim.jp/",
+      "promotion": "https://www.minim.jp/order.php",
+      "checked": "2026-10-10",
+      "title": "ミニムの料金と利用条件",
+      "description": "ミニムの公式料金とお試し・返金条件を出典と確認日付きで確認。",
+      "answer": "14日間のお試しが案内されています。公式トップの料金表示は月59円からです。この起点価格の契約期間と税区分は今回の公開ページ確認では未確認です。",
+      "summary": "14日間のお試しが案内されています。公式トップの料金表示は月59円からです。この起点価格の契約期間と税区分は今回の公開ページ確認では未確認です。",
+      "code_status": "入力式クーポンコードの適用：今回の公式確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "14日間のお試し",
+          "conditions": "公式トップで14日間のお試しを案内しています。",
+          "source": "https://www.minim.jp/",
+          "source_label": "14日間お試し"
+        },
+        {
+          "offer": "月59円から（公式トップの起点表示）",
+          "conditions": "契約期間、税区分と支払総額は未確認。すべての契約の月払い料金とはしていません。",
+          "source": "https://www.minim.jp/",
+          "source_label": "料金起点・14日間お試し"
+        }
+      ],
+      "faq": [
+        {
+          "question": "料金と特典はどこで確認できますか？",
+          "answer": "14日間のお試しが案内されています。公式トップの料金表示は月59円からです。この起点価格の契約期間と税区分は今回の公開ページ確認では未確認です。",
+          "source": "https://www.minim.jp/order.php"
+        },
+        {
+          "question": "未確認の条件はありますか？",
+          "answer": "公式出典で確認できない追加条件やクーポンの適用は未確認です。申込前に公式ページで契約期間と支払額をご確認ください。",
+          "source": "https://www.minim.jp/order.php"
+        }
+      ]
+    },
+    {
+      "slug": "extrem",
+      "name": "エクストリム",
+      "home": "https://www.extrem.jp/",
+      "promotion": "https://www.extrem.jp/",
+      "checked": "2026-10-10",
+      "title": "エクストリムの料金と利用条件",
+      "description": "エクストリムの公式料金とお試し・返金条件を出典と確認日付きで確認。",
+      "answer": "14日間の無料お試しが案内されています。ライトの3年分は3,722円（税込）、公式の月額換算は104円です。初回設定料金1,100円（税込）は別です。",
+      "summary": "14日間の無料お試しが案内されています。ライトの3年分は3,722円（税込）、公式の月額換算は104円です。初回設定料金1,100円（税込）は別です。",
+      "code_status": "入力式クーポンコードの適用：今回の公式確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "14日間のお試し",
+          "conditions": "公式トップから申込。試用後の契約延長条件は料金表で確認してください。",
+          "source": "https://www.extrem.jp/",
+          "source_label": "14日間お試し"
+        },
+        {
+          "offer": "ライト3年：3,722円（税込）／月額換算104円",
+          "conditions": "3年の契約延長料金。初回設定料金1,100円（税込）は最初の契約延長時に別途必要。カードでも自動更新ではありません。",
+          "source": "https://www.extrem.jp/service.php",
+          "source_label": "プラン・ご利用料金"
+        }
+      ],
+      "faq": [
+        {
+          "question": "料金と特典はどこで確認できますか？",
+          "answer": "14日間の無料お試しが案内されています。ライトの3年分は3,722円（税込）、公式の月額換算は104円です。初回設定料金1,100円（税込）は別です。",
+          "source": "https://www.extrem.jp/"
+        },
+        {
+          "question": "未確認の条件はありますか？",
+          "answer": "公式出典で確認できない追加条件やクーポンの適用は未確認です。申込前に公式ページで契約期間と支払額をご確認ください。",
+          "source": "https://www.extrem.jp/"
+        }
+      ]
+    },
+    {
+      "slug": "tsukaeru",
+      "name": "使えるねっと",
+      "home": "https://www.tsukaeru.net/",
+      "promotion": "https://support.tsukaeru.net/ja-JP/support/solutions/articles/65000032652-%E3%80%90%E4%BD%BF%E3%81%88%E3%82%8B%E3%81%AD%E3%81%A3%E3%81%A8%E3%80%91%E3%81%AE%E8%BF%94%E9%87%91%E4%BF%9D%E8%A8%BC%E5%88%B6%E5%BA%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+      "checked": "2026-10-10",
+      "title": "使えるねっとの料金と利用条件",
+      "description": "使えるねっとの公式料金とお試し・返金条件を出典と確認日付きで確認。",
+      "answer": "VPSには条件付きの30日間返金保証があります。無料の無条件試用ではありません。Linuxビギナーの1ヶ月契約は1,980円（税込）、初期費用2,530円（税込）です。",
+      "summary": "VPSには条件付きの30日間返金保証があります。無料の無条件試用ではありません。Linuxビギナーの1ヶ月契約は1,980円（税込）、初期費用2,530円（税込）です。",
+      "code_status": "入力式クーポンコードの適用：今回の公式確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "VPS：30日間返金保証",
+          "conditions": "初めて該当サービスを利用する1ヶ月契約者。契約後30日以内の解約と返金申出が必要。初期費用と基本料金のみ対象で、オプション・ドメイン費用などは対象外。複数台同時解約では最初の1台のみ。本人確認書類が必要です。",
+          "source": "https://support.tsukaeru.net/ja-JP/support/solutions/articles/65000032652-%E3%80%90%E4%BD%BF%E3%81%88%E3%82%8B%E3%81%AD%E3%81%A3%E3%81%A8%E3%80%91%E3%81%AE%E8%BF%94%E9%87%91%E4%BF%9D%E8%A8%BC%E5%88%B6%E5%BA%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+          "source_label": "返金保証制度"
+        },
+        {
+          "offer": "Linuxビギナー：1ヶ月1,980円（税込）",
+          "conditions": "1ヶ月契約の料金表表示。初期費用2,530円（税込）は別です。",
+          "source": "https://www.tsukaeru.net/cloud-vps/",
+          "source_label": "クラウドVPS料金表"
+        }
+      ],
+      "faq": [
+        {
+          "question": "料金と特典はどこで確認できますか？",
+          "answer": "VPSには条件付きの30日間返金保証があります。無料の無条件試用ではありません。Linuxビギナーの1ヶ月契約は1,980円（税込）、初期費用2,530円（税込）です。",
+          "source": "https://support.tsukaeru.net/ja-JP/support/solutions/articles/65000032652-%E3%80%90%E4%BD%BF%E3%81%88%E3%82%8B%E3%81%AD%E3%81%A3%E3%81%A8%E3%80%91%E3%81%AE%E8%BF%94%E9%87%91%E4%BF%9D%E8%A8%BC%E5%88%B6%E5%BA%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+        },
+        {
+          "question": "未確認の条件はありますか？",
+          "answer": "公式出典で確認できない追加条件やクーポンの適用は未確認です。申込前に公式ページで契約期間と支払額をご確認ください。",
+          "source": "https://support.tsukaeru.net/ja-JP/support/solutions/articles/65000032652-%E3%80%90%E4%BD%BF%E3%81%88%E3%82%8B%E3%81%AD%E3%81%A3%E3%81%A8%E3%80%91%E3%81%AE%E8%BF%94%E9%87%91%E4%BF%9D%E8%A8%BC%E5%88%B6%E5%BA%A6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+        }
+      ]
+    }
+  ],
+  "excluded": {
+    "quicca": "公式で新規申込終了",
+    "1strentalserver": "試用期間の公式記載に2週間と3週間の不一致",
+    "little-server": "公式候補ページを取得できず未確認"
+  }
+}

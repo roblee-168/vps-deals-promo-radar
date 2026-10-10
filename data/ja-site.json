@@ -11,7 +11,9 @@
         "sakura-vps",
         "conoha-windows-vps",
         "xserver-vps-cloud",
-        "webarena"
+        "webarena",
+        "spacecloud",
+        "tsukaeru"
       ],
       "レンタルサーバー": [
         "lolipop",
@@ -28,7 +30,13 @@
         "xrea",
         "jsn",
         "cpi",
-        "wadax"
+        "wadax",
+        "stepserver",
+        "smileserver",
+        "soho-server",
+        "inetd",
+        "minim",
+        "extrem"
       ]
     }
   },
