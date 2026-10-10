@@ -1240,3 +1240,4 @@ footer span {
 .shortlist-diagram figcaption{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.5}
 @media(max-width:520px){.shortlist-diagram{margin:20px 0 24px;padding:10px;border-radius:14px}.shortlist-diagram figcaption{margin:9px 3px 1px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){.reading-feature,.reading-action>span{transition:none}}
+@media(max-width:480px){.prose > h1{font-size:32px;line-height:1.08;letter-spacing:-.045em;margin-bottom:18px}.prose > .lead{padding:16px;font-size:16px;line-height:1.6}}
