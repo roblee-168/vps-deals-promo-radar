@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://perkmingle.com/ja/vps-compare/",
+    "status": 200,
+    "title": "VPS 比較：料金・特典・利用条件 | PerkMingle",
+    "rows": 4
+  },
+  {
+    "url": "https://perkmingle.com/ja/rental-server-compare/",
+    "status": 200,
+    "title": "レンタルサーバー 比較：料金・特典・利用条件 | PerkMingle",
+    "rows": 14
+  }
+]
