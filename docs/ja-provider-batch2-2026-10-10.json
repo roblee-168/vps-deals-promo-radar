@@ -1,0 +1,315 @@
+{
+  "checked": "2026-10-10",
+  "pages": [
+    {
+      "slug": "webarena",
+      "name": "WebARENA",
+      "home": "https://web.arena.ne.jp/",
+      "promotion": "https://web.arena.ne.jp/indigo/spec/coupon.html",
+      "checked": "2026-10-10",
+      "title": "WebARENAの料金と利用条件",
+      "description": "WebARENAの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "WebARENA Indigoの新規登録者は、公式が案内するコード「indigo500」で500円分のお試しクーポンを利用できます。適用から30日間有効で、他のクーポンとの併用はできません。",
+      "summary": "500円は利用料金に充当するクーポンであり、サーバーの販売価格ではありません。インスタンス停止中も課金されます。",
+      "code_status": "公式案内コード：indigo500（新規登録・500円分）",
+      "facts": [
+        {
+          "offer": "公式入力コード indigo500：500円分のお試しクーポン",
+          "conditions": "Indigo新規登録のみ。メール・電話認証とクレジットカード登録後、サービス選択画面で入力して適用。適用から30日で残額があっても失効。他クーポンとの併用不可。",
+          "source": "https://web.arena.ne.jp/indigo/spec/coupon.html",
+          "source_label": "500円お試しクーポン"
+        },
+        {
+          "offer": "Linux 1GB・1vCPU：0.70円/時間、月額上限449円（税込）",
+          "conditions": "IPv4/IPv6対応。作成から廃棄まで課金され、停止中も料金が発生。料金が発生する月の最低利用料は税込55円。",
+          "source": "https://web.arena.ne.jp/indigo/price/",
+          "source_label": "Linux料金・課金条件"
+        }
+      ],
+      "faq": [
+        {
+          "question": "コードの有効期間は何日ですか？",
+          "answer": "適用から30日間です。残額の有無にかかわらず失効し、他のクーポンと併用できません。",
+          "source": "https://web.arena.ne.jp/indigo/spec/coupon.html"
+        },
+        {
+          "question": "停止すれば課金は止まりますか？",
+          "answer": "インスタンスは作成から廃棄まで課金され、停止中も料金が発生します。",
+          "source": "https://web.arena.ne.jp/indigo/price/"
+        }
+      ]
+    },
+    {
+      "slug": "star-rental-server",
+      "name": "スターレンタルサーバー",
+      "home": "https://www.star.ne.jp/",
+      "promotion": "https://www.star.ne.jp/support/manual/man_order_free_trial.php",
+      "checked": "2026-10-10",
+      "title": "スターレンタルサーバーの料金と利用条件",
+      "description": "スターレンタルサーバーの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "公式申込で10日間無料お試しを利用できます。ライトは36か月契約の月額換算253円（税込）、初期費用0円です。継続する場合は支払期限までの入金が必要です。",
+      "summary": "253円は36か月契約の月額換算で、契約期間分を一括前払いします。試用中はメールなどに制限があります。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "10日間無料お試し",
+          "conditions": "申込日から支払期限まで。メールアカウント作成、プログラムによるメール送信、サブFTP追加、代行申請は試用中に利用できません。継続は期限までに支払手続き。",
+          "source": "https://www.star.ne.jp/support/manual/man_order_free_trial.php",
+          "source_label": "無料お試し期間"
+        },
+        {
+          "offer": "ライト・36か月：253円/月（税込）、初期費用0円",
+          "conditions": "契約期間分の月額換算。期間分を一括前払い。3か月契約は495円/月（税込）です。",
+          "source": "https://www.star.ne.jp/price/",
+          "source_label": "契約期間別料金"
+        }
+      ],
+      "faq": [
+        {
+          "question": "253円は月払いですか？",
+          "answer": "36か月契約の月額換算です。契約期間分は一括前払いとなります。",
+          "source": "https://www.star.ne.jp/price/"
+        },
+        {
+          "question": "試用中にメールを使えますか？",
+          "answer": "メールアカウント作成とプログラムによるメール送信は制限されます。継続利用は期限までに支払手続きをしてください。",
+          "source": "https://www.star.ne.jp/support/manual/man_order_free_trial.php"
+        }
+      ]
+    },
+    {
+      "slug": "shin-rental-server",
+      "name": "シンレンタルサーバー",
+      "home": "https://www.shin-server.jp/",
+      "promotion": "https://www.shin-server.jp/support/manual/man_order_free_trial.php",
+      "checked": "2026-10-10",
+      "title": "シンレンタルサーバーの料金と利用条件",
+      "description": "シンレンタルサーバーの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "通常の公式申込には10日間無料お試しがあります。ベーシックの36か月契約は月額換算1,078円（税込）で、料金ページは初回・更新とも同額を表示しています。",
+      "summary": "月額換算と契約期間分の支払額は異なります。期間分を一括前払いし、試用中はメールやFTP追加などに制限があります。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "10日間無料お試し",
+          "conditions": "通常の公式申込の案内。メール作成・プログラムによるメール送信、サブFTP追加、代行申請は制限されます。継続は支払期限までに入金。",
+          "source": "https://www.shin-server.jp/support/manual/man_order_free_trial.php",
+          "source_label": "無料お試し条件"
+        },
+        {
+          "offer": "ベーシック・36か月：初回・更新1,078円/月（税込）",
+          "conditions": "月額換算表示。契約期間分を一括前払い。3か月契約は初回・更新とも1,386円/月（税込）。",
+          "source": "https://www.shin-server.jp/service/price.php",
+          "source_label": "初回・更新料金表"
+        }
+      ],
+      "faq": [
+        {
+          "question": "初回と更新の金額は同じですか？",
+          "answer": "確認した料金表ではベーシック36か月契約は初回・更新とも月額換算1,078円（税込）です。",
+          "source": "https://www.shin-server.jp/service/price.php"
+        },
+        {
+          "question": "試用後にそのまま使うにはどうしますか？",
+          "answer": "支払期限までに料金の支払手続きが必要です。試用中のデータは本契約へ移行後も継続利用できます。",
+          "source": "https://www.shin-server.jp/support/manual/man_order_free_trial.php"
+        }
+      ]
+    },
+    {
+      "slug": "value-server",
+      "name": "バリューサーバー",
+      "home": "https://www.value-server.com/",
+      "promotion": "https://www.value-server.com/spec/",
+      "checked": "2026-10-10",
+      "title": "バリューサーバーの料金と利用条件",
+      "description": "バリューサーバーの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "エコ・スタンダード・ビジネスには10日間のお試しがあります。エコは1か月330円、36か月総額7,560円・月額換算210円の税込表示で、初期費用は別途1,100円です。",
+      "summary": "まるっとプランの通常購入には同じ試用条件を適用しません。試用後の解約・返金手続きの詳細は今回未確認です。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "エコ・スタンダード・ビジネス：10日間お試し",
+          "conditions": "まるっとは通常お試しなし。ただし公式注記では、コントロールパネルからドメインとサーバーを別々に購入する場合のみお試し付き。",
+          "source": "https://www.value-server.com/spec/",
+          "source_label": "お試し対象プラン"
+        },
+        {
+          "offer": "エコ：1か月330円、36か月7,560円（税込）",
+          "conditions": "36か月の月額換算210円。初期費用1,100円は別途。まるっとの起点表示はサーバー代のみでドメイン代別途のため混同しないでください。",
+          "source": "https://www.value-server.com/spec/",
+          "source_label": "契約期間別料金・初期費用"
+        }
+      ],
+      "faq": [
+        {
+          "question": "どのプランにも無料お試しがありますか？",
+          "answer": "エコ・スタンダード・ビジネスは10日です。まるっとの通常購入は対象外で、公式注記の別々購入時のみお試しが付きます。",
+          "source": "https://www.value-server.com/spec/"
+        },
+        {
+          "question": "解約・返金の詳細条件は確認済みですか？",
+          "answer": "今回確認した料金ページでは、具体的な解約・返金手続きまで確認できていません。申込前に公式窓口でご確認ください。",
+          "source": "https://www.value-server.com/spec/"
+        }
+      ]
+    },
+    {
+      "slug": "xrea",
+      "name": "XREA",
+      "home": "https://www.xrea.com/",
+      "promotion": "https://www.xrea.com/plan/",
+      "checked": "2026-10-10",
+      "title": "XREAの料金と利用条件",
+      "description": "XREAの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "XREA Freeは初期費用・利用料金が無料で、広告表示があります。広告なしのXREA Plusは1か月380円、36か月総額8,640円・月額換算240円の公式表示で、10日間お試し付きです。",
+      "summary": "無料プランと有料プランの試用は別です。解約・返金の詳細は今回未確認で、表示金額から税区分や最終請求額を推定していません。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "XREA Free：初期費用・利用料金無料",
+          "conditions": "広告表示あり。公式プラン表ではWeb容量10GB、1日の転送量上限5GB。",
+          "source": "https://www.xrea.com/plan/",
+          "source_label": "無料プラン・機能表"
+        },
+        {
+          "offer": "XREA Plus：1か月380円／36か月8,640円",
+          "conditions": "公式表示金額。36か月の月額換算240円、初期費用無料、広告表示なし、10日間お試し付き。税区分は今回確認できず。",
+          "source": "https://www.xrea.com/plan/",
+          "source_label": "有料プラン・お試し"
+        }
+      ],
+      "faq": [
+        {
+          "question": "無料プランにも広告はありますか？",
+          "answer": "Freeには広告表示があります。Plusには広告表示がありません。",
+          "source": "https://www.xrea.com/plan/"
+        },
+        {
+          "question": "10日間お試しと無料プランは同じですか？",
+          "answer": "Freeは無料プランです。公式表の10日間お試しはPlusとMail＆Backupに付いています。解約・返金の詳細は今回未確認です。",
+          "source": "https://www.xrea.com/plan/"
+        }
+      ]
+    },
+    {
+      "slug": "jsn",
+      "name": "JSN",
+      "home": "https://www.just-size.net/",
+      "promotion": "https://www.just-size.net/service/trial_flow.php",
+      "checked": "2026-10-10",
+      "title": "JSNの料金と利用条件",
+      "description": "JSNの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "無料お試しの終了日は申込日で変わります。公式案内は15日以降の申込なら翌月20日まで、今回の2026年10月10日時点の表示は10月20日までです。サブドメインプランは12か月以上の契約で210円/月（税込）です。",
+      "summary": "固定の試用日数をすべての申込日に当てはめません。試用終了日までに入金または解約の手続きをしてください。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "無料お試し：申込日に応じて20日まで",
+          "conditions": "15日以降の申込は翌月20日まで。2026年10月10日の公式表示は今月20日まで、課金開始は今月21日。終了日までに入金または解約。",
+          "source": "https://www.just-size.net/service/trial_flow.php",
+          "source_label": "お試し期間・利用の流れ"
+        },
+        {
+          "offer": "サブドメインプラン：210円/月（税込）",
+          "conditions": "12・24・36か月の契約。初期費用1,048円。3か月は314円/月、6か月は262円/月（税込）です。",
+          "source": "https://www.just-size.net/service/price.php",
+          "source_label": "基本料金・契約期間"
+        }
+      ],
+      "faq": [
+        {
+          "question": "無料期間は申込日によって変わりますか？",
+          "answer": "15日以降の申込では翌月20日までです。今回の10月10日の表示は10月20日までで、固定日数として扱いません。",
+          "source": "https://www.just-size.net/service/trial_flow.php"
+        },
+        {
+          "question": "継続しない場合は何をしますか？",
+          "answer": "公式の流れでは、お試し終了日までに入金または解約へ進むよう案内されています。",
+          "source": "https://www.just-size.net/service/trial_flow.php"
+        }
+      ]
+    },
+    {
+      "slug": "cpi",
+      "name": "CPI",
+      "home": "https://www.cpi.ad.jp/",
+      "promotion": "https://www.cpi.ad.jp/shared/bs/price/",
+      "checked": "2026-10-10",
+      "title": "CPIの料金と利用条件",
+      "description": "CPIの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "ビジネス スタンダードはサーバー設定完了後に10日間無料お試しが付与されます。12か月契約は総額58,080円・月額換算4,840円（税込）、初期費用無料です。移転代行を利用した場合は試用対象外です。",
+      "summary": "試用中はマルチドメイン・SSLなどのオプションに制限があります。継続する場合は試用終了日までに支払手続きをしてください。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "ビジネス スタンダード：10日間無料お試し",
+          "conditions": "設定完了後に開始。同一ドメインで複数申込時は1件のみ。移転代行利用時は対象外。マルチドメイン・SSLを含むオプション利用不可。継続は終了日までに支払手続き。",
+          "source": "https://www.cpi.ad.jp/shared/bs/price/",
+          "source_label": "導入の流れ・試用制限"
+        },
+        {
+          "offer": "12か月契約：総額58,080円、月額換算4,840円（税込）",
+          "conditions": "12か月一括払い、初期費用無料。6か月・3か月契約には初期費用22,000円（税込）が別途かかります。",
+          "source": "https://www.cpi.ad.jp/shared/bs/price/",
+          "source_label": "契約期間別基本料金"
+        }
+      ],
+      "faq": [
+        {
+          "question": "試用中に入金しないとどうなりますか？",
+          "answer": "試用中に支払確認ができなければ順次停止します。無料お試しのみなら、入金しなければそのまま解約となります。",
+          "source": "https://www.cpi.ad.jp/shared/bs/price/"
+        },
+        {
+          "question": "移転代行でも10日間試せますか？",
+          "answer": "サーバー移転代行サービスを利用した場合は無料お試しの対象外です。",
+          "source": "https://www.cpi.ad.jp/shared/bs/price/"
+        }
+      ]
+    },
+    {
+      "slug": "wadax",
+      "name": "WADAX",
+      "home": "https://www.wadax.ne.jp/",
+      "promotion": "https://www.wadax.ne.jp/order/",
+      "checked": "2026-10-10",
+      "title": "WADAXの料金と利用条件",
+      "description": "WADAXの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "おたすけクラウドサーバーと専用サーバーには30日無料トライアルの公式申込入口があります。おたすけクラウドの通常料金はマネージド41,800円/月〜、セルフ27,500円/月〜（税込）で、サーチャージ費は別途です。",
+      "summary": "30日試用の案内をあんしんWPサーバーに適用するものではありません。起点料金に追加費用があるため、最終請求額とは区別します。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "おたすけクラウド・専用サーバー：30日無料トライアル",
+          "conditions": "新規契約者用の公式トライアル入口から申込。契約済み利用者には別のオプショントライアル入口があります。終了時の手続き詳細は今回未確認。",
+          "source": "https://www.wadax.ne.jp/order/",
+          "source_label": "無料トライアル申込入口"
+        },
+        {
+          "offer": "おたすけクラウド：41,800円/月〜・27,500円/月〜（税込）",
+          "conditions": "前者はマネージド、後者はセルフ。初期費用0円。サーチャージ費は別途加算、適用率と最終請求総額は今回未確認。",
+          "source": "https://www.wadax.ne.jp/service/",
+          "source_label": "クラウド通常料金・追加費用"
+        }
+      ],
+      "faq": [
+        {
+          "question": "あんしんWPも30日試用の対象ですか？",
+          "answer": "今回の公式申込ページの30日試用入口はおたすけクラウドと専用サーバーです。あんしんWPへ同じ条件は適用していません。",
+          "source": "https://www.wadax.ne.jp/order/"
+        },
+        {
+          "question": "表示価格だけが請求されますか？",
+          "answer": "クラウド料金には別途サーチャージ費が加算されます。今回その適用率と最終請求額は確認できていません。",
+          "source": "https://www.wadax.ne.jp/service/"
+        }
+      ]
+    }
+  ],
+  "excluded": {
+    "rapidsite": "Official site redirects to legacy-brand explanation; no independently verified new-service offer.",
+    "xbit": "Official says new applications ended 2025-09-30.",
+    "futureweb": "New Pro/VPS introduction points to alternative cloud proposals; no current trial verified.",
+    "joeswebhosting": "Official service termination notice; not included."
+  }
+}

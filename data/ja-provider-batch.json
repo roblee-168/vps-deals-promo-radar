@@ -1,121 +1,636 @@
 {
-  "locale": "ja-JP", "currency": "JPY", "checked": "2026-10-10",
+  "locale": "ja-JP",
+  "currency": "JPY",
+  "checked": "2026-10-10",
   "pages": [
     {
-      "slug": "lolipop", "name": "ロリポップ！", "home": "https://lolipop.jp/", "promotion": "https://lolipop.jp/lp/lite/",
-      "title": "ロリポップ！の料金と10日間無料お試し条件", "description": "ロリポップ！のライトプランの起点料金、無料お試しと終了条件を公式情報で確認。",
+      "slug": "lolipop",
+      "name": "ロリポップ！",
+      "home": "https://lolipop.jp/",
+      "promotion": "https://lolipop.jp/lp/lite/",
+      "title": "ロリポップ！の料金と10日間無料お試し条件",
+      "description": "ロリポップ！のライトプランの起点料金、無料お試しと終了条件を公式情報で確認。",
       "answer": "10日間の無料お試しを公式申込ページから利用できます。ライトプランの表示は月額330円〜です。無料期間内に入金しない場合は試用終了となり、データが削除されます。",
-      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認", "summary": "無料お試しと有料契約は分けて確認してください。330円は起点表示であり、すべての契約期間の固定料金ではありません。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "summary": "無料お試しと有料契約は分けて確認してください。330円は起点表示であり、すべての契約期間の固定料金ではありません。",
       "facts": [
-        {"offer":"10日間無料お試し","conditions":"公式ページから申し込み。無料期間内に料金の支払いが確認できなければ試用終了となり、データが削除されます。","source":"https://lolipop.jp/terms/attention/","source_label":"ご利用上の注意"},
-        {"offer":"ライトプラン：330円/月〜","conditions":"公式申込ページの起点表示。契約期間によって料金が異なるため、申込時の期間と支払額を確認してください。","source":"https://lolipop.jp/lp/lite/","source_label":"ライトプラン・無料お試し"}
+        {
+          "offer": "10日間無料お試し",
+          "conditions": "公式ページから申し込み。無料期間内に料金の支払いが確認できなければ試用終了となり、データが削除されます。",
+          "source": "https://lolipop.jp/terms/attention/",
+          "source_label": "ご利用上の注意"
+        },
+        {
+          "offer": "ライトプラン：330円/月〜",
+          "conditions": "公式申込ページの起点表示。契約期間によって料金が異なるため、申込時の期間と支払額を確認してください。",
+          "source": "https://lolipop.jp/lp/lite/",
+          "source_label": "ライトプラン・無料お試し"
+        }
       ],
       "faq": [
-        {"question":"無料期間が終わると自動で課金されますか？","answer":"無料お試し後に手続きをしない場合、有料契約にはならず試用が終了します。終了時にデータが削除されるため、必要なデータは保存してください。","source":"https://lolipop.jp/terms/attention/"},
-        {"question":"月額330円はどの契約でも同じですか？","answer":"公式表示は330円/月〜です。起点料金として掲載されており、契約期間に応じた金額は申込画面で確認してください。","source":"https://lolipop.jp/lp/lite/"}
+        {
+          "question": "無料期間が終わると自動で課金されますか？",
+          "answer": "無料お試し後に手続きをしない場合、有料契約にはならず試用が終了します。終了時にデータが削除されるため、必要なデータは保存してください。",
+          "source": "https://lolipop.jp/terms/attention/"
+        },
+        {
+          "question": "月額330円はどの契約でも同じですか？",
+          "answer": "公式表示は330円/月〜です。起点料金として掲載されており、契約期間に応じた金額は申込画面で確認してください。",
+          "source": "https://lolipop.jp/lp/lite/"
+        }
       ]
     },
     {
-      "slug":"mixhost", "name":"mixhost", "home":"https://mixhost.jp/", "promotion":"https://mixhost.jp/",
-      "title":"mixhostの料金と30日間返金保証の条件", "description":"mixhostのライトプラン1年契約の初回・更新料金と、返金申請の条件を公式情報で確認。",
-      "answer":"ライトプランの1年契約は初回の月額換算594円、更新時968円の税込表示です。初回申込には30日間返金保証がありますが、キャンセルだけでは返金されず、期限内の申請が必要です。",
-      "code_status":"入力式クーポンコードの適用：今回の確認範囲では未確認", "summary":"初回料金と更新料金を分けて掲載しています。30日間返金保証は無料試用とは異なり、対象と申請条件があります。",
-      "facts":[
-        {"offer":"ライト・1年契約：初回594円/月、更新968円/月（税込）","conditions":"1年契約の月額換算表示。初回と更新では金額が異なります。","source":"https://mixhost.jp/","source_label":"公式料金表・1年契約"},
-        {"offer":"初回申込の30日間返金保証","conditions":"初回申込のみ。30日以内に即時キャンセルを選択し、サポートへ返金申請。更新分は対象外で、キャンセルだけでは返金されません。ドメインなど対象外サービスがあり、無料ドメイン取得時は登録費用が差し引かれます。銀行振込は返金手数料2,200円。","source":"https://help.mixhost.jp/articles/360035781732","source_label":"30日間返金保証について"}
+      "slug": "mixhost",
+      "name": "mixhost",
+      "home": "https://mixhost.jp/",
+      "promotion": "https://mixhost.jp/",
+      "title": "mixhostの料金と30日間返金保証の条件",
+      "description": "mixhostのライトプラン1年契約の初回・更新料金と、返金申請の条件を公式情報で確認。",
+      "answer": "ライトプランの1年契約は初回の月額換算594円、更新時968円の税込表示です。初回申込には30日間返金保証がありますが、キャンセルだけでは返金されず、期限内の申請が必要です。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "summary": "初回料金と更新料金を分けて掲載しています。30日間返金保証は無料試用とは異なり、対象と申請条件があります。",
+      "facts": [
+        {
+          "offer": "ライト・1年契約：初回594円/月、更新968円/月（税込）",
+          "conditions": "1年契約の月額換算表示。初回と更新では金額が異なります。",
+          "source": "https://mixhost.jp/",
+          "source_label": "公式料金表・1年契約"
+        },
+        {
+          "offer": "初回申込の30日間返金保証",
+          "conditions": "初回申込のみ。30日以内に即時キャンセルを選択し、サポートへ返金申請。更新分は対象外で、キャンセルだけでは返金されません。ドメインなど対象外サービスがあり、無料ドメイン取得時は登録費用が差し引かれます。銀行振込は返金手数料2,200円。",
+          "source": "https://help.mixhost.jp/articles/360035781732",
+          "source_label": "30日間返金保証について"
+        }
       ],
-      "faq":[
-        {"question":"初回の料金が更新時も続きますか？","answer":"公式の1年契約表ではライトの初回が税込594円/月、更新時が税込968円/月と別に表示されています。","source":"https://mixhost.jp/"},
-        {"question":"キャンセルすれば自動で返金されますか？","answer":"自動返金ではありません。初回申込から30日以内に即時キャンセル手続きとサポートへの返金申請が必要です。対象外サービスや支払方法別の条件も確認してください。","source":"https://help.mixhost.jp/articles/360035781732"}
+      "faq": [
+        {
+          "question": "初回の料金が更新時も続きますか？",
+          "answer": "公式の1年契約表ではライトの初回が税込594円/月、更新時が税込968円/月と別に表示されています。",
+          "source": "https://mixhost.jp/"
+        },
+        {
+          "question": "キャンセルすれば自動で返金されますか？",
+          "answer": "自動返金ではありません。初回申込から30日以内に即時キャンセル手続きとサポートへの返金申請が必要です。対象外サービスや支払方法別の条件も確認してください。",
+          "source": "https://help.mixhost.jp/articles/360035781732"
+        }
       ]
     },
     {
-      "slug":"colorfulbox", "name":"カラフルボックス", "home":"https://www.colorfulbox.jp/", "promotion":"https://www.colorfulbox.jp/price/",
-      "title":"カラフルボックスの料金と30日間無料お試し条件", "description":"BOX2の初回・更新料金、無料お試しと初期費用の条件を公式料金ページで確認。",
-      "answer":"公式ページからクレジットカード登録不要で30日間無料お試しを申し込めます。BOX2の36か月契約は初回484円/月、更新968円/月の税込表示です。公開クーポンの具体的なコードと適用は今回確認できませんでした。",
-      "code_status":"クーポン案内あり・具体的なコードの適用は未確認", "summary":"30日間お試し、契約期間別の料金、初期費用をそれぞれ分けて確認してください。",
-      "facts":[
-        {"offer":"30日間無料お試し","conditions":"全プランで利用可能。クレジットカード登録不要。継続する場合は試用期間中に有料契約へ移行します。試用中の有料移行でも有料期間は試用期間後から開始します。","source":"https://www.colorfulbox.jp/price/","source_label":"料金・無料お試しFAQ"},
-        {"offer":"BOX2・36か月：初回484円/月、更新968円/月（税込）","conditions":"36か月契約の表示です。別の期間・プランには同じ金額を適用しません。","source":"https://www.colorfulbox.jp/price/","source_label":"BOX2契約期間別料金"},
-        {"offer":"3か月以上の契約で初期費用無料","conditions":"1か月契約の初期費用は2,200円（税込）。","source":"https://www.colorfulbox.jp/price/","source_label":"初期費用"}
+      "slug": "colorfulbox",
+      "name": "カラフルボックス",
+      "home": "https://www.colorfulbox.jp/",
+      "promotion": "https://www.colorfulbox.jp/price/",
+      "title": "カラフルボックスの料金と30日間無料お試し条件",
+      "description": "BOX2の初回・更新料金、無料お試しと初期費用の条件を公式料金ページで確認。",
+      "answer": "公式ページからクレジットカード登録不要で30日間無料お試しを申し込めます。BOX2の36か月契約は初回484円/月、更新968円/月の税込表示です。公開クーポンの具体的なコードと適用は今回確認できませんでした。",
+      "code_status": "クーポン案内あり・具体的なコードの適用は未確認",
+      "summary": "30日間お試し、契約期間別の料金、初期費用をそれぞれ分けて確認してください。",
+      "facts": [
+        {
+          "offer": "30日間無料お試し",
+          "conditions": "全プランで利用可能。クレジットカード登録不要。継続する場合は試用期間中に有料契約へ移行します。試用中の有料移行でも有料期間は試用期間後から開始します。",
+          "source": "https://www.colorfulbox.jp/price/",
+          "source_label": "料金・無料お試しFAQ"
+        },
+        {
+          "offer": "BOX2・36か月：初回484円/月、更新968円/月（税込）",
+          "conditions": "36か月契約の表示です。別の期間・プランには同じ金額を適用しません。",
+          "source": "https://www.colorfulbox.jp/price/",
+          "source_label": "BOX2契約期間別料金"
+        },
+        {
+          "offer": "3か月以上の契約で初期費用無料",
+          "conditions": "1か月契約の初期費用は2,200円（税込）。",
+          "source": "https://www.colorfulbox.jp/price/",
+          "source_label": "初期費用"
+        }
       ],
-      "faq":[
-        {"question":"お試し中に有料契約にすると残りの日数は失われますか？","answer":"公式FAQでは、有料期間は無料お試し期間の終了後から開始すると説明されています。","source":"https://www.colorfulbox.jp/price/"},
-        {"question":"公開クーポンコードは確認できましたか？","answer":"公式料金ページにはクーポンの案内がありますが、今回の確認では具体的なコードと適用を確認できませんでした。コードが存在しないという意味ではありません。","source":"https://www.colorfulbox.jp/price/"}
+      "faq": [
+        {
+          "question": "お試し中に有料契約にすると残りの日数は失われますか？",
+          "answer": "公式FAQでは、有料期間は無料お試し期間の終了後から開始すると説明されています。",
+          "source": "https://www.colorfulbox.jp/price/"
+        },
+        {
+          "question": "公開クーポンコードは確認できましたか？",
+          "answer": "公式料金ページにはクーポンの案内がありますが、今回の確認では具体的なコードと適用を確認できませんでした。コードが存在しないという意味ではありません。",
+          "source": "https://www.colorfulbox.jp/price/"
+        }
       ]
     },
     {
-      "slug":"coreserver", "name":"CORESERVER", "home":"https://www.coreserver.jp/", "promotion":"https://www.coreserver.jp/",
-      "title":"CORESERVERの料金と30日間無料お試し条件", "description":"CORE-MINIの月払い・36か月料金と30日間無料お試しの継続条件を公式情報で確認。",
-      "answer":"クレジットカード登録不要の30日間無料お試しを公式サイトで申し込めます。CORE-MINIは1か月425円、36か月契約は総額9,180円・月額換算255円の税込表示です。継続には利用開始から30日以内の入金・購入手続きが必要です。",
-      "code_status":"入力式クーポンコードの適用：今回の確認範囲では未確認", "summary":"月払いと長期契約の総額を区別しています。無料期間を超えて使う場合は支払手続きをしてください。",
-      "facts":[
-        {"offer":"30日間無料お試し","conditions":"クレジットカード登録不要。継続利用する場合は利用開始から30日以内に入金・購入手続きが必要です。","source":"https://www.coreserver.jp/","source_label":"無料お試し・よくある質問"},
-        {"offer":"CORE-MINI：1か月425円（税込）","conditions":"1か月契約の料金。V1プランの初期費用は無料です。","source":"https://www.coreserver.jp/price/","source_label":"V1プラン料金表"},
-        {"offer":"CORE-MINI・36か月：総額9,180円、月額換算255円（税込）","conditions":"36か月の一括契約料金。月ごとに255円を支払う契約ではありません。","source":"https://www.coreserver.jp/price/","source_label":"CORE-MINI契約期間別料金"}
+      "slug": "coreserver",
+      "name": "CORESERVER",
+      "home": "https://www.coreserver.jp/",
+      "promotion": "https://www.coreserver.jp/",
+      "title": "CORESERVERの料金と30日間無料お試し条件",
+      "description": "CORE-MINIの月払い・36か月料金と30日間無料お試しの継続条件を公式情報で確認。",
+      "answer": "クレジットカード登録不要の30日間無料お試しを公式サイトで申し込めます。CORE-MINIは1か月425円、36か月契約は総額9,180円・月額換算255円の税込表示です。継続には利用開始から30日以内の入金・購入手続きが必要です。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "summary": "月払いと長期契約の総額を区別しています。無料期間を超えて使う場合は支払手続きをしてください。",
+      "facts": [
+        {
+          "offer": "30日間無料お試し",
+          "conditions": "クレジットカード登録不要。継続利用する場合は利用開始から30日以内に入金・購入手続きが必要です。",
+          "source": "https://www.coreserver.jp/",
+          "source_label": "無料お試し・よくある質問"
+        },
+        {
+          "offer": "CORE-MINI：1か月425円（税込）",
+          "conditions": "1か月契約の料金。V1プランの初期費用は無料です。",
+          "source": "https://www.coreserver.jp/price/",
+          "source_label": "V1プラン料金表"
+        },
+        {
+          "offer": "CORE-MINI・36か月：総額9,180円、月額換算255円（税込）",
+          "conditions": "36か月の一括契約料金。月ごとに255円を支払う契約ではありません。",
+          "source": "https://www.coreserver.jp/price/",
+          "source_label": "CORE-MINI契約期間別料金"
+        }
       ],
-      "faq":[
-        {"question":"無料お試しの後も使うにはどうしますか？","answer":"利用開始から30日以内に入金・購入手続きを行ってください。","source":"https://www.coreserver.jp/"},
-        {"question":"月額255円で毎月支払えますか？","answer":"255円は36か月契約の月額換算表示です。公式表の総額は税込9,180円、1か月契約は税込425円です。","source":"https://www.coreserver.jp/price/"}
+      "faq": [
+        {
+          "question": "無料お試しの後も使うにはどうしますか？",
+          "answer": "利用開始から30日以内に入金・購入手続きを行ってください。",
+          "source": "https://www.coreserver.jp/"
+        },
+        {
+          "question": "月額255円で毎月支払えますか？",
+          "answer": "255円は36か月契約の月額換算表示です。公式表の総額は税込9,180円、1か月契約は税込425円です。",
+          "source": "https://www.coreserver.jp/price/"
+        }
       ]
     },
     {
-      "slug":"ablenet", "name":"ABLENET", "home":"https://www.ablenet.jp/rentalserver/", "promotion":"https://www.ablenet.jp/rentalserver/support/refund.html",
-      "title":"ABLENETレンタルサーバーの料金と返金条件", "description":"ライトプランの契約期間別料金と30日返金保証の対象・除外条件を公式情報で確認。",
-      "answer":"ライトプランは月払い970円、年払い総額9,960円・月額換算830円の税込表示です。30日返金保証は半年・年・2年・3年払いが対象で、月払いは対象外です。解約後、サポートへの返金申請が必要です。",
-      "code_status":"入力式クーポンコードの適用：今回の確認範囲では未確認", "summary":"長期契約の月額換算と支払総額を併記しています。返金保証の対象期間と除外条件を先に確認してください。",
-      "facts":[
-        {"offer":"ライト：月払い970円／年払い総額9,960円（税込）","conditions":"年払いの月額換算は830円。初期費用は無料です。","source":"https://www.ablenet.jp/rentalserver/plan/","source_label":"プラン・料金"},
-        {"offer":"ライト・3年払い：総額17,460円、月額換算485円（税込）","conditions":"3年払いの料金表示です。485円の月払い契約ではありません。","source":"https://www.ablenet.jp/rentalserver/plan/","source_label":"長期契約料金"},
-        {"offer":"30日返金保証","conditions":"半年・年・2年・3年払いが対象。月払いとドメインは対象外。解約手続き後にサポートへ申請。無料ドメイン取得時は登録費用を控除し、返金の振込手数料は利用者負担です。","source":"https://www.ablenet.jp/rentalserver/support/refund.html","source_label":"30日返金保証"}
+      "slug": "ablenet",
+      "name": "ABLENET",
+      "home": "https://www.ablenet.jp/rentalserver/",
+      "promotion": "https://www.ablenet.jp/rentalserver/support/refund.html",
+      "title": "ABLENETレンタルサーバーの料金と返金条件",
+      "description": "ライトプランの契約期間別料金と30日返金保証の対象・除外条件を公式情報で確認。",
+      "answer": "ライトプランは月払い970円、年払い総額9,960円・月額換算830円の税込表示です。30日返金保証は半年・年・2年・3年払いが対象で、月払いは対象外です。解約後、サポートへの返金申請が必要です。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "summary": "長期契約の月額換算と支払総額を併記しています。返金保証の対象期間と除外条件を先に確認してください。",
+      "facts": [
+        {
+          "offer": "ライト：月払い970円／年払い総額9,960円（税込）",
+          "conditions": "年払いの月額換算は830円。初期費用は無料です。",
+          "source": "https://www.ablenet.jp/rentalserver/plan/",
+          "source_label": "プラン・料金"
+        },
+        {
+          "offer": "ライト・3年払い：総額17,460円、月額換算485円（税込）",
+          "conditions": "3年払いの料金表示です。485円の月払い契約ではありません。",
+          "source": "https://www.ablenet.jp/rentalserver/plan/",
+          "source_label": "長期契約料金"
+        },
+        {
+          "offer": "30日返金保証",
+          "conditions": "半年・年・2年・3年払いが対象。月払いとドメインは対象外。解約手続き後にサポートへ申請。無料ドメイン取得時は登録費用を控除し、返金の振込手数料は利用者負担です。",
+          "source": "https://www.ablenet.jp/rentalserver/support/refund.html",
+          "source_label": "30日返金保証"
+        }
       ],
-      "faq":[
-        {"question":"月払いにも返金保証がありますか？","answer":"公式返金保証ページでは月払いは対象外です。半年・年・2年・3年払いが対象です。","source":"https://www.ablenet.jp/rentalserver/support/refund.html"},
-        {"question":"485円は毎月の支払額ですか？","answer":"3年払いの月額換算で、公式表の支払総額は税込17,460円です。月払いは税込970円です。","source":"https://www.ablenet.jp/rentalserver/plan/"}
+      "faq": [
+        {
+          "question": "月払いにも返金保証がありますか？",
+          "answer": "公式返金保証ページでは月払いは対象外です。半年・年・2年・3年払いが対象です。",
+          "source": "https://www.ablenet.jp/rentalserver/support/refund.html"
+        },
+        {
+          "question": "485円は毎月の支払額ですか？",
+          "answer": "3年払いの月額換算で、公式表の支払総額は税込17,460円です。月払いは税込970円です。",
+          "source": "https://www.ablenet.jp/rentalserver/plan/"
+        }
       ]
     },
     {
-      "slug":"kagoya", "name":"KAGOYA", "home":"https://www.kagoya.jp/kir/rentalserver/", "promotion":"https://www.kagoya.jp/kir/price/",
-      "title":"KAGOYAレンタルサーバーの料金と初月無料条件", "description":"ライトプランの月払い・12か月料金、初月無料と解約時の条件を公式情報で確認。",
-      "answer":"初期費用無料のプランは初月の月額基本料金が無料です。継続しない場合は申込当月中の解約手続きが必要です。ライトの月払いは1,650円、12か月一括は総額17,820円・月額換算1,485円の税込表示です。",
-      "code_status":"入力式クーポンコードの適用：今回の確認範囲では未確認", "summary":"初月無料は申込月単位です。12か月一括払いの途中解約では残期間分の返金はありません。",
-      "facts":[
-        {"offer":"初期費用無料プランの初月基本料金無料","conditions":"継続しない場合は申込当月中に解約手続きが必要です。公式FAQは最長1か月と説明しています。","source":"https://www.kagoya.jp/faq/?faq_service%5B%5D=rentalserver&keyword=","source_label":"レンタルサーバーFAQ"},
-        {"offer":"ライト：月払い1,650円（税込）","conditions":"初期費用無料のライトプラン。12か月一括とは別の月払い料金です。","source":"https://www.kagoya.jp/kir/price/","source_label":"ライトプラン料金"},
-        {"offer":"ライト・12か月：総額17,820円、月額換算1,485円（税込）","conditions":"12か月一括払い。途中解約しても残期間分の返金はありません。","source":"https://www.kagoya.jp/kir/price/","source_label":"12か月一括払い条件"}
+      "slug": "kagoya",
+      "name": "KAGOYA",
+      "home": "https://www.kagoya.jp/kir/rentalserver/",
+      "promotion": "https://www.kagoya.jp/kir/price/",
+      "title": "KAGOYAレンタルサーバーの料金と初月無料条件",
+      "description": "ライトプランの月払い・12か月料金、初月無料と解約時の条件を公式情報で確認。",
+      "answer": "初期費用無料のプランは初月の月額基本料金が無料です。継続しない場合は申込当月中の解約手続きが必要です。ライトの月払いは1,650円、12か月一括は総額17,820円・月額換算1,485円の税込表示です。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "summary": "初月無料は申込月単位です。12か月一括払いの途中解約では残期間分の返金はありません。",
+      "facts": [
+        {
+          "offer": "初期費用無料プランの初月基本料金無料",
+          "conditions": "継続しない場合は申込当月中に解約手続きが必要です。公式FAQは最長1か月と説明しています。",
+          "source": "https://www.kagoya.jp/faq/?faq_service%5B%5D=rentalserver&keyword=",
+          "source_label": "レンタルサーバーFAQ"
+        },
+        {
+          "offer": "ライト：月払い1,650円（税込）",
+          "conditions": "初期費用無料のライトプラン。12か月一括とは別の月払い料金です。",
+          "source": "https://www.kagoya.jp/kir/price/",
+          "source_label": "ライトプラン料金"
+        },
+        {
+          "offer": "ライト・12か月：総額17,820円、月額換算1,485円（税込）",
+          "conditions": "12か月一括払い。途中解約しても残期間分の返金はありません。",
+          "source": "https://www.kagoya.jp/kir/price/",
+          "source_label": "12か月一括払い条件"
+        }
       ],
-      "faq":[
-        {"question":"初月だけ試して継続しない場合はどうしますか？","answer":"初期費用無料のプランは初月基本料金が無料ですが、継続しない場合は申込当月中に解約手続きをしてください。","source":"https://www.kagoya.jp/faq/?faq_service%5B%5D=rentalserver&keyword="},
-        {"question":"年払いの途中解約で返金されますか？","answer":"12か月一括払いでは残期間分の返金はありません。","source":"https://www.kagoya.jp/kir/price/"}
+      "faq": [
+        {
+          "question": "初月だけ試して継続しない場合はどうしますか？",
+          "answer": "初期費用無料のプランは初月基本料金が無料ですが、継続しない場合は申込当月中に解約手続きをしてください。",
+          "source": "https://www.kagoya.jp/faq/?faq_service%5B%5D=rentalserver&keyword="
+        },
+        {
+          "question": "年払いの途中解約で返金されますか？",
+          "answer": "12か月一括払いでは残期間分の返金はありません。",
+          "source": "https://www.kagoya.jp/kir/price/"
+        }
       ]
     },
     {
-      "slug":"onamae", "name":"お名前.com レンタルサーバー", "home":"https://www.onamae.com/server/", "promotion":"https://www.onamae.com/server/rs/campaign/simulregist/",
-      "title":"お名前.comレンタルサーバーの料金と初月無料条件", "description":"初月無料と翌月以降の基本料金、サービス維持調整費、初回請求の条件を公式情報で確認。",
-      "answer":"公式料金ページでは初月無料、翌月以降の基本料金は税込2,398円/月です。サービス維持調整費は別途加算されます。無料期間中は解約できず、初回請求は翌月と翌々月の料金がまとめて請求されます。",
-      "code_status":"入力式クーポンコードの適用：今回の確認範囲では未確認", "summary":"2,398円は調整費を含む最終請求額ではありません。初月無料と解約・請求条件を一緒に確認してください。",
-      "facts":[
-        {"offer":"初期費用0円・初月無料","conditions":"公式申込条件による特典。無料期間中は解約できません。初回請求は翌月と翌々月の料金をまとめて請求します。","source":"https://www.onamae.com/server/rs/howorder/","source_label":"お申し込みの流れ・請求条件"},
-        {"offer":"翌月以降の基本料金：2,398円/月（税込）","conditions":"サービス維持調整費は別途加算。今回の確認では調整費の適用率を確定できず、最終請求額は掲載していません。","source":"https://www.onamae.com/server/rs/price/?btn_id=rs_submenu_price","source_label":"公式料金・サービス維持調整費"}
+      "slug": "onamae",
+      "name": "お名前.com レンタルサーバー",
+      "home": "https://www.onamae.com/server/",
+      "promotion": "https://www.onamae.com/server/rs/campaign/simulregist/",
+      "title": "お名前.comレンタルサーバーの料金と初月無料条件",
+      "description": "初月無料と翌月以降の基本料金、サービス維持調整費、初回請求の条件を公式情報で確認。",
+      "answer": "公式料金ページでは初月無料、翌月以降の基本料金は税込2,398円/月です。サービス維持調整費は別途加算されます。無料期間中は解約できず、初回請求は翌月と翌々月の料金がまとめて請求されます。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "summary": "2,398円は調整費を含む最終請求額ではありません。初月無料と解約・請求条件を一緒に確認してください。",
+      "facts": [
+        {
+          "offer": "初期費用0円・初月無料",
+          "conditions": "公式申込条件による特典。無料期間中は解約できません。初回請求は翌月と翌々月の料金をまとめて請求します。",
+          "source": "https://www.onamae.com/server/rs/howorder/",
+          "source_label": "お申し込みの流れ・請求条件"
+        },
+        {
+          "offer": "翌月以降の基本料金：2,398円/月（税込）",
+          "conditions": "サービス維持調整費は別途加算。今回の確認では調整費の適用率を確定できず、最終請求額は掲載していません。",
+          "source": "https://www.onamae.com/server/rs/price/?btn_id=rs_submenu_price",
+          "source_label": "公式料金・サービス維持調整費"
+        }
       ],
-      "faq":[
-        {"question":"初月無料の期間中に解約できますか？","answer":"公式申込ページでは無料期間中は解約できないと説明されています。初回請求は翌月と翌々月分をまとめて行います。","source":"https://www.onamae.com/server/rs/howorder/"},
-        {"question":"毎月の請求額は2,398円だけですか？","answer":"2,398円は税込の基本料金です。サービス維持調整費が別途加算されるため、最終請求額とは区別してください。適用率は今回未確認です。","source":"https://www.onamae.com/server/rs/price/?btn_id=rs_submenu_price"}
+      "faq": [
+        {
+          "question": "初月無料の期間中に解約できますか？",
+          "answer": "公式申込ページでは無料期間中は解約できないと説明されています。初回請求は翌月と翌々月分をまとめて行います。",
+          "source": "https://www.onamae.com/server/rs/howorder/"
+        },
+        {
+          "question": "毎月の請求額は2,398円だけですか？",
+          "answer": "2,398円は税込の基本料金です。サービス維持調整費が別途加算されるため、最終請求額とは区別してください。適用率は今回未確認です。",
+          "source": "https://www.onamae.com/server/rs/price/?btn_id=rs_submenu_price"
+        }
       ]
     },
     {
-      "slug":"heteml", "name":"ヘテムル", "home":"https://www.heteml.jp/", "promotion":"https://www.heteml.jp/option/ssl/",
-      "title":"ヘテムルの料金と無料SSLの条件", "description":"ヘテムルの契約期間別料金、初月の日割り条件と無料SSLを公式情報で確認。",
-      "answer":"初期費用は無料で、36か月契約の公式表示は1,430円/月、支払総額51,480円です。表は月初1日の契約開始を前提とし、2日以降は初月を88円/日で計算します。無料のドメイン認証SSLも利用できます。",
-      "code_status":"入力式クーポンコードの適用：今回の確認範囲では未確認", "summary":"契約期間と開始日で支払額が変わります。無料SSLと有料SSLの特典は同じものではありません。",
-      "facts":[
-        {"offer":"36か月契約：1,430円/月、支払総額51,480円","conditions":"初期費用なし。公式表は月初1日の契約開始時の金額です。2日以降の初月は88円/日の日割りとなります。","source":"https://www.heteml.jp/service/charge/","source_label":"料金・契約開始日の条件"},
-        {"offer":"3か月契約：2,860円/月、支払総額8,580円","conditions":"公式表は月初1日の契約開始時の金額。クレジットカード・おさいぽ！決済は自動決済で契約更新します。","source":"https://www.heteml.jp/service/charge/","source_label":"契約期間別料金・更新"},
-        {"offer":"無料ドメイン認証SSL","conditions":"Let's Encryptは無償ですが、ドメイン永久無料特典の対象外です。ドメイン特典の詳細条件は今回確認できず、取得費用や更新費用の無料を約束する情報は掲載していません。","source":"https://www.heteml.jp/option/ssl/","source_label":"独自SSL・対象区分"}
+      "slug": "heteml",
+      "name": "ヘテムル",
+      "home": "https://www.heteml.jp/",
+      "promotion": "https://www.heteml.jp/option/ssl/",
+      "title": "ヘテムルの料金と無料SSLの条件",
+      "description": "ヘテムルの契約期間別料金、初月の日割り条件と無料SSLを公式情報で確認。",
+      "answer": "初期費用は無料で、36か月契約の公式表示は1,430円/月、支払総額51,480円です。表は月初1日の契約開始を前提とし、2日以降は初月を88円/日で計算します。無料のドメイン認証SSLも利用できます。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "summary": "契約期間と開始日で支払額が変わります。無料SSLと有料SSLの特典は同じものではありません。",
+      "facts": [
+        {
+          "offer": "36か月契約：1,430円/月、支払総額51,480円",
+          "conditions": "初期費用なし。公式表は月初1日の契約開始時の金額です。2日以降の初月は88円/日の日割りとなります。",
+          "source": "https://www.heteml.jp/service/charge/",
+          "source_label": "料金・契約開始日の条件"
+        },
+        {
+          "offer": "3か月契約：2,860円/月、支払総額8,580円",
+          "conditions": "公式表は月初1日の契約開始時の金額。クレジットカード・おさいぽ！決済は自動決済で契約更新します。",
+          "source": "https://www.heteml.jp/service/charge/",
+          "source_label": "契約期間別料金・更新"
+        },
+        {
+          "offer": "無料ドメイン認証SSL",
+          "conditions": "Let's Encryptは無償ですが、ドメイン永久無料特典の対象外です。ドメイン特典の詳細条件は今回確認できず、取得費用や更新費用の無料を約束する情報は掲載していません。",
+          "source": "https://www.heteml.jp/option/ssl/",
+          "source_label": "独自SSL・対象区分"
+        }
       ],
-      "faq":[
-        {"question":"1,430円/月の契約は毎月支払う形ですか？","answer":"公式表の36か月契約の表示で、月初1日開始の場合の支払総額は51,480円です。2日以降に開始する初月には日割り条件があります。","source":"https://www.heteml.jp/service/charge/"},
-        {"question":"無料SSLにもドメイン永久無料特典がありますか？","answer":"公式SSLページではLet's Encryptはその特典の対象外です。ドメイン特典の詳細条件は今回未確認のため、無料取得・更新の条件は掲載していません。","source":"https://www.heteml.jp/option/ssl/"}
+      "faq": [
+        {
+          "question": "1,430円/月の契約は毎月支払う形ですか？",
+          "answer": "公式表の36か月契約の表示で、月初1日開始の場合の支払総額は51,480円です。2日以降に開始する初月には日割り条件があります。",
+          "source": "https://www.heteml.jp/service/charge/"
+        },
+        {
+          "question": "無料SSLにもドメイン永久無料特典がありますか？",
+          "answer": "公式SSLページではLet's Encryptはその特典の対象外です。ドメイン特典の詳細条件は今回未確認のため、無料取得・更新の条件は掲載していません。",
+          "source": "https://www.heteml.jp/option/ssl/"
+        }
+      ]
+    },
+    {
+      "slug": "webarena",
+      "name": "WebARENA",
+      "home": "https://web.arena.ne.jp/",
+      "promotion": "https://web.arena.ne.jp/indigo/spec/coupon.html",
+      "checked": "2026-10-10",
+      "title": "WebARENAの料金と利用条件",
+      "description": "WebARENAの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "WebARENA Indigoの新規登録者は、公式が案内するコード「indigo500」で500円分のお試しクーポンを利用できます。適用から30日間有効で、他のクーポンとの併用はできません。",
+      "summary": "500円は利用料金に充当するクーポンであり、サーバーの販売価格ではありません。インスタンス停止中も課金されます。",
+      "code_status": "公式案内コード：indigo500（新規登録・500円分）",
+      "facts": [
+        {
+          "offer": "公式入力コード indigo500：500円分のお試しクーポン",
+          "conditions": "Indigo新規登録のみ。メール・電話認証とクレジットカード登録後、サービス選択画面で入力して適用。適用から30日で残額があっても失効。他クーポンとの併用不可。",
+          "source": "https://web.arena.ne.jp/indigo/spec/coupon.html",
+          "source_label": "500円お試しクーポン"
+        },
+        {
+          "offer": "Linux 1GB・1vCPU：0.70円/時間、月額上限449円（税込）",
+          "conditions": "IPv4/IPv6対応。作成から廃棄まで課金され、停止中も料金が発生。料金が発生する月の最低利用料は税込55円。",
+          "source": "https://web.arena.ne.jp/indigo/price/",
+          "source_label": "Linux料金・課金条件"
+        }
+      ],
+      "faq": [
+        {
+          "question": "コードの有効期間は何日ですか？",
+          "answer": "適用から30日間です。残額の有無にかかわらず失効し、他のクーポンと併用できません。",
+          "source": "https://web.arena.ne.jp/indigo/spec/coupon.html"
+        },
+        {
+          "question": "停止すれば課金は止まりますか？",
+          "answer": "インスタンスは作成から廃棄まで課金され、停止中も料金が発生します。",
+          "source": "https://web.arena.ne.jp/indigo/price/"
+        }
+      ]
+    },
+    {
+      "slug": "star-rental-server",
+      "name": "スターレンタルサーバー",
+      "home": "https://www.star.ne.jp/",
+      "promotion": "https://www.star.ne.jp/support/manual/man_order_free_trial.php",
+      "checked": "2026-10-10",
+      "title": "スターレンタルサーバーの料金と利用条件",
+      "description": "スターレンタルサーバーの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "公式申込で10日間無料お試しを利用できます。ライトは36か月契約の月額換算253円（税込）、初期費用0円です。継続する場合は支払期限までの入金が必要です。",
+      "summary": "253円は36か月契約の月額換算で、契約期間分を一括前払いします。試用中はメールなどに制限があります。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "10日間無料お試し",
+          "conditions": "申込日から支払期限まで。メールアカウント作成、プログラムによるメール送信、サブFTP追加、代行申請は試用中に利用できません。継続は期限までに支払手続き。",
+          "source": "https://www.star.ne.jp/support/manual/man_order_free_trial.php",
+          "source_label": "無料お試し期間"
+        },
+        {
+          "offer": "ライト・36か月：253円/月（税込）、初期費用0円",
+          "conditions": "契約期間分の月額換算。期間分を一括前払い。3か月契約は495円/月（税込）です。",
+          "source": "https://www.star.ne.jp/price/",
+          "source_label": "契約期間別料金"
+        }
+      ],
+      "faq": [
+        {
+          "question": "253円は月払いですか？",
+          "answer": "36か月契約の月額換算です。契約期間分は一括前払いとなります。",
+          "source": "https://www.star.ne.jp/price/"
+        },
+        {
+          "question": "試用中にメールを使えますか？",
+          "answer": "メールアカウント作成とプログラムによるメール送信は制限されます。継続利用は期限までに支払手続きをしてください。",
+          "source": "https://www.star.ne.jp/support/manual/man_order_free_trial.php"
+        }
+      ]
+    },
+    {
+      "slug": "shin-rental-server",
+      "name": "シンレンタルサーバー",
+      "home": "https://www.shin-server.jp/",
+      "promotion": "https://www.shin-server.jp/support/manual/man_order_free_trial.php",
+      "checked": "2026-10-10",
+      "title": "シンレンタルサーバーの料金と利用条件",
+      "description": "シンレンタルサーバーの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "通常の公式申込には10日間無料お試しがあります。ベーシックの36か月契約は月額換算1,078円（税込）で、料金ページは初回・更新とも同額を表示しています。",
+      "summary": "月額換算と契約期間分の支払額は異なります。期間分を一括前払いし、試用中はメールやFTP追加などに制限があります。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "10日間無料お試し",
+          "conditions": "通常の公式申込の案内。メール作成・プログラムによるメール送信、サブFTP追加、代行申請は制限されます。継続は支払期限までに入金。",
+          "source": "https://www.shin-server.jp/support/manual/man_order_free_trial.php",
+          "source_label": "無料お試し条件"
+        },
+        {
+          "offer": "ベーシック・36か月：初回・更新1,078円/月（税込）",
+          "conditions": "月額換算表示。契約期間分を一括前払い。3か月契約は初回・更新とも1,386円/月（税込）。",
+          "source": "https://www.shin-server.jp/service/price.php",
+          "source_label": "初回・更新料金表"
+        }
+      ],
+      "faq": [
+        {
+          "question": "初回と更新の金額は同じですか？",
+          "answer": "確認した料金表ではベーシック36か月契約は初回・更新とも月額換算1,078円（税込）です。",
+          "source": "https://www.shin-server.jp/service/price.php"
+        },
+        {
+          "question": "試用後にそのまま使うにはどうしますか？",
+          "answer": "支払期限までに料金の支払手続きが必要です。試用中のデータは本契約へ移行後も継続利用できます。",
+          "source": "https://www.shin-server.jp/support/manual/man_order_free_trial.php"
+        }
+      ]
+    },
+    {
+      "slug": "value-server",
+      "name": "バリューサーバー",
+      "home": "https://www.value-server.com/",
+      "promotion": "https://www.value-server.com/spec/",
+      "checked": "2026-10-10",
+      "title": "バリューサーバーの料金と利用条件",
+      "description": "バリューサーバーの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "エコ・スタンダード・ビジネスには10日間のお試しがあります。エコは1か月330円、36か月総額7,560円・月額換算210円の税込表示で、初期費用は別途1,100円です。",
+      "summary": "まるっとプランの通常購入には同じ試用条件を適用しません。試用後の解約・返金手続きの詳細は今回未確認です。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "エコ・スタンダード・ビジネス：10日間お試し",
+          "conditions": "まるっとは通常お試しなし。ただし公式注記では、コントロールパネルからドメインとサーバーを別々に購入する場合のみお試し付き。",
+          "source": "https://www.value-server.com/spec/",
+          "source_label": "お試し対象プラン"
+        },
+        {
+          "offer": "エコ：1か月330円、36か月7,560円（税込）",
+          "conditions": "36か月の月額換算210円。初期費用1,100円は別途。まるっとの起点表示はサーバー代のみでドメイン代別途のため混同しないでください。",
+          "source": "https://www.value-server.com/spec/",
+          "source_label": "契約期間別料金・初期費用"
+        }
+      ],
+      "faq": [
+        {
+          "question": "どのプランにも無料お試しがありますか？",
+          "answer": "エコ・スタンダード・ビジネスは10日です。まるっとの通常購入は対象外で、公式注記の別々購入時のみお試しが付きます。",
+          "source": "https://www.value-server.com/spec/"
+        },
+        {
+          "question": "解約・返金の詳細条件は確認済みですか？",
+          "answer": "今回確認した料金ページでは、具体的な解約・返金手続きまで確認できていません。申込前に公式窓口でご確認ください。",
+          "source": "https://www.value-server.com/spec/"
+        }
+      ]
+    },
+    {
+      "slug": "xrea",
+      "name": "XREA",
+      "home": "https://www.xrea.com/",
+      "promotion": "https://www.xrea.com/plan/",
+      "checked": "2026-10-10",
+      "title": "XREAの料金と利用条件",
+      "description": "XREAの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "XREA Freeは初期費用・利用料金が無料で、広告表示があります。広告なしのXREA Plusは1か月380円、36か月総額8,640円・月額換算240円の公式表示で、10日間お試し付きです。",
+      "summary": "無料プランと有料プランの試用は別です。解約・返金の詳細は今回未確認で、表示金額から税区分や最終請求額を推定していません。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "XREA Free：初期費用・利用料金無料",
+          "conditions": "広告表示あり。公式プラン表ではWeb容量10GB、1日の転送量上限5GB。",
+          "source": "https://www.xrea.com/plan/",
+          "source_label": "無料プラン・機能表"
+        },
+        {
+          "offer": "XREA Plus：1か月380円／36か月8,640円",
+          "conditions": "公式表示金額。36か月の月額換算240円、初期費用無料、広告表示なし、10日間お試し付き。税区分は今回確認できず。",
+          "source": "https://www.xrea.com/plan/",
+          "source_label": "有料プラン・お試し"
+        }
+      ],
+      "faq": [
+        {
+          "question": "無料プランにも広告はありますか？",
+          "answer": "Freeには広告表示があります。Plusには広告表示がありません。",
+          "source": "https://www.xrea.com/plan/"
+        },
+        {
+          "question": "10日間お試しと無料プランは同じですか？",
+          "answer": "Freeは無料プランです。公式表の10日間お試しはPlusとMail＆Backupに付いています。解約・返金の詳細は今回未確認です。",
+          "source": "https://www.xrea.com/plan/"
+        }
+      ]
+    },
+    {
+      "slug": "jsn",
+      "name": "JSN",
+      "home": "https://www.just-size.net/",
+      "promotion": "https://www.just-size.net/service/trial_flow.php",
+      "checked": "2026-10-10",
+      "title": "JSNの料金と利用条件",
+      "description": "JSNの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "無料お試しの終了日は申込日で変わります。公式案内は15日以降の申込なら翌月20日まで、今回の2026年10月10日時点の表示は10月20日までです。サブドメインプランは12か月以上の契約で210円/月（税込）です。",
+      "summary": "固定の試用日数をすべての申込日に当てはめません。試用終了日までに入金または解約の手続きをしてください。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "無料お試し：申込日に応じて20日まで",
+          "conditions": "15日以降の申込は翌月20日まで。2026年10月10日の公式表示は今月20日まで、課金開始は今月21日。終了日までに入金または解約。",
+          "source": "https://www.just-size.net/service/trial_flow.php",
+          "source_label": "お試し期間・利用の流れ"
+        },
+        {
+          "offer": "サブドメインプラン：210円/月（税込）",
+          "conditions": "12・24・36か月の契約。初期費用1,048円。3か月は314円/月、6か月は262円/月（税込）です。",
+          "source": "https://www.just-size.net/service/price.php",
+          "source_label": "基本料金・契約期間"
+        }
+      ],
+      "faq": [
+        {
+          "question": "無料期間は申込日によって変わりますか？",
+          "answer": "15日以降の申込では翌月20日までです。今回の10月10日の表示は10月20日までで、固定日数として扱いません。",
+          "source": "https://www.just-size.net/service/trial_flow.php"
+        },
+        {
+          "question": "継続しない場合は何をしますか？",
+          "answer": "公式の流れでは、お試し終了日までに入金または解約へ進むよう案内されています。",
+          "source": "https://www.just-size.net/service/trial_flow.php"
+        }
+      ]
+    },
+    {
+      "slug": "cpi",
+      "name": "CPI",
+      "home": "https://www.cpi.ad.jp/",
+      "promotion": "https://www.cpi.ad.jp/shared/bs/price/",
+      "checked": "2026-10-10",
+      "title": "CPIの料金と利用条件",
+      "description": "CPIの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "ビジネス スタンダードはサーバー設定完了後に10日間無料お試しが付与されます。12か月契約は総額58,080円・月額換算4,840円（税込）、初期費用無料です。移転代行を利用した場合は試用対象外です。",
+      "summary": "試用中はマルチドメイン・SSLなどのオプションに制限があります。継続する場合は試用終了日までに支払手続きをしてください。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "ビジネス スタンダード：10日間無料お試し",
+          "conditions": "設定完了後に開始。同一ドメインで複数申込時は1件のみ。移転代行利用時は対象外。マルチドメイン・SSLを含むオプション利用不可。継続は終了日までに支払手続き。",
+          "source": "https://www.cpi.ad.jp/shared/bs/price/",
+          "source_label": "導入の流れ・試用制限"
+        },
+        {
+          "offer": "12か月契約：総額58,080円、月額換算4,840円（税込）",
+          "conditions": "12か月一括払い、初期費用無料。6か月・3か月契約には初期費用22,000円（税込）が別途かかります。",
+          "source": "https://www.cpi.ad.jp/shared/bs/price/",
+          "source_label": "契約期間別基本料金"
+        }
+      ],
+      "faq": [
+        {
+          "question": "試用中に入金しないとどうなりますか？",
+          "answer": "試用中に支払確認ができなければ順次停止します。無料お試しのみなら、入金しなければそのまま解約となります。",
+          "source": "https://www.cpi.ad.jp/shared/bs/price/"
+        },
+        {
+          "question": "移転代行でも10日間試せますか？",
+          "answer": "サーバー移転代行サービスを利用した場合は無料お試しの対象外です。",
+          "source": "https://www.cpi.ad.jp/shared/bs/price/"
+        }
+      ]
+    },
+    {
+      "slug": "wadax",
+      "name": "WADAX",
+      "home": "https://www.wadax.ne.jp/",
+      "promotion": "https://www.wadax.ne.jp/order/",
+      "checked": "2026-10-10",
+      "title": "WADAXの料金と利用条件",
+      "description": "WADAXの公式料金・特典と条件を、公式出典・確認日付きで掲載。",
+      "answer": "おたすけクラウドサーバーと専用サーバーには30日無料トライアルの公式申込入口があります。おたすけクラウドの通常料金はマネージド41,800円/月〜、セルフ27,500円/月〜（税込）で、サーチャージ費は別途です。",
+      "summary": "30日試用の案内をあんしんWPサーバーに適用するものではありません。起点料金に追加費用があるため、最終請求額とは区別します。",
+      "code_status": "入力式クーポンコードの適用：今回の確認範囲では未確認",
+      "facts": [
+        {
+          "offer": "おたすけクラウド・専用サーバー：30日無料トライアル",
+          "conditions": "新規契約者用の公式トライアル入口から申込。契約済み利用者には別のオプショントライアル入口があります。終了時の手続き詳細は今回未確認。",
+          "source": "https://www.wadax.ne.jp/order/",
+          "source_label": "無料トライアル申込入口"
+        },
+        {
+          "offer": "おたすけクラウド：41,800円/月〜・27,500円/月〜（税込）",
+          "conditions": "前者はマネージド、後者はセルフ。初期費用0円。サーチャージ費は別途加算、適用率と最終請求総額は今回未確認。",
+          "source": "https://www.wadax.ne.jp/service/",
+          "source_label": "クラウド通常料金・追加費用"
+        }
+      ],
+      "faq": [
+        {
+          "question": "あんしんWPも30日試用の対象ですか？",
+          "answer": "今回の公式申込ページの30日試用入口はおたすけクラウドと専用サーバーです。あんしんWPへ同じ条件は適用していません。",
+          "source": "https://www.wadax.ne.jp/order/"
+        },
+        {
+          "question": "表示価格だけが請求されますか？",
+          "answer": "クラウド料金には別途サーチャージ費が加算されます。今回その適用率と最終請求額は確認できていません。",
+          "source": "https://www.wadax.ne.jp/service/"
+        }
       ]
     }
   ]

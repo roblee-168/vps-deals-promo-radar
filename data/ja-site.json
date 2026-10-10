@@ -7,8 +7,29 @@
     "lead": "掲載中の{count}社をVPSとレンタルサーバーに分けて比較できます。各社の条件ページで料金・特典・公式出典・確認日をご確認ください。",
     "description": "日本向けVPS・レンタルサーバーの提供会社を製品別に掲載。各社の料金・特典・利用条件を公式出典と確認日付きで確認できます。",
     "groups": {
-      "VPS": ["sakura-vps", "conoha-windows-vps", "xserver-vps-cloud"],
-      "レンタルサーバー": ["lolipop", "mixhost", "colorfulbox", "coreserver", "ablenet", "kagoya", "onamae", "heteml"]
+      "VPS": [
+        "sakura-vps",
+        "conoha-windows-vps",
+        "xserver-vps-cloud",
+        "webarena"
+      ],
+      "レンタルサーバー": [
+        "lolipop",
+        "mixhost",
+        "colorfulbox",
+        "coreserver",
+        "ablenet",
+        "kagoya",
+        "onamae",
+        "heteml",
+        "star-rental-server",
+        "shin-rental-server",
+        "value-server",
+        "xrea",
+        "jsn",
+        "cpi",
+        "wadax"
+      ]
     }
   },
   "pages": [
