@@ -1,0 +1,58 @@
+[
+  {
+    "url": "https://perkmingle.com/ja/providers/stepserver/",
+    "status": 200,
+    "title": "ステップサーバーの料金と利用条件 | PerkMingle",
+    "lead": "10日間の無料お試しを利用できます。スタンダードの12ヶ月契約は月額250円（税込）、初期費用600円（税込）です。試用では独自ドメイン設定とメールサービスを利用できません。",
+    "verified": true
+  },
+  {
+    "url": "https://perkmingle.com/ja/providers/smileserver/",
+    "status": 200,
+    "title": "スマイルサーバの料金と利用条件 | PerkMingle",
+    "lead": "2週間の無料検証環境を申し込めます。ベーシックの月額料金は4,290円（税込）、初期費用は0円です。検証環境は本契約へ引き継げません。",
+    "verified": true
+  },
+  {
+    "url": "https://perkmingle.com/ja/providers/spacecloud/",
+    "status": 200,
+    "title": "スペースクラウドの料金と利用条件 | PerkMingle",
+    "lead": "VPSの最大2週間無料お試しが案内されています。料金表の最小列は1ヶ月契約500円（税抜）、12ヶ月契約の月額表示450円（税抜）です。試用対象は料金表で確認してください。",
+    "verified": true
+  },
+  {
+    "url": "https://perkmingle.com/ja/providers/soho-server/",
+    "status": 200,
+    "title": "SOHO SERVERの料金と利用条件 | PerkMingle",
+    "lead": "最大10日間のお試しが案内されています。共用サーバーの年間契約は年額7,200円（税別）から、公式の月額換算は600円です。返金保証には控除条件があります。",
+    "verified": true
+  },
+  {
+    "url": "https://perkmingle.com/ja/providers/inetd/",
+    "status": 200,
+    "title": "アイネットディーの料金と利用条件 | PerkMingle",
+    "lead": "設定完了から最大2週間の無料お試しを利用できます。激安プランの1ヶ月料金は341円（税込）、初期設定費用は1,100円（税込）です。試用期限までに入金しなければ自動キャンセルとなります。",
+    "verified": true
+  },
+  {
+    "url": "https://perkmingle.com/ja/providers/minim/",
+    "status": 200,
+    "title": "ミニムの料金と利用条件 | PerkMingle",
+    "lead": "14日間のお試しが案内されています。公式トップの料金表示は月59円からです。この起点価格の契約期間と税区分は今回の確認では未確認です。",
+    "verified": true
+  },
+  {
+    "url": "https://perkmingle.com/ja/providers/extrem/",
+    "status": 200,
+    "title": "エクストリムの料金と利用条件 | PerkMingle",
+    "lead": "14日間のお試しが案内されています。ライトの3年分は3,722円（税込）、公式の月額換算は104円です。初回設定料金1,100円（税込）は別です。",
+    "verified": true
+  },
+  {
+    "url": "https://perkmingle.com/ja/providers/tsukaeru/",
+    "status": 200,
+    "title": "使えるねっとの料金と利用条件 | PerkMingle",
+    "lead": "VPSには条件付きの30日間返金保証があります。無料の無条件試用ではありません。Linuxビギナーの1ヶ月契約は1,980円（税込）、初期費用2,530円（税込）です。",
+    "verified": true
+  }
+]
