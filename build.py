@@ -162,7 +162,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<a class="ja-primary" href="#providers">公式情報を比較する ↓</a></section>'
         '<section id="providers" class="ja-section"><div class="ja-section-heading">'
         '<p class="ja-eyebrow">確認済みの公式情報</p><h2>特典と料金を条件ごとに比較</h2></div>'
-        + ''.join('<section class="ja-section"><h3>'+escape(category)+'</h3><div class="ja-provider-grid">'+''.join(cards)+'</div></section>' for category, cards in entries.items()) +
+        + ''.join('<section class="ja-section"><h3>'+escape(category)+'</h3>'+''.join('<p><a class="ja-card-link" href="'+prefix+c['slug']+'/">'+escape(c['title'])+' →</a></p>' for c in data.get('comparisons',[]) if c['category']==category)+'<div class="ja-provider-grid">'+''.join(cards)+'</div></section>' for category, cards in entries.items()) +
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -207,6 +207,32 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         ]}
         render(path, page['title']+' | PerkMingle', page['description'], content, [faq_schema,breadcrumb],
                [{'lang':'ja-JP','path':path}], page['name'] if page in extra_pages else None)
+
+    for comparison in data.get('comparisons', []):
+        checked = comparison['checked']
+        path = prefix + comparison['slug'] + '/'
+        headers = ['提供会社', '最低料金（掲載済み確認範囲）', 'お試し・特典', '条件の要点', '公式出典', '確認日']
+        lookup = {p['slug']: p for p in all_pages}
+        table_rows, items = [], []
+        for position, row in enumerate((r for r in comparison['rows'] if r['slug'] in lookup), 1):
+            provider = lookup[row['slug']]
+            prices = [provider['facts'][i] for i in row['price']]
+            benefits = [provider['facts'][i] for i in row['benefit']]
+            selected = list({json.dumps(f, ensure_ascii=False): f for f in prices + benefits}.values())
+            detail = prefix + 'providers/' + provider['slug'] + '/'
+            cells = [f'<a href="{escape(detail, quote=True)}">{escape(provider["name"])}</a>',
+                     '<br>'.join(escape(f['offer']) for f in prices),
+                     '<br>'.join(escape(f['offer']) for f in benefits),
+                     '<br>'.join(escape(f['conditions']) for f in selected),
+                     '<br>'.join(f'<a rel="noopener" href="{escape(safe_url(f["source"]), quote=True)}">{escape(f["source_label"])} ↗</a>' for f in selected),
+                     escape(provider.get('checked', data['checked']))]
+            table_rows.append('<tr>'+''.join(f'<td data-label="{escape(label, quote=True)}">{cell}</td>' for label,cell in zip(headers,cells))+'</tr>')
+            items.append({'@type':'ListItem','position':position,'name':provider['name'],'url':base+detail})
+        table = '<div class="ja-table-wrap"><table class="ja-facts"><thead><tr>'+''.join('<th scope="col">'+escape(h)+'</th>' for h in headers)+'</tr></thead><tbody>'+''.join(table_rows)+'</tbody></table></div>'
+        lead = '掲載済みの確認範囲を比較します。全プランの最安値や同じ構成の比較を意味するものではありません。'
+        content = '<main id="main" class="ja-main"><h1 style="font-size:clamp(24px,4vw,36px);margin:0 0 12px">'+escape(comparison['title'])+'</h1>'+table+'<section class="ja-section ja-method"><h2>各欄の読み方</h2><p class="ja-lead">'+lead+'</p><p>月払い、長期契約の月額換算、起点価格、時間課金の月額上限は別の料金方式です。前払い・更新料金・初期費用・対象プランは条件欄で確認してください。税込と記載されていない金額の税区分は推定していません。確認日は元の提供会社ページの確認日であり、この比較ページの作成による新しい公式確認日ではありません。</p></section><section class="ja-section ja-faq"><h2>よくある質問</h2><article class="ja-faq-item"><h3>掲載順はおすすめ順ですか？</h3><p>いいえ。提供会社の掲載順です。構成・用途・契約期間の異なる料金を同一条件の順位にしていません。</p></article><article class="ja-faq-item"><h3>未確認の条件は補っていますか？</h3><p>補っていません。未確認の税区分、追加費用、返金条件は各提供会社ページの確認範囲に従います。</p></article></section><p class="ja-back"><a href="/ja/">日本語トップへ戻る</a></p></main>'
+        render(path, comparison['title']+' | PerkMingle', '掲載済みの公式料金と特典を、適用条件・公式出典・確認日付きで比較します。', content,
+               [{'@type':'ItemList','name':comparison['title'],'itemListElement':items}], [{'lang':'ja-JP','path':path}])
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')

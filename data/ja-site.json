@@ -144,5 +144,189 @@
         }
       ]
     }
+  ],
+  "comparisons": [
+    {
+      "slug": "vps-compare",
+      "category": "VPS",
+      "title": "VPS 比較：料金・特典・利用条件",
+      "checked": "2026-10-10",
+      "rows": [
+        {
+          "slug": "sakura-vps",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "conoha-windows-vps",
+          "price": [
+            0
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "xserver-vps-cloud",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "webarena",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rental-server-compare",
+      "category": "レンタルサーバー",
+      "title": "レンタルサーバー 比較：料金・特典・利用条件",
+      "checked": "2026-10-10",
+      "rows": [
+        {
+          "slug": "lolipop",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "mixhost",
+          "price": [
+            0
+          ],
+          "benefit": [
+            1
+          ]
+        },
+        {
+          "slug": "colorfulbox",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "coreserver",
+          "price": [
+            1,
+            2
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "ablenet",
+          "price": [
+            0,
+            1
+          ],
+          "benefit": [
+            2
+          ]
+        },
+        {
+          "slug": "kagoya",
+          "price": [
+            1,
+            2
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "onamae",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "heteml",
+          "price": [
+            0
+          ],
+          "benefit": [
+            2
+          ]
+        },
+        {
+          "slug": "star-rental-server",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "shin-rental-server",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "value-server",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "xrea",
+          "price": [
+            0,
+            1
+          ],
+          "benefit": [
+            1
+          ]
+        },
+        {
+          "slug": "jsn",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        },
+        {
+          "slug": "cpi",
+          "price": [
+            1
+          ],
+          "benefit": [
+            0
+          ]
+        }
+      ]
+    }
   ]
 }
