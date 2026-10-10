@@ -29,6 +29,7 @@ def load_config(path=None):
     cfg = dict(part.strip().split(':', 1) for part in state[1].split(','))
     cfg = {k: v.strip() for k, v in cfg.items()}
     cfg['providers'] = []
+    cfg['localized'] = {}
     section = ''
     for line in text.splitlines():
         line = line.strip()
@@ -44,9 +45,21 @@ def load_config(path=None):
         elif section == 'RUNTIME' and ':' in line:
             key, value = line.split(':', 1)
             cfg[key.strip()] = value.strip()
+        elif section == 'LOCALIZED' and ':' in line:
+            key, value = line.split(':', 1)
+            cfg['localized'][key.strip()] = value.strip()
     safe_url(cfg['domain'])
     if cfg['locale'] != 'en-US':
-        raise ValueError('v1 implements en-US only; add localized sources and templates before another locale')
+        raise ValueError('The default locale must remain en-US')
+    if cfg['localized']:
+        required = {'locale', 'prefix', 'data', 'template', 'stylesheet'}
+        if not required.issubset(cfg['localized']):
+            raise ValueError('Localized configuration is incomplete')
+        if cfg['localized']['locale'] != 'ja-JP' or cfg['localized']['prefix'] != '/ja/':
+            raise ValueError('Only the configured Japanese /ja/ section is supported')
+        for key in ('data', 'template', 'stylesheet'):
+            if '/' in cfg['localized'][key] or '\\' in cfg['localized'][key] or '..' in cfg['localized'][key]:
+                raise ValueError(f'Localized {key} must be a local filename')
     ids = [p['id'] for p in cfg['providers']]
     if len(ids) != len(set(ids)):
         raise ValueError('Duplicate provider slug')

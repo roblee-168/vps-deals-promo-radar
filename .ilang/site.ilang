@@ -38,3 +38,9 @@ racknerd_plans: [{"memory":"1 GB RAM","annual":"$21.99/Year","pid":"952","specs"
 ::RULE{任何来源抓取失败⇒保留历史记录与已发布provider和plan页面 保留原复核时间 标明当前未能重新核验 不计入最新优惠 不删除页面 不跳转首页 保留sitemap入口 不伪造成功时间}
 ::RULE{试用赠金不是售价 不把 credit 写进 price}
 ::BOUNDARY{never:编优惠 编价格 编佣金 绕反爬 刷量|scope:permanent}
+::MODULE{LOCALIZED|title:日本語ページの生成設定}
+locale: ja-JP
+prefix: /ja/
+data: ja-site.json
+template: ja-base.html
+stylesheet: ja.css

@@ -54,6 +54,143 @@ def neutral_metadata(text):
     return text
 
 
+def add_english_hreflang(markup, japanese_url, english_url):
+    """Add only the two approved alternate links to the English home head."""
+    head_end = markup.find('</head>')
+    if head_end < 0:
+        raise ValueError('English homepage is missing its head close tag')
+    head = markup[:head_end]
+    if re.search(r'<link\s+rel="alternate"\s+hreflang="(?:ja-JP|x-default)"', head):
+        raise ValueError('English homepage already contains a localized alternate link')
+    tags = (
+        f'<link rel="alternate" hreflang="ja-JP" href="{escape(japanese_url, quote=True)}">'
+        f'<link rel="alternate" hreflang="x-default" href="{escape(english_url, quote=True)}">'
+    )
+    return markup[:head_end] + tags + markup[head_end:]
+
+
+def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_tag):
+    """Render separately sourced Japanese pages and append their sitemap entries."""
+    localized = cfg.get('localized', {})
+    if not localized:
+        return
+    data = json.loads((ROOT/'data'/localized['data']).read_text(encoding='utf-8'))
+    if data.get('locale') != localized['locale'] or data.get('currency') != 'JPY':
+        raise ValueError('Japanese data must use ja-JP and JPY')
+    checked = data['checked']
+    datetime.strptime(checked, '%Y-%m-%d')
+    prefix = localized['prefix']
+    template = Template((ROOT/'templates'/localized['template']).read_text(encoding='utf-8'))
+    stylesheet = (ROOT/'assets'/localized['stylesheet']).read_bytes()
+    style_hash = hashlib.sha256(stylesheet.replace(b'\r\n', b'\n')).hexdigest()[:12]
+    stylesheet_name = f'ja.{style_hash}.css'
+    (dest/'assets'/stylesheet_name).write_bytes(stylesheet)
+    checked_ja = f'{checked[:4]}年{int(checked[5:7])}月{int(checked[8:10])}日'
+
+    def fact_table(facts):
+        rows = []
+        for fact in facts:
+            source = safe_url(fact['source'])
+            rows.append(
+                '<tr>'
+                f'<td data-label="確認できた内容">{escape(fact["offer"])}</td>'
+                f'<td data-label="利用条件">{escape(fact["conditions"])}</td>'
+                f'<td data-label="公式情報"><a rel="noopener" href="{escape(source, quote=True)}">{escape(fact["source_label"])} ↗</a></td>'
+                f'<td data-label="確認日">{escape(checked_ja)}</td>'
+                '</tr>'
+            )
+        return ('<div class="ja-table-wrap"><table class="ja-facts"><thead><tr>'
+                '<th>確認できた内容</th><th>利用条件</th><th>公式情報</th><th>確認日</th>'
+                '</tr></thead><tbody>'+''.join(rows)+'</tbody></table></div>')
+
+    def render(path, title, description, content, schema, alternates):
+        canonical = base + path
+        alternate_tags = ''.join(
+            f'<link rel="alternate" hreflang="{escape(item["lang"], quote=True)}" href="{escape(base+item["path"], quote=True)}">'
+            for item in alternates
+        )
+        html = template.substitute(
+            locale=escape(localized['locale']), brand=escape(cfg['brand']),
+            title=escape(title), description=escape(description), canonical=escape(canonical, quote=True),
+            analytics_tag=analytics_tag, stylesheet='/assets/'+stylesheet_asset,
+            localized_stylesheet='/assets/'+stylesheet_name, alternate_links=alternate_tags,
+            content=content, schema=json.dumps({'@context':'https://schema.org','@graph':schema}, ensure_ascii=False).replace('<','\\u003c'),
+        )
+        output = dest / (path.lstrip('/')+'index.html')
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(html, encoding='utf-8')
+        pages.append((canonical, checked))
+
+    home = data['home']
+    entries, list_items = [], []
+    for position, page in enumerate(data['pages'], 1):
+        path = prefix + 'providers/' + page['slug'] + '/'
+        source = safe_url(page['facts'][0]['source'])
+        entries.append(
+            '<article class="ja-provider-card"><p class="ja-eyebrow">VPS · 公式情報</p>'
+            f'<h2><a href="{escape(path, quote=True)}">{escape(page["name"])}</a></h2>'
+            f'<p>{escape(page["summary"])}</p>'
+            f'<p class="ja-source-line"><a rel="noopener" href="{escape(source, quote=True)}">{escape(page["facts"][0]["source_label"])} ↗</a>・確認日 {escape(checked_ja)}</p>'
+            f'<a class="ja-card-link" href="{escape(path, quote=True)}">条件と料金を見る →</a></article>'
+        )
+        list_items.append({'@type':'ListItem','position':position,'name':page['name'],'url':base+path})
+    home_content = (
+        '<main id="main" class="ja-main"><section class="ja-hero">'
+        '<p class="ja-eyebrow">日本向け VPS・レンタルサーバー比較</p>'
+        f'<h1>{escape(home["title"])}</h1><p class="ja-lead">{escape(home["lead"])}</p>'
+        '<div class="ja-answer"><strong>クーポンコード：確認した公式ページには記載を確認できず</strong>'
+        '<span>特典・料金は、適用条件、公式リンク、確認日とあわせて掲載しています。</span></div>'
+        '<a class="ja-primary" href="#providers">公式情報を比較する ↓</a></section>'
+        '<section id="providers" class="ja-section"><div class="ja-section-heading">'
+        '<p class="ja-eyebrow">確認済みの公式情報</p><h2>特典と料金を条件ごとに比較</h2></div>'
+        '<div class="ja-provider-grid">'+''.join(entries)+'</div>'
+        '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
+        '<section class="ja-section ja-method"><h2>このページの見方</h2>'
+        '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
+    )
+    home_schema = [
+        {'@type':'WebSite','name':'PerkMingle','url':base+prefix,'inLanguage':'ja-JP'},
+        {'@type':'ItemList','name':home['title'],'itemListElement':list_items},
+    ]
+    render(prefix, home['title']+' | PerkMingle', home['description'], home_content, home_schema,
+           [{'lang':'ja-JP','path':prefix},{'lang':'en','path':'/'},{'lang':'x-default','path':'/'}])
+
+    for page in data['pages']:
+        path = prefix + 'providers/' + page['slug'] + '/'
+        facts = fact_table(page['facts'])
+        faq_html = ''.join(
+            '<article class="ja-faq-item"><h3>'+escape(item['question'])+'</h3>'
+            '<p>'+escape(item['answer'])+' <a rel="noopener" href="'+escape(safe_url(item['source']), quote=True)+'">公式情報 ↗</a>・確認日 '+escape(checked_ja)+'</p></article>'
+            for item in page['faq']
+        )
+        content = (
+            '<main id="main" class="ja-main"><nav class="ja-breadcrumb" aria-label="パンくず">'
+            f'<a href="{escape(prefix, quote=True)}">日本語トップ</a><span aria-hidden="true"> / </span><span>{escape(page["name"])}</span></nav>'
+            '<article><section class="ja-hero ja-detail-hero"><p class="ja-eyebrow">公式ページ確認 · '+escape(checked_ja)+'</p>'
+            f'<h1>{escape(page["title"])}</h1><p class="ja-lead">{escape(page["answer"])}</p>'
+            f'<div class="ja-answer"><strong>{escape(page["code_status"])}</strong><span>{escape(page["summary"])}</span></div></section>'
+            '<section class="ja-section" id="facts"><div class="ja-section-heading">'
+            '<p class="ja-eyebrow">公式情報と利用条件</p><h2>確認できた特典・料金</h2></div>'+facts+'</section>'
+            '<section class="ja-section ja-faq"><p class="ja-eyebrow">よくある質問</p>'
+            '<h2>申し込む前に確認したいこと</h2>'+faq_html+'</section>'
+            f'<p class="ja-back"><a href="{escape(prefix, quote=True)}">← 日本語トップへ戻る</a></p></article></main>'
+        )
+        faq_schema = {'@type':'FAQPage','mainEntity':[
+            {'@type':'Question','name':item['question'],'acceptedAnswer':{'@type':'Answer','text':item['answer']}}
+            for item in page['faq']
+        ]}
+        breadcrumb = {'@type':'BreadcrumbList','itemListElement':[
+            {'@type':'ListItem','position':1,'name':'日本語トップ','item':base+prefix},
+            {'@type':'ListItem','position':2,'name':page['name'],'item':base+path},
+        ]}
+        render(path, page['title']+' | PerkMingle', page['description'], content, [faq_schema,breadcrumb],
+               [{'lang':'ja-JP','path':path}])
+
+    english_home = dest/'index.html'
+    english_markup = english_home.read_text(encoding='utf-8')
+    english_home.write_text(add_english_hreflang(english_markup, base+prefix, base+'/'), encoding='utf-8')
+
+
 
 def guide_library(markup):
     """Present existing guide links as an editorial feature and grouped directory."""
@@ -485,6 +622,7 @@ def build():
     for o in archived:
         content = '<article class="prose"><h1>'+escape(providers[o['provider_id']]['name']+': '+o['title'])+'</h1><p>Current availability could not be verified. This historical record is not a current verified offer.</p><p>Last successful source check: '+escape(o['fetched_at'])+'</p><p>Previously recorded: '+escape(o['evidence'])+'</p><p><a href="'+escape(o['source_url'],quote=True)+'">Official source</a></p><p><a href="/providers/'+o['provider_id']+'/">Provider details</a></p></article>'
         write(detail_path(o),providers[o['provider_id']]['name']+': '+o['title'],'Historical source record; current availability unverified.',content,lastmod=o['fetched_at'])
+    build_localized_pages(cfg, base, dest, pages, style_asset, analytics_tag)
     sitemap = Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for url,modified in pages:
         el = SubElement(sitemap,'url')

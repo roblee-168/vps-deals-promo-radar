@@ -1,0 +1,123 @@
+{
+  "locale": "ja-JP",
+  "currency": "JPY",
+  "checked": "2026-10-10",
+  "home": {
+    "title": "日本のVPSを比較",
+    "lead": "日本向け公式ページで確認した3社のVPSを比較します。入力式クーポンコードの記載は確認できず、特典は各社の申込条件に沿って適用されます。",
+    "description": "日本向けVPSの公式料金とキャンペーンを比較。さくらのVPS、ConoHa、XServer VPS クラウドの条件・公式出典・確認日を掲載します。"
+  },
+  "pages": [
+    {
+      "slug": "sakura-vps",
+      "name": "さくらのVPS",
+      "title": "さくらのVPSの料金と無料お試し条件",
+      "description": "さくらのVPS公式料金と2週間無料お試しの条件を、出典と確認日付きで掲載。",
+      "summary": "クレジットカード払いを申込時に選ぶと、全プランで2週間のお試しが可能です。512MB・石狩リージョンの月額表示は643円です。",
+      "answer": "確認した公式ページには入力式クーポンコードの記載がありませんでした。申込時にクレジットカード払いを選ぶと全プランで2週間無料お試しを利用できます。試用終了時は本登録へ自動移行するため、継続しない場合は会員メニューで手続きが必要です。",
+      "code_status": "クーポンコード：確認した公式ページには記載なし",
+      "facts": [
+        {
+          "offer": "全プラン・2週間の無料お試し",
+          "conditions": "申込時にクレジットカード払いを選択。同時に利用できるサーバーは2台まで。2週間の終了時に本登録へ自動移行します。継続しない場合は会員メニューでキャンセル手続きをしてください。",
+          "source": "https://vps.sakura.ad.jp/flow/",
+          "source_label": "お申し込みの流れ・お試し期間"
+        },
+        {
+          "offer": "512MBプラン：643円/月",
+          "conditions": "石狩リージョンの月額料金表示。大阪・東京の表示額とは異なります。",
+          "source": "https://vps.sakura.ad.jp/specification/",
+          "source_label": "料金・仕様"
+        },
+        {
+          "offer": "12ヶ月一括払いは月額料金およそ1ヶ月分の割引",
+          "conditions": "12ヶ月分を一括で支払う場合。公式ページでは11ヶ月分の料金と説明されています。",
+          "source": "https://vps.sakura.ad.jp/flow/",
+          "source_label": "お申し込みの流れ・料金のお支払い区分"
+        }
+      ],
+      "faq": [
+        {
+          "question": "無料お試しの条件は何ですか？",
+          "answer": "申込時にクレジットカード払いを選ぶ必要があります。全プランが対象で、同時利用は2台までです。",
+          "source": "https://vps.sakura.ad.jp/flow/"
+        },
+        {
+          "question": "512MBプランの643円/月はどのリージョンですか？",
+          "answer": "石狩リージョンの月額表示です。大阪は671円/月、東京は698円/月と掲載されています。",
+          "source": "https://vps.sakura.ad.jp/specification/"
+        }
+      ]
+    },
+    {
+      "slug": "conoha-windows-vps",
+      "name": "ConoHa for Windows Server",
+      "title": "ConoHa for Windows Serverのキャンペーンと料金",
+      "description": "ConoHa for Windows Serverの「まとめトク」キャンペーン条件、料金、期間を公式情報で確認。",
+      "summary": "Windows Serverの「まとめトク」を新規申込すると、時間課金との比較で最大23%OFF。申込時価格は月額1,239円から、2026年10月23日16時までです。",
+      "answer": "確認した公式キャンペーンページには入力式クーポンコードの記載がありませんでした。対象はConoHa VPSのWindows Server「まとめトク」の新規申込です。時間課金との比較で最大23%OFF、月額1,239円からと案内されています。申込時の価格は更新時には適用されません。",
+      "code_status": "クーポンコード：確認したキャンペーンページには記載なし",
+      "facts": [
+        {
+          "offer": "「まとめトク」最大23%OFF・月額1,239円から",
+          "conditions": "ConoHa VPSのWindows Serverで、キャンペーン期間中に「まとめトク」を新規申込する場合。割引率はプランと契約期間によって異なります。申込時価格は更新時に適用されず、時間課金からのプラン変更は対象外です。表示価格は税込みです。",
+          "source": "https://vps.conoha.jp/windows/campaign/autumn09/",
+          "source_label": "Windows Server キャンペーン概要"
+        },
+        {
+          "offer": "キャンペーン期間：2026年9月25日 16:00～10月23日 16:00",
+          "conditions": "公式ニュースに記載された日本時間です。対象はこの期間中のWindows Server「まとめトク」新規申込です。",
+          "source": "https://vps.conoha.jp/news/?ap=2015054844&btn_id=top--news_news",
+          "source_label": "ConoHa公式ニュース"
+        }
+      ],
+      "faq": [
+        {
+          "question": "最大23%OFFはどの申込に適用されますか？",
+          "answer": "キャンペーン期間中に行うWindows Server「まとめトク」の新規申込が対象です。割引率はプラン・契約期間で異なります。",
+          "source": "https://vps.conoha.jp/windows/campaign/autumn09/"
+        },
+        {
+          "question": "更新後もキャンペーン価格ですか？",
+          "answer": "いいえ。公式ページではキャンペーン価格は申込時のみ適用され、更新時には適用されないと案内されています。",
+          "source": "https://vps.conoha.jp/windows/campaign/autumn09/"
+        }
+      ]
+    },
+    {
+      "slug": "xserver-vps-cloud",
+      "name": "XServer VPS クラウド",
+      "title": "XServer VPS クラウドの料金と3ヶ月延長特典",
+      "description": "XServer VPS クラウドの公式料金と利用期間3ヶ月延長キャンペーンの条件を掲載。",
+      "summary": "期間中の新規申込は初回契約の利用期間が3ヶ月延長されます。4GBプランの料金表表示は1ヶ月契約2,480円/月、12ヶ月契約2,068円/月です。",
+      "answer": "確認した公式キャンペーンページには入力式クーポンコードの記載がありませんでした。VPSの全プランが対象で、期間中の新規申込に初回契約の利用期間3ヶ月延長が適用されます。4GBプランの公式料金表表示は1ヶ月契約で2,480円/月、12ヶ月契約で2,068円/月です。",
+      "code_status": "クーポンコード：確認したキャンペーンページには記載なし",
+      "facts": [
+        {
+          "offer": "VPS全プラン：利用期間3ヶ月延長、追加料金なし",
+          "conditions": "2026年8月31日14:00～10月26日17:00（日本時間）の新規申込。VPSは1ヶ月契約・12ヶ月契約が対象。延長は初回契約分のみで、契約更新後は通常の契約期間・料金です。",
+          "source": "https://vpscloud.xserver.ne.jp/campaign/release.php",
+          "source_label": "リリース記念キャンペーン"
+        },
+        {
+          "offer": "料金表表示・4GBプラン：1ヶ月契約 2,480円/月、12ヶ月契約 2,068円/月",
+          "conditions": "キャンペーン特典とは別に、公式料金表に表示された契約期間別の月額です。",
+          "source": "https://vpscloud.xserver.ne.jp/price/",
+          "source_label": "XServer VPS クラウド料金"
+        }
+      ],
+      "faq": [
+        {
+          "question": "3ヶ月延長は更新後も続きますか？",
+          "answer": "いいえ。公式条件では延長は初回契約分に対する特典で、更新後は通常の契約期間と料金になります。",
+          "source": "https://vpscloud.xserver.ne.jp/campaign/release.php"
+        },
+        {
+          "question": "4GBプランの12ヶ月契約額はいくらですか？",
+          "answer": "公式料金表の月額表示は2,068円です。1ヶ月契約の表示は2,480円/月です。",
+          "source": "https://vpscloud.xserver.ne.jp/price/"
+        }
+      ]
+    }
+  ]
+}

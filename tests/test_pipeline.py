@@ -4,6 +4,7 @@
 import json
 import tempfile
 import unittest
+from urllib.parse import urlsplit
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from unittest.mock import patch
@@ -33,6 +34,24 @@ class PipelineTests(unittest.TestCase):
             o = self.record()
             o['fetched_at'] = (self.now+timedelta(hours=delta)).isoformat()
             self.assertFalse(build.active(o,self.cfg,self.now))
+    def test_english_hreflang_helper_changes_only_the_two_links(self):
+        before = '<!doctype html><html><head><title>English home</title></head><body><h1>Unchanged</h1></body></html>'
+        expected = before.replace('</head>', '<link rel="alternate" hreflang="ja-JP" href="https://perkmingle.com/ja/"><link rel="alternate" hreflang="x-default" href="https://perkmingle.com/"></head>')
+        self.assertEqual(build.add_english_hreflang(before,'https://perkmingle.com/ja/','https://perkmingle.com/'),expected)
+        with self.assertRaisesRegex(ValueError,'already contains'):
+            build.add_english_hreflang(expected,'https://perkmingle.com/ja/','https://perkmingle.com/')
+    def test_japanese_locale_configuration(self):
+        self.assertEqual(self.cfg['localized']['locale'],'ja-JP')
+        self.assertEqual(self.cfg['localized']['prefix'],'/ja/')
+        ja = json.loads((ROOT/'data/ja-site.json').read_text(encoding='utf-8'))
+        self.assertEqual(ja['currency'],'JPY')
+        self.assertEqual(ja['checked'],'2026-10-10')
+        self.assertEqual(len(ja['pages']),3)
+        official_hosts={'vps.sakura.ad.jp','vps.conoha.jp','vpscloud.xserver.ne.jp'}
+        for page in ja['pages']:
+            for fact in page['facts']:
+                self.assertTrue(fact['source'].startswith('https://'))
+                self.assertIn(urlsplit(fact['source']).hostname,official_hosts)
     def test_no_arbitrary_page_price(self):
         body = '<h1>VPS sale</h1><script type="application/ld+json">{"@type":"Offer","name":"Unrelated domain","price":1,"priceCurrency":"USD"}</script>'
         self.assertNotIn('price',extract(body,self.p['source'],self.p,self.cfg,self.now.isoformat())[0])
@@ -59,6 +78,8 @@ class PipelineTests(unittest.TestCase):
             shutil.copytree(ROOT/'templates',root/'templates')
             shutil.copytree(ROOT/'assets',root/'assets')
             (root/'data').mkdir()
+            import shutil
+            shutil.copy(ROOT/'data/ja-site.json',root/'data/ja-site.json')
             (root/'data/offers.json').write_text(json.dumps({'offers':[self.record()],'sources':[]}),encoding='utf-8')
             config_file = root/'site.ilang'
             original = (ROOT/'.ilang/site.ilang').read_text(encoding='utf-8')
@@ -68,6 +89,17 @@ class PipelineTests(unittest.TestCase):
                 build.build()
             self.assertFalse((root/'site/providers'/self.p['id']).exists())
             self.assertNotIn(self.p['name'],(root/'site/index.html').read_text(encoding='utf-8'))
+            ja_home=(root/'site/ja/index.html').read_text(encoding='utf-8')
+            self.assertIn('<html lang="ja-JP">',ja_home)
+            self.assertIn('hreflang="en" href="https://perkmingle.com/"',ja_home)
+            self.assertIn('canonical" href="https://perkmingle.com/ja/"',ja_home)
+            ja_detail=(root/'site/ja/providers/sakura-vps/index.html').read_text(encoding='utf-8')
+            self.assertIn('643円/月',ja_detail)
+            self.assertIn('vps.sakura.ad.jp/specification/',ja_detail)
+            self.assertEqual(ja_detail.count('rel="canonical"'),1)
+            en_home=(root/'site/index.html').read_text(encoding='utf-8')
+            self.assertEqual(en_home.count('hreflang="ja-JP"'),1)
+            self.assertEqual(en_home.count('hreflang="x-default"'),1)
     def test_failed_source_keeps_historical_urls_without_active_offer(self):
         import shutil
         with tempfile.TemporaryDirectory() as folder:
@@ -75,6 +107,7 @@ class PipelineTests(unittest.TestCase):
             shutil.copytree(ROOT/'templates',root/'templates')
             shutil.copytree(ROOT/'assets',root/'assets')
             (root/'data').mkdir()
+            shutil.copy(ROOT/'data/ja-site.json',root/'data/ja-site.json')
             provider = next(p for p in self.cfg['providers'] if p['id']=='upcloud')
             record = self.record(provider_id='upcloud', evidence='Previously verified trial')
             cfg = dict(self.cfg, providers=[provider])
