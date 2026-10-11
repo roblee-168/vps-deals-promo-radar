@@ -163,6 +163,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<section id="providers" class="ja-section"><div class="ja-section-heading">'
         '<p class="ja-eyebrow">確認済みの公式情報</p><h2>特典と料金を条件ごとに比較</h2></div>'
         + ''.join('<section class="ja-section"><h3>'+escape(category)+'</h3>'+''.join('<p><a class="ja-card-link" href="'+prefix+c['slug']+'/">'+escape(c['title'])+' →</a></p>' for c in data.get('comparisons',[]) if c['category']==category)+'<div class="ja-provider-grid">'+''.join(cards)+'</div></section>' for category, cards in entries.items()) +
+        '<p><a class="ja-card-link" href="/ja/wordpress/">WordPress：始める前の料金確認と契約費用の計算 →</a></p>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -233,6 +234,40 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         content = '<main id="main" class="ja-main"><h1 style="font-size:clamp(24px,4vw,36px);margin:0 0 12px">'+escape(comparison['title'])+'</h1>'+table+'<section class="ja-section ja-method"><h2>各欄の読み方</h2><p class="ja-lead">'+lead+'</p><p>月払い、長期契約の月額換算、起点価格、時間課金の月額上限は別の料金方式です。前払い・更新料金・初期費用・対象プランは条件欄で確認してください。税込と記載されていない金額の税区分は推定していません。確認日は元の提供会社ページの確認日であり、この比較ページの作成による新しい公式確認日ではありません。</p></section><section class="ja-section ja-faq"><h2>よくある質問</h2><article class="ja-faq-item"><h3>掲載順はおすすめ順ですか？</h3><p>いいえ。提供会社の掲載順です。構成・用途・契約期間の異なる料金を同一条件の順位にしていません。</p></article><article class="ja-faq-item"><h3>未確認の条件は補っていますか？</h3><p>補っていません。未確認の税区分、追加費用、返金条件は各提供会社ページの確認範囲に従います。</p></article></section><p class="ja-back"><a href="/ja/">日本語トップへ戻る</a></p></main>'
         render(path, comparison['title']+' | PerkMingle', '掲載済みの公式料金と特典を、適用条件・公式出典・確認日付きで比較します。', content,
                [{'@type':'ItemList','name':comparison['title'],'itemListElement':items}], [{'lang':'ja-JP','path':path}])
+
+    wordpress = json.loads((ROOT/'data/ja-wordpress-cost.json').read_text(encoding='utf-8'))
+    checked = wordpress['checked']
+    datetime.strptime(checked, '%Y-%m-%d')
+    wp_source = safe_url(wordpress['source'])
+    wp_rows, download_rows = [], []
+    for row in wordpress['rows']:
+        plan = escape(row['plan'])
+        months, monthly = row['months'], row['monthly']
+        if not isinstance(months, int) or not isinstance(monthly, int) or months <= 0 or monthly < 0:
+            raise ValueError('Invalid WordPress pricing input')
+        total = months * monthly
+        cells = (f'<td>{plan}</td><td>{months}か月<br>確認日 {checked}</td>'
+                 f'<td>{monthly:,}円／月<br>確認日 {checked}</td>'
+                 f'<td>{monthly:,} × {months} ＝ {total:,}円<br>本稿の計算・入力確認日 {checked}</td>'
+                 f'<td><a href="{escape(wp_source, quote=True)}">公式料金表</a><br>{checked}</td>')
+        wp_rows.append('<tr>'+cells+'</tr>')
+        download_rows.append('<tr>'+cells+'<td contenteditable="true" aria-label="申込画面のサーバー料金"></td><td contenteditable="true" aria-label="追加項目と金額"></td><td contenteditable="true" aria-label="差額と確認日"></td></tr>')
+    headings = '<th>プラン</th><th>契約期間</th><th>公式の月額</th><th>積算参考額</th><th>出典・確認日</th>'
+    wp_table = '<div class="ja-table-wrap"><table class="ja-facts"><thead><tr>'+headings+'</tr></thead><tbody>'+''.join(wp_rows)+'</tbody></table></div>'
+    wp_content = Template((ROOT/'templates/ja-wordpress.html').read_text(encoding='utf-8')).substitute(cost_table=wp_table)
+    render('/ja/wordpress/', 'WordPress：始める前の料金確認と契約費用の計算 | PerkMingle',
+           '公式の月額と契約期間から参考費用を計算し、保存できる比較表で申込画面の金額を照合します。',
+           wp_content, [{'@type':'Article','headline':'WordPress：始める前の料金確認と契約費用の計算','inLanguage':'ja-JP','datePublished':'2026-10-11','citation':[wp_source,'https://lolipop.jp/manual/user/applications-wordpress/']}],
+           [{'lang':'ja-JP','path':'/ja/wordpress/'}])
+    pages[-1] = (base+'/ja/wordpress/', '2026-10-11')
+    download = ('<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>WordPress契約費用の照合表</title>'
+                '<style>body{font:16px/1.7 system-ui;margin:24px;color:#17372f}table{border-collapse:collapse;min-width:1000px}th,td{border:1px solid #cdd6cf;padding:12px;text-align:left}th{background:#edf3e8}td[contenteditable]{background:#fff7d6;min-width:160px}.wrap{max-width:100%;overflow:auto}button{font:inherit;padding:10px}a{overflow-wrap:anywhere}</style></head><body>'
+                '<h1>WordPress契約費用の照合表</h1><p>黄色のセルをクリックして記入できます。空欄は未確認です。金額は円。参考合計は月額×契約月数の計算で、最終請求額ではありません。ドメイン、追加サービスなどは含みません。税区分と支払時期は推定していません。</p>'
+                '<button id="save" type="button">記入した表を別名保存</button><div class="wrap"><table><thead><tr>'+headings+'<th>申込画面のサーバー料金</th><th>追加項目と金額</th><th>差額と申込確認日</th></tr></thead><tbody>'+''.join(download_rows)+'</tbody></table></div>'
+                '<p>公式入力値の確認日：'+checked+'。差額は申込画面のサーバー料金−積算参考額。差額があれば契約期間、プラン、対象項目、税表記、追加サービスを確認します。この照合方法は本稿の編集上の提案です。</p>'
+                '<p><a href="https://perkmingle.com/ja/wordpress/">説明ページに戻る</a></p>'
+                '<script>document.getElementById("save").addEventListener("click",()=>{const blob=new Blob(["<!doctype html>"+document.documentElement.outerHTML],{type:"text/html;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="wordpress-cost-table-filled.html";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});</script></body></html>')
+    (dest/'assets/wordpress-cost-table.html').write_text(download, encoding='utf-8')
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')

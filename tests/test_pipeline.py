@@ -81,6 +81,7 @@ class PipelineTests(unittest.TestCase):
             import shutil
             shutil.copy(ROOT/'data/ja-site.json',root/'data/ja-site.json')
             shutil.copy(ROOT/'data/ja-provider-batch.json',root/'data/ja-provider-batch.json')
+            shutil.copy(ROOT/'data/ja-wordpress-cost.json',root/'data/ja-wordpress-cost.json')
             (root/'data/offers.json').write_text(json.dumps({'offers':[self.record()],'sources':[]}),encoding='utf-8')
             config_file = root/'site.ilang'
             original = (ROOT/'.ilang/site.ilang').read_text(encoding='utf-8')
@@ -126,6 +127,7 @@ class PipelineTests(unittest.TestCase):
             (root/'data').mkdir()
             shutil.copy(ROOT/'data/ja-site.json',root/'data/ja-site.json')
             shutil.copy(ROOT/'data/ja-provider-batch.json',root/'data/ja-provider-batch.json')
+            shutil.copy(ROOT/'data/ja-wordpress-cost.json',root/'data/ja-wordpress-cost.json')
             provider = next(p for p in self.cfg['providers'] if p['id']=='upcloud')
             record = self.record(provider_id='upcloud', evidence='Previously verified trial')
             cfg = dict(self.cfg, providers=[provider])

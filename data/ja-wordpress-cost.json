@@ -1,0 +1,13 @@
+{
+  "checked": "2026-10-10",
+  "source": "https://lolipop.jp/pricing/",
+  "rows": [
+    {"plan":"ライト","months":1,"monthly":605},
+    {"plan":"ライト","months":12,"monthly":539},
+    {"plan":"ライト","months":36,"monthly":330},
+    {"plan":"スタンダード","months":12,"monthly":957},
+    {"plan":"スタンダード","months":36,"monthly":605},
+    {"plan":"ハイスピード","months":12,"monthly":1045},
+    {"plan":"ハイスピード","months":36,"monthly":660}
+  ]
+}
