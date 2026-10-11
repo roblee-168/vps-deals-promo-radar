@@ -164,6 +164,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<p class="ja-eyebrow">確認済みの公式情報</p><h2>特典と料金を条件ごとに比較</h2></div>'
         + ''.join('<section class="ja-section"><h3>'+escape(category)+'</h3>'+''.join('<p><a class="ja-card-link" href="'+prefix+c['slug']+'/">'+escape(c['title'])+' →</a></p>' for c in data.get('comparisons',[]) if c['category']==category)+'<div class="ja-provider-grid">'+''.join(cards)+'</div></section>' for category, cards in entries.items()) +
         '<p><a class="ja-card-link" href="/ja/wordpress/">WordPress：始める前の料金確認と契約費用の計算 →</a></p>'
+        '<p><a class="ja-card-link" href="/ja/ssl/">SSL：認証方式・適用条件・費用を確認する →</a></p>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -268,6 +269,14 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
                 '<p><a href="https://perkmingle.com/ja/wordpress/">説明ページに戻る</a></p>'
                 '<script>document.getElementById("save").addEventListener("click",()=>{const blob=new Blob(["<!doctype html>"+document.documentElement.outerHTML],{type:"text/html;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="wordpress-cost-table-filled.html";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});</script></body></html>')
     (dest/'assets/wordpress-cost-table.html').write_text(download, encoding='utf-8')
+
+    checked = '2026-10-11'
+    ssl_content = (ROOT/'templates/ja-ssl.html').read_text(encoding='utf-8')
+    render('/ja/ssl/', 'SSL：認証方式・適用条件・費用の確認表 | PerkMingle',
+           'SSLの意味と認証方式を確認し、公式の半年料金を月平均に換算。保存できる比較表で対象条件を照合します。',
+           ssl_content, [{'@type':'Article','headline':'SSL：認証方式・適用条件・費用の確認表','inLanguage':'ja-JP','datePublished':checked,
+                          'citation':['https://jp.globalsign.com/ssl/about/','https://vps.conoha.jp/function/ssl/']}],
+           [{'lang':'ja-JP','path':'/ja/ssl/'}])
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')
