@@ -51,3 +51,11 @@ https://vps.conoha.jp/function/ssl/ 浏览器2026-10-11核：
 - 金额/周期按显示记，税区分未核。月均本稿计算3300/6=550、10890/6=1815，非月付价。
 
 https://jp.globalsign.com/ssl/about/ 浏览器2026-10-11核：现用TLS；DV/企业/EV验证项目；选证书、CSR/资料、申请、认证发证、设置安装、付款流程。
+
+## 发布后实测
+
+实现提交3c4de3f已push origin main。15项unittest通过，完整build89个indexable pages。线上随机参数请求/ja/ssl/返回200，标题为“SSL：認証方式・適用条件・費用の確認表 | PerkMingle”。浏览器正文读回八个data-block（download与worksheet合计一个信息块），唯一canonical为https://perkmingle.com/ja/ssl/。线上sitemap该URL lastmod2026-10-11。
+
+真实浏览器视口320：innerWidth320，document.documentElement.scrollWidth305；390：innerWidth390，scrollWidth375；正溢出均0。截图outputs/ssl-390.png。
+
+实际线上取得独立下载文件3496字节。浏览器首屏download链接事件未捕获，不能报告该事件成功；直接打开公开HTML资产成功，填写“検証用：契約方式は未確認”并按“記入した表を別名保存”，下载到Downloads的文件3724字节，实际文本含填写值。验证用下载文件已清理。新页面和独立表均有链接、官方来源与日期，不以展示表冒充下载文件。
