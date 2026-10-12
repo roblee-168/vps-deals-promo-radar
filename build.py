@@ -163,11 +163,13 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<section id="providers" class="ja-section"><div class="ja-section-heading">'
         '<p class="ja-eyebrow">確認済みの公式情報</p><h2>特典と料金を条件ごとに比較</h2></div>'
         + ''.join('<section class="ja-section"><h3>'+escape(category)+'</h3>'+''.join('<p><a class="ja-card-link" href="'+prefix+c['slug']+'/">'+escape(c['title'])+' →</a></p>' for c in data.get('comparisons',[]) if c['category']==category)+'<div class="ja-provider-grid">'+''.join(cards)+'</div></section>' for category, cards in entries.items()) +
-        '<div class="ja-guide-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1rem;margin:2rem 0">'
+        '<h3 style="margin-top:2.5rem">使い始める前・使い終えるとき</h3><p>料金の単位、契約条件、終了の手順を目的別に確認できます。</p>'
+        '<div class="ja-guide-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1rem;margin:1rem 0 2rem">'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/wordpress/">WordPress：始める前の料金確認と契約費用の計算 →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/ssl/">SSL：認証方式・適用条件・費用を確認する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/domain/">Domain：ドメインの意味と取得・更新費用を確認する →</a></p>'
-        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps/">VPS：試用前に料金と終了条件を記録する →</a></p></div>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps/">VPS：試用前に料金と終了条件を記録する →</a></p>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-stop-billing/">VPS：使い終えるときの削除・更新停止・解約 →</a></p></div>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -298,6 +300,15 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
                           'citation':['https://manual.sakura.ad.jp/vps/howto-sakura-vps/howto01.html','https://vps.conoha.jp/','https://vps.sakura.ad.jp/']}],
            [{'lang':'ja-JP','path':'/ja/vps/'}])
     pages[-1] = (base+'/ja/vps/', '2026-10-12')
+
+    end_content = (ROOT/'templates/ja-vps-stop-billing.html').read_text(encoding='utf-8')
+    render('/ja/vps-stop-billing/', 'VPSを止めた後の料金：削除・更新停止・解約の違い | PerkMingle',
+           'VPSの停止と料金終了を区別。公式の削除・自動更新・解約条件と、保存できる比較表、時間単価の換算例を確認します。',
+           end_content, [{'@type':'Article','headline':'VPSを止めた後の料金：削除・更新停止・解約の違い',
+                          'inLanguage':'ja-JP','datePublished':'2026-10-13',
+                          'citation':['https://support.conoha.jp/v/deletevps/','https://support.conoha.jp/v/v3-longterm-update/','https://vps.xserver.ne.jp/support/faq/contract_cancel_what.php','https://help.sakura.ad.jp/purpose_beginner/2566/']}],
+           [{'lang':'ja-JP','path':'/ja/vps-stop-billing/'}])
+    pages[-1] = (base+'/ja/vps-stop-billing/', '2026-10-13')
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')
