@@ -44,7 +44,7 @@
     "slug": "squarespace-coupon-code",
     "title": "Squarespace coupon code: first-purchase terms",
     "lead": "Squarespace publishes GIMME10 for 10% off an annual website plan on your first purchase. Enter it on the Review Order page and check the revised total.",
-    "variant": "A squarespace discount code should be checked against the annual website plan, not assumed to cover every separate subscription.",
+    "variant": "A squarespace discount code should be checked against the annual website plan, not assumed to cover every separate subscription. A Squarespace promo code search is covered by this same guide: distinguish the reviewed first-purchase offer from renewal or separate-subscription eligibility.",
     "checked": "2026-09-28",
     "rows": [
       {
@@ -77,6 +77,11 @@
         "question": "Where do I enter the code?",
         "answer": "Use the Promo code field at the order-review stage and apply it before confirming payment.",
         "source": "https://support.squarespace.com/hc/en-us/articles/206566697-Redeem-an-offer-code-for-Squarespace"
+      },
+      {
+        "question": "Does a Squarespace promo code cover renewals?",
+        "answer": "This dated review verified a first-purchase annual website offer, not a renewal discount. Check the purchase type and official offer conditions before applying it.",
+        "source": "https://www.squarespace.com/coupons"
       }
     ],
     "advice": "Compare the full annual charge with the services you actually need. Keep website, domain and other subscription decisions separate."

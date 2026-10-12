@@ -52,6 +52,11 @@
       "question": "Is a monthly plan covered by the refund guarantee?",
       "answer": "No. Section 13 excludes services with a monthly term, as well as the other fees listed in its refund conditions.",
       "source": "https://www.hostgator.com/tos"
+    },
+    {
+      "question": "Does a HostGator coupon apply to a renewal?",
+      "answer": "The reviewed official coupon rules exclude renewals and existing services. The web-hosting offer above is not evidence of a renewal or VPS coupon.",
+      "source": "https://www.hostgator.com/coupons"
     }
   ]
 }

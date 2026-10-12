@@ -169,7 +169,8 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/ssl/">SSL：認証方式・適用条件・費用を確認する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/domain/">Domain：ドメインの意味と取得・更新費用を確認する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps/">VPS：試用前に料金と終了条件を記録する →</a></p>'
-        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-stop-billing/">VPS：使い終えるときの削除・更新停止・解約 →</a></p></div>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-stop-billing/">VPS：使い終えるときの削除・更新停止・解約 →</a></p>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/lolipop-fees/">ロリポップ 料金：契約総額・更新と解約条件 →</a></p></div>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -309,6 +310,15 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
                           'citation':['https://support.conoha.jp/v/deletevps/','https://support.conoha.jp/v/v3-longterm-update/','https://vps.xserver.ne.jp/support/faq/contract_cancel_what.php','https://help.sakura.ad.jp/purpose_beginner/2566/']}],
            [{'lang':'ja-JP','path':'/ja/vps-stop-billing/'}])
     pages[-1] = (base+'/ja/vps-stop-billing/', '2026-10-13')
+
+    lolipop_content = (ROOT/'templates/ja-lolipop-fees.html').read_text(encoding='utf-8')
+    render('/ja/lolipop-fees/', 'ロリポップ 料金：契約期間・総額・更新と解約条件 | PerkMingle',
+           'ロリポップの通常料金と契約期間から総額を計算。保存用CSVと、更新・解約の条件を公式出典と確認日付きで掲載します。',
+           lolipop_content, [{'@type':'Article','headline':'ロリポップ 料金：契約期間・総額・更新と解約条件',
+                             'inLanguage':'ja-JP','datePublished':'2026-10-13',
+                             'citation':['https://lolipop.jp/pricing/','https://lolipop.jp/manual/pay/next/','https://lolipop.jp/terms/attention/']}],
+           [{'lang':'ja-JP','path':'/ja/lolipop-fees/'}], 'ロリポップ！')
+    pages[-1] = (base+'/ja/lolipop-fees/', '2026-10-13')
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')
@@ -748,6 +758,12 @@ def build():
         content = '<article class="prose"><h1>'+escape(providers[o['provider_id']]['name']+': '+o['title'])+'</h1><p>Current availability could not be verified. This historical record is not a current verified offer.</p><p>Last successful source check: '+escape(o['fetched_at'])+'</p><p>Previously recorded: '+escape(o['evidence'])+'</p><p><a href="'+escape(o['source_url'],quote=True)+'">Official source</a></p><p><a href="/providers/'+o['provider_id']+'/">Provider details</a></p></article>'
         write(detail_path(o),providers[o['provider_id']]['name']+': '+o['title'],'Historical source record; current availability unverified.',content,lastmod=o['fetched_at'])
     build_localized_pages(cfg, base, dest, pages, style_asset, analytics_tag)
+    # Content merge dates are distinct from preserved historical source-review dates.
+    merged_paths = {'/ja/', '/squarespace-coupon-code/', '/bluehost-promo-code/',
+                    '/godaddy-renewal-promo-code/', '/namecheap-renewal-promo-code/',
+                    '/hostgator-promo-code/', '/godaddy-promo-code/', '/digitalocean-promo-code/'}
+    pages = [(url, '2026-10-13' if url.removeprefix(base) in merged_paths else modified)
+             for url, modified in pages]
     sitemap = Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for url,modified in pages:
         el = SubElement(sitemap,'url')
