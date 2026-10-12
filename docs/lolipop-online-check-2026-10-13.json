@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-13",
+  "page": {
+    "320": {
+      "overflow": -15,
+      "scroll": 305,
+      "width": 320
+    },
+    "390": {
+      "overflow": -15,
+      "scroll": 375,
+      "width": 390
+    },
+    "page": {
+      "blocks": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "canonical": [
+        "https://perkmingle.com/ja/lolipop-fees/"
+      ],
+      "images": [
+        {
+          "loaded": false,
+          "src": "https://perkmingle.com/assets/lolipop-ledger.svg"
+        },
+        {
+          "loaded": false,
+          "src": "https://perkmingle.com/assets/lolipop-total.svg"
+        },
+        {
+          "loaded": false,
+          "src": "https://perkmingle.com/assets/lolipop-term.svg"
+        }
+      ],
+      "title": "ロリポップ 料金：契約期間・総額・更新と解約条件 | PerkMingle"
+    },
+    "final320": {
+      "scroll": 375,
+      "width": 390
+    },
+    "final390": {
+      "scroll": 375,
+      "width": 390
+    }
+  },
+  "merges": [
+    {
+      "canonical": [
+        "https://perkmingle.com/squarespace-coupon-code/"
+      ],
+      "phrase": "squarespace promo code",
+      "present": true,
+      "title": "Squarespace coupon code: first-purchase terms | PerkMingle",
+      "url": "https://perkmingle.com/squarespace-coupon-code/?verify=20261013-extra-squarespace-coupon-code"
+    },
+    {
+      "canonical": [
+        "https://perkmingle.com/bluehost-promo-code/"
+      ],
+      "phrase": "bluehost promo code",
+      "present": true,
+      "title": "Bluehost promo code: official evidence and VPS terms | PerkMingle",
+      "url": "https://perkmingle.com/bluehost-promo-code/?verify=20261013-extra-bluehost-promo-code"
+    },
+    {
+      "canonical": [
+        "https://perkmingle.com/godaddy-renewal-promo-code/"
+      ],
+      "phrase": "godaddy renewal coupon",
+      "present": true,
+      "title": "GoDaddy renewal promo code: eligibility and cost checks | PerkMingle",
+      "url": "https://perkmingle.com/godaddy-renewal-promo-code/?verify=20261013-extra-godaddy-renewal-promo-code"
+    },
+    {
+      "canonical": [
+        "https://perkmingle.com/namecheap-renewal-promo-code/"
+      ],
+      "phrase": "namecheap renewal coupon",
+      "present": true,
+      "title": "Namecheap renewal promo code: is COUPONFCNC verified? | PerkMingle",
+      "url": "https://perkmingle.com/namecheap-renewal-promo-code/?verify=20261013-extra-namecheap-renewal-promo-code"
+    },
+    {
+      "canonical": [
+        "https://perkmingle.com/hostgator-promo-code/"
+      ],
+      "phrase": "hostgator coupon",
+      "present": true,
+      "title": "HostGator promo code: official evidence and VPS terms | PerkMingle",
+      "url": "https://perkmingle.com/hostgator-promo-code/?verify=20261013-extra-hostgator-promo-code"
+    },
+    {
+      "canonical": [
+        "https://perkmingle.com/godaddy-promo-code/"
+      ],
+      "phrase": "godaddy hosting coupon",
+      "present": true,
+      "title": "GoDaddy promo code: official evidence and VPS terms | PerkMingle",
+      "url": "https://perkmingle.com/godaddy-promo-code/?verify=20261013-extra-godaddy-promo-code"
+    },
+    {
+      "canonical": [
+        "https://perkmingle.com/digitalocean-promo-code/"
+      ],
+      "phrase": "digitalocean credit",
+      "present": true,
+      "title": "DigitalOcean promo code: official verification and credit terms | PerkMingle",
+      "url": "https://perkmingle.com/digitalocean-promo-code/?verify=20261013-extra-digitalocean-promo-code"
+    }
+  ],
+  "saveTableRows": 30,
+  "images": "All three SVGs loaded after scrolling",
+  "csvDownload": "Blocked by browser client; no successful CSV download claimed",
+  "sitemapOnline": "Not readable through available clients; generated sitemap checked separately"
+}
