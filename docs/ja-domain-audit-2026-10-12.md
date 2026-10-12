@@ -61,4 +61,7 @@
 生成源：templates/ja-domain.html、assets/domain-cost-table.html、build.py。
 予定公開URL：https://perkmingle.com/ja/domain/
 保存用表：https://perkmingle.com/assets/domain-cost-table.html
-2026-10-12：既存15テスト成功、完全構築成功。オンライン状態と実ブラウザーの320/390幅は発行後に追記する。
+2026-10-12：既存15テスト成功、完全構築成功。df75b1aをmainへpushして発行。外部HTTP取得は記事200・保存表200、記事本文はテンプレートと一致、canonicalは1つで自己URL、オンラインsitemapに記事とlastmod 2026-10-12がある。
+本番保存表は実ダウンロード済み。Cloudflareが末尾にbeaconスクリプトを挿入しているためファイル全体のハッシュは源ファイルと同一ではない。価格・日付・表セル・保存処理を差分で確認した。
+実ブラウザーのローカル記事測定：320視口にscrollWidth305、390視口にscrollWidth375（スクロールバーを含むinnerWidthとの差は両方-15）。正の溢出なし。保存表も320にscrollWidth305。入力セルへテスト文字を入れて表示を確認した。
+未完：本番ブラウザー320/390測定とスクリーンショット。オンラインへ移動後ブラウザーが繰り返しタイムアウトし、新規タグのwebviewもattachできない。ユーザーへ内蔵ブラウザー再起動を依頼済み。ダウンロードイベントと保存ボタンのブラウザーダウンロード完了イベントも取得できず、その部分は成功と記録しない。HTTPによる本番ファイル保存は成功。
