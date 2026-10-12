@@ -32,3 +32,6 @@ T5 本班尚无新图视频；已有PerkMingle频道继续用，不创建频道�
 T1 首页指南网格卡片已上线；T2 日本VPS自然前三 vps.xserver.ne.jp / kagoya.jp / manual.sakura.ad.jp，读KAGOYA契约期间与责任结构；T3 旧roster表格+说明线索用于本页，没有新的群原话则不冒充；T4 停止是否结束费用FAQ已写，未核条款不下断言；T5 本页3图、domain页1图已插，48.29秒英文合成讲解视频制作完成，未上传。
 YouTube当前上传窗口明确写提交即同意服务条款与社区准则，用户禁止代接受；窗口保留待用户本人确认。视频桌面路径 C:\Users\Administrator\Desktop\PerkMingle-VPS-trial-record-2026-10-12.mp4。
 明天第一篇：VPS停止、満了、解約の課金境界；先核官方条件与重复意图。
+
+## 视频线完成补记
+2026-10-12｜图视频线补完：用户回复已确认YouTube上传条款后，上传并公开发布 https://www.youtube.com/watch?v=GH05y2vICcE ｜频道PerkMingle（@perkmingle）｜平台版权检查未发现问题；公开视频播放器实测paused=False、readyState=4、currentTime=1.241秒；日语标题和图解、英文合成讲解，已设置AI使用披露｜无新增账号
