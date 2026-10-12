@@ -165,6 +165,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         + ''.join('<section class="ja-section"><h3>'+escape(category)+'</h3>'+''.join('<p><a class="ja-card-link" href="'+prefix+c['slug']+'/">'+escape(c['title'])+' →</a></p>' for c in data.get('comparisons',[]) if c['category']==category)+'<div class="ja-provider-grid">'+''.join(cards)+'</div></section>' for category, cards in entries.items()) +
         '<p><a class="ja-card-link" href="/ja/wordpress/">WordPress：始める前の料金確認と契約費用の計算 →</a></p>'
         '<p><a class="ja-card-link" href="/ja/ssl/">SSL：認証方式・適用条件・費用を確認する →</a></p>'
+        '<p><a class="ja-card-link" href="/ja/domain/">Domain：ドメインの意味と取得・更新費用を確認する →</a></p>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -277,6 +278,15 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
            ssl_content, [{'@type':'Article','headline':'SSL：認証方式・適用条件・費用の確認表','inLanguage':'ja-JP','datePublished':checked,
                           'citation':['https://jp.globalsign.com/ssl/about/','https://vps.conoha.jp/function/ssl/']}],
            [{'lang':'ja-JP','path':'/ja/ssl/'}])
+
+    domain_content = (ROOT/'templates/ja-domain.html').read_text(encoding='utf-8')
+    render('/ja/domain/', 'Domain：ドメインの意味と取得・更新費用の確認表 | PerkMingle',
+           'ドメインの意味と登録対象を確認。取得・更新の公式年額と確認日、継続利用の換算例、保存できる比較表を掲載します。',
+           domain_content, [{'@type':'Article','headline':'Domain：ドメインの意味と取得・更新費用の確認表',
+                             'inLanguage':'ja-JP','datePublished':'2026-10-12',
+                             'citation':['https://jprs.jp/related-info/domain/','https://jprs.jp/about/jp-dom/spec/','https://muumuu-domain.com/domain/price']}],
+           [{'lang':'ja-JP','path':'/ja/domain/'}])
+    pages[-1] = (base+'/ja/domain/', '2026-10-12')
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')
