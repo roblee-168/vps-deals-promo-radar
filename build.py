@@ -163,9 +163,11 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<section id="providers" class="ja-section"><div class="ja-section-heading">'
         '<p class="ja-eyebrow">確認済みの公式情報</p><h2>特典と料金を条件ごとに比較</h2></div>'
         + ''.join('<section class="ja-section"><h3>'+escape(category)+'</h3>'+''.join('<p><a class="ja-card-link" href="'+prefix+c['slug']+'/">'+escape(c['title'])+' →</a></p>' for c in data.get('comparisons',[]) if c['category']==category)+'<div class="ja-provider-grid">'+''.join(cards)+'</div></section>' for category, cards in entries.items()) +
-        '<p><a class="ja-card-link" href="/ja/wordpress/">WordPress：始める前の料金確認と契約費用の計算 →</a></p>'
-        '<p><a class="ja-card-link" href="/ja/ssl/">SSL：認証方式・適用条件・費用を確認する →</a></p>'
-        '<p><a class="ja-card-link" href="/ja/domain/">Domain：ドメインの意味と取得・更新費用を確認する →</a></p>'
+        '<div class="ja-guide-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1rem;margin:2rem 0">'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/wordpress/">WordPress：始める前の料金確認と契約費用の計算 →</a></p>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/ssl/">SSL：認証方式・適用条件・費用を確認する →</a></p>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/domain/">Domain：ドメインの意味と取得・更新費用を確認する →</a></p>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps/">VPS：試用前に料金と終了条件を記録する →</a></p></div>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -287,6 +289,15 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
                              'citation':['https://jprs.jp/related-info/domain/','https://jprs.jp/about/jp-dom/spec/','https://muumuu-domain.com/domain/price']}],
            [{'lang':'ja-JP','path':'/ja/domain/'}])
     pages[-1] = (base+'/ja/domain/', '2026-10-12')
+
+    vps_content = (ROOT/'templates/ja-vps.html').read_text(encoding='utf-8')
+    render('/ja/vps/', 'VPS：試用前に料金と終了条件を記録する | PerkMingle',
+           'VPSの意味と料金方式を確認。保存できる確認表で利用状態と終了条件を分け、時間単価の算例と未確認条件の照合手順を掲載します。',
+           vps_content, [{'@type':'Article','headline':'VPS：試用前に料金と終了条件を記録する',
+                          'inLanguage':'ja-JP','datePublished':'2026-10-12',
+                          'citation':['https://manual.sakura.ad.jp/vps/howto-sakura-vps/howto01.html','https://vps.conoha.jp/','https://vps.sakura.ad.jp/']}],
+           [{'lang':'ja-JP','path':'/ja/vps/'}])
+    pages[-1] = (base+'/ja/vps/', '2026-10-12')
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')
