@@ -1,0 +1,45 @@
+{
+  "320": {
+    "overflow": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  "390": {
+    "overflow": 0,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  "page": {
+    "blocks": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "canonical": [
+      "https://perkmingle.com/ja/vps-ssh/"
+    ],
+    "images": [
+      {
+        "loaded": true,
+        "src": "https://perkmingle.com/assets/vps-ssh-evidence.svg"
+      },
+      {
+        "loaded": true,
+        "src": "https://perkmingle.com/assets/vps-ssh-order.svg"
+      },
+      {
+        "loaded": true,
+        "src": "https://perkmingle.com/assets/vps-ssh-cost.svg"
+      }
+    ]
+  },
+  "table": {
+    "fields": 20,
+    "rows": 5,
+    "title": "VPS SSH接続確認の保存用比較表"
+  },
+  "home": true,
+  "old": true
+}
