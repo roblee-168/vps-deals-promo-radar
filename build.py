@@ -170,7 +170,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/domain/">Domain：ドメインの意味と取得・更新費用を確認する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps/">VPS：試用前に料金と終了条件を記録する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-stop-billing/">VPS：使い終えるときの削除・更新停止・解約 →</a></p>'
-        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/lolipop-fees/">ロリポップ 料金：契約総額・更新と解約条件 →</a></p></div>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/lolipop-fees/">ロリポップ 料金：契約総額・更新と解約条件 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-backup/">VPS：削除前のバックアップと復元確認 →</a></p></div>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -319,6 +319,15 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
                              'citation':['https://lolipop.jp/pricing/','https://lolipop.jp/manual/pay/next/','https://lolipop.jp/terms/attention/']}],
            [{'lang':'ja-JP','path':'/ja/lolipop-fees/'}], 'ロリポップ！')
     pages[-1] = (base+'/ja/lolipop-fees/', '2026-10-13')
+
+    backup_content = (ROOT/'templates/ja-vps-backup.html').read_text(encoding='utf-8')
+    render('/ja/vps-backup/', 'VPSバックアップとスナップショット：削除前に何を残すか | PerkMingle',
+           'VPSの保存期限、復元先と追加ディスクを確認。保存用比較表、削除前の確認順序、保存容量の費用算例を掲載します。',
+           backup_content, [{'@type':'Article','headline':'VPSバックアップとスナップショット：削除前に何を残すか',
+                             'inLanguage':'ja-JP','datePublished':'2026-10-14',
+                             'citation':['https://support.conoha.jp/v/snapshot/','https://support.conoha.jp/vps/faq/autobackup-q/','https://support.conoha.jp/v/vps-autobackup/','https://support.conoha.jp/v/saveimages/','https://vps.conoha.jp/pricing/']}],
+           [{'lang':'ja-JP','path':'/ja/vps-backup/'}])
+    pages[-1] = (base+'/ja/vps-backup/', '2026-10-14')
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')
@@ -764,6 +773,7 @@ def build():
                     '/hostgator-promo-code/', '/godaddy-promo-code/', '/digitalocean-promo-code/'}
     pages = [(url, '2026-10-13' if url.removeprefix(base) in merged_paths else modified)
              for url, modified in pages]
+    pages = [(url, '2026-10-14' if url.removeprefix(base) in {'/ja/', '/ja/vps-stop-billing/'} else modified) for url, modified in pages]
     sitemap = Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for url,modified in pages:
         el = SubElement(sitemap,'url')
