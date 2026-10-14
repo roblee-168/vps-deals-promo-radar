@@ -170,7 +170,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/domain/">Domain：ドメインの意味と取得・更新費用を確認する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps/">VPS：試用前に料金と終了条件を記録する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-stop-billing/">VPS：使い終えるときの削除・更新停止・解約 →</a></p>'
-        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/lolipop-fees/">ロリポップ 料金：契約総額・更新と解約条件 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-backup/">VPS：削除前のバックアップと復元確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-ssh/">VPS：接続先・許可・公開鍵認証を切り分ける →</a></p></div>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/lolipop-fees/">ロリポップ 料金：契約総額・更新と解約条件 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-backup/">VPS：削除前のバックアップと復元確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-ssh/">VPS：接続先・許可・公開鍵認証を切り分ける →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-storage/">VPS：追加ディスクと保存先の容量を確認する →</a></p></div>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -335,6 +335,13 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
            ssh_content, [{'@type':'Article','headline':'VPSのSSH接続：公開鍵と接続許可ポートを分けて確認する','inLanguage':'ja-JP','datePublished':'2026-10-14','citation':['https://support.conoha.jp/v/vps_ssh/','https://support.conoha.jp/v/vps_sshkey/','https://support.conoha.jp/v/port/','https://support.conoha.jp/v/v3-security-securitygroup/','https://man.openbsd.org/ssh']}],
            [{'lang':'ja-JP','path':'/ja/vps-ssh/'}])
     pages[-1] = (base+'/ja/vps-ssh/', '2026-10-14')
+
+    storage_content = (ROOT/'templates/ja-vps-storage.html').read_text(encoding='utf-8')
+    render('/ja/vps-storage/', 'VPSの容量を増やす前に：追加ディスクとブートディスクの違い | PerkMingle',
+           'VPSの追加ディスクとブート領域を区別。保存用比較表、マウント先の確認順序と公式時間単価の換算例を掲載します。',
+           storage_content, [{'@type':'Article','headline':'VPSの容量を増やす前に：追加ディスクとブートディスクの違い','inLanguage':'ja-JP','datePublished':'2026-10-14','citation':['https://support.conoha.jp/v/diskoperation/','https://support.conoha.jp/v/addssd/','https://vps.conoha.jp/pricing/','https://doc.conoha.jp/reference/api-vps3/api-blockstorage-vps3/volume-create_vol-v3/']}],
+           [{'lang':'ja-JP','path':'/ja/vps-storage/'}])
+    pages[-1] = (base+'/ja/vps-storage/', '2026-10-14')
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')
