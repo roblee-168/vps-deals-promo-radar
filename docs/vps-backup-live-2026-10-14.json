@@ -1,0 +1,54 @@
+{
+  "320": {
+    "overflow": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  "390": {
+    "overflow": 0,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  "date": "2026-10-14",
+  "page": {
+    "blocks": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "canonical": [
+      "https://perkmingle.com/ja/vps-backup/"
+    ],
+    "images": [
+      {
+        "loaded": true,
+        "src": "https://perkmingle.com/assets/vps-backup-evidence.svg"
+      },
+      {
+        "loaded": true,
+        "src": "https://perkmingle.com/assets/vps-backup-route.svg"
+      },
+      {
+        "loaded": true,
+        "src": "https://perkmingle.com/assets/vps-backup-cost.svg"
+      }
+    ],
+    "title": "VPSバックアップとスナップショット：削除前に何を残すか | PerkMingle"
+  },
+  "table": {
+    "fields": 16,
+    "rows": 4,
+    "title": "VPS保存・復元条件の保存用比較表"
+  },
+  "old": {
+    "diagram": true,
+    "reviewRetained": true
+  },
+  "home": {
+    "link": true
+  },
+  "sitemap": "Generated entry verified; direct HTTP403, online XML not verified",
+  "video": "55.86 seconds prepared; awaiting personal terms confirmation"
+}
