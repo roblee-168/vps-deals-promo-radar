@@ -1,0 +1,28 @@
+# ::ILANG
+# ::STATE{@SELF, role:assemble console-path comparison and original diagrams}
+# ::BOUNDARY{never:send credentials or commands to a live console}
+from pathlib import Path
+from html import escape
+from PIL import Image,ImageDraw,ImageFont
+import json
+root=Path.cwd();media=root/'work-vps-console-media';media.mkdir(exist_ok=True)
+code=Path('docs/prepare-vps-backup.py').read_text(encoding='utf-8-sig')
+exec(code[code.index('font='):code.index("graphic('vps-backup-evidence'")])
+graphic('vps-console-paths','窓とログインを分ける',[('管理画面から開く','対象ネームタグのコンソール'),('OSへの入力と応答','窓が開いた表示とは別の記録'),('SSHの接続結果','別の経路として確認する')],'公式コンソール・SSH手順＋記録方法｜2026-10-15')
+graphic('vps-console-send','送信と実行を混ぜない',[('テキスト送信','通常の貼り付けとは別の機能'),('入力先を照合','ログインかコマンドかを確認'),('Enter後の結果','送った表示だけで成功にしない')],'support.conoha.jp/v/console/｜確認 2026-10-15')
+graphic('vps-console-cost','確認時間は仮定で計算',[('公式の基本単価','メモリ1GB：税込1.9円／時'),('本稿の仮定：6時間','1.9 × 6 ＝ 11.4円'),('利用結果の実測ではない','本体単価だけの参考値')],'公式料金・本日実読済み時間課金欄｜2026-10-15')
+graphic('vps-console-rebuild-accept','処理と再開を分ける',[('選択した元','本人の目的と一致するか'),('再構築の完了','処理表示を記録する'),('必要なサービスの結果','データと動作を本人が確認')],'再インストール記事にある確認方法｜2026-10-15')
+rows=[('対象サーバー','ネームタグと選んだサーバーを照合','https://support.conoha.jp/v/console/'),('コンソールの窓','別ウインドウが開いた表示を記録','https://support.conoha.jp/v/console/'),('入力段階','ログイン入力かコマンド入力か本人が照合（編集欄）','https://support.conoha.jp/v/console/'),('テキスト送信','貼り付けと送信、Enter後の結果を分ける','https://support.conoha.jp/v/console/'),('SSHの経路','確認したIPとクライアントの接続結果を別記','https://support.conoha.jp/v/vps_ssh/'),('引継ぎ','最後に見えた状態と次に確認する対象を記入（編集欄）','https://support.conoha.jp/v/console/')]
+s='<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VPSコンソールとSSHの保存用確認表</title><style>body{font:16px/1.7 sans-serif;margin:20px;color:#17483d}main{max-width:100%;overflow-x:auto}table{border-collapse:collapse}th,td{border:1px solid #abb;padding:14px;min-width:160px}td[contenteditable]{background:#fff9df}</style><h1>VPSコンソールとSSHの保存用確認表</h1><p>独立ファイルとして保存できます。本人の対象・窓・入力段階・観測は空欄です。経路と入力段階を分ける編集上の記録で、実際の接続結果は入っていません。パスワード、秘密鍵、コマンドに含まれる秘密情報は記入しないでください。</p><a href="/ja/vps-console/">コンソールの確認へ</a><main><table><thead><tr>'+''.join('<th>'+x+'</th>' for x in ['確認項目','照合する条件','公式出典','確認日','本人の対象・時点','見えた窓・入力先','送信・応答の状態','残る未確認・次の確認'])+'</tr></thead><tbody>'
+for a,b,u in rows:s+='<tr><td>'+a+'</td><td>'+b+'</td><td><a href="'+u+'">公式手順</a></td><td>2026-10-15</td>'+('<td contenteditable="true" aria-label="本人の未確認欄"></td>'*4)+'</tr>'
+s+='</tbody></table></main><p>コンソールの表示、OSのログイン結果、SSHの結果を同じ成功欄へまとめません。</p></html>'
+Path('assets/vps-console-checklist.html').write_text(s,encoding='utf-8')
+p=Path('build.py');s=p.read_text(encoding='utf-8');needle="    english_home = dest/'index.html'";assert s.count(needle)==1
+new="    console_content = (ROOT/'templates/ja-vps-console.html').read_text(encoding='utf-8')\n    render('/ja/vps-console/', 'VPSのコンソール：SSHと入力段階を分けて確認する | PerkMingle',\n           'ブラウザのコンソールとSSHの経路を区別。テキスト送信、入力先、Enter後の応答を分けた保存用確認表と操作順序を掲載します。',\n           console_content, [{'@type':'Article','headline':'VPSのコンソール：SSHと入力段階を分けて確認する','inLanguage':'ja-JP','datePublished':'2026-10-15','citation':['https://support.conoha.jp/v/console/','https://support.conoha.jp/v/vps_ssh/','https://vps.conoha.jp/pricing/']}],\n           [{'lang':'ja-JP','path':'/ja/vps-console/'}])\n    pages[-1] = (base+'/ja/vps-console/', '2026-10-15')\n\n"
+s=s.replace(needle,new+needle)
+needle='VPS：再インストールの選択元と再開を確認 →</a></p></div>';assert s.count(needle)==1
+s=s.replace(needle,'VPS：再インストールの選択元と再開を確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-console/">VPS：コンソールとSSHの経路・入力段階を確認 →</a></p></div>');p.write_text(s,encoding='utf-8')
+p=Path('templates/ja-vps-reinstall.html');s=p.read_text(encoding='utf-8');needle='<p class="ja-back">';assert s.count(needle)==1
+s=s.replace(needle,'<figure class="ja-section"><img src="/assets/vps-console-rebuild-accept.svg" alt="選択元、処理完了、必要なサービスの結果を分ける図" loading="lazy" style="width:100%;height:auto"><figcaption>処理の表示と、再開の判断に使う結果を分けます。</figcaption></figure>'+needle);p.write_text(s,encoding='utf-8')
+(media/'narration.txt').write_text('A browser console and an SSH client are different access paths. The ConoHa console guide opens a separate window from the selected server in the control panel. A window appearing is not the same observation as an operating system login or a successful SSH connection. The guide says ordinary copy and paste is not available in the console. It provides text sending, followed by checking the input and pressing Enter. Before sending anything, identify whether the current prompt expects a login value or a command. Do not treat text delivery as proof of execution. Our saveable worksheet separates the target server, the window, the input stage, the observed response, and the separate SSH result. Keep credentials and private keys out of the record. If a password is not displayed, do not copy it into an evidence screenshot. Leave unknown results unconfirmed instead of sending the same input repeatedly. This guide performs no live login or command execution. Its cost illustration uses a published VPS base rate and an explicitly assumed duration.',encoding='utf-8')
+video=Path('work-vps-reinstall-media/video.py').read_text(encoding='utf-8-sig').replace("['vps-reinstall-route','vps-reinstall-accept','vps-reinstall-cost']","['vps-console-paths','vps-console-send','vps-console-cost']").replace('vps-reinstall-cost.png','vps-console-cost.png').replace('PerkMingle-VPS-reinstall.mp4','PerkMingle-VPS-console.mp4');(media/'video.py').write_text(video,encoding='utf-8')
