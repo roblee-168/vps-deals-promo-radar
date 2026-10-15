@@ -38,14 +38,7 @@ jobs:
       - name: Build static website
         run: python build.py
       - name: Commit verified results
-        run: |
-          git config user.name "vps-deals bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/offers.json site/
-          if ! git diff --cached --quiet; then
-            git commit -m "Refresh official sources and static pages"
-            git push
-          fi
+        run: python publish_refresh.py
       - name: Report source failures after publishing honest data
         run: python health.py
 '''.replace('CRON',cfg['cron'])
