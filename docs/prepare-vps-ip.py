@@ -1,0 +1,28 @@
+# ::ILANG
+# ::STATE{@SELF, role:assemble additional IP evidence tools and original diagrams}
+# ::BOUNDARY{never:configure a server or invent OS applicability}
+from pathlib import Path
+from html import escape
+from PIL import Image,ImageDraw,ImageFont
+import json
+root=Path.cwd();media=root/'work-vps-ip-media';media.mkdir(exist_ok=True)
+code=Path('docs/prepare-vps-backup.py').read_text(encoding='utf-8-sig')
+exec(code[code.index('font='):code.index("graphic('vps-backup-evidence'")])
+graphic('vps-ip-states','追加と利用を分ける',[('追加の完了','IPが用意された記録'),('対象VPSへの割当','停止条件と割当先を照合'),('使う前の確認','NIC・許可ポート・OSは別欄')],'support.conoha.jp/v/setipv4/｜確認 2026-10-15')
+graphic('vps-ip-boundary','古い設定例を流用しない',[('本人のOSと版','現在の環境を先に記録'),('公式例の対象','同じ設定方式かを照合'),('合わないとき','適用せず未確認として引き継ぐ')],'公式のOS依存説明＋編集上の判断｜2026-10-15')
+graphic('vps-ip-cost','時間単価と期間を分ける',[('公式の時間単価','追加IP：税込0.6円／時'),('本稿の仮定：24時間','0.6 × 24 ＝ 14.4円'),('短期契約額ではない','公式手順：最低利用期間30日')],'公式料金・追加IP手順｜入力確認 2026-10-15')
+graphic('vps-ip-network-record','観測条件をそろえて残す',[('通信するIP','設定した対象と同じか'),('方向と相手','違う条件は別の記録へ'),('表示と観測','設定完了だけで結果を決めない')],'帯域記事にある照合方法｜2026-10-15')
+rows=[('料金と最低期間','時間単価と最低利用条件を別に照合する','https://support.conoha.jp/v/setipv4/'),('IPの追加','申込みの対象と追加後の表示を残す','https://support.conoha.jp/v/setipv4/'),('対象VPSへの割当','停止状態と割当先を照合する','https://support.conoha.jp/v/setipv4/'),('追加NIC','ネットワーク情報でadd-の対象を選ぶ','https://support.conoha.jp/v/setipv4/'),('許可とOS','必要なポートと本人のOSの設定方式を別記する','https://support.conoha.jp/v/setipv4/'),('利用の受入','本人が必要なサービスの結果を記入する（編集上の記録）','https://support.conoha.jp/v/setipv4/')]
+s='<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VPS追加IPの保存用比較表</title><style>body{font:16px/1.7 sans-serif;margin:20px;color:#17483d}main{max-width:100%;overflow-x:auto}table{border-collapse:collapse}th,td{border:1px solid #abb;padding:14px;min-width:160px}td[contenteditable]{background:#fff9df}</style><h1>VPS追加IPの保存用比較表</h1><p>独立ファイルとして保存できます。公式条件に対する本人の契約、割当先、NIC、OS・版、利用の結果は空欄です。各状態の根拠を分ける編集上の記録です。認証情報や秘密鍵は書かないでください。</p><a href="/ja/vps-additional-ip/">追加IPの確認へ</a><main><table><thead><tr>'+''.join('<th>'+x+'</th>' for x in ['確認項目','照合する条件','公式出典','確認日','本人の対象・時点','確認できた表示','OS・版／次の根拠','利用結果・残る未確認'])+'</tr></thead><tbody>'
+for a,b,u in rows:s+='<tr><td>'+a+'</td><td>'+b+'</td><td><a href="'+u+'">公式手順</a></td><td>2026-10-15</td>'+('<td contenteditable="true" aria-label="本人の未確認欄"></td>'*4)+'</tr>'
+s+='</tbody></table></main><p>料金入力は<a href="https://vps.conoha.jp/pricing/">公式料金表</a>でも照合します。追加完了、割当完了、OS設定、利用確認を一つの完了欄にまとめません。</p></html>'
+Path('assets/vps-ip-checklist.html').write_text(s,encoding='utf-8')
+p=Path('build.py');s=p.read_text(encoding='utf-8');needle="    english_home = dest/'index.html'";assert s.count(needle)==1
+new="    ip_content = (ROOT/'templates/ja-vps-additional-ip.html').read_text(encoding='utf-8')\n    render('/ja/vps-additional-ip/', 'VPSの追加IP：料金・最低利用期間と割当後の確認 | PerkMingle',\n           'VPSの追加IPの料金、最低利用期間、停止しての割当、追加NIC、許可ポートとOS設定を分けて確認。保存用比較表と料金換算例を掲載します。',\n           ip_content, [{'@type':'Article','headline':'VPSの追加IP：料金・最低利用期間と割当後の確認','inLanguage':'ja-JP','datePublished':'2026-10-15','citation':['https://support.conoha.jp/v/setipv4/','https://vps.conoha.jp/pricing/','https://support.conoha.jp/v/networkupgrade/']}],\n           [{'lang':'ja-JP','path':'/ja/vps-additional-ip/'}])\n    pages[-1] = (base+'/ja/vps-additional-ip/', '2026-10-15')\n\n"
+s=s.replace(needle,new+needle)
+needle='VPS：転送量と帯域の条件を分けて確認 →</a></p></div>';assert s.count(needle)==1
+s=s.replace(needle,'VPS：転送量と帯域の条件を分けて確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-additional-ip/">VPS：追加IPの料金と割当後の確認 →</a></p></div>');p.write_text(s,encoding='utf-8')
+p=Path('templates/ja-vps-network.html');s=p.read_text(encoding='utf-8');needle='<p class="ja-back">';assert s.count(needle)==1
+s=s.replace(needle,'<figure class="ja-section"><img src="/assets/vps-ip-network-record.svg" alt="通信するIPと方向と相手をそろえて観測を残す図" loading="lazy" style="width:100%;height:auto"><figcaption>通信する対象、方向と相手、設定表示と観測を分けて残します。</figcaption></figure>'+needle);p.write_text(s,encoding='utf-8')
+(media/'narration.txt').write_text('Adding an IP address does not finish the setup needed to use it. The ConoHa guide separates adding an address, assigning it to a stopped VPS, and configuring the operating system. It also asks users to select the additional network interface and allow the ports they need. Keep a separate record for each stage. An address in the list does not prove that the operating system or the intended service is ready. Our saveable comparison sheet leaves the users own server, interface, operating system version, and service result blank. Fill each field with evidence from that stage. The official guide includes older operating system examples. Check applicability before copying a configuration. If the current system does not match the example, keep that part unverified and consult the matching official documentation. The cost illustration uses an assumed duration. It does not override the minimum usage period stated in the guide. This article reports no live server operation or connectivity measurement.',encoding='utf-8')
+video=Path('work-vps-network-media/video.py').read_text(encoding='utf-8-sig').replace("['vps-network-layers','vps-network-target','vps-network-cost']","['vps-ip-states','vps-ip-boundary','vps-ip-cost']").replace('vps-network-cost.png','vps-ip-cost.png').replace('PerkMingle-VPS-network.mp4','PerkMingle-VPS-additional-IP.mp4');(media/'video.py').write_text(video,encoding='utf-8')

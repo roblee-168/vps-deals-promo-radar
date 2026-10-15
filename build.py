@@ -170,7 +170,7 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/domain/">Domain：ドメインの意味と取得・更新費用を確認する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps/">VPS：試用前に料金と終了条件を記録する →</a></p>'
         '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-stop-billing/">VPS：使い終えるときの削除・更新停止・解約 →</a></p>'
-        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/lolipop-fees/">ロリポップ 料金：契約総額・更新と解約条件 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-backup/">VPS：削除前のバックアップと復元確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-ssh/">VPS：接続先・許可・公開鍵認証を切り分ける →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-storage/">VPS：追加ディスクと保存先の容量を確認する →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-plan-change/">VPS：プラン変更前の停止条件と再開の確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-network/">VPS：転送量と帯域の条件を分けて確認 →</a></p></div>'
+        '<p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/lolipop-fees/">ロリポップ 料金：契約総額・更新と解約条件 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-backup/">VPS：削除前のバックアップと復元確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-ssh/">VPS：接続先・許可・公開鍵認証を切り分ける →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-storage/">VPS：追加ディスクと保存先の容量を確認する →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-plan-change/">VPS：プラン変更前の停止条件と再開の確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-network/">VPS：転送量と帯域の条件を分けて確認 →</a></p><p style="margin:0;padding:1.25rem;border:1px solid #cddcd7;border-radius:1rem;background:#f5f8f6"><a class="ja-card-link" href="/ja/vps-additional-ip/">VPS：追加IPの料金と割当後の確認 →</a></p></div>'
         '<p class="ja-note">キャンペーンの期限や条件は変更されることがあります。申込前にリンク先の公式情報をご確認ください。</p></section>'
         '<section class="ja-section ja-method"><h2>このページの見方</h2>'
         '<p>日本向けの公式ページで確認した価格・特典を掲載し、確認日を記しています。クーポンコードは、確認対象の公式ページに記載が見当たらない場合、その範囲を明示しています。</p></section></main>'
@@ -356,6 +356,13 @@ def build_localized_pages(cfg, base, dest, pages, stylesheet_asset, analytics_ta
            network_content, [{'@type':'Article','headline':'VPSの転送量と帯域：無料の転送と回線速度を分けて確認する','inLanguage':'ja-JP','datePublished':'2026-10-15','citation':['https://support.conoha.jp/v/networkupgrade/','https://vps.conoha.jp/pricing/']}],
            [{'lang':'ja-JP','path':'/ja/vps-network/'}])
     pages[-1] = (base+'/ja/vps-network/', '2026-10-15')
+
+    ip_content = (ROOT/'templates/ja-vps-additional-ip.html').read_text(encoding='utf-8')
+    render('/ja/vps-additional-ip/', 'VPSの追加IP：料金・最低利用期間と割当後の確認 | PerkMingle',
+           'VPSの追加IPの料金、最低利用期間、停止しての割当、追加NIC、許可ポートとOS設定を分けて確認。保存用比較表と料金換算例を掲載します。',
+           ip_content, [{'@type':'Article','headline':'VPSの追加IP：料金・最低利用期間と割当後の確認','inLanguage':'ja-JP','datePublished':'2026-10-15','citation':['https://support.conoha.jp/v/setipv4/','https://vps.conoha.jp/pricing/','https://support.conoha.jp/v/networkupgrade/']}],
+           [{'lang':'ja-JP','path':'/ja/vps-additional-ip/'}])
+    pages[-1] = (base+'/ja/vps-additional-ip/', '2026-10-15')
 
     english_home = dest/'index.html'
     english_markup = english_home.read_text(encoding='utf-8')
