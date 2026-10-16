@@ -40,3 +40,6 @@ Next queue: VPSの問い合わせ：公開情報と個別契約の窓口を分�
 
 ## Live verification
 Sourcec071a30 deployed; article external HTTP200, sitemap contains self URL with lastmod2026-10-16; canonical unique. Actual browser320 scroll305 and390 scroll375,positive overflow0. All3 SVG images eventually loaded after scrolling. Separate worksheet external GET200 downloaded to work-vps-incident-media/downloaded-checklist.html; table exact match to source,16 editable personal fields. Unversioned browser asset served stale fallback; verified ?v=20261016 shows correct title4rows16fields, source links changed to versioned URL commit06c6306. Tests16 passed; video68.94seconds ready, not uploaded pending personal terms confirmation.
+
+## Video completion
+2026-10-16 user confirmed this upload personally. Existing PerkMingle channel; public video https://www.youtube.com/watch?v=fcJeDQ4LzsU title VPSの障害情報：公式通知と自分の現象を照合する . Copyright checks complete no issues; not for kids, no paid promotion, AI disclosure selected. Actual public playback currentTime0.345 pausedfalse readyState4 duration68.981. Screenshot work-vps-incident-media/published.jpg.
