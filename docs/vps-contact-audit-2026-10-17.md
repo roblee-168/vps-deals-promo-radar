@@ -34,3 +34,6 @@ Denominator5: A official routes/reception/response conditions; B route choice pl
 |10|资料申请隐私说明、扩展限制、联系入口|当次正文未发现|当次正文未发现|
 
 Official source archive attached. No account login, support submission, private data upload or live VPS actions.
+
+## Publication verification
+2026-10-17: article HTTP200; independent HTML saved via external request HTTP200,3733bytes, table markup exactly matches source. Canonical one self URL. sitemap lastmod2026-10-17. Actual browser viewport320:innerWidth320 document.scrollWidth305 overflow0;390:innerWidth390 scrollWidth375 overflow0. Old incident page new handoff SVG exists,320/390 overflow0. Three original new figures, one prior-page figure.16 unittest tests passed, build107 indexable pages.67.04-second video prepared; pending personal confirmation for this upload, not yet uploaded.
