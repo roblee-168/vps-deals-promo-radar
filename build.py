@@ -719,19 +719,21 @@ def build():
     write('/',f'VPS plans & trials — {month} | {cfg["brand"]}',f'Compare {len(offers)} freshly checked official VPS plans and terms from {len(providers)} providers. Source links and transparent terms.',home,[itemlist(offers)],lastmod)
     for p in cfg['providers']:
         items = [o for o in offers if o['provider_id']==p['id']]
-        if not items:
-            continue
         schema = {'@type':'Service','name':p['name']+' VPS hosting','provider':{'@type':'Organization','name':p['name'],'url':p['home']},'offers':[offer_schema(o) for o in items]}
+        if not items:
+            schema.pop('offers', None)
         # Only aggregate comparable actual prices in the same currency, never trial credits.
         priced = [o for o in items if 'price' in o and 'currency' in o]
         if len(priced)>1 and len({o['currency'] for o in priced})==1:
             schema['offers'] = {'@type':'AggregateOffer','lowPrice':min(float(o['price']) for o in priced),'highPrice':max(float(o['price']) for o in priced),'priceCurrency':priced[0]['currency'],'offerCount':len(priced),'offers':[offer_schema(o) for o in priced]}
         path = '/providers/'+p['id']+'/'
         content = render('provider.html',name=escape(p['name']),cards=cards(items),source=escape(p['source'],quote=True))
-        if p['id'] == 'racknerd' and racknerd_plans:
+        if not any('price' in o and 'currency' in o for o in items):
+            content += '<p class="note">No current price available.</p>'
+        if p['id'] == 'racknerd' and racknerd_plans and items:
             content = content.replace(escape(p['source'],quote=True),detail_path(items[0])).replace('Check the source ↗','View five plans and terms ↗')
         content += '<p class="note">'+escape(coverage(p['id']))+'</p>'
-        write(path,f'{p["name"]} VPS plans and terms — {month}',f'{len(items)} freshly checked {p["name"]} plans and terms. Review eligibility and official terms.',content,[schema,crumbs(p['name'],path)],max((o['fetched_at'] for o in items),default=None),not items)
+        write(path,f'{p["name"]} VPS plans and terms — {month}',f'{len(items)} freshly checked {p["name"]} plans and terms. Review eligibility and official terms.',content,[schema,crumbs(p['name'],path)],max((o['fetched_at'] for o in items),default=None))
     for o in offers:
         p = providers[o['provider_id']]
         target = p['affiliate'] or o['offer_url']
@@ -852,7 +854,7 @@ def build():
         p = providers[pid]
         items = [o for o in archived if o['provider_id']==pid]
         if not any(o['provider_id']==pid for o in offers):
-            content = '<article class="prose"><h1>'+escape(p['name'])+' VPS plans and terms</h1><p>Current availability could not be verified. Historical records remain available below; they are not current verified offers.</p>'+''.join('<p><a href="'+detail_path(o)+'">'+escape(o['title'])+'</a></p>' for o in items)+'<p><a href="'+escape(p['source'],quote=True)+'">Official source</a></p></article>'
+            content = '<article class="prose"><h1>'+escape(p['name'])+' VPS plans and terms</h1><p>No current price available. Current availability could not be verified. Historical records remain available below; they are not current verified offers.</p>'+''.join('<p><a href="'+detail_path(o)+'">'+escape(o['title'])+'</a></p>' for o in items)+'<p><a href="'+escape(p['source'],quote=True)+'">Official source</a></p></article>'
             write('/providers/'+pid+'/',p['name']+' VPS plans and terms','Historical source records and current verification limits.',content)
     for o in archived:
         content = '<article class="prose"><h1>'+escape(providers[o['provider_id']]['name']+': '+o['title'])+'</h1><p>Current availability could not be verified. This historical record is not a current verified offer.</p><p>Last successful source check: '+escape(o['fetched_at'])+'</p><p>Previously recorded: '+escape(o['evidence'])+'</p><p><a href="'+escape(o['source_url'],quote=True)+'">Official source</a></p><p><a href="/providers/'+o['provider_id']+'/">Provider details</a></p></article>'
@@ -874,9 +876,8 @@ def build():
             SubElement(el,'lastmod').text = modified
     ElementTree(sitemap).write(dest/'sitemap.xml',encoding='utf-8',xml_declaration=True)
     (dest/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n',encoding='utf-8')
-    # Retired empty provider pages lead to the current source table, not cached shells.
-    retired = [p for p in cfg['providers'] if not any(o['provider_id']==p['id'] for o in known.values())]
-    (dest/'_redirects').write_text('/racknerd-promo-code/ /racknerd-vps-plans/ 301\n/racknerd-promo-code /racknerd-vps-plans/ 301\n/deals/:id/ /plans/:id/ 301\n/deals/:id /plans/:id/ 301\n'+''.join(f'/providers/{p["id"]}/ / 302\n/providers/{p["id"]} / 302\n' for p in retired),encoding='utf-8')
+    # Provider pages remain indexable even without verified current prices.
+    (dest/'_redirects').write_text('/racknerd-promo-code/ /racknerd-vps-plans/ 301\n/racknerd-promo-code /racknerd-vps-plans/ 301\n/deals/:id/ /plans/:id/ 301\n/deals/:id /plans/:id/ 301\n',encoding='utf-8')
     not_found = '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Plan unavailable</title><meta name="description" content="This plan is no longer listed or could not be verified."></head><body><h1>This offer is no longer listed</h1><p>It may have expired or could not be verified.</p><a href="/">See current offers</a></body></html>'
     (dest/'404.html').write_text(origin_links(with_analytics(not_found)),encoding='utf-8')
     (dest/'_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Cache-Control: public, max-age=300\n',encoding='utf-8')

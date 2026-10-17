@@ -142,6 +142,19 @@ class PipelineTests(unittest.TestCase):
             self.assertIn('/plans/test/',sitemap)
             self.assertIn('/providers/upcloud/',sitemap)
             self.assertNotIn('/providers/upcloud/',(root/'site/_redirects').read_text(encoding='utf-8'))
+            provider_html=(root/'site/providers/upcloud/index.html').read_text(encoding='utf-8')
+            self.assertIn('content="index,follow"',provider_html)
+            self.assertIn('No current price available.',provider_html)
+            self.assertNotIn('noindex',provider_html)
+            # A provider with neither fresh nor historical offers is still a real page.
+            (root/'data/offers.json').write_text(json.dumps({'offers':[], 'sources':[]}),encoding='utf-8')
+            with patch.object(build,'ROOT',root),patch.object(build,'load_config',return_value=cfg):
+                build.build()
+            empty=(root/'site/providers/upcloud/index.html').read_text(encoding='utf-8')
+            self.assertIn('No current price available.',empty)
+            self.assertIn('content="index,follow"',empty)
+            self.assertNotIn('"@type": "Offer"',empty)
+            self.assertNotIn('/providers/upcloud/',(root/'site/_redirects').read_text(encoding='utf-8'))
 
     def test_schedule_matches_config(self):
         self.assertIn(self.cfg['cron'],workflow())
