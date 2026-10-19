@@ -41,3 +41,7 @@ T2: XServer separates panel operations from software work in its own FAQ. Learne
 ## Verification
 
 16 repository tests passed; build114 indexable pages. Publication and viewport results will be appended after actual live verification. Video is not yet claimed uploaded.
+
+## Live verification completed
+Article and independent download anonymously requested with no cookies: HTTP200 each. Download5058bytes; table markup exactly equals source (Cloudflare adds surrounding markup). Sitemap externally returned self URL and lastmod2026-10-19. Canonical exactly one self URL. First attempted viewport measurements returned actual1280 and were rejected as phone evidence. Real selected viewport320 initially found19px overflow in unwrapped download action; fixed white-space and max-width, rollback commit retained. Final actual320:innerWidth320 scrollWidth305 overflow0;390:innerWidth390 scrollWidth375 overflow0. All3 new SVGs loaded naturalWidth150. Old contact page added SVG present and actual320/390 also overflow0.16 tests passed before CSS fix; static rebuild passed after CSS fix. Main article commit beb7f7a8, wrapping fix619821bc. No Cloudflare security settings changed. Video57.85seconds prepared, pending personal confirmation of this upload terms; not uploaded yet.
+
